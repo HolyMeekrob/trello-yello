@@ -16,13 +16,13 @@ var get = function (config, objType, id, parameters) {
 
 	return new Promise(function (resolve, reject) {
 		https.get(requestOptions, function (response) {
-            var result = {
-                httpVersion: response.httpVersion,
-                httpStatusCode: response.statusCode,
-                headers: response.headers,
-                body: '',
-                trailers: response.trailers
-            };
+			var result = {
+				httpVersion: response.httpVersion,
+				httpStatusCode: response.statusCode,
+				headers: response.headers,
+				body: '',
+				trailers: response.trailers
+			};
 			if (response.statusCode >= 400) {
 				var err = new Error('Error retrieving data from Trello.');
 				reject(err);

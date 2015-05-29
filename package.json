@@ -1,33 +1,34 @@
 {
-  "name": "trello-yello",
-  "version": "0.0.0",
-  "description": "A high-level object-oriented node package for interacting with Trello.",
-  "main": "app.js",
-  "scripts": {
-    "test": "mocha ./test/**/*.js",
-    "start": "node ./app.js"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/HolyMeekrob/trello-yello.git"
-  },
-  "keywords": [
-    "trello"
-  ],
-  "author": "Andy Steinberg <holy.meekrob@gmail.com> (http://www.epicaricacy.com)",
-  "license": "Unilicense",
-  "bugs": {
-    "url": "https://github.com/HolyMeekrob/trello-yello/issues"
-  },
-  "homepage": "https://github.com/HolyMeekrob/trello-yello#readme",
-  "dependencies": {
-    "bluebird": "^2.9.26",
-    "extend": "^2.0.1",
-    "sprintf": "^0.1.5"
-  },
-  "devDependencies": {
-    "chai": "^2.3.0",
-    "mocha": "^2.2.5",
-    "sinon": "^1.14.1"
-  }
+	"name": "trello-yello",
+	"version": "0.0.0",
+	"description": "A high-level object-oriented node package for interacting with Trello.",
+	"main": "app.js",
+	"scripts": {
+		"test": "mocha ./test/**/*.js",
+		"start": "node ./app.js"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/HolyMeekrob/trello-yello.git"
+	},
+	"keywords": [
+		"trello"
+	],
+	"author": "Andy Steinberg <holy.meekrob@gmail.com> (http://www.epicaricacy.com)",
+	"license": "Unilicense",
+	"bugs": {
+		"url": "https://github.com/HolyMeekrob/trello-yello/issues"
+	},
+	"homepage": "https://github.com/HolyMeekrob/trello-yello#readme",
+	"dependencies": {
+		"bluebird": "^2.9.26",
+		"extend": "^2.0.1",
+		"sprintf": "^0.1.5"
+	},
+	"devDependencies": {
+		"chai": "^2.3.0",
+		"chai-as-promised": "^5.0.0",
+		"mocha": "^2.2.5",
+		"sinon": "^1.14.1"
+	}
 }

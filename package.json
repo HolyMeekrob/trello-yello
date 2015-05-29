@@ -4,7 +4,8 @@
   "description": "A high-level object-oriented node package for interacting with Trello.",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha ./test/**/*.js",
+    "start": "node ./app.js"
   },
   "repository": {
     "type": "git",
@@ -23,5 +24,10 @@
     "bluebird": "^2.9.26",
     "extend": "^2.0.1",
     "sprintf": "^0.1.5"
+  },
+  "devDependencies": {
+    "chai": "^2.3.0",
+    "mocha": "^2.2.5",
+    "sinon": "^1.14.1"
   }
 }

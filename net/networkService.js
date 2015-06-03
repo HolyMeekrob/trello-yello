@@ -5,13 +5,20 @@ var Promise = require('bluebird');
 
 var API_HOST = 'api.trello.com';
 
-var get = function (config, objType, id, parameters) {
+var get = function (config, objType, id, parameters, subObjType) {
 	parameters.key = config.key;
 	parameters.token = config.token;
 
+	if (!subObjType) {
+		subObjType = '';
+	}
+	else if (!subObjType.endsWith('/')) {
+		subObjType += '/';
+	}
+
 	var requestOptions = {
 		hostname: API_HOST,
-		path: sprintf('/%s/%s/%s/?%s', config.version, objType, id, querystring.stringify(parameters))
+		path: sprintf('/%s/%s/%s/%s?%s', config.version, objType, id, subObjType, querystring.stringify(parameters))
 	};
 
 	return new Promise(function (resolve, reject) {

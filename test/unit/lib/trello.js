@@ -67,23 +67,6 @@ describe('Trello', function () {
 				}.should.throw(Error);
 			});
 		});
-
-		describe('if object type is invalid', function () {
-			var objType;
-			var id;
-
-			before(function () {
-				objType = 'notATrelloObject';
-				id = 'id';
-			});
-
-			it('should throw an error', function () {
-				return function () {
-					trello.get(objType, id);
-				}.should.throw(Error);
-			});
-		});
-
 		// TODO: How to tell if the correct object type constructor was called?
 	});
 });

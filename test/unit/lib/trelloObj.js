@@ -16,7 +16,7 @@ const TrelloObj = proxyquire('../../../lib/TrelloObj',
 
 propertyMapsStub.objectType = {
 	expectedDefaultProperty: 'default',
-	expectedNonDefaultProperty: { type: 'type', subObjType: 'subObjType' }
+	expectedNonDefaultProperty: { type: 'type' }
 };
 
 propertyMapsStub.type = {
@@ -115,7 +115,7 @@ describe('TrelloObj', function () {
 						})
 					})
 				);
-				getStub.withArgs(config, objType, id, { }, 'subObjType').returns(
+				getStub.withArgs(config, objType, id, { }, expectedNonDefaultProperty).returns(
 					Promise.resolve({
 						body: JSON.stringify([expectedNonDefaultValue])
 					})
@@ -135,7 +135,7 @@ describe('TrelloObj', function () {
 				trelloObj[expectedDefaultProperty].should.eventually.become(expectedDefaultValue);
 			});
 
-			it('should update the object object with the expected value on the expected non-default property', function () {
+			it('should update the object with the expected value on the expected non-default property', function () {
 				trelloObj[expectedNonDefaultProperty].should.eventually.be.an('array');
 				trelloObj[expectedNonDefaultProperty].should.eventually.have.length(1);
 

@@ -1,15 +1,17 @@
-var Promise = require('bluebird');
-var sinon = require('sinon');
-var chai = require('chai');
-var should = require('chai').should();
-var proxyquire = require('proxyquire');
-var chaiAsPromised = require('chai-as-promised');
+"use strict";
+
+const  Promise = require('bluebird');
+const  sinon = require('sinon');
+const  chai = require('chai');
+const  should = require('chai').should();
+const  proxyquire = require('proxyquire');
+const  chaiAsPromised = require('chai-as-promised');
 chai.use(chaiAsPromised);
 
 
-var propertyMapsStub = { };
+const  propertyMapsStub = { };
 
-var TrelloObj = proxyquire('../../../lib/TrelloObj',
+const TrelloObj = proxyquire('../../../lib/TrelloObj',
 		{ './trelloPropertyMaps': propertyMapsStub });
 
 propertyMapsStub.objectType = {
@@ -22,10 +24,10 @@ propertyMapsStub.type = {
 };
 
 describe('TrelloObj', function () {
-	var net;
-	var config;
-	var id;
-	var objType;
+	let net;
+	let config;
+	let id;
+	let objType;
 
 	before (function () {
 		config = { };
@@ -94,19 +96,18 @@ describe('TrelloObj', function () {
 	});
 
 	describe('property accessor', function () {
-		var net;
-		var trelloObj;
-
-		var unexpectedProperty = 'unexpectedProperty';
-		var expectedDefaultProperty = 'expectedDefaultProperty';
-		var expectedDefaultValue = 'edVal';
-		var expectedNonDefaultProperty = 'expectedNonDefaultProperty';
-		var expectedNonDefaultValue = { id: 'endpId' };
+		const  unexpectedProperty = 'unexpectedProperty';
+		const  expectedDefaultProperty = 'expectedDefaultProperty';
+		const  expectedDefaultValue = 'edVal';
+		const  expectedNonDefaultProperty = 'expectedNonDefaultProperty';
+		const  expectedNonDefaultValue = { id: 'endpId' };
 
 		describe('and the network resolves without error', function () {
+			let trelloObj;
+
 			before(function () {
 				objType = 'objectType';
-				var getStub = sinon.stub();
+				const  getStub = sinon.stub();
 				getStub.withArgs(config, objType, id, { fields: 'all'}).returns(
 					Promise.resolve({
 						body: JSON.stringify({

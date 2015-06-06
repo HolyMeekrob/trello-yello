@@ -1,10 +1,12 @@
-var should = require('chai').should();
-var Trello = require('../../../lib/trello');
+"use strict";
+
+const should = require('chai').should();
+const Trello = require('../../../lib/trello');
 
 describe('Trello', function () {
-	var trello;
-	var key;
-	var token;
+	let trello;
+	let key;
+	let token;
 
 	before(function () {
 		key = 'key';
@@ -39,8 +41,7 @@ describe('Trello', function () {
 	});
 
 	describe('#get()', function () {
-		var netService;
-		var trello;
+		let netService;
 
 		before(function () {
 			netService = { };
@@ -56,7 +57,7 @@ describe('Trello', function () {
 		});
 
 		describe('if id is missing', function () {
-			var objType;
+			let objType;
 			before(function () {
 				objType = 'card';
 			});

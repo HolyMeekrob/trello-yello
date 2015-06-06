@@ -1,11 +1,13 @@
-var https = require('https');
-var querystring = require('querystring');
-var sprintf = require('sprintf');
-var Promise = require('bluebird');
+"use strict";
 
-var API_HOST = 'api.trello.com';
+const https = require('https');
+const querystring = require('querystring');
+const sprintf = require('sprintf');
+const Promise = require('bluebird');
 
-var get = function (config, objType, id, parameters, subObjType) {
+const API_HOST = 'api.trello.com';
+
+const get = function (config, objType, id, parameters, subObjType) {
 	parameters.key = config.key;
 	parameters.token = config.token;
 
@@ -16,14 +18,14 @@ var get = function (config, objType, id, parameters, subObjType) {
 		subObjType += '/';
 	}
 
-	var requestOptions = {
+	const requestOptions = {
 		hostname: API_HOST,
 		path: sprintf('/%s/%s/%s/%s?%s', config.version, objType, id, subObjType, querystring.stringify(parameters))
 	};
 
 	return new Promise(function (resolve, reject) {
 		https.get(requestOptions, function (response) {
-			var result = {
+			const result = {
 				httpVersion: response.httpVersion,
 				httpStatusCode: response.statusCode,
 				headers: response.headers,
@@ -31,7 +33,7 @@ var get = function (config, objType, id, parameters, subObjType) {
 				trailers: response.trailers
 			};
 			if (response.statusCode >= 400) {
-				var err = new Error('Error retrieving data from Trello.');
+				const err = new Error('Error retrieving data from Trello.');
 				reject(err);
 			}
 			response.on('data', function (chunk) {

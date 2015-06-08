@@ -1,15 +1,15 @@
 "use strict";
 
-const  Promise = require('bluebird');
-const  sinon = require('sinon');
-const  chai = require('chai');
-const  should = require('chai').should();
-const  proxyquire = require('proxyquire');
-const  chaiAsPromised = require('chai-as-promised');
+const Promise = require('bluebird');
+const sinon = require('sinon');
+const chai = require('chai');
+const should = require('chai').should();
+const proxyquire = require('proxyquire');
+const chaiAsPromised = require('chai-as-promised');
 chai.use(chaiAsPromised);
 
 
-const  propertyMapsStub = { };
+const propertyMapsStub = { };
 
 const TrelloObj = proxyquire('../../../lib/TrelloObj',
 		{ './trelloPropertyMaps': propertyMapsStub });
@@ -96,22 +96,24 @@ describe('TrelloObj', function () {
 	});
 
 	describe('property accessor', function () {
-		const  unexpectedProperty = 'unexpectedProperty';
-		const  expectedDefaultProperty = 'expectedDefaultProperty';
-		const  expectedDefaultValue = 'edVal';
-		const  expectedNonDefaultProperty = 'expectedNonDefaultProperty';
-		const  expectedNonDefaultValue = { id: 'endpId' };
+		const unexpectedProperty = 'unexpectedProperty';
+		const expectedDefaultProperty = 'expectedDefaultProperty';
+		const expectedDefaultValue = 'edVal';
+		const expectedNonDefaultProperty = 'expectedNonDefaultProperty';
+		const expectedNonDefaultValue = { id: 'endpId' };
+		const invalidValue = 'invalidValue';
 
 		describe('and the network resolves without error', function () {
 			let trelloObj;
 
 			before(function () {
 				objType = 'objectType';
-				const  getStub = sinon.stub();
-				getStub.withArgs(config, objType, id, { fields: 'all'}).returns(
+				const getStub = sinon.stub();
+				getStub.withArgs(config, objType, id, { fields: 'all' }).returns(
 					Promise.resolve({
 						body: JSON.stringify({
-							expectedDefaultProperty: expectedDefaultValue
+							expectedDefaultProperty: expectedDefaultValue,
+							expectedNonDefaultProperty: invalidValue
 						})
 					})
 				);
@@ -133,6 +135,7 @@ describe('TrelloObj', function () {
 
 			it('should update the object with the expected value on the expected default property', function () {
 				trelloObj[expectedDefaultProperty].should.eventually.become(expectedDefaultValue);
+				trelloObj[expectedNonDefaultProperty].should.eventually.not.become(invalidValue);
 			});
 
 			it('should update the object with the expected value on the expected non-default property', function () {

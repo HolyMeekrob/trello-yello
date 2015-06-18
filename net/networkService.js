@@ -23,8 +23,8 @@ const get = function (config, objType, id, parameters, subObjType) {
 		path: sprintf('/%s/%s/%s/%s?%s', config.version, objType, id, subObjType, querystring.stringify(parameters))
 	};
 
-	return new Promise(function (resolve, reject) {
-		https.get(requestOptions, function (response) {
+	return new Promise((resolve, reject) => {
+		https.get(requestOptions, (response) => {
 			const result = {
 				httpVersion: response.httpVersion,
 				httpStatusCode: response.statusCode,
@@ -36,11 +36,11 @@ const get = function (config, objType, id, parameters, subObjType) {
 				const err = new Error('Error retrieving data from Trello.');
 				reject(err);
 			}
-			response.on('data', function (chunk) {
+			response.on('data', (chunk) => {
 				result.body += chunk;
 			});
 
-			response.on('end', function () {
+			response.on('end', () => {
 				resolve(result);
 			});
 		}).on('error', reject);

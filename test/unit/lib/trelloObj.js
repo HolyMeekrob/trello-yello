@@ -15,11 +15,12 @@ const TrelloObj = proxyquire('../../../lib/TrelloObj',
 		{ './trelloPropertyMaps': propertyMapsStub });
 
 propertyMapsStub.objectType = {
-	expectedDefaultProperty: 'default',
-	expectedNonDefaultProperty: { type: 'type' }
+	defaultProperty: 'default',
+	nonDefaultSubProperty: { trelloType: 'trelloType' },
+	nonDefaultProperty: { },
 };
 
-propertyMapsStub.type = {
+propertyMapsStub.trelloType = {
 	id: 'default'
 };
 
@@ -97,10 +98,12 @@ describe('TrelloObj', function () {
 
 	describe('property accessor', function () {
 		const unexpectedProperty = 'unexpectedProperty';
-		const expectedDefaultProperty = 'expectedDefaultProperty';
+		const defaultProperty = 'defaultProperty';
 		const expectedDefaultValue = 'edVal';
-		const expectedNonDefaultProperty = 'expectedNonDefaultProperty';
-		const expectedNonDefaultValue = { id: 'endpId' };
+		const nonDefaultSubProperty = 'nonDefaultSubProperty';
+		const nonDefaultProperty = 'nonDefaultProperty';
+		const expectedNonDefaultSubValue = { id: 'endsvId' };
+		const expectedNonDefaultValue = { id: 'endvId' };
 		const invalidValue = 'invalidValue';
 
 		describe('and the network resolves without error', function () {
@@ -112,14 +115,20 @@ describe('TrelloObj', function () {
 				getStub.withArgs(config, objType, id, { fields: 'all' }).returns(
 					Promise.resolve({
 						body: JSON.stringify({
-							expectedDefaultProperty: expectedDefaultValue,
-							expectedNonDefaultProperty: invalidValue
+							defaultProperty: expectedDefaultValue,
+							nonDefaultSubProperty: invalidValue,
+							nonDefaultProperty: invalidValue
 						})
 					})
 				);
-				getStub.withArgs(config, objType, id, { }, expectedNonDefaultProperty).returns(
+				getStub.withArgs(config, objType, id, { }, nonDefaultSubProperty).returns(
 					Promise.resolve({
-						body: JSON.stringify([expectedNonDefaultValue])
+						body: JSON.stringify([expectedNonDefaultSubValue])
+					})
+				);
+				getStub.withArgs(config, objType, id, { }, nonDefaultProperty).returns(
+					Promise.resolve( {
+						body: JSON.stringify(expectedNonDefaultValue)
 					})
 				);
 				net = { get: getStub }
@@ -133,17 +142,22 @@ describe('TrelloObj', function () {
 				trelloObj[unexpectedProperty].should.eventually.become(undefined);
 			});
 
-			it('should update the object with the expected value on the expected default property', function () {
-				trelloObj[expectedDefaultProperty].should.eventually.become(expectedDefaultValue);
-				trelloObj[expectedNonDefaultProperty].should.eventually.not.become(invalidValue);
+			it('should update the object with the expected value on the default property', function () {
+				trelloObj[defaultProperty].should.eventually.become(expectedDefaultValue);
+				trelloObj[nonDefaultSubProperty].should.eventually.not.become(invalidValue);
+				trelloObj[nonDefaultProperty].should.eventually.not.become(invalidValue);
 			});
 
-			it('should update the object with the expected value on the expected non-default property', function () {
-				trelloObj[expectedNonDefaultProperty].should.eventually.be.an('array');
-				trelloObj[expectedNonDefaultProperty].should.eventually.have.length(1);
+			it('should update the object with the expected value on the non-default sub-property', function () {
+				trelloObj[nonDefaultSubProperty].should.eventually.be.an('array');
+				trelloObj[nonDefaultSubProperty].should.eventually.have.length(1);
 
 				// TODO: How do I test individual elements of an array returned by a resolved Promise
-				//trelloObj[expectedNonDefaultProperty].should.eventually.become(expectedNonDefaultValue);
+				//trelloObj[nonDefaultSubProperty].should.eventually.become(expectedNonDefaultSubValue);
+			});
+
+			it('should update the object with the expected value on the non-default property', function () {
+				trelloObj[nonDefaultProperty].should.eventually.become(expectedNonDefaultValue);
 			});
 		});
 	});

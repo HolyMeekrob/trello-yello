@@ -1,7 +1,12 @@
 "use strict";
 
-const should = require('chai').should();
+const Promise = require('bluebird');
+const sinon = require('sinon');
+const chai = require('chai');
+const should = chai.should();
 const Trello = require('../../../lib/trello');
+const chaiAsPromised = require('chai-as-promised');
+chai.use(chaiAsPromised);
 
 describe('Trello', function () {
 	let trello;
@@ -69,5 +74,35 @@ describe('Trello', function () {
 			});
 		});
 		// TODO: How to tell if the correct object type constructor was called?
+	});
+
+	describe('#search()', function () {
+		let netService;
+		let expectedSearchResults;
+
+		before(function () {
+			expectedSearchResults = { results: 'results' };
+
+			let getStub = sinon.stub();
+			getStub.returns(
+				Promise.resolve({
+					body: JSON.stringify(expectedSearchResults)
+				})
+			);
+
+			netService = { get: getStub };
+
+			trello = new Trello(key, token, netService);
+		});
+
+		it('should call the network service with the search query', function () {
+			let results = trello.search('query');
+			netService.get.called.should.be.true;
+		});
+
+		it('should return the parsed search results', function () {
+			let results = trello.search('query');
+			results.should.eventually.become(expectedSearchResults);
+		});
 	});
 });

@@ -3,7 +3,7 @@
 const Promise = require('bluebird');
 const sinon = require('sinon');
 const chai = require('chai');
-const should = require('chai').should();
+const should = chai.should();
 const proxyquire = require('proxyquire');
 const chaiAsPromised = require('chai-as-promised');
 chai.use(chaiAsPromised);

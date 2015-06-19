@@ -4,23 +4,40 @@ const https = require('https');
 const querystring = require('querystring');
 const sprintf = require('sprintf');
 const Promise = require('bluebird');
-
+const R = require('ramda');
 const API_HOST = 'api.trello.com';
 
 const get = function (config, objType, id, parameters, subObjType) {
-	parameters.key = config.key;
-	parameters.token = config.token;
+	if (R.isNil(objType)) {
+		throw new Error('Trello object type is required to query API.');
+	}
 
-	if (!subObjType) {
+	if (!R.isNil(config.key)) {
+		parameters.key = config.key;
+	}
+
+	if (!R.isNil(config.token)) {
+			parameters.token = config.token;
+	}
+
+	if (R.isNil(subObjType)) {
 		subObjType = '';
 	}
 	else if (!subObjType.endsWith('/')) {
 		subObjType += '/';
 	}
 
+	let url = '';
+	if (R.isNil(id)) {
+		url = sprintf('/%s/%s/%s?%s', config.version, objType, subObjType, querystring.stringify(parameters))
+	}
+	else {
+		url = sprintf('/%s/%s/%s/%s?%s', config.version, objType, id, subObjType, querystring.stringify(parameters))
+	}
+
 	const requestOptions = {
 		hostname: API_HOST,
-		path: sprintf('/%s/%s/%s/%s?%s', config.version, objType, id, subObjType, querystring.stringify(parameters))
+		path: url
 	};
 
 	return new Promise((resolve, reject) => {

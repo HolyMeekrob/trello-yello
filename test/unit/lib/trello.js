@@ -96,7 +96,6 @@ describe('Trello', function () {
 		});
 
 		it('should call the network service with the search query', function () {
-			/* jshint expr: true */
 			trello.search('query');
 			netService.get.called.should.be.true; // eslint-disable-line no-unused-expressions
 		});

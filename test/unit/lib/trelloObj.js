@@ -91,7 +91,6 @@ describe('TrelloObj', function () {
 			});
 
 			it('should not call the network service', function () {
-				/* jshint expr: true */
 				net.get.called.should.be.false; // eslint-disable-line no-unused-expressions
 			});
 		});

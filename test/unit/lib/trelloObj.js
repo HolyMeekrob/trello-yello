@@ -1,9 +1,7 @@
-"use strict";
-
 const Promise = require('bluebird');
 const sinon = require('sinon');
 const chai = require('chai');
-const should = chai.should();
+const should = chai.should(); // eslint-disable-line no-unused-vars
 const proxyquire = require('proxyquire');
 const chaiAsPromised = require('chai-as-promised');
 chai.use(chaiAsPromised);
@@ -17,7 +15,7 @@ const TrelloObj = proxyquire('../../../lib/TrelloObj',
 propertyMapsStub.objectType = {
 	defaultProperty: 'default',
 	nonDefaultSubProperty: { trelloType: 'trelloType' },
-	nonDefaultProperty: { },
+	nonDefaultProperty: { }
 };
 
 propertyMapsStub.trelloType = {
@@ -25,12 +23,14 @@ propertyMapsStub.trelloType = {
 };
 
 describe('TrelloObj', function () {
+	'use strict';
+
 	let net;
 	let config;
 	let id;
 	let objType;
 
-	before (function () {
+	before(function () {
 		config = { };
 		id = 'id';
 		objType = 'objectType';
@@ -39,7 +39,7 @@ describe('TrelloObj', function () {
 		};
 	});
 
-	describe('#constructor()', function () {;
+	describe('#constructor()', function () {
 		describe('if objType is missing', function () {
 			it('should throw an exception', function () {
 				return function () {
@@ -79,7 +79,7 @@ describe('TrelloObj', function () {
 
 			it('should throw an error', function () {
 				return function () {
-					return new TrelloObj(objType, config, id, net)
+					return new TrelloObj(objType, config, id, net);
 				}.should.throw(Error);
 			});
 		});
@@ -87,11 +87,12 @@ describe('TrelloObj', function () {
 		describe('if all arguments are correct', function () {
 			before(function () {
 				objType = 'objectType';
-				new TrelloObj(objType, config, id, net);
+				let trelloObj = new TrelloObj(objType, config, id, net); // eslint-disable-line no-unused-vars
 			});
 
 			it('should not call the network service', function () {
-				net.get.called.should.be.false;
+				/* jshint expr: true */
+				net.get.called.should.be.false; // eslint-disable-line no-unused-expressions
 			});
 		});
 	});
@@ -131,7 +132,7 @@ describe('TrelloObj', function () {
 						body: JSON.stringify(expectedNonDefaultValue)
 					})
 				);
-				net = { get: getStub }
+				net = { get: getStub };
 			});
 
 			beforeEach(function () {

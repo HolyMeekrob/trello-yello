@@ -1,5 +1,3 @@
-"use strict";
-
 const https = require('https');
 const querystring = require('querystring');
 const sprintf = require('sprintf');
@@ -8,6 +6,8 @@ const R = require('ramda');
 const API_HOST = 'api.trello.com';
 
 const get = function (config, objType, id, parameters, subObjType) {
+	'use strict';
+
 	if (R.isNil(objType)) {
 		throw new Error('Trello object type is required to query API.');
 	}
@@ -17,7 +17,7 @@ const get = function (config, objType, id, parameters, subObjType) {
 	}
 
 	if (!R.isNil(config.token)) {
-			parameters.token = config.token;
+		parameters.token = config.token;
 	}
 
 	if (R.isNil(subObjType)) {
@@ -29,10 +29,10 @@ const get = function (config, objType, id, parameters, subObjType) {
 
 	let url = '';
 	if (R.isNil(id)) {
-		url = sprintf('/%s/%s/%s?%s', config.version, objType, subObjType, querystring.stringify(parameters))
+		url = sprintf('/%s/%s/%s?%s', config.version, objType, subObjType, querystring.stringify(parameters));
 	}
 	else {
-		url = sprintf('/%s/%s/%s/%s?%s', config.version, objType, id, subObjType, querystring.stringify(parameters))
+		url = sprintf('/%s/%s/%s/%s?%s', config.version, objType, id, subObjType, querystring.stringify(parameters));
 	}
 
 	const requestOptions = {

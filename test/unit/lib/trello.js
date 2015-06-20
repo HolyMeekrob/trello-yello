@@ -1,14 +1,14 @@
-"use strict";
-
 const Promise = require('bluebird');
 const sinon = require('sinon');
 const chai = require('chai');
-const should = chai.should();
+const should = chai.should(); // eslint-disable-line no-unused-vars
 const Trello = require('../../../lib/trello');
 const chaiAsPromised = require('chai-as-promised');
 chai.use(chaiAsPromised);
 
 describe('Trello', function () {
+	'use strict';
+
 	let trello;
 	let key;
 	let token;
@@ -96,8 +96,9 @@ describe('Trello', function () {
 		});
 
 		it('should call the network service with the search query', function () {
-			let results = trello.search('query');
-			netService.get.called.should.be.true;
+			/* jshint expr: true */
+			trello.search('query');
+			netService.get.called.should.be.true; // eslint-disable-line no-unused-expressions
 		});
 
 		it('should return the parsed search results', function () {

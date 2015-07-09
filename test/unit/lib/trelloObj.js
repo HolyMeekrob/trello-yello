@@ -139,25 +139,25 @@ describe('TrelloObj', function () {
 			});
 
 			it('should return undefined for unsupported properties', function () {
-				trelloObj[unexpectedProperty].should.eventually.become(undefined);
+				trelloObj.get(unexpectedProperty).should.eventually.become(undefined);
 			});
 
 			it('should update the object with the expected value on the default property', function () {
-				trelloObj[defaultProperty].should.eventually.become(expectedDefaultValue);
-				trelloObj[nonDefaultSubProperty].should.eventually.not.become(invalidValue);
-				trelloObj[nonDefaultProperty].should.eventually.not.become(invalidValue);
+				trelloObj.get(defaultProperty).should.eventually.become(expectedDefaultValue);
+				trelloObj.get(nonDefaultSubProperty).should.eventually.not.become(invalidValue);
+				trelloObj.get(nonDefaultProperty).should.eventually.not.become(invalidValue);
 			});
 
 			it('should update the object with the expected value on the non-default sub-property', function () {
-				trelloObj[nonDefaultSubProperty].should.eventually.be.an('array');
-				trelloObj[nonDefaultSubProperty].should.eventually.have.length(1);
+				trelloObj.get(nonDefaultSubProperty).should.eventually.be.an('array');
+				trelloObj.get(nonDefaultSubProperty).should.eventually.have.length(1);
 
 				// TODO: How do I test individual elements of an array returned by a resolved Promise
 				//trelloObj[nonDefaultSubProperty].should.eventually.become(expectedNonDefaultSubValue);
 			});
 
 			it('should update the object with the expected value on the non-default property', function () {
-				trelloObj[nonDefaultProperty].should.eventually.become(expectedNonDefaultValue);
+				trelloObj.get(nonDefaultProperty).should.eventually.become(expectedNonDefaultValue);
 			});
 		});
 	});

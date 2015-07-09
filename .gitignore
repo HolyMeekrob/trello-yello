@@ -7,3 +7,7 @@ node_modules/
 
 # Settings
 .settings/
+
+# Local testing
+localRunner.js
+appConfig.js

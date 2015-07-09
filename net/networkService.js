@@ -3,6 +3,7 @@ const querystring = require('querystring');
 const sprintf = require('sprintf');
 const Promise = require('bluebird');
 const R = require('ramda');
+
 const API_HOST = 'api.trello.com';
 
 const get = function (config, objType, id, parameters, subObjType) {

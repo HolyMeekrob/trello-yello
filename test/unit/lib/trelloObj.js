@@ -7,19 +7,27 @@ const chaiAsPromised = require('chai-as-promised');
 chai.use(chaiAsPromised);
 
 
-const propertyMapsStub = { };
+const propertyMapsStub = {};
 
 const TrelloObj = proxyquire('../../../lib/TrelloObj',
 		{ './trelloPropertyMaps': propertyMapsStub });
 
 propertyMapsStub.objectType = {
-	defaultProperty: 'default',
-	nonDefaultSubProperty: { trelloType: 'trelloType' },
-	nonDefaultProperty: { }
+	defaultProperty: { trelloType: null, isAutoProp: true, get: {} },
+	nonDefaultProperty: { trelloType: null, isAutoProp: false, get: {} },
+	nonDefaultSubProperty: {
+		trelloType: 'trelloType',
+		isAutoProp: false,
+		get: {}
+	}
 };
 
 propertyMapsStub.trelloType = {
-	id: 'default'
+	id: {
+		trelloType: null,
+		isAutoProp: true,
+		get: {}
+	}
 };
 
 describe('TrelloObj', function () {
@@ -31,7 +39,7 @@ describe('TrelloObj', function () {
 	let objType;
 
 	before(function () {
-		config = { };
+		config = {};
 		id = 'id';
 		objType = 'objectType';
 		net = {
@@ -121,12 +129,12 @@ describe('TrelloObj', function () {
 						})
 					})
 				);
-				getStub.withArgs(config, objType, id, { }, nonDefaultSubProperty).returns(
+				getStub.withArgs(config, objType, id, {}, nonDefaultSubProperty).returns(
 					Promise.resolve({
 						body: JSON.stringify([expectedNonDefaultSubValue])
 					})
 				);
-				getStub.withArgs(config, objType, id, { }, nonDefaultProperty).returns(
+				getStub.withArgs(config, objType, id, {}, nonDefaultProperty).returns(
 					Promise.resolve( {
 						body: JSON.stringify(expectedNonDefaultValue)
 					})

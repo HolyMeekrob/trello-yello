@@ -49,7 +49,7 @@ describe('Trello', function () {
 		let netService;
 
 		before(function () {
-			netService = { };
+			netService = {};
 			trello = new Trello(key, token, netService);
 		});
 

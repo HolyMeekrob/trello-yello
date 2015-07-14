@@ -13,41 +13,59 @@ const TrelloObj = proxyquire('../../../lib/TrelloObj',
 		{ './trelloPropertyMaps': propertyMapsStub });
 
 propertyMapsStub.objectType = {
-	defaultProperty: { trelloType: null, isAutoProp: true, get: {} },
-	nonDefaultProperty: { trelloType: null, isAutoProp: false, get: {} },
-	nonDefaultSubProperty: {
-		trelloType: 'trelloType',
-		isAutoProp: false,
-		get: {}
+	idPut: true,
+	props: {
+		autoProperty: { trelloType: null, isAutoProp: true, get: {}, put: {} },
+		nonAutoProperty: { trelloType: null, isAutoProp: false, get: {} },
+		nonAutoSubProperty: {
+			trelloType: 'alternateType',
+			isAutoProp: false,
+			get: {}
+		},
+		nonGettableProperty: { put: {} }
 	}
 };
 
-propertyMapsStub.trelloType = {
-	id: {
-		trelloType: null,
-		isAutoProp: true,
-		get: {}
+propertyMapsStub.alternateType = {
+	idPut: false,
+	props: {
+		id: {
+			trelloType: null,
+			isAutoProp: true,
+			get: {}
+		}
 	}
 };
 
 describe('TrelloObj', function () {
 	'use strict';
 
+	const autoProperty = 'autoProperty';
+	const nonAutoSubProperty = 'nonAutoSubProperty';
+	const nonAutoProperty = 'nonAutoProperty';
+	const nonGettableProperty = 'nonGettableProperty';
+
 	let net;
 	let config;
 	let id;
 	let objType;
+	let altType;
 
 	before(function () {
 		config = {};
 		id = 'id';
 		objType = 'objectType';
-		net = {
-			get: sinon.spy()
-		};
+		altType = 'alternateType';
 	});
 
 	describe('#constructor()', function () {
+		beforeEach(function () {
+			net = {
+				get: sinon.spy(),
+				put: sinon.spy()
+			};
+		});
+
 		describe('if objType is missing', function () {
 			it('should throw an exception', function () {
 				return function () {
@@ -104,37 +122,45 @@ describe('TrelloObj', function () {
 		});
 	});
 
-	describe('property accessor', function () {
+	describe('#get()', function () {
 		const unexpectedProperty = 'unexpectedProperty';
-		const defaultProperty = 'defaultProperty';
 		const expectedDefaultValue = 'edVal';
-		const nonDefaultSubProperty = 'nonDefaultSubProperty';
-		const nonDefaultProperty = 'nonDefaultProperty';
 		const expectedNonDefaultSubValue = { id: 'endsvId' };
 		const expectedNonDefaultValue = { id: 'endvId' };
 		const invalidValue = 'invalidValue';
 
+		describe('getting a non-gettable Trello property', function () {
+			let trelloObj;
+
+			beforeEach(function () {
+				trelloObj = new TrelloObj(objType, config, id, net);
+			});
+
+			it('should be rejected', function () {
+				return trelloObj.get(nonGettableProperty).should.be.rejectedWith(Error);
+			});
+		});
+
 		describe('and the network resolves without error', function () {
 			let trelloObj;
 
-			before(function () {
-				objType = 'objectType';
+			beforeEach(function () {
 				const getStub = sinon.stub();
 				getStub.withArgs(config, objType, id, { fields: 'all' }).returns(
 					Promise.resolve({
 						body: JSON.stringify({
-							defaultProperty: expectedDefaultValue,
-							nonDefaultSubProperty: invalidValue,
-							nonDefaultProperty: invalidValue
+							autoProperty: expectedDefaultValue,
+							nonAutoSubProperty: invalidValue,
+							nonAutoProperty: invalidValue
 						})
 					})
 				);
-				getStub.withArgs(config, objType, id, {}, nonDefaultSubProperty).returns(
+				getStub.withArgs(config, objType, id, {}, nonAutoSubProperty).returns(
 					Promise.resolve({
 						body: JSON.stringify([expectedNonDefaultSubValue])
 					})
 				);
-				getStub.withArgs(config, objType, id, {}, nonDefaultProperty).returns(
+				getStub.withArgs(config, objType, id, {}, nonAutoProperty).returns(
 					Promise.resolve( {
 						body: JSON.stringify(expectedNonDefaultValue)
 					})
@@ -151,21 +177,110 @@ describe('TrelloObj', function () {
 			});
 
 			it('should update the object with the expected value on the default property', function () {
-				trelloObj.get(defaultProperty).should.eventually.become(expectedDefaultValue);
-				trelloObj.get(nonDefaultSubProperty).should.eventually.not.become(invalidValue);
-				trelloObj.get(nonDefaultProperty).should.eventually.not.become(invalidValue);
+				trelloObj.get(autoProperty).should.eventually.become(expectedDefaultValue);
+				trelloObj.get(nonAutoSubProperty).should.eventually.not.become(invalidValue);
+				trelloObj.get(nonAutoProperty).should.eventually.not.become(invalidValue);
 			});
 
 			it('should update the object with the expected value on the non-default sub-property', function () {
-				trelloObj.get(nonDefaultSubProperty).should.eventually.be.an('array');
-				trelloObj.get(nonDefaultSubProperty).should.eventually.have.length(1);
+				trelloObj.get(nonAutoSubProperty).should.eventually.be.an('array');
+				trelloObj.get(nonAutoSubProperty).should.eventually.have.length(1);
 
 				// TODO: How do I test individual elements of an array returned by a resolved Promise
-				//trelloObj[nonDefaultSubProperty].should.eventually.become(expectedNonDefaultSubValue);
+				//trelloObj[nonAutoSubProperty].should.eventually.become(expectedNonDefaultSubValue);
 			});
 
 			it('should update the object with the expected value on the non-default property', function () {
-				trelloObj.get(nonDefaultProperty).should.eventually.become(expectedNonDefaultValue);
+				trelloObj.get(nonAutoProperty).should.eventually.become(expectedNonDefaultValue);
+			});
+		});
+	});
+
+	describe('#set()', function () {
+		let trelloObj;
+
+		describe('setting the object on a non-settable object type', function () {
+			const newVal = { value: 'newVal' };
+
+			beforeEach(function () {
+				trelloObj = new TrelloObj(altType, config, id, net);
+			});
+
+			it('should be rejected', function () {
+				trelloObj.set(newVal).should.be.rejectedWith(Error);
+			});
+		});
+
+		describe('setting the object on a settable object type', function () {
+			const newVal = { value: 'newVal' };
+
+			beforeEach(function () {
+				net = {
+					get: sinon.spy(),
+					put: sinon.spy()
+				};
+
+				trelloObj = new TrelloObj(objType, config, id, net);
+				trelloObj.set(newVal);
+			});
+
+			it('should call the network service', function () {
+				net.put.called.should.be.true; //eslint-disable-line no-unused-expressions
+				net.put.calledWithExactly(config, objType, id, newVal).should.be.true; //eslint-disable-line no-unused-expressions
+			});
+		});
+
+		describe('setting a property that isn\'t a Trello property', function () {
+			const nonTrelloProperty = 'nonTrelloProperty';
+			const newVal = 'nonTrelloPropertyVal';
+			let returnVal;
+
+			beforeEach(function () {
+				net = {
+					get: sinon.spy(),
+					put: sinon.spy()
+				};
+
+				trelloObj = new TrelloObj(objType, config, id, net);
+				returnVal = trelloObj.set(newVal, nonTrelloProperty);
+			});
+
+			it('should not call the network service', function () {
+				net.put.called.should.be.false; // eslint-disable-line no-unused-expressions
+			});
+
+			it('should return the new property value', function () {
+				returnVal.should.eventually.become(newVal);
+			});
+
+			it('should return the value when subsequently calling get()', function () {
+				trelloObj.get(nonTrelloProperty).should.eventually.become(newVal);
+			});
+		});
+
+		describe('setting a Trello property that cannot be set', function () {
+			const newVal = 'unsettableVal';
+
+			beforeEach(function () {
+				trelloObj = new TrelloObj(objType, config, id, net);
+			});
+
+			it('should be rejected', function () {
+				return trelloObj.set(newVal, nonAutoProperty).should.be.rejectedWith(Error);
+			});
+		});
+
+		describe('setting a Trello property', function () {
+			const newVal = 'trelloPropertyVal';
+
+			beforeEach(function () {
+				trelloObj = new TrelloObj(objType, config, id, net);
+				trelloObj.set(newVal, autoProperty);
+			});
+
+			it('should call the network service', function () {
+				net.put.called.should.be.true; // eslint-disable-line no-unused-expressions
+				net.put.calledWithExactly(config, objType, id, newVal, autoProperty).should.be.true; // eslint-disable-line no-unused-expressions
 			});
 		});
 	});

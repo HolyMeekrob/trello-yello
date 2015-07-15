@@ -13,21 +13,22 @@ const TrelloObj = proxyquire('../../../lib/TrelloObj',
 		{ './trelloPropertyMaps': propertyMapsStub });
 
 propertyMapsStub.objectType = {
-	idPut: true,
+	allowEmptyPut: true,
 	props: {
-		autoProperty: { trelloType: null, isAutoProp: true, get: {}, put: {} },
-		nonAutoProperty: { trelloType: null, isAutoProp: false, get: {} },
+		autoProperty: { trelloType: null, isAutoProp: true, get: {}, put: { allowEmpty: true, subProperty: { allowEmpty: true } }},
+		nonAutoProperty: { trelloType: null, isAutoProp: false, get: {}},
 		nonAutoSubProperty: {
 			trelloType: 'alternateType',
 			isAutoProp: false,
 			get: {}
 		},
-		nonGettableProperty: { put: {} }
+		nonGettableProperty: { trelloType: null, isAutoProp: false, put: {}},
+		nonAllowEmptyProperty: { trelloType: null, isAutoProp: false, put: { allowEmpty: false }}
 	}
 };
 
 propertyMapsStub.alternateType = {
-	idPut: false,
+	allowEmptyPut: false,
 	props: {
 		id: {
 			trelloType: null,
@@ -44,6 +45,8 @@ describe('TrelloObj', function () {
 	const nonAutoSubProperty = 'nonAutoSubProperty';
 	const nonAutoProperty = 'nonAutoProperty';
 	const nonGettableProperty = 'nonGettableProperty';
+	const nonAllowEmptyProperty = 'nonAllowEmptyProperty';
+	const subProperty = 'subProperty';
 
 	let net;
 	let config;
@@ -137,7 +140,19 @@ describe('TrelloObj', function () {
 			});
 
 			it('should be rejected', function () {
-				return trelloObj.get(nonGettableProperty).should.be.rejectedWith(Error);
+				trelloObj.get(nonGettableProperty).should.be.rejectedWith(Error);
+			});
+		});
+
+		describe('getting a non-Trello property', function () {
+			let trelloObj;
+
+			beforeEach(function () {
+				trelloObj = new TrelloObj(objType, config, id, net);
+			});
+
+			it('should be rejected', function () {
+				trelloObj.get(unexpectedProperty).should.be.rejectedWith(Error);
 			});
 		});
 
@@ -170,10 +185,6 @@ describe('TrelloObj', function () {
 
 			beforeEach(function () {
 				trelloObj = new TrelloObj(objType, config, id, net);
-			});
-
-			it('should return undefined for unsupported properties', function () {
-				trelloObj.get(unexpectedProperty).should.eventually.become(undefined);
 			});
 
 			it('should update the object with the expected value on the default property', function () {
@@ -233,28 +244,13 @@ describe('TrelloObj', function () {
 		describe('setting a property that isn\'t a Trello property', function () {
 			const nonTrelloProperty = 'nonTrelloProperty';
 			const newVal = 'nonTrelloPropertyVal';
-			let returnVal;
 
 			beforeEach(function () {
-				net = {
-					get: sinon.spy(),
-					put: sinon.spy()
-				};
-
 				trelloObj = new TrelloObj(objType, config, id, net);
-				returnVal = trelloObj.set(newVal, nonTrelloProperty);
 			});
 
-			it('should not call the network service', function () {
-				net.put.called.should.be.false; // eslint-disable-line no-unused-expressions
-			});
-
-			it('should return the new property value', function () {
-				returnVal.should.eventually.become(newVal);
-			});
-
-			it('should return the value when subsequently calling get()', function () {
-				trelloObj.get(nonTrelloProperty).should.eventually.become(newVal);
+			it('should be rejected', function () {
+				trelloObj.set(newVal, nonTrelloProperty).should.be.rejectedWith(Error);
 			});
 		});
 
@@ -266,7 +262,19 @@ describe('TrelloObj', function () {
 			});
 
 			it('should be rejected', function () {
-				return trelloObj.set(newVal, nonAutoProperty).should.be.rejectedWith(Error);
+				trelloObj.set(newVal, nonAutoProperty).should.be.rejectedWith(Error);
+			});
+		});
+
+		describe('setting a Trello property that requires a sub-property without any sub-properties', function () {
+			const newVal = 'unsettableVal';
+
+			beforeEach(function () {
+				trelloObj = new TrelloObj(objType, config, id, net);
+			});
+
+			it('should be rejected', function () {
+				trelloObj.set(newVal, nonAllowEmptyProperty).should.be.rejectedWith(Error);
 			});
 		});
 
@@ -281,6 +289,33 @@ describe('TrelloObj', function () {
 			it('should call the network service', function () {
 				net.put.called.should.be.true; // eslint-disable-line no-unused-expressions
 				net.put.calledWithExactly(config, objType, id, newVal, autoProperty).should.be.true; // eslint-disable-line no-unused-expressions
+			});
+		});
+
+		// TODO: Implement these test cases
+		describe('setting a Trello property with invalid sub-properties', function () {
+			const newVal = 'trelloPropertyVal';
+
+			beforeEach(function () {
+				trelloObj = new TrelloObj(objType, config, id, net);
+			});
+
+			it('should be rejected', function () {
+				trelloObj.set(newVal, 'autoProperty/invalidSubProperty').should.be.rejectedWith(Error);
+			});
+		});
+
+		describe('setting a Trello property with valid sub-properties', function () {
+			const newVal = 'trelloPropertyVal';
+
+			beforeEach(function () {
+				trelloObj = new TrelloObj(objType, config, id, net);
+				trelloObj.set(newVal, autoProperty + '/' + subProperty);
+			});
+
+			it('should call the network service', function () {
+				net.put.called.should.be.true; // eslint-disable-line no-unused-expressions
+				net.put.calledWithExactly(config, objType, id, newVal, autoProperty + '/' + subProperty).should.be.true; // eslint-disable-line no-unused-expressions
 			});
 		});
 	});

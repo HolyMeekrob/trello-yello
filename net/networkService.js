@@ -31,11 +31,11 @@ const get = (config, objType, id, parameters, subObjType) => {
 	let url = '';
 	if (R.isNil(id)) {
 		url = sprintf('/%s/%s/%s?%s', config.version, objType, subObjType,
-			querystring.stringify(parameters));
+				querystring.stringify(parameters));
 	}
 	else {
 		url = sprintf('/%s/%s/%s/%s?%s', config.version, objType, id, subObjType,
-			querystring.stringify(parameters));
+				querystring.stringify(parameters));
 	}
 
 	const requestOptions = {
@@ -91,8 +91,8 @@ const put = (config, objType, id, newVals, prop) => {
 		url = sprintf('/%s/%s/%s?%s', config.version, objType, id, parameters);
 	}
 	else {
-		url =
-			sprintf('/%s/%s/%s/%s?%s', config.version, objType, id, prop, parameters);
+		url = sprintf('/%s/%s/%s/%s?%s',
+				config.version, objType, id, prop, parameters);
 	}
 
 	const formData = JSON.stringify(newVals);

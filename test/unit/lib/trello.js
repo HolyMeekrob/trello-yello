@@ -2,9 +2,29 @@ const Promise = require('bluebird');
 const sinon = require('sinon');
 const chai = require('chai');
 const should = chai.should(); // eslint-disable-line no-unused-vars
-const Trello = require('../../../lib/trello');
 const chaiAsPromised = require('chai-as-promised');
 chai.use(chaiAsPromised);
+
+const propertyMapsStub = {};
+const proxyquire = require('proxyquire');
+const Trello = proxyquire('../../../lib/trello',
+		{ './trelloPropertyMaps': propertyMapsStub });
+
+propertyMapsStub.createableObjectType = {
+	allowCreation: true,
+	props: {
+		id: {
+			trelloType: null,
+			isAutoProp: true,
+			get: {}
+		}
+	}
+};
+
+propertyMapsStub.nonCreateableObjectType = {
+	allowCreation: false,
+	props: {}
+};
 
 describe('Trello', function () {
 	'use strict';
@@ -45,10 +65,80 @@ describe('Trello', function () {
 		});
 	});
 
+	describe('#create()', function () {
+		let netService;
+
+		describe('creating an object type that does not exist', function () {
+			beforeEach(function () {
+				netService = {};
+				trello = new Trello(key, token, netService);
+			});
+
+			it('should throw an exception', function () {
+				return function () {
+					return trello.create('imaginaryObjectType', {});
+				}.should.throw(Error);
+			});
+		});
+
+		describe('creating an object type that does not allow creation', function () {
+			beforeEach(function () {
+				netService = {};
+				trello = new Trello(key, token, netService);
+			});
+
+			it('should throw an exception', function () {
+				return function () {
+					return trello.create('nonCreateableObjectType', {});
+				}.should.throw(Error);
+			});
+		});
+
+		describe('creating an object that does allow creation', function () {
+			let initialVals;
+			let objType;
+			let expectedId;
+			let newObj;
+
+			beforeEach(function () {
+				initialVals = { name: 'New Name' };
+				objType = 'createableObjectType';
+				expectedId = 'new id';
+
+
+				const postStub = sinon.stub();
+				postStub.onFirstCall().returns(
+					Promise.resolve({
+						body: JSON.stringify({
+							id: expectedId
+						})
+					})
+				);
+				netService = {
+					post: postStub
+				};
+				trello = new Trello(key, token, netService);
+				newObj = trello.create(objType, initialVals);
+			});
+
+			it('should call the network service', function () {
+				netService.post.calledWithMatch( // eslint-disable-line no-unused-expressions
+						sinon.match.object, sinon.match.same(objType),
+						sinon.match.same(null), sinon.match.same(initialVals)).should.be.true;
+			});
+
+			it('should create a new Trello object with the correct data', function() {
+				newObj.then(obj => {
+					return obj.get('id');
+				}).should.eventually.become(expectedId);
+			});
+		});
+	});
+
 	describe('#get()', function () {
 		let netService;
 
-		before(function () {
+		beforeEach(function () {
 			netService = {};
 			trello = new Trello(key, token, netService);
 		});
@@ -73,14 +163,30 @@ describe('Trello', function () {
 				}.should.throw(Error);
 			});
 		});
-		// TODO: How to tell if the correct object type constructor was called?
+
+		describe('if arguments are kosher', function () {
+			let objType;
+			let id;
+			let newObj;
+
+			beforeEach(function () {
+				objType = 'createableObjectType';
+				id = 'object id';
+
+				newObj = trello.get(objType, id);
+			});
+
+			it('should return the correct Trello object', function () {
+				newObj.get('id').should.eventually.become(id);
+			});
+		});
 	});
 
 	describe('#search()', function () {
 		let netService;
 		let expectedSearchResults;
 
-		before(function () {
+		beforeEach(function () {
 			expectedSearchResults = { results: 'results' };
 
 			let getStub = sinon.stub();

@@ -77,10 +77,6 @@ const send = (verb, config, objType, id, newVals, prop) => {
 		throw new Error('Trello object type is required for API.');
 	}
 
-	if (R.isNil(id)) {
-		throw new Error('Updating a Trello object requires an id.');
-	}
-
 	if (R.isNil(newVals)) {
 		throw new Error('Updates must include values to be updated.');
 	}
@@ -88,7 +84,12 @@ const send = (verb, config, objType, id, newVals, prop) => {
 	const parameters = querystring.stringify(R.dissoc('version', config));
 
 	let url;
-	if (R.isNil(prop)) {
+
+	// A nil id means we're creating a new object
+	if (R.isNil(id)) {
+		url = sprintf('/%s/%s?%s', config.version, objType, parameters);
+	}
+	else if (R.isNil(prop)) {
 		url = sprintf('/%s/%s/%s?%s', config.version, objType, id, parameters);
 	}
 	else {

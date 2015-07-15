@@ -21,7 +21,6 @@
 	"homepage": "https://github.com/HolyMeekrob/trello-yello#readme",
 	"dependencies": {
 		"bluebird": "^2.9.26",
-		"harmony-reflect": "^1.3.0",
 		"ramda": "^0.14.0",
 		"sprintf": "^0.1.5"
 	},

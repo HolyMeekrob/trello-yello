@@ -24,7 +24,8 @@ propertyMapsStub.objectType = {
 		},
 		nonGettableProperty: { trelloType: null, isAutoProp: false, put: {}},
 		nonAllowEmptyProperty: { trelloType: null, isAutoProp: false, put: { allowEmpty: false }},
-		allowIdProperty: { trelloType: null, isAutoProp: false, put: {allowEmpty: false, allowId: true }}
+		allowIdProperty: { trelloType: null, isAutoProp: false, put: { allowEmpty: false, allowId: true }},
+		postProperty: { trelloType: null, isAutoProp: false, post: { allowEmpty: true }}
 	}
 };
 
@@ -49,6 +50,7 @@ describe('TrelloObj', function () {
 	const nonAllowEmptyProperty = 'nonAllowEmptyProperty';
 	const subProperty = 'subProperty';
 	const allowIdProperty = 'allowIdProperty';
+	const postProperty = 'postProperty';
 
 	let net;
 	let config;
@@ -67,6 +69,7 @@ describe('TrelloObj', function () {
 		beforeEach(function () {
 			net = {
 				get: sinon.spy(),
+				post: sinon.spy(),
 				put: sinon.spy()
 			};
 		});
@@ -212,6 +215,14 @@ describe('TrelloObj', function () {
 	describe('#set()', function () {
 		let trelloObj;
 
+		beforeEach(function () {
+			net = {
+				get: sinon.spy(),
+				post: sinon.spy(),
+				put: sinon.spy()
+			};
+		});
+
 		describe('setting the object on a non-settable object type', function () {
 			const newVal = { value: 'newVal' };
 
@@ -230,6 +241,7 @@ describe('TrelloObj', function () {
 			beforeEach(function () {
 				net = {
 					get: sinon.spy(),
+					post: sinon.spy(),
 					put: sinon.spy()
 				};
 
@@ -294,7 +306,6 @@ describe('TrelloObj', function () {
 			});
 		});
 
-		// TODO: Implement these test cases
 		describe('setting a Trello property with invalid sub-properties', function () {
 			const newVal = 'trelloPropertyVal';
 
@@ -333,6 +344,21 @@ describe('TrelloObj', function () {
 			it('should call the network service', function () {
 				net.put.called.should.be.true; // eslint-disable-line no-unused-expressions
 				net.put.calledWithExactly(config, objType, id, newVal, allowIdProperty + '/' + subPropertyId).should.be.true; // eslint-disable-line no-unused-expressions
+			});
+		});
+
+		describe('setting a Trello property that allows post but not put', function () {
+			const newVal = 'trelloPropertyVal';
+
+			beforeEach(function () {
+				trelloObj = new TrelloObj(objType, config, id, net);
+				trelloObj.set(newVal, postProperty);
+			});
+
+			it('should call the network service', function () {
+				net.put.called.should.be.false; // eslint-disable-line no-unused-expressions
+				// net.post.called.should.be.true; // eslint-disable-line no-unused-expressions
+				// net.post.calledWithExactly(config, objType, id, newVal, postProperty).should.be.true; // eslint-disable-line no-unused-expressions
 			});
 		});
 	});

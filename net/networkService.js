@@ -70,7 +70,7 @@ const get = (config, objType, id, parameters, subObjType) => {
 	});
 };
 
-const put = (config, objType, id, newVals, prop) => {
+const send = (verb, config, objType, id, newVals, prop) => {
 	'use strict';
 
 	if (R.isNil(objType)) {
@@ -101,7 +101,7 @@ const put = (config, objType, id, newVals, prop) => {
 		hostname: API_HOST,
 		port: 443,
 		path: url,
-		method: 'PUT',
+		method: verb,
 		headers: {
 			'Content-Type': 'application/json',
 			'Content-Length': formData.length
@@ -137,7 +137,20 @@ const put = (config, objType, id, newVals, prop) => {
 	});
 };
 
+const post = (config, objType, id, newVals, prop) => {
+	'use strict';
+
+	return send('POST', config, objType, id, newVals, prop);
+};
+
+const put = (config, objType, id, newVals, prop) => {
+	'use strict';
+
+	return send('PUT', config, objType, id, newVals, prop);
+};
+
 module.exports = {
 	get: get,
+	post: post,
 	put: put
 };

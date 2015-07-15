@@ -6,7 +6,7 @@ const R = require('ramda');
 
 const API_HOST = 'api.trello.com';
 
-const get = function (config, objType, id, parameters, subObjType) {
+const get = (config, objType, id, parameters, subObjType) => {
 	'use strict';
 
 	if (R.isNil(objType)) {
@@ -30,10 +30,12 @@ const get = function (config, objType, id, parameters, subObjType) {
 
 	let url = '';
 	if (R.isNil(id)) {
-		url = sprintf('/%s/%s/%s?%s', config.version, objType, subObjType, querystring.stringify(parameters));
+		url = sprintf('/%s/%s/%s?%s', config.version, objType, subObjType,
+				querystring.stringify(parameters));
 	}
 	else {
-		url = sprintf('/%s/%s/%s/%s?%s', config.version, objType, id, subObjType, querystring.stringify(parameters));
+		url = sprintf('/%s/%s/%s/%s?%s', config.version, objType, id, subObjType,
+				querystring.stringify(parameters));
 	}
 
 	const requestOptions = {
@@ -46,14 +48,17 @@ const get = function (config, objType, id, parameters, subObjType) {
 			const result = {
 				httpVersion: response.httpVersion,
 				httpStatusCode: response.statusCode,
+				statusMessage: response.statusMessage,
 				headers: response.headers,
 				body: '',
 				trailers: response.trailers
 			};
+
 			if (response.statusCode >= 400) {
 				const err = new Error('Error retrieving data from Trello.');
 				reject(err);
 			}
+
 			response.on('data', (chunk) => {
 				result.body += chunk;
 			});
@@ -65,4 +70,87 @@ const get = function (config, objType, id, parameters, subObjType) {
 	});
 };
 
-module.exports = { get: get };
+const send = (verb, config, objType, id, newVals, prop) => {
+	'use strict';
+
+	if (R.isNil(objType)) {
+		throw new Error('Trello object type is required for API.');
+	}
+
+	if (R.isNil(id)) {
+		throw new Error('Updating a Trello object requires an id.');
+	}
+
+	if (R.isNil(newVals)) {
+		throw new Error('Updates must include values to be updated.');
+	}
+
+	const parameters = querystring.stringify(R.dissoc('version', config));
+
+	let url;
+	if (R.isNil(prop)) {
+		url = sprintf('/%s/%s/%s?%s', config.version, objType, id, parameters);
+	}
+	else {
+		url = sprintf('/%s/%s/%s/%s?%s',
+				config.version, objType, id, prop, parameters);
+	}
+
+	const formData = JSON.stringify(newVals);
+	const requestOptions = {
+		hostname: API_HOST,
+		port: 443,
+		path: url,
+		method: verb,
+		headers: {
+			'Content-Type': 'application/json',
+			'Content-Length': formData.length
+		}
+	};
+
+	return new Promise((resolve, reject) => {
+		const request = https.request(requestOptions, (response) => {
+			const result = {
+				httpVersion: response.httpVersion,
+				httpStatusCode: response.statusCode,
+				statusMessage: response.statusMessage,
+				headers: response.headers,
+				body: '',
+				trailers: response.trailers
+			};
+
+			response.on('data', (chunk) => {
+				result.body += chunk;
+			});
+
+			response.on('end', () => {
+				if (response.statusCode >= 400) {
+					const err = new Error('Error sending data to Trello: ' + result.body);
+					reject(err);
+				}
+				resolve(result);
+			});
+		}).on('error', reject);
+
+		request.write(formData);
+		request.end();
+	});
+};
+
+const post = (config, objType, id, newVals, prop) => {
+	'use strict';
+
+	return send('POST', config, objType, id, newVals, prop);
+};
+
+const put = (config, objType, id, newVals, prop) => {
+	'use strict';
+
+	return send('PUT', config, objType, id, newVals, prop);
+};
+
+module.exports = {
+	get: get,
+	post: post,
+	put: put
+};

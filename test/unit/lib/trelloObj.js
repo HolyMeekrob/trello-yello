@@ -23,7 +23,8 @@ propertyMapsStub.objectType = {
 			get: {}
 		},
 		nonGettableProperty: { trelloType: null, isAutoProp: false, put: {}},
-		nonAllowEmptyProperty: { trelloType: null, isAutoProp: false, put: { allowEmpty: false }}
+		nonAllowEmptyProperty: { trelloType: null, isAutoProp: false, put: { allowEmpty: false }},
+		allowIdProperty: { trelloType: null, isAutoProp: false, put: {allowEmpty: false, allowId: true }}
 	}
 };
 
@@ -47,6 +48,7 @@ describe('TrelloObj', function () {
 	const nonGettableProperty = 'nonGettableProperty';
 	const nonAllowEmptyProperty = 'nonAllowEmptyProperty';
 	const subProperty = 'subProperty';
+	const allowIdProperty = 'allowIdProperty';
 
 	let net;
 	let config;
@@ -316,6 +318,21 @@ describe('TrelloObj', function () {
 			it('should call the network service', function () {
 				net.put.called.should.be.true; // eslint-disable-line no-unused-expressions
 				net.put.calledWithExactly(config, objType, id, newVal, autoProperty + '/' + subProperty).should.be.true; // eslint-disable-line no-unused-expressions
+			});
+		});
+
+		describe('setting a Trello property with an id', function () {
+			const newVal = 'trelloPropertyVal';
+			const subPropertyId = 'subPropId';
+
+			beforeEach(function () {
+				trelloObj = new TrelloObj(objType, config, id, net);
+				trelloObj.set(newVal, allowIdProperty + '/' + subPropertyId);
+			});
+
+			it('should call the network service', function () {
+				net.put.called.should.be.true; // eslint-disable-line no-unused-expressions
+				net.put.calledWithExactly(config, objType, id, newVal, allowIdProperty + '/' + subPropertyId).should.be.true; // eslint-disable-line no-unused-expressions
 			});
 		});
 	});

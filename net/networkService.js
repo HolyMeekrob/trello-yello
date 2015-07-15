@@ -48,6 +48,7 @@ const get = (config, objType, id, parameters, subObjType) => {
 			const result = {
 				httpVersion: response.httpVersion,
 				httpStatusCode: response.statusCode,
+				statusMessage: response.statusMessage,
 				headers: response.headers,
 				body: '',
 				trailers: response.trailers
@@ -112,21 +113,21 @@ const put = (config, objType, id, newVals, prop) => {
 			const result = {
 				httpVersion: response.httpVersion,
 				httpStatusCode: response.statusCode,
+				statusMessage: response.statusMessage,
 				headers: response.headers,
 				body: '',
 				trailers: response.trailers
 			};
-
-			if (response.statusCode >= 400) {
-				const err = new Error('Error sending data to Trello.');
-				reject(err);
-			}
 
 			response.on('data', (chunk) => {
 				result.body += chunk;
 			});
 
 			response.on('end', () => {
+				if (response.statusCode >= 400) {
+					const err = new Error('Error sending data to Trello: ' + result.body);
+					reject(err);
+				}
 				resolve(result);
 			});
 		}).on('error', reject);

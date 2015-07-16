@@ -54,17 +54,18 @@ const get = (config, objType, id, parameters, subObjType) => {
 				trailers: response.trailers
 			};
 
-			if (response.statusCode >= 400) {
-				const err = new Error('Error retrieving data from Trello.');
-				reject(err);
-			}
-
 			response.on('data', (chunk) => {
 				result.body += chunk;
 			});
 
 			response.on('end', () => {
-				resolve(result);
+				if (response.statusCode >= 400) {
+					const err = new Error('Error sending data to Trello: ' + result.body);
+					reject(err);
+				}
+				else {
+					resolve(result);
+				}
 			});
 		}).on('error', reject);
 	});
@@ -129,7 +130,9 @@ const send = (verb, config, objType, id, newVals, prop) => {
 					const err = new Error('Error sending data to Trello: ' + result.body);
 					reject(err);
 				}
-				resolve(result);
+				else {
+					resolve(result);
+				}
 			});
 		}).on('error', reject);
 

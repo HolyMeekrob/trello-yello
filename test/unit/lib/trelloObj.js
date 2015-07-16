@@ -22,7 +22,8 @@ propertyMapsStub.objectType = {
 		nonGettableProperty: { trelloType: null, isAutoProp: false, put: {}},
 		nonAllowEmptyProperty: { trelloType: null, isAutoProp: false, put: { allowEmpty: false }},
 		allowIdProperty: { trelloType: null, isAutoProp: false, put: { allowEmpty: false, allowId: true }},
-		postProperty: { trelloType: null, isAutoProp: false, post: { allowEmpty: true }}
+		postProperty: { trelloType: null, isAutoProp: false, post: { allowEmpty: true }},
+		putAndPostProperty: { trelloType: null, isAutoProp: false, put: { allowEmpty: true }, post: { allowEmpty: true }}
 	}
 };
 
@@ -48,6 +49,7 @@ describe('TrelloObj', function () {
 	const subProperty = 'subProperty';
 	const allowIdProperty = 'allowIdProperty';
 	const postProperty = 'postProperty';
+	const putAndPostProperty = 'putAndPostProperty';
 
 	let net;
 	let config;
@@ -211,14 +213,6 @@ describe('TrelloObj', function () {
 	describe('#set()', function () {
 		let trelloObj;
 
-		beforeEach(function () {
-			net = {
-				get: sinon.spy(),
-				post: sinon.spy(),
-				put: sinon.spy()
-			};
-		});
-
 		describe('setting the object on a non-settable object type', function () {
 			const newVal = { value: 'newVal' };
 
@@ -292,6 +286,12 @@ describe('TrelloObj', function () {
 			const newVal = 'trelloPropertyVal';
 
 			beforeEach(function () {
+				net = {
+					get: sinon.spy(),
+					post: sinon.spy(),
+					put: sinon.spy()
+				};
+
 				trelloObj = new TrelloObj(propertyMapsStub, objType, config, id, net);
 				trelloObj.set(newVal, autoProperty);
 			});
@@ -318,6 +318,12 @@ describe('TrelloObj', function () {
 			const newVal = 'trelloPropertyVal';
 
 			beforeEach(function () {
+				net = {
+					get: sinon.spy(),
+					post: sinon.spy(),
+					put: sinon.spy()
+				};
+
 				trelloObj = new TrelloObj(propertyMapsStub, objType, config, id, net);
 				trelloObj.set(newVal, autoProperty + '/' + subProperty);
 			});
@@ -333,6 +339,12 @@ describe('TrelloObj', function () {
 			const subPropertyId = 'subPropId';
 
 			beforeEach(function () {
+				net = {
+					get: sinon.spy(),
+					post: sinon.spy(),
+					put: sinon.spy()
+				};
+
 				trelloObj = new TrelloObj(propertyMapsStub, objType, config, id, net);
 				trelloObj.set(newVal, allowIdProperty + '/' + subPropertyId);
 			});
@@ -347,14 +359,62 @@ describe('TrelloObj', function () {
 			const newVal = 'trelloPropertyVal';
 
 			beforeEach(function () {
+				net = {
+					get: sinon.spy(),
+					post: sinon.spy(),
+					put: sinon.spy()
+				};
+
 				trelloObj = new TrelloObj(propertyMapsStub, objType, config, id, net);
 				trelloObj.set(newVal, postProperty);
 			});
 
 			it('should call the network service', function () {
 				net.put.called.should.be.false; // eslint-disable-line no-unused-expressions
-				// net.post.called.should.be.true; // eslint-disable-line no-unused-expressions
-				// net.post.calledWithExactly(config, objType, id, newVal, postProperty).should.be.true; // eslint-disable-line no-unused-expressions
+				net.post.called.should.be.true; // eslint-disable-line no-unused-expressions
+				net.post.calledWithExactly(config, objType, id, newVal, postProperty).should.be.true; // eslint-disable-line no-unused-expressions
+			});
+		});
+
+		describe('setting a Trello property that allows both and preferring idempotence', function () {
+			const newVal = 'trelloPropVal';
+
+			beforeEach(function() {
+				net = {
+					get: sinon.spy(),
+					post: sinon.spy(),
+					put: sinon.spy()
+				};
+
+				trelloObj = new TrelloObj(propertyMapsStub, objType, config, id, net);
+				trelloObj.set(newVal, putAndPostProperty);
+			});
+
+			it('should call put on the network service', function() {
+				net.put.called.should.be.true; // eslint-disable-line no-unused-expressions
+				net.post.called.should.be.false; // eslint-disable-line no-unused-expressions
+				net.put.calledWithExactly(config, objType, id, newVal, putAndPostProperty).should.be.true; // eslint-disable-line no-unused-expressions
+			});
+		});
+
+		describe('setting a Trello property that allows both and preferring non-idempotence', function () {
+			const newVal = 'newPropVal';
+
+			beforeEach(function() {
+				net = {
+					get: sinon.spy(),
+					post: sinon.spy(),
+					put: sinon.spy()
+				};
+
+				trelloObj = new TrelloObj(propertyMapsStub, objType, config, id, net);
+				trelloObj.set(newVal, putAndPostProperty, true);
+			});
+
+			it('should call put on the network service', function() {
+				net.put.called.should.be.false; // eslint-disable-line no-unused-expressions
+				net.post.called.should.be.true; // eslint-disable-line no-unused-expressions
+				net.post.calledWithExactly(config, objType, id, newVal, putAndPostProperty).should.be.true; // eslint-disable-line no-unused-expressions
 			});
 		});
 	});

@@ -6,56 +6,15 @@ const should = chai.should(); // eslint-disable-line no-unused-vars
 const chaiAsPromised = require('chai-as-promised');
 chai.use(chaiAsPromised);
 
-
-const propertyMapsStub = {};
-
-propertyMapsStub.objectType = {
-	allowEmptyPut: true,
-	props: {
-		autoProperty: { trelloType: null, isAutoProp: true, get: {}, put: { allowEmpty: true, subProperty: { allowEmpty: true } }},
-		nonAutoProperty: { trelloType: null, isAutoProp: false, get: {}},
-		nonAutoSubProperty: {
-			trelloType: 'alternateType',
-			isAutoProp: false,
-			get: {}
-		},
-		nonGettableProperty: { trelloType: null, isAutoProp: false, put: {}},
-		nonAllowEmptyProperty: { trelloType: null, isAutoProp: false, put: { allowEmpty: false }},
-		allowIdProperty: { trelloType: null, isAutoProp: false, put: { allowEmpty: false, allowId: true }},
-		postProperty: { trelloType: null, isAutoProp: false, post: { allowEmpty: true }},
-		putAndPostProperty: { trelloType: null, isAutoProp: false, put: { allowEmpty: true }, post: { allowEmpty: true }}
-	}
-};
-
-propertyMapsStub.alternateType = {
-	allowEmptyPut: false,
-	props: {
-		id: {
-			trelloType: null,
-			isAutoProp: true,
-			get: {}
-		}
-	}
-};
-
 describe('TrelloObj', function () {
 	'use strict';
-
-	const autoProperty = 'autoProperty';
-	const nonAutoSubProperty = 'nonAutoSubProperty';
-	const nonAutoProperty = 'nonAutoProperty';
-	const nonGettableProperty = 'nonGettableProperty';
-	const nonAllowEmptyProperty = 'nonAllowEmptyProperty';
-	const subProperty = 'subProperty';
-	const allowIdProperty = 'allowIdProperty';
-	const postProperty = 'postProperty';
-	const putAndPostProperty = 'putAndPostProperty';
 
 	let net;
 	let config;
 	let id;
 	let objType;
 	let altType;
+	let propertyMapsStub;
 
 	before(function () {
 		config = {};
@@ -66,6 +25,8 @@ describe('TrelloObj', function () {
 
 	describe('#constructor()', function () {
 		beforeEach(function () {
+			propertyMapsStub = {};
+
 			net = {
 				get: sinon.spy(),
 				post: sinon.spy(),
@@ -106,10 +67,6 @@ describe('TrelloObj', function () {
 		});
 
 		describe('if object type is invalid', function () {
-			before(function () {
-				objType = 'notATrelloObject';
-			});
-
 			it('should throw an error', function () {
 				return function () {
 					return new TrelloObj(propertyMapsStub, objType, config, id, net);
@@ -118,8 +75,10 @@ describe('TrelloObj', function () {
 		});
 
 		describe('if all arguments are correct', function () {
-			before(function () {
-				objType = 'objectType';
+			beforeEach(function () {
+				propertyMapsStub.objectType = {
+					props: {}
+				};
 				let trelloObj = new TrelloObj(propertyMapsStub, objType, config, id, net); // eslint-disable-line no-unused-vars
 			});
 
@@ -130,11 +89,21 @@ describe('TrelloObj', function () {
 	});
 
 	describe('#get()', function () {
-		const unexpectedProperty = 'unexpectedProperty';
-		const expectedDefaultValue = 'edVal';
-		const expectedNonDefaultSubValue = { id: 'endsvId' };
-		const expectedNonDefaultValue = { id: 'endvId' };
-		const invalidValue = 'invalidValue';
+		let unexpectedProperty;
+		let expectedDefaultValue;
+		let expectedNonDefaultSubValue;
+		let expectedNonDefaultValue;
+		let invalidValue;
+		let nonGettableProperty;
+
+		before(function () {
+			unexpectedProperty = 'unexpectedProperty';
+			nonGettableProperty = 'nonGettableProperty';
+			expectedDefaultValue = 'edVal';
+			expectedNonDefaultSubValue = { id: 'endsvId' };
+			expectedNonDefaultValue = { id: 'endvId' };
+			invalidValue = 'invalidValue';
+		});
 
 		describe('getting a non-gettable Trello property', function () {
 			let trelloObj;
@@ -162,8 +131,38 @@ describe('TrelloObj', function () {
 
 		describe('and the network resolves without error', function () {
 			let trelloObj;
+			let autoProperty;
+			let nonAutoProperty;
+			let nonAutoSubProperty;
 
 			beforeEach(function () {
+				autoProperty = 'autoProperty';
+				nonAutoProperty = 'nonAutoProperty';
+				nonAutoSubProperty = 'nonAutoSubProperty';
+
+				propertyMapsStub.objectType = {
+					props: {
+						autoProperty: { trelloType: null, isAutoProp: true, get: {}, put: { allowEmpty: true, subProperty: { allowEmpty: true } }},
+						nonAutoProperty: { trelloType: null, isAutoProp: false, get: {}},
+						nonAutoSubProperty: {
+							trelloType: 'alternateType',
+							isAutoProp: false,
+							get: {}
+						}
+					}
+				};
+
+				propertyMapsStub.alternateType = {
+					allowEmptyPut: false,
+					props: {
+						id: {
+							trelloType: null,
+							isAutoProp: true,
+							get: {}
+						}
+					}
+				};
+
 				const getStub = sinon.stub();
 				getStub.withArgs(config, objType, id, { fields: 'all' }).returns(
 					Promise.resolve({
@@ -185,9 +184,7 @@ describe('TrelloObj', function () {
 					})
 				);
 				net = { get: getStub };
-			});
 
-			beforeEach(function () {
 				trelloObj = new TrelloObj(propertyMapsStub, objType, config, id, net);
 			});
 
@@ -214,9 +211,10 @@ describe('TrelloObj', function () {
 		let trelloObj;
 
 		describe('setting the object on a non-settable object type', function () {
-			const newVal = { value: 'newVal' };
+			let newVal;
 
 			beforeEach(function () {
+				newVal = { value: 'newVal' };
 				trelloObj = new TrelloObj(propertyMapsStub, altType, config, id, net);
 			});
 
@@ -226,9 +224,16 @@ describe('TrelloObj', function () {
 		});
 
 		describe('setting the object on a settable object type', function () {
-			const newVal = { value: 'newVal' };
+			let newVal;
 
 			beforeEach(function () {
+				newVal = { value: 'newVal' };
+
+				propertyMapsStub.objectType = {
+					allowEmptyPut: true,
+					props: {}
+				};
+
 				net = {
 					get: sinon.spy(),
 					post: sinon.spy(),
@@ -246,10 +251,18 @@ describe('TrelloObj', function () {
 		});
 
 		describe('setting a property that isn\'t a Trello property', function () {
-			const nonTrelloProperty = 'nonTrelloProperty';
-			const newVal = 'nonTrelloPropertyVal';
+			let nonTrelloProperty;
+			let newVal;
 
 			beforeEach(function () {
+				nonTrelloProperty = 'nonTrelloProperty';
+				newVal = 'nonTrelloPropertyVal';
+
+				propertyMapsStub.objectType = {
+					props: {
+					}
+				};
+
 				trelloObj = new TrelloObj(propertyMapsStub, objType, config, id, net);
 			});
 
@@ -259,9 +272,20 @@ describe('TrelloObj', function () {
 		});
 
 		describe('setting a Trello property that cannot be set', function () {
-			const newVal = 'unsettableVal';
+			let newVal;
+			let nonAutoProperty;
 
 			beforeEach(function () {
+				newVal = 'unsettableVal';
+				nonAutoProperty = 'nonAutoProp';
+
+				propertyMapsStub.objectType = {
+					allowEmptyPut: true,
+					props: {
+						nonAutoProperty: { trelloType: null, isAutoProp: false, get: {}}
+					}
+				};
+
 				trelloObj = new TrelloObj(propertyMapsStub, objType, config, id, net);
 			});
 
@@ -271,9 +295,19 @@ describe('TrelloObj', function () {
 		});
 
 		describe('setting a Trello property that requires a sub-property without any sub-properties', function () {
-			const newVal = 'unsettableVal';
+			let newVal;
+			let nonAllowEmptyProperty;
 
 			beforeEach(function () {
+				newVal = 'unsettableVal';
+				nonAllowEmptyProperty = 'nonAllowEmptyProperty';
+
+				propertyMapsStub.objectType = {
+					allowEmptyPut: true,
+					props: {
+						nonAllowEmptyProperty: { trelloType: null, isAutoProp: false, put: { allowEmpty: false }}
+					}
+				};
 				trelloObj = new TrelloObj(propertyMapsStub, objType, config, id, net);
 			});
 
@@ -283,9 +317,20 @@ describe('TrelloObj', function () {
 		});
 
 		describe('setting a Trello property', function () {
-			const newVal = 'trelloPropertyVal';
+			let newVal;
+			let allowEmptyProperty;
 
 			beforeEach(function () {
+				newVal = 'trelloPropertyVal';
+				allowEmptyProperty = 'allowEmptyProperty';
+
+				propertyMapsStub.objectType = {
+					allowEmptyPut: true,
+					props: {
+						allowEmptyProperty: { trelloType: null, isAutoProp: true, get: {}, put: { allowEmpty: true, subProperty: { allowEmpty: true } }}
+					}
+				};
+
 				net = {
 					get: sinon.spy(),
 					post: sinon.spy(),
@@ -293,31 +338,52 @@ describe('TrelloObj', function () {
 				};
 
 				trelloObj = new TrelloObj(propertyMapsStub, objType, config, id, net);
-				trelloObj.set(newVal, autoProperty);
+				trelloObj.set(newVal, allowEmptyProperty);
 			});
 
 			it('should call the network service', function () {
 				net.put.called.should.be.true; // eslint-disable-line no-unused-expressions
-				net.put.calledWithExactly(config, objType, id, newVal, autoProperty).should.be.true; // eslint-disable-line no-unused-expressions
+				net.put.calledWithExactly(config, objType, id, newVal, allowEmptyProperty).should.be.true; // eslint-disable-line no-unused-expressions
 			});
 		});
 
 		describe('setting a Trello property with invalid sub-properties', function () {
-			const newVal = 'trelloPropertyVal';
+			let newVal;
 
 			beforeEach(function () {
+				newVal = 'trelloPropertyVal';
+
+				propertyMapsStub.objectType = {
+					allowEmptyPut: true,
+					props: {
+						property: { trelloType: null, isAutoProp: true, get: {}, put: { allowEmpty: true, subProperty: { allowEmpty: true } }}
+					}
+				};
+
 				trelloObj = new TrelloObj(propertyMapsStub, objType, config, id, net);
 			});
 
 			it('should be rejected', function () {
-				trelloObj.set(newVal, 'autoProperty/invalidSubProperty').should.be.rejectedWith(Error);
+				trelloObj.set(newVal, 'property/invalidSubProperty').should.be.rejectedWith(Error);
 			});
 		});
 
 		describe('setting a Trello property with valid sub-properties', function () {
-			const newVal = 'trelloPropertyVal';
+			let newVal;
+			let property;
+			let subProperty;
 
 			beforeEach(function () {
+				newVal = 'trelloPropertyVal';
+				property = 'property';
+				subProperty = 'subProperty';
+
+				propertyMapsStub.objectType = {
+					allowEmptyPut: true,
+					props: {
+						property: { trelloType: null, isAutoProp: true, get: {}, put: { allowEmpty: true, subProperty: { allowEmpty: true } }}
+					}
+				};
 				net = {
 					get: sinon.spy(),
 					post: sinon.spy(),
@@ -325,20 +391,30 @@ describe('TrelloObj', function () {
 				};
 
 				trelloObj = new TrelloObj(propertyMapsStub, objType, config, id, net);
-				trelloObj.set(newVal, autoProperty + '/' + subProperty);
+				trelloObj.set(newVal, property + '/' + subProperty);
 			});
 
 			it('should call the network service', function () {
 				net.put.called.should.be.true; // eslint-disable-line no-unused-expressions
-				net.put.calledWithExactly(config, objType, id, newVal, autoProperty + '/' + subProperty).should.be.true; // eslint-disable-line no-unused-expressions
+				net.put.calledWithExactly(config, objType, id, newVal, property + '/' + subProperty).should.be.true; // eslint-disable-line no-unused-expressions
 			});
 		});
 
 		describe('setting a Trello property with an id', function () {
-			const newVal = 'trelloPropertyVal';
-			const subPropertyId = 'subPropId';
+			let newVal;
+			let subPropertyId;
+			let allowIdProperty;
 
 			beforeEach(function () {
+				newVal = 'trelloPropertyVal';
+				subPropertyId = 'subPropId';
+				allowIdProperty = 'allowIdProperty';
+				propertyMapsStub.objectType = {
+					allowEmptyPut: true,
+					props: {
+						allowIdProperty: { trelloType: null, isAutoProp: false, put: { allowEmpty: false, allowId: true }}
+					}
+				};
 				net = {
 					get: sinon.spy(),
 					post: sinon.spy(),
@@ -356,9 +432,19 @@ describe('TrelloObj', function () {
 		});
 
 		describe('setting a Trello property that allows post but not put', function () {
-			const newVal = 'trelloPropertyVal';
+			let newVal;
+			let postProperty;
 
 			beforeEach(function () {
+				newVal = 'trelloPropertyVal';
+				postProperty = 'postProperty';
+
+				propertyMapsStub.objectType = {
+					props: {
+						postProperty: { trelloType: null, isAutoProp: false, post: { allowEmpty: true }}
+					}
+				};
+
 				net = {
 					get: sinon.spy(),
 					post: sinon.spy(),
@@ -377,9 +463,18 @@ describe('TrelloObj', function () {
 		});
 
 		describe('setting a Trello property that allows both and preferring idempotence', function () {
-			const newVal = 'trelloPropVal';
+			let newVal;
+			let putAndPostProperty;
 
 			beforeEach(function() {
+				newVal = 'trelloPropVal';
+				putAndPostProperty = 'putAndPostProperty';
+
+				propertyMapsStub.objectType = {
+					props: {
+						putAndPostProperty: { trelloType: null, isAutoProp: false, put: { allowEmpty: true }, post: { allowEmpty: true }}
+					}
+				};
 				net = {
 					get: sinon.spy(),
 					post: sinon.spy(),
@@ -398,9 +493,19 @@ describe('TrelloObj', function () {
 		});
 
 		describe('setting a Trello property that allows both and preferring non-idempotence', function () {
-			const newVal = 'newPropVal';
+			let newVal;
+			let putAndPostProperty;
 
 			beforeEach(function() {
+				newVal = 'newPropVal';
+				putAndPostProperty = 'putAndPostProperty';
+
+				propertyMapsStub.objectType = {
+					props: {
+						putAndPostProperty: { trelloType: null, isAutoProp: false, put: { allowEmpty: true }, post: { allowEmpty: true }}
+					}
+				};
+
 				net = {
 					get: sinon.spy(),
 					post: sinon.spy(),
@@ -415,6 +520,46 @@ describe('TrelloObj', function () {
 				net.put.called.should.be.false; // eslint-disable-line no-unused-expressions
 				net.post.called.should.be.true; // eslint-disable-line no-unused-expressions
 				net.post.calledWithExactly(config, objType, id, newVal, putAndPostProperty).should.be.true; // eslint-disable-line no-unused-expressions
+			});
+		});
+	});
+
+	describe('#delete()', function() {
+		let trelloObj;
+
+		describe('deleting a Trello entity that does not allow deletion', function() {
+			beforeEach(function() {
+				propertyMapsStub.objectType = {
+					allowDeletion: false,
+					props: {}
+				};
+
+				trelloObj = new TrelloObj(propertyMapsStub, objType, config, id, net);
+			});
+
+			it('should be rejected', function() {
+				trelloObj.delete().should.be.rejectedWith(Error);
+			});
+		});
+
+		describe('deleting a Trello entity that allows deletion', function() {
+			beforeEach(function() {
+				propertyMapsStub.objectType = {
+					allowDeletion: true,
+					props: {}
+				};
+
+				net = {
+					delete: sinon.spy()
+				};
+
+				trelloObj = new TrelloObj(propertyMapsStub, objType, config, id, net);
+				trelloObj.delete();
+			});
+
+			it('should be rejected', function() {
+				net.delete.called.should.be.true; // eslint-disable-line no-unused-expressions
+				net.delete.calledWithExactly(config, objType, id).should.be.true; // eslint-disable-line no-unused-expressions
 			});
 		});
 	});

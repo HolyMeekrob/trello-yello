@@ -3,8 +3,13 @@ logs
 *.log
 
 # Dependency directory
-# https://www.npmjs.org/doc/misc/npm-faq.html#should-i-check-my-node_modules-folder-into-git
-node_modules
+node_modules/
 
 # Settings
 .settings/
+jsconfig.json
+*.d.ts
+
+# Local testing
+localRunner.js
+appConfig.js

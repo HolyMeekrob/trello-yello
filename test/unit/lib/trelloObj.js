@@ -89,26 +89,12 @@ describe('TrelloObj', function () {
 	});
 
 	describe('#get()', function () {
-		let unexpectedProperty;
-		let expectedDefaultValue;
-		let expectedNonDefaultSubValue;
-		let expectedNonDefaultValue;
-		let invalidValue;
-		let nonGettableProperty;
-
-		before(function () {
-			unexpectedProperty = 'unexpectedProperty';
-			nonGettableProperty = 'nonGettableProperty';
-			expectedDefaultValue = 'edVal';
-			expectedNonDefaultSubValue = { id: 'endsvId' };
-			expectedNonDefaultValue = { id: 'endvId' };
-			invalidValue = 'invalidValue';
-		});
-
 		describe('getting a non-gettable Trello property', function () {
 			let trelloObj;
+			let nonGettableProperty;
 
 			beforeEach(function () {
+				nonGettableProperty = 'nonGettableProperty';
 				trelloObj = new TrelloObj(propertyMapsStub, objType, config, id, net);
 			});
 
@@ -119,8 +105,10 @@ describe('TrelloObj', function () {
 
 		describe('getting a non-Trello property', function () {
 			let trelloObj;
+			let unexpectedProperty;
 
 			beforeEach(function () {
+				unexpectedProperty = 'unexpectedProperty';
 				trelloObj = new TrelloObj(propertyMapsStub, objType, config, id, net);
 			});
 
@@ -129,16 +117,52 @@ describe('TrelloObj', function () {
 			});
 		});
 
+		describe('getting a non-Trello property with a callback', function () {
+			let trelloObj;
+			let unexpectedProperty;
+			let thrownErr;
+
+			beforeEach(function (done) {
+				unexpectedProperty = 'unexpectedProp';
+				trelloObj = new TrelloObj(propertyMapsStub, objType, config, id, net);
+
+				trelloObj.get(unexpectedProperty, function (err, res) { // eslint-disable-line no-unused-vars
+					if (err) {
+						thrownErr = err;
+					}
+
+					else {
+						thrownErr = null;
+					}
+
+					done();
+				});
+			});
+
+			it('should call the callback with an error', function () {
+				should.exist(thrownErr);
+				thrownErr.should.be.an.instanceof(Error);
+			});
+		});
+
 		describe('and the network resolves without error', function () {
 			let trelloObj;
 			let autoProperty;
 			let nonAutoProperty;
 			let nonAutoSubProperty;
+			let expectedDefaultValue;
+			let expectedNonDefaultSubValue;
+			let expectedNonDefaultValue;
+			let invalidValue;
 
 			beforeEach(function () {
 				autoProperty = 'autoProperty';
 				nonAutoProperty = 'nonAutoProperty';
 				nonAutoSubProperty = 'nonAutoSubProperty';
+				expectedDefaultValue = 'edVal';
+				expectedNonDefaultSubValue = { id: 'endsvId' };
+				expectedNonDefaultValue = { id: 'endvId' };
+				invalidValue = 'invalidValue';
 
 				propertyMapsStub.objectType = {
 					defaultArgs: { fields: 'all' },
@@ -207,6 +231,51 @@ describe('TrelloObj', function () {
 				trelloObj.get(nonAutoProperty).should.eventually.become(expectedNonDefaultValue);
 			});
 		});
+
+		describe('and the network resolves without error using a callback', function () {
+			let trelloObj;
+			let autoProperty;
+			let expectedValue;
+			let actualValue;
+
+			beforeEach(function (done) {
+				autoProperty = 'autoProperty';
+				expectedValue = 'expectedVal';
+
+				propertyMapsStub.objectType = {
+					defaultArgs: { fields: 'all' },
+					props: {
+						autoProperty: { trelloType: null, isAutoProp: true, get: {} }
+					}
+				};
+
+				const getStub = sinon.stub();
+				getStub.withArgs(config, objType, id, { fields: 'all' }).returns(
+					Promise.resolve({
+						body: JSON.stringify({
+							autoProperty: expectedValue
+						})
+					})
+				);
+				net = { get: getStub };
+
+				trelloObj = new TrelloObj(propertyMapsStub, objType, config, id, net);
+				trelloObj.get(autoProperty, function (err, response) {
+					if (err) {
+						actualValue = err;
+					}
+					else {
+						actualValue = response;
+					}
+
+					done();
+				});
+			});
+
+			it('should update the object with the expected value on the default property', function () {
+				actualValue.should.equal(expectedValue);
+			});
+		});
 	});
 
 	describe('#set()', function () {
@@ -222,6 +291,29 @@ describe('TrelloObj', function () {
 
 			it('should be rejected', function () {
 				trelloObj.set(newVal).should.be.rejectedWith(Error);
+			});
+		});
+
+		describe('setting the object on a non-settable object type with a callback', function () {
+			let newVal;
+			let success;
+
+			beforeEach(function (done) {
+				newVal = { value: 'newVal' };
+				trelloObj = new TrelloObj(propertyMapsStub, altType, config, id, net);
+				trelloObj.set(newVal, function (err, res) { // eslint-disable-line no-unused-vars
+					if (err) {
+						success = false;
+					}
+					else {
+						success = true;
+					}
+					done();
+				});
+			});
+
+			it('should call the callback with an error', function () {
+				success.should.be.false; // eslint-disable-line no-unused-expressions
 			});
 		});
 
@@ -252,13 +344,53 @@ describe('TrelloObj', function () {
 			});
 		});
 
+		describe('setting the object on a settable object type with a callback', function () {
+			let newVal;
+			let success;
+
+			beforeEach(function (done) {
+				newVal = { value: 'newVal' };
+
+				propertyMapsStub.objectType = {
+					allowEmptyPut: true,
+					props: {}
+				};
+
+				const putStub = sinon.stub();
+				putStub.withArgs(config, objType, id, newVal).returns(Promise.resolve({}));
+				net = {
+					put: putStub
+				};
+
+				trelloObj = new TrelloObj(propertyMapsStub, objType, config, id, net);
+				trelloObj.set(newVal, function (err, res) { // eslint-disable-line no-unused-vars
+					if (err) {
+						success = false;
+					}
+					else {
+						success = true;
+					}
+					done();
+				});
+			});
+
+			it('should call the network service', function () {
+				net.put.called.should.be.true; //eslint-disable-line no-unused-expressions
+				net.put.calledWithExactly(config, objType, id, newVal).should.be.true; //eslint-disable-line no-unused-expressions
+			});
+
+			it('should call the callback with success', function () {
+				success.should.be.true; // eslint-disable-line no-unused-expressions
+			});
+		});
+
 		describe('setting a property that isn\'t a Trello property', function () {
 			let nonTrelloProperty;
 			let newVal;
 
 			beforeEach(function () {
 				nonTrelloProperty = 'nonTrelloProperty';
-				newVal = 'nonTrelloPropertyVal';
+				newVal = { newValProp: 'nonTrelloPropertyVal' };
 
 				propertyMapsStub.objectType = {
 					props: {}
@@ -277,7 +409,7 @@ describe('TrelloObj', function () {
 			let nonAutoProperty;
 
 			beforeEach(function () {
-				newVal = 'unsettableVal';
+				newVal = { newValProp: 'unsettableVal' };
 				nonAutoProperty = 'nonAutoProp';
 
 				propertyMapsStub.objectType = {
@@ -300,7 +432,7 @@ describe('TrelloObj', function () {
 			let nonAllowEmptyProperty;
 
 			beforeEach(function () {
-				newVal = 'unsettableVal';
+				newVal = { newValProp: 'unsettableVal' };
 				nonAllowEmptyProperty = 'nonAllowEmptyProperty';
 
 				propertyMapsStub.objectType = {
@@ -326,20 +458,20 @@ describe('TrelloObj', function () {
 			let allowEmptyProperty;
 
 			beforeEach(function () {
-				newVal = 'trelloPropertyVal';
+				newVal = { newValProp: 'trelloPropertyVal' };
 				allowEmptyProperty = 'allowEmptyProperty';
 
 				propertyMapsStub.objectType = {
 					allowEmptyPut: true,
 					props: {
-						allowEmptyProperty: { trelloType: null, isAutoProp: true, get: {}, put: { allowEmpty: true, subProperty: { allowEmpty: true } }}
+						allowEmptyProperty: { trelloType: null, isAutoProp: true, get: {}, put: { allowEmpty: true }}
 					}
 				};
 
+				const putStub = sinon.stub();
+				putStub.withArgs(config, objType, id, newVal, allowEmptyProperty).returns(Promise.resolve({}));
 				net = {
-					get: sinon.spy(),
-					post: sinon.spy(),
-					put: sinon.spy()
+					put: putStub
 				};
 
 				trelloObj = new TrelloObj(propertyMapsStub, objType, config, id, net);
@@ -352,11 +484,55 @@ describe('TrelloObj', function () {
 			});
 		});
 
+		describe('setting a Trello property with a callback', function () {
+			let newVal;
+			let allowEmptyProperty;
+			let success;
+
+			beforeEach(function (done) {
+				newVal = { newValProp: 'trelloPropertyVal' };
+				allowEmptyProperty = 'allowEmptyProperty';
+
+				propertyMapsStub.objectType = {
+					allowEmptyPut: true,
+					props: {
+						allowEmptyProperty: { trelloType: null, isAutoProp: true, get: {}, put: { allowEmpty: true }}
+					}
+				};
+
+				const putStub = sinon.stub();
+				putStub.withArgs(config, objType, id, newVal, allowEmptyProperty).returns(Promise.resolve({}));
+				net = {
+					put: putStub
+				};
+
+				trelloObj = new TrelloObj(propertyMapsStub, objType, config, id, net);
+				trelloObj.set(newVal, allowEmptyProperty, function(err, res) { // eslint-disable-line no-unused-vars
+					if (err) {
+						success = false;
+					}
+					else {
+						success = true;
+					}
+					done();
+				});
+			});
+
+			it('should call the network service', function () {
+				net.put.called.should.be.true; // eslint-disable-line no-unused-expressions
+				net.put.calledWithExactly(config, objType, id, newVal, allowEmptyProperty).should.be.true; // eslint-disable-line no-unused-expressions
+			});
+
+			it('should call the callback with success', function () {
+				success.should.be.true; // eslint-disable-line no-unused-expressions
+			});
+		});
+
 		describe('setting a Trello property with invalid sub-properties', function () {
 			let newVal;
 
 			beforeEach(function () {
-				newVal = 'trelloPropertyVal';
+				newVal = { newValProp: 'trelloPropertyVal' };
 
 				propertyMapsStub.objectType = {
 					allowEmptyPut: true,
@@ -379,7 +555,7 @@ describe('TrelloObj', function () {
 			let subProperty;
 
 			beforeEach(function () {
-				newVal = 'trelloPropertyVal';
+				newVal = { newValProp: 'trelloPropertyVal' };
 				property = 'property';
 				subProperty = 'subProperty';
 
@@ -389,10 +565,11 @@ describe('TrelloObj', function () {
 						property: { trelloType: null, isAutoProp: true, get: {}, put: { allowEmpty: true, allowNext: ['subProperty'], subProperty: { allowEmpty: true } }}
 					}
 				};
+
+				const putStub = sinon.stub();
+				putStub.withArgs(config, objType, id, newVal, property + '/' + subProperty).returns(Promise.resolve({}));
 				net = {
-					get: sinon.spy(),
-					post: sinon.spy(),
-					put: sinon.spy()
+					put: putStub
 				};
 
 				trelloObj = new TrelloObj(propertyMapsStub, objType, config, id, net);
@@ -411,7 +588,7 @@ describe('TrelloObj', function () {
 			let allowIdProperty;
 
 			beforeEach(function () {
-				newVal = 'trelloPropertyVal';
+				newVal = { newValProp: 'trelloPropertyVal' };
 				subPropertyId = 'subPropId';
 				allowIdProperty = 'allowIdProperty';
 				propertyMapsStub.objectType = {
@@ -420,10 +597,11 @@ describe('TrelloObj', function () {
 						allowIdProperty: { trelloType: null, isAutoProp: false, put: { allowEmpty: false, allowId: [''] }}
 					}
 				};
+
+				const putStub = sinon.stub();
+				putStub.withArgs(config, objType, id, newVal, allowIdProperty + '/' + subPropertyId).returns(Promise.resolve({}));
 				net = {
-					get: sinon.spy(),
-					post: sinon.spy(),
-					put: sinon.spy()
+					put: putStub
 				};
 
 				trelloObj = new TrelloObj(propertyMapsStub, objType, config, id, net);
@@ -441,7 +619,7 @@ describe('TrelloObj', function () {
 			let postProperty;
 
 			beforeEach(function () {
-				newVal = 'trelloPropertyVal';
+				newVal = { newValProp: 'trelloPropertyVal' };
 				postProperty = 'postProperty';
 
 				propertyMapsStub.objectType = {
@@ -450,9 +628,10 @@ describe('TrelloObj', function () {
 					}
 				};
 
+				const postStub = sinon.stub();
+				postStub.withArgs(config, objType, id, newVal, postProperty).returns(Promise.resolve({}));
 				net = {
-					get: sinon.spy(),
-					post: sinon.spy(),
+					post: postStub,
 					put: sinon.spy()
 				};
 
@@ -472,7 +651,7 @@ describe('TrelloObj', function () {
 			let putAndPostProperty;
 
 			beforeEach(function () {
-				newVal = 'trelloPropVal';
+				newVal = { newValProp: 'trelloPropVal' };
 				putAndPostProperty = 'putAndPostProperty';
 
 				propertyMapsStub.objectType = {
@@ -480,10 +659,12 @@ describe('TrelloObj', function () {
 						putAndPostProperty: { trelloType: null, isAutoProp: false, put: { allowEmpty: true }, post: { allowEmpty: true }}
 					}
 				};
+
+				const putStub = sinon.stub();
+				putStub.withArgs(config, objType, id, newVal, putAndPostProperty).returns(Promise.resolve({}));
 				net = {
-					get: sinon.spy(),
 					post: sinon.spy(),
-					put: sinon.spy()
+					put: putStub
 				};
 
 				trelloObj = new TrelloObj(propertyMapsStub, objType, config, id, net);
@@ -502,7 +683,7 @@ describe('TrelloObj', function () {
 			let putAndPostProperty;
 
 			beforeEach(function () {
-				newVal = 'newPropVal';
+				newVal = { newValProp: 'newPropVal' };
 				putAndPostProperty = 'putAndPostProperty';
 
 				propertyMapsStub.objectType = {
@@ -511,9 +692,10 @@ describe('TrelloObj', function () {
 					}
 				};
 
+				const postStub = sinon.stub();
+				postStub.withArgs(config, objType, id, newVal, putAndPostProperty).returns(Promise.resolve({}));
 				net = {
-					get: sinon.spy(),
-					post: sinon.spy(),
+					post: postStub,
 					put: sinon.spy()
 				};
 
@@ -547,6 +729,32 @@ describe('TrelloObj', function () {
 			});
 		});
 
+		describe('deleting a Trello entity that does not allow deletion with a callback', function () {
+			let success;
+
+			beforeEach(function (done) {
+				propertyMapsStub.objectType = {
+					allowDeletion: false,
+					props: {}
+				};
+
+				trelloObj = new TrelloObj(propertyMapsStub, objType, config, id, net);
+				trelloObj.delete(function (err, res) { // eslint-disable-line no-unused-vars
+					if (err) {
+						success = false;
+					}
+					else {
+						success = true;
+					}
+					done();
+				});
+			});
+
+			it('should call the callback with an error', function () {
+				success.should.be.false; // eslint-disable-line no-unused-expressions
+			});
+		});
+
 		describe('deleting a Trello entity that allows deletion', function () {
 			beforeEach(function () {
 				propertyMapsStub.objectType = {
@@ -565,6 +773,43 @@ describe('TrelloObj', function () {
 			it('should call delete on the network service', function () {
 				net.delete.called.should.be.true; // eslint-disable-line no-unused-expressions
 				net.delete.calledWithExactly(config, objType, id).should.be.true; // eslint-disable-line no-unused-expressions
+			});
+		});
+
+		describe('deleting a Trello entity that allows deletion with a callback', function () {
+			let success;
+
+			beforeEach(function (done) {
+				propertyMapsStub.objectType = {
+					allowDeletion: true,
+					props: {}
+				};
+
+				const deleteStub = sinon.stub();
+				deleteStub.withArgs(config, objType, id).returns(Promise.resolve({}));
+				net = {
+					delete: deleteStub
+				};
+
+				trelloObj = new TrelloObj(propertyMapsStub, objType, config, id, net);
+				trelloObj.delete(function (err, res) { // eslint-disable-line no-unused-vars
+					if (err) {
+						success = false;
+					}
+					else {
+						success = true;
+					}
+					done();
+				});
+			});
+
+			it('should call delete on the network service', function () {
+				net.delete.called.should.be.true; // eslint-disable-line no-unused-expressions
+				net.delete.calledWithExactly(config, objType, id).should.be.true; // eslint-disable-line no-unused-expressions
+			});
+
+			it('should call the callback with a successful response', function () {
+				success.should.be.true; // eslint-disable-line no-unused-expressions
 			});
 		});
 
@@ -590,6 +835,38 @@ describe('TrelloObj', function () {
 			});
 		});
 
+		describe('deleting a Trello property that does not allow empty deletion with a callback', function () {
+			let prop;
+			let success;
+
+			beforeEach(function (done) {
+				prop = 'disallowEmpty';
+				propertyMapsStub.objectType = {
+					allowDeletion: false,
+					props: {
+						disallowEmpty: {
+							delete: { allowEmpty: false }
+						}
+					}
+				};
+
+				trelloObj = new TrelloObj(propertyMapsStub, objType, config, id, net);
+				trelloObj.delete(prop, function (err, res) { // eslint-disable-line no-unused-vars
+					if (err) {
+						success = false;
+					}
+					else {
+						success = true;
+					}
+					done();
+				});
+			});
+
+			it('should call the callback with an error', function () {
+				success.should.be.false; // eslint-disable-line no-unused-expressions
+			});
+		});
+
 		describe('deleting a Trello property that does allow empty deletion', function () {
 			let prop;
 
@@ -604,8 +881,10 @@ describe('TrelloObj', function () {
 					}
 				};
 
+				const deleteStub = sinon.stub();
+				deleteStub.withArgs(config, objType, id, prop).returns(Promise.resolve({}));
 				net = {
-					delete: sinon.spy()
+					delete: deleteStub
 				};
 
 				trelloObj = new TrelloObj(propertyMapsStub, objType, config, id, net);
@@ -615,6 +894,49 @@ describe('TrelloObj', function () {
 			it('should call delete on the network service', function () {
 				net.delete.called.should.be.true; // eslint-disable-line no-unused-expressions
 				net.delete.calledWithExactly(config, objType, id, prop).should.be.true; // eslint-disable-line no-unused-expressions
+			});
+		});
+
+		describe('deleting a Trello property that does allow empty deletion with a callback', function () {
+			let prop;
+			let success;
+
+			beforeEach(function (done) {
+				prop = 'allowEmptyDeletion';
+				propertyMapsStub.objectType = {
+					allowDeletion: false,
+					props: {
+						allowEmptyDeletion: {
+							delete: { allowEmpty: true }
+						}
+					}
+				};
+
+				const deleteStub = sinon.stub();
+				deleteStub.withArgs(config, objType, id, prop).returns(Promise.resolve({}));
+				net = {
+					delete: deleteStub
+				};
+
+				trelloObj = new TrelloObj(propertyMapsStub, objType, config, id, net);
+				trelloObj.delete(prop, function (err, res) { // eslint-disable-line no-unused-vars
+					if (err) {
+						success = false;
+					}
+					else {
+						success = true;
+					}
+					done();
+				});
+			});
+
+			it('should call delete on the network service', function () {
+				net.delete.called.should.be.true; // eslint-disable-line no-unused-expressions
+				net.delete.calledWithExactly(config, objType, id, prop).should.be.true; // eslint-disable-line no-unused-expressions
+			});
+
+			it('should call the callback with a successful response', function () {
+				success.should.be.true; // eslint-disable-line no-unused-expressions
 			});
 		});
 
@@ -660,8 +982,10 @@ describe('TrelloObj', function () {
 					}
 				};
 
+				const deleteStub = sinon.stub();
+				deleteStub.withArgs(config, objType, id, chain).returns(Promise.resolve({}));
 				net = {
-					delete: sinon.spy()
+					delete: deleteStub
 				};
 
 				trelloObj = new TrelloObj(propertyMapsStub, objType, config, id, net);

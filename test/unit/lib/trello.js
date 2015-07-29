@@ -62,9 +62,28 @@ describe('Trello', function () {
 			});
 
 			it('should throw an exception', function () {
-				return function () {
-					return trello.create('imaginaryObjectType', {});
-				}.should.throw(Error);
+				trello.create('imaginaryObjectType', {}).should.be.rejectedWith(Error);
+			});
+		});
+
+		describe('creating an object type that does not exist with a callback', function () {
+			let success;
+
+			beforeEach(function (done) {
+				trello = new Trello(key, token);
+				trello.create('imaginaryObjectType', {}, function (err, res) { // eslint-disable-line no-unused-vars
+					if (err) {
+						success = false;
+					}
+					else {
+						success = true;
+					}
+					done();
+				});
+			});
+
+			it('call the callback with an error', function () {
+				success.should.be.false; // eslint-disable-line no-unused-expressions
 			});
 		});
 
@@ -74,9 +93,28 @@ describe('Trello', function () {
 			});
 
 			it('should throw an exception', function () {
-				return function () {
-					return trello.create('nonCreateableObjectType', {});
-				}.should.throw(Error);
+				return trello.create('nonCreateableObjectType', {}).should.be.rejectedWith(Error);
+			});
+		});
+
+		describe('creating an object type that does not allow creation with a callback', function () {
+			let success;
+
+			beforeEach(function (done) {
+				trello = new Trello(key, token);
+				trello.create('nonCreateableObjectType', {}, function (err, res) { // eslint-disable-line no-unused-vars
+					if (err) {
+						success = false;
+					}
+					else {
+						success = true;
+					}
+					done();
+				});
+			});
+
+			it('should call the callback with an error', function () {
+				success.should.be.false; // eslint-disable-line no-unused-expressions
 			});
 		});
 	});

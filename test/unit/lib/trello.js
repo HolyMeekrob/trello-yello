@@ -1,5 +1,3 @@
-const Promise = require('bluebird');
-const sinon = require('sinon');
 const chai = require('chai');
 const should = chai.should(); // eslint-disable-line no-unused-vars
 const chaiAsPromised = require('chai-as-promised');
@@ -55,23 +53,12 @@ describe('Trello', function () {
 				}.should.throw(Error);
 			});
 		});
-
-		describe('if network service is missing', function () {
-			it('should throw an error', function () {
-				return function () {
-					return new Trello(key, token);
-				}.should.throw(Error);
-			});
-		});
 	});
 
 	describe('#create()', function () {
-		let netService;
-
 		describe('creating an object type that does not exist', function () {
 			beforeEach(function () {
-				netService = {};
-				trello = new Trello(key, token, netService);
+				trello = new Trello(key, token);
 			});
 
 			it('should throw an exception', function () {
@@ -83,8 +70,7 @@ describe('Trello', function () {
 
 		describe('creating an object type that does not allow creation', function () {
 			beforeEach(function () {
-				netService = {};
-				trello = new Trello(key, token, netService);
+				trello = new Trello(key, token);
 			});
 
 			it('should throw an exception', function () {
@@ -93,54 +79,11 @@ describe('Trello', function () {
 				}.should.throw(Error);
 			});
 		});
-
-		describe('creating an object that does allow creation', function () {
-			let initialVals;
-			let objType;
-			let expectedId;
-			let newObj;
-
-			beforeEach(function () {
-				initialVals = { name: 'New Name' };
-				objType = 'createableObjectType';
-				expectedId = 'new id';
-
-
-				const postStub = sinon.stub();
-				postStub.onFirstCall().returns(
-					Promise.resolve({
-						body: JSON.stringify({
-							id: expectedId
-						})
-					})
-				);
-				netService = {
-					post: postStub
-				};
-				trello = new Trello(key, token, netService);
-				newObj = trello.create(objType, initialVals);
-			});
-
-			it('should call the network service', function () {
-				netService.post.calledWithMatch( // eslint-disable-line no-unused-expressions
-						sinon.match.object, sinon.match.same(objType),
-						sinon.match.same(null), sinon.match.same(initialVals)).should.be.true;
-			});
-
-			it('should create a new Trello object with the correct data', function() {
-				newObj.then(obj => {
-					return obj.get('id');
-				}).should.eventually.become(expectedId);
-			});
-		});
 	});
 
 	describe('#get()', function () {
-		let netService;
-
 		beforeEach(function () {
-			netService = {};
-			trello = new Trello(key, token, netService);
+			trello = new Trello(key, token);
 		});
 
 		describe('if objType is missing', function () {
@@ -179,36 +122,6 @@ describe('Trello', function () {
 			it('should return the correct Trello object', function () {
 				newObj.get('id').should.eventually.become(id);
 			});
-		});
-	});
-
-	describe('#search()', function () {
-		let netService;
-		let expectedSearchResults;
-
-		beforeEach(function () {
-			expectedSearchResults = { results: 'results' };
-
-			let getStub = sinon.stub();
-			getStub.returns(
-				Promise.resolve({
-					body: JSON.stringify(expectedSearchResults)
-				})
-			);
-
-			netService = { get: getStub };
-
-			trello = new Trello(key, token, netService);
-		});
-
-		it('should call the network service with the search query', function () {
-			trello.search('query');
-			netService.get.called.should.be.true; // eslint-disable-line no-unused-expressions
-		});
-
-		it('should return the parsed search results', function () {
-			let results = trello.search('query');
-			results.should.eventually.become(expectedSearchResults);
 		});
 	});
 });

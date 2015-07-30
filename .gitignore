@@ -9,6 +9,7 @@ node_modules/
 .settings/
 jsconfig.json
 *.d.ts
+.tern-project
 
 # Local testing
 localRunner.js

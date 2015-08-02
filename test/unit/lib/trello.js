@@ -1,12 +1,22 @@
+const Promise = require('bluebird');
+const sinon = require('sinon');
 const chai = require('chai');
 const should = chai.should(); // eslint-disable-line no-unused-vars
 const chaiAsPromised = require('chai-as-promised');
 chai.use(chaiAsPromised);
 
+const sandbox = sinon.sandbox.create();
+const trelloObjStub = sandbox.stub();
+
 const propertyMapsStub = {};
+const netStub = {};
 const proxyquire = require('proxyquire');
-const Trello = proxyquire('../../../lib/trello',
-		{ './trelloPropertyMaps': propertyMapsStub });
+const trello = proxyquire('../../../lib/trello',
+		{
+			'./trelloPropertyMaps': propertyMapsStub,
+			'../net/networkService': netStub,
+			'./trelloObj': trelloObjStub
+		});
 
 propertyMapsStub.createableObjectType = {
 	allowCreation: true,
@@ -27,13 +37,19 @@ propertyMapsStub.nonCreateableObjectType = {
 describe('Trello', function () {
 	'use strict';
 
-	let trello;
+	let obj;
 	let key;
 	let token;
+	let args;
 
 	before(function () {
 		key = 'key';
 		token = 'token';
+	});
+
+	// Clear netStub so no tests bleed into each other
+	beforeEach(function () {
+		sandbox.restore();
 	});
 
 	describe('#constructor()', function () {
@@ -41,28 +57,50 @@ describe('Trello', function () {
 		describe('if key is missing', function () {
 			it('should throw an error', function () {
 				return function () {
-					return new Trello();
+					return trello();
 				}.should.throw(Error);
 			});
 		});
 
 		describe('if token is missing', function () {
+			beforeEach(function () {
+				args = { key };
+			});
+
 			it('should throw an error', function () {
 				return function () {
-					return new Trello(key);
+					return trello(args);
 				}.should.throw(Error);
+			});
+		});
+
+		describe('if key and token are present', function () {
+			beforeEach(function () {
+				args = { key, token };
+				obj = trello(args);
+			});
+
+			it('should return the object', function () {
+				obj.should.exist; // eslint-disable-line no-unused-expressions
 			});
 		});
 	});
 
 	describe('#create()', function () {
+		beforeEach(function () {
+			obj = trello({ key, token });
+		});
+
 		describe('creating an object type that does not exist', function () {
 			beforeEach(function () {
-				trello = new Trello(key, token);
+				args = {
+					objType: 'imaginaryObjectType',
+					initialVals: {}
+				};
 			});
 
 			it('should throw an exception', function () {
-				trello.create('imaginaryObjectType', {}).should.be.rejectedWith(Error);
+				obj.create(args).should.be.rejectedWith(Error);
 			});
 		});
 
@@ -70,8 +108,7 @@ describe('Trello', function () {
 			let success;
 
 			beforeEach(function (done) {
-				trello = new Trello(key, token);
-				trello.create('imaginaryObjectType', {}, function (err, res) { // eslint-disable-line no-unused-vars
+				const callback = function (err) {
 					if (err) {
 						success = false;
 					}
@@ -79,7 +116,15 @@ describe('Trello', function () {
 						success = true;
 					}
 					done();
-				});
+				};
+
+				args = {
+					objType: 'imaginaryObjectType',
+					initialVals: {},
+					callback
+				};
+
+				obj.create(args);
 			});
 
 			it('call the callback with an error', function () {
@@ -89,11 +134,14 @@ describe('Trello', function () {
 
 		describe('creating an object type that does not allow creation', function () {
 			beforeEach(function () {
-				trello = new Trello(key, token);
+				args = {
+					objType: 'nonCreateableObjectType',
+					initialVals: {}
+				};
 			});
 
 			it('should throw an exception', function () {
-				return trello.create('nonCreateableObjectType', {}).should.be.rejectedWith(Error);
+				return obj.create(args).should.be.rejectedWith(Error);
 			});
 		});
 
@@ -101,8 +149,7 @@ describe('Trello', function () {
 			let success;
 
 			beforeEach(function (done) {
-				trello = new Trello(key, token);
-				trello.create('nonCreateableObjectType', {}, function (err, res) { // eslint-disable-line no-unused-vars
+				const callback = function (err) {
 					if (err) {
 						success = false;
 					}
@@ -110,24 +157,65 @@ describe('Trello', function () {
 						success = true;
 					}
 					done();
-				});
+				};
+
+				args = {
+					objType: 'nonCreatableObjectType',
+					initialVals: {},
+					callback
+				};
+
+				obj.create(args);
 			});
 
 			it('should call the callback with an error', function () {
 				success.should.be.false; // eslint-disable-line no-unused-expressions
+			});
+
+		});
+
+		describe('creating an object that does allow creation', function () {
+			let expectedVal;
+			let actualVal;
+
+			beforeEach(function () {
+				const objType = 'createableObjectType';
+				const initialVals = {};
+				const netReturnVal = { body: JSON.stringify({ id: 'id' }) };
+				expectedVal = { id: 'id' };
+
+				trelloObjStub.withArgs(sinon.match.object).returns(
+						Promise.resolve(expectedVal));
+
+				const postStub = sandbox.stub();
+				postStub.withArgs(sinon.match.object, objType, null, initialVals).returns(
+						Promise.resolve(netReturnVal));
+
+				netStub.post = postStub;
+				args = {
+					objType,
+					initialVals
+				};
+
+				actualVal = obj.create(args);
+			});
+
+			it('should return a new object', function () {
+				actualVal.should.eventually.become(expectedVal);
 			});
 		});
 	});
 
 	describe('#get()', function () {
 		beforeEach(function () {
-			trello = new Trello(key, token);
+			args = { key, token };
+			obj = trello(args);
 		});
 
 		describe('if objType is missing', function () {
 			it('should throw an error', function () {
 				return function () {
-					trello.get();
+					obj.get({});
 				}.should.throw(Error);
 			});
 		});
@@ -140,25 +228,28 @@ describe('Trello', function () {
 
 			it('should throw an error', function () {
 				return function () {
-					trello.get(objType);
+					obj.get({ objType });
 				}.should.throw(Error);
 			});
 		});
 
 		describe('if arguments are kosher', function () {
-			let objType;
-			let id;
-			let newObj;
+			let actualVal;
+			let expectedVal;
 
 			beforeEach(function () {
-				objType = 'createableObjectType';
-				id = 'object id';
+				const id = 'objId';
+				const objType = 'objType';
+				expectedVal = { id };
 
-				newObj = trello.get(objType, id);
+				trelloObjStub.withArgs(sinon.match.object).returns(
+						Promise.resolve(expectedVal));
+
+				actualVal = obj.get({ objType, id });
 			});
 
 			it('should return the correct Trello object', function () {
-				newObj.get('id').should.eventually.become(id);
+				actualVal.should.eventually.become(expectedVal);
 			});
 		});
 	});

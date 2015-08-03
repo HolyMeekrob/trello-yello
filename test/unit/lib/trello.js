@@ -6,7 +6,7 @@ const chaiAsPromised = require('chai-as-promised');
 chai.use(chaiAsPromised);
 
 const sandbox = sinon.sandbox.create();
-const trelloObjStub = sandbox.stub();
+const trelloFactoryStub = { createTrelloObject: sandbox.stub() };
 
 const propertyMapsStub = {};
 const netStub = {};
@@ -15,7 +15,7 @@ const trello = proxyquire('../../../lib/trello',
 		{
 			'./trelloPropertyMaps': propertyMapsStub,
 			'../net/networkService': netStub,
-			'./trelloObj': trelloObjStub
+			'./trelloFactory': trelloFactoryStub
 		});
 
 propertyMapsStub.createableObjectType = {
@@ -184,7 +184,7 @@ describe('Trello', function () {
 				const netReturnVal = { body: JSON.stringify({ id: 'id' }) };
 				expectedVal = { id: 'id' };
 
-				trelloObjStub.withArgs(sinon.match.object).returns(
+				trelloFactoryStub.createTrelloObject.withArgs(sinon.match.object).returns(
 						Promise.resolve(expectedVal));
 
 				const postStub = sandbox.stub();
@@ -242,7 +242,7 @@ describe('Trello', function () {
 				const objType = 'objType';
 				expectedVal = { id };
 
-				trelloObjStub.withArgs(sinon.match.object).returns(
+				trelloFactoryStub.createTrelloObject.withArgs(sinon.match.object).returns(
 						Promise.resolve(expectedVal));
 
 				actualVal = obj.get({ objType, id });

@@ -44,7 +44,7 @@ describe('trelloObj', function () {
 			it('should throw an exception', function () {
 				return function () {
 					return trelloObj({
-						objMaps: propertyMapsStub,
+						maps: propertyMapsStub,
 						objType
 					});
 				}.should.throw(Error);
@@ -55,7 +55,7 @@ describe('trelloObj', function () {
 			it('should throw an exception', function () {
 				return function () {
 					trelloObj({
-						objMaps: propertyMapsStub,
+						maps: propertyMapsStub,
 						objType,
 						config
 					});
@@ -67,7 +67,7 @@ describe('trelloObj', function () {
 			it('should throw an exception', function () {
 				return function () {
 					return trelloObj({
-						objMaps: propertyMapsStub,
+						maps: propertyMapsStub,
 						objType,
 						config,
 						id
@@ -80,7 +80,7 @@ describe('trelloObj', function () {
 			it('should throw an error', function () {
 				return function () {
 					return trelloObj({
-						objMaps: propertyMapsStub,
+						maps: propertyMapsStub,
 						objType,
 						config,
 						id,
@@ -96,7 +96,7 @@ describe('trelloObj', function () {
 					props: {}
 				};
 				trelloObj({
-					objMaps: propertyMapsStub,
+					maps: propertyMapsStub,
 					objType,
 					config,
 					id,
@@ -118,7 +118,7 @@ describe('trelloObj', function () {
 			beforeEach(function () {
 				nonGettableProperty = 'nonGettableProperty';
 				obj = trelloObj({
-					objMaps: propertyMapsStub,
+					maps: propertyMapsStub,
 					objType,
 					config,
 					id,
@@ -138,7 +138,7 @@ describe('trelloObj', function () {
 			beforeEach(function () {
 				unexpectedProperty = 'unexpectedProperty';
 				obj = trelloObj({
-					objMaps: propertyMapsStub,
+					maps: propertyMapsStub,
 					objType,
 					config,
 					id,
@@ -159,7 +159,7 @@ describe('trelloObj', function () {
 			beforeEach(function (done) {
 				unexpectedProperty = 'unexpectedProp';
 				obj = trelloObj({
-					objMaps: propertyMapsStub,
+					maps: propertyMapsStub,
 					objType,
 					config,
 					id,
@@ -254,12 +254,15 @@ describe('trelloObj', function () {
 				);
 				net = { get: getStub };
 
+				const constructor = sinon.stub();
+				constructor.withArgs(sinon.match.object).returns(expectedNonDefaultSubValue);
 				obj = trelloObj({
-					objMaps: propertyMapsStub,
+					maps: propertyMapsStub,
 					objType,
 					config,
 					id,
-					net
+					net,
+					constructor
 				});
 			});
 
@@ -272,8 +275,8 @@ describe('trelloObj', function () {
 			it('should update the object with the expected value on the non-default sub-property', function () {
 				obj.get({ propName: nonAutoSubProperty }).should.eventually.be.an('array');
 				obj.get({ propName: nonAutoSubProperty }).should.eventually.have.length(1);
-				obj.get({ propName: nonAutoSubProperty }).then(arr => arr[0].get({ propName: 'id' }))
-						.should.eventually.become(expectedNonDefaultSubValue.id);
+				obj.get({ propName: nonAutoSubProperty }).then(arr => arr[0]).
+						should.eventually.become(expectedNonDefaultSubValue);
 			});
 
 			it('should update the object with the expected value on the non-default property', function () {
@@ -309,7 +312,7 @@ describe('trelloObj', function () {
 				net = { get: getStub };
 
 				obj = trelloObj({
-					objMaps: propertyMapsStub,
+					maps: propertyMapsStub,
 					objType,
 					config,
 					id,
@@ -349,7 +352,7 @@ describe('trelloObj', function () {
 					values: newVal
 				};
 				obj = trelloObj({
-					objMaps: propertyMapsStub,
+					maps: propertyMapsStub,
 					objType,
 					config,
 					id,
@@ -381,7 +384,7 @@ describe('trelloObj', function () {
 					}
 				};
 				obj = trelloObj({
-					objMaps: propertyMapsStub,
+					maps: propertyMapsStub,
 					objType,
 					config,
 					id,
@@ -416,7 +419,7 @@ describe('trelloObj', function () {
 				};
 
 				obj = trelloObj({
-					objMaps: propertyMapsStub,
+					maps: propertyMapsStub,
 					objType,
 					config,
 					id,
@@ -462,7 +465,7 @@ describe('trelloObj', function () {
 				};
 
 				obj = trelloObj({
-					objMaps: propertyMapsStub,
+					maps: propertyMapsStub,
 					objType,
 					config,
 					id,
@@ -498,7 +501,7 @@ describe('trelloObj', function () {
 				};
 
 				obj = trelloObj({
-					objMaps: propertyMapsStub,
+					maps: propertyMapsStub,
 					objType,
 					config,
 					id,
@@ -531,7 +534,7 @@ describe('trelloObj', function () {
 				};
 
 				obj = trelloObj({
-					objMaps: propertyMapsStub,
+					maps: propertyMapsStub,
 					objType,
 					config,
 					id,
@@ -567,7 +570,7 @@ describe('trelloObj', function () {
 					}
 				};
 				obj = trelloObj({
-					objMaps: propertyMapsStub,
+					maps: propertyMapsStub,
 					objType,
 					config,
 					id,
@@ -606,7 +609,7 @@ describe('trelloObj', function () {
 				};
 
 				obj = trelloObj({
-					objMaps: propertyMapsStub,
+					maps: propertyMapsStub,
 					objType,
 					config,
 					id,
@@ -657,7 +660,7 @@ describe('trelloObj', function () {
 				};
 
 				obj = trelloObj({
-					objMaps: propertyMapsStub,
+					maps: propertyMapsStub,
 					objType,
 					config,
 					id,
@@ -694,7 +697,7 @@ describe('trelloObj', function () {
 				};
 
 				obj = trelloObj({
-					objMaps: propertyMapsStub,
+					maps: propertyMapsStub,
 					objType,
 					config,
 					id,
@@ -735,7 +738,7 @@ describe('trelloObj', function () {
 				};
 
 				obj = trelloObj({
-					objMaps: propertyMapsStub,
+					maps: propertyMapsStub,
 					objType,
 					config,
 					id,
@@ -778,7 +781,7 @@ describe('trelloObj', function () {
 				};
 
 				obj = trelloObj({
-					objMaps: propertyMapsStub,
+					maps: propertyMapsStub,
 					objType,
 					config,
 					id,
@@ -819,7 +822,7 @@ describe('trelloObj', function () {
 				};
 
 				obj = trelloObj({
-					objMaps: propertyMapsStub,
+					maps: propertyMapsStub,
 					objType,
 					config,
 					id,
@@ -861,7 +864,7 @@ describe('trelloObj', function () {
 				};
 
 				obj = trelloObj({
-					objMaps: propertyMapsStub,
+					maps: propertyMapsStub,
 					objType,
 					config,
 					id,
@@ -904,7 +907,7 @@ describe('trelloObj', function () {
 				};
 
 				obj = trelloObj({
-					objMaps: propertyMapsStub,
+					maps: propertyMapsStub,
 					objType,
 					config,
 					id,
@@ -934,7 +937,7 @@ describe('trelloObj', function () {
 				};
 
 				obj = trelloObj({
-					objMaps: propertyMapsStub,
+					maps: propertyMapsStub,
 					objType,
 					config,
 					id,
@@ -969,7 +972,7 @@ describe('trelloObj', function () {
 				};
 
 				obj = trelloObj({
-					objMaps: propertyMapsStub,
+					maps: propertyMapsStub,
 					objType,
 					config,
 					id,
@@ -999,7 +1002,7 @@ describe('trelloObj', function () {
 				};
 
 				obj = trelloObj({
-					objMaps: propertyMapsStub,
+					maps: propertyMapsStub,
 					objType,
 					config,
 					id,
@@ -1042,7 +1045,7 @@ describe('trelloObj', function () {
 				};
 
 				obj = trelloObj({
-					objMaps: propertyMapsStub,
+					maps: propertyMapsStub,
 					objType,
 					config,
 					id,
@@ -1066,7 +1069,7 @@ describe('trelloObj', function () {
 
 			beforeEach(function () {
 				prop = 'disallowEmpty';
-				args = { property: prop };
+				args = { propName: prop };
 
 				propertyMapsStub.objectType = {
 					allowDeletion: false,
@@ -1078,7 +1081,7 @@ describe('trelloObj', function () {
 				};
 
 				obj = trelloObj({
-					objMaps: propertyMapsStub,
+					maps: propertyMapsStub,
 					objType,
 					config,
 					id,
@@ -1098,7 +1101,7 @@ describe('trelloObj', function () {
 			beforeEach(function (done) {
 				prop = 'disallowEmpty';
 				args = {
-					property: prop,
+					propName: prop,
 					callback: function (err) {
 						if (err) {
 							success = false;
@@ -1120,7 +1123,7 @@ describe('trelloObj', function () {
 				};
 
 				obj = trelloObj({
-					objMaps: propertyMapsStub,
+					maps: propertyMapsStub,
 					objType,
 					config,
 					id,
@@ -1139,7 +1142,7 @@ describe('trelloObj', function () {
 
 			beforeEach(function () {
 				prop = 'allowEmptyDeletion';
-				args = { property: prop };
+				args = { propName: prop };
 
 				propertyMapsStub.objectType = {
 					allowDeletion: false,
@@ -1157,7 +1160,7 @@ describe('trelloObj', function () {
 				};
 
 				obj = trelloObj({
-					objMaps: propertyMapsStub,
+					maps: propertyMapsStub,
 					objType,
 					config,
 					id,
@@ -1179,7 +1182,7 @@ describe('trelloObj', function () {
 			beforeEach(function (done) {
 				prop = 'allowEmptyDeletion';
 				args = {
-					property: prop,
+					propName: prop,
 					callback: function (err) {
 						if (err) {
 							success = false;
@@ -1207,7 +1210,7 @@ describe('trelloObj', function () {
 				};
 
 				obj = trelloObj({
-					objMaps: propertyMapsStub,
+					maps: propertyMapsStub,
 					objType,
 					config,
 					id,
@@ -1233,7 +1236,7 @@ describe('trelloObj', function () {
 			beforeEach(function () {
 				prop = 'disallowPropertyDeletion';
 				chain = prop + '/thisIsTheId123';
-				args = { property: chain };
+				args = { propName: chain };
 
 				propertyMapsStub.objectType = {
 					allowDeletion: false,
@@ -1245,7 +1248,7 @@ describe('trelloObj', function () {
 				};
 
 				obj = trelloObj({
-					objMaps: propertyMapsStub,
+					maps: propertyMapsStub,
 					objType,
 					config,
 					id,
@@ -1265,7 +1268,7 @@ describe('trelloObj', function () {
 			beforeEach(function () {
 				prop = 'allowPropertyDeletion';
 				chain = prop + '/thisIsTheId456';
-				args = { property: chain };
+				args = { propName: chain };
 
 				propertyMapsStub.objectType = {
 					allowDeletion: false,
@@ -1283,7 +1286,7 @@ describe('trelloObj', function () {
 				};
 
 				obj = trelloObj({
-					objMaps: propertyMapsStub,
+					maps: propertyMapsStub,
 					objType,
 					config,
 					id,

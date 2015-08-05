@@ -14,6 +14,7 @@ describe('trelloObj', function () {
 	let id;
 	let objType;
 	let propertyMapsStub;
+	let objConstructor;
 
 	before(function () {
 		config = {};
@@ -90,17 +91,61 @@ describe('trelloObj', function () {
 			});
 		});
 
+		describe('if constructor is missing', function () {
+			beforeEach(function () {
+				propertyMapsStub.objectType = {
+					props: {}
+				};
+			});
+
+			it('should throw an error', function () {
+				return function () {
+					return trelloObj({
+						maps: propertyMapsStub,
+						objType,
+						config,
+						id,
+						net
+					});
+				}.should.throw(Error);
+			});
+		});
+
+		describe('if constructor is not a function', function () {
+			beforeEach(function () {
+				propertyMapsStub.objectType = {
+					props: {}
+				};
+				objConstructor = {};
+			});
+
+			it('should throw an error', function () {
+				return function () {
+					return trelloObj({
+						maps: propertyMapsStub,
+						objType,
+						config,
+						id,
+						net,
+						objConstructor
+					});
+				}.should.throw(Error);
+			});
+		});
+
 		describe('if all arguments are correct', function () {
 			beforeEach(function () {
 				propertyMapsStub.objectType = {
 					props: {}
 				};
+				objConstructor = () => undefined;
 				trelloObj({
 					maps: propertyMapsStub,
 					objType,
 					config,
 					id,
-					net
+					net,
+					objConstructor
 				});
 			});
 
@@ -117,12 +162,14 @@ describe('trelloObj', function () {
 
 			beforeEach(function () {
 				nonGettableProperty = 'nonGettableProperty';
+				objConstructor = () => undefined;
 				obj = trelloObj({
 					maps: propertyMapsStub,
 					objType,
 					config,
 					id,
-					net
+					net,
+					objConstructor
 				});
 			});
 
@@ -134,6 +181,7 @@ describe('trelloObj', function () {
 		describe('getting a non-Trello property', function () {
 			let obj;
 			let unexpectedProperty;
+			objConstructor = () => undefined;
 
 			beforeEach(function () {
 				unexpectedProperty = 'unexpectedProperty';
@@ -142,7 +190,8 @@ describe('trelloObj', function () {
 					objType,
 					config,
 					id,
-					net
+					net,
+					objConstructor
 				});
 			});
 
@@ -158,12 +207,14 @@ describe('trelloObj', function () {
 
 			beforeEach(function (done) {
 				unexpectedProperty = 'unexpectedProp';
+				objConstructor = () => undefined;
 				obj = trelloObj({
 					maps: propertyMapsStub,
 					objType,
 					config,
 					id,
-					net
+					net,
+					objConstructor
 				});
 
 				obj.get({
@@ -254,15 +305,15 @@ describe('trelloObj', function () {
 				);
 				net = { get: getStub };
 
-				const constructor = sinon.stub();
-				constructor.withArgs(sinon.match.object).returns(expectedNonDefaultSubValue);
+				const objConstructorStub = sinon.stub();
+				objConstructorStub.withArgs(sinon.match.object).returns(expectedNonDefaultSubValue);
 				obj = trelloObj({
 					maps: propertyMapsStub,
 					objType,
 					config,
 					id,
 					net,
-					constructor
+					objConstructor: objConstructorStub
 				});
 			});
 
@@ -310,13 +361,15 @@ describe('trelloObj', function () {
 					})
 				);
 				net = { get: getStub };
+				objConstructor = () => undefined;
 
 				obj = trelloObj({
 					maps: propertyMapsStub,
 					objType,
 					config,
 					id,
-					net
+					net,
+					objConstructor
 				});
 				obj.get({
 					propName: autoProperty,
@@ -351,12 +404,15 @@ describe('trelloObj', function () {
 				args = {
 					values: newVal
 				};
+				objConstructor = () => undefined;
+
 				obj = trelloObj({
 					maps: propertyMapsStub,
 					objType,
 					config,
 					id,
-					net
+					net,
+					objConstructor
 				});
 			});
 
@@ -383,12 +439,15 @@ describe('trelloObj', function () {
 						done();
 					}
 				};
+				objConstructor = () => undefined;
+
 				obj = trelloObj({
 					maps: propertyMapsStub,
 					objType,
 					config,
 					id,
-					net
+					net,
+					objConstructor
 				});
 				obj.set(args);
 			});
@@ -417,14 +476,17 @@ describe('trelloObj', function () {
 				net = {
 					put: putStub
 				};
+				objConstructor = () => undefined;
 
 				obj = trelloObj({
 					maps: propertyMapsStub,
 					objType,
 					config,
 					id,
-					net
+					net,
+					objConstructor
 				});
+
 				obj.set(args);
 			});
 
@@ -463,13 +525,15 @@ describe('trelloObj', function () {
 				net = {
 					put: putStub
 				};
+				objConstructor = () => undefined;
 
 				obj = trelloObj({
 					maps: propertyMapsStub,
 					objType,
 					config,
 					id,
-					net
+					net,
+					objConstructor
 				});
 				obj.set(args);
 			});
@@ -499,13 +563,15 @@ describe('trelloObj', function () {
 				propertyMapsStub.objectType = {
 					props: {}
 				};
+				objConstructor = () => undefined;
 
 				obj = trelloObj({
 					maps: propertyMapsStub,
 					objType,
 					config,
 					id,
-					net
+					net,
+					objConstructor
 				});
 			});
 
@@ -533,12 +599,15 @@ describe('trelloObj', function () {
 					}
 				};
 
+				objConstructor = () => undefined;
+
 				obj = trelloObj({
 					maps: propertyMapsStub,
 					objType,
 					config,
 					id,
-					net
+					net,
+					objConstructor
 				});
 			});
 
@@ -559,6 +628,8 @@ describe('trelloObj', function () {
 					propName: nonAllowEmptyProperty
 				};
 
+				objConstructor = () => undefined;
+
 				propertyMapsStub.objectType = {
 					allowEmptyPut: true,
 					props: {
@@ -574,7 +645,8 @@ describe('trelloObj', function () {
 					objType,
 					config,
 					id,
-					net
+					net,
+					objConstructor
 				});
 			});
 
@@ -607,13 +679,15 @@ describe('trelloObj', function () {
 				net = {
 					put: putStub
 				};
+				objConstructor = () => undefined;
 
 				obj = trelloObj({
 					maps: propertyMapsStub,
 					objType,
 					config,
 					id,
-					net
+					net,
+					objConstructor
 				});
 				obj.set(args);
 			});
@@ -658,13 +732,15 @@ describe('trelloObj', function () {
 				net = {
 					put: putStub
 				};
+				objConstructor = () => undefined;
 
 				obj = trelloObj({
 					maps: propertyMapsStub,
 					objType,
 					config,
 					id,
-					net
+					net,
+					objConstructor
 				});
 				obj.set(args);
 			});
@@ -696,12 +772,15 @@ describe('trelloObj', function () {
 					}
 				};
 
+				objConstructor = () => undefined;
+
 				obj = trelloObj({
 					maps: propertyMapsStub,
 					objType,
 					config,
 					id,
-					net
+					net,
+					objConstructor
 				});
 			});
 
@@ -736,13 +815,15 @@ describe('trelloObj', function () {
 				net = {
 					put: putStub
 				};
+				objConstructor = () => undefined;
 
 				obj = trelloObj({
 					maps: propertyMapsStub,
 					objType,
 					config,
 					id,
-					net
+					net,
+					objConstructor
 				});
 				obj.set(args);
 			});
@@ -779,13 +860,15 @@ describe('trelloObj', function () {
 				net = {
 					put: putStub
 				};
+				objConstructor = () => undefined;
 
 				obj = trelloObj({
 					maps: propertyMapsStub,
 					objType,
 					config,
 					id,
-					net
+					net,
+					objConstructor
 				});
 				obj.set(args);
 			});
@@ -820,13 +903,15 @@ describe('trelloObj', function () {
 					post: postStub,
 					put: sinon.spy()
 				};
+				objConstructor = () => undefined;
 
 				obj = trelloObj({
 					maps: propertyMapsStub,
 					objType,
 					config,
 					id,
-					net
+					net,
+					objConstructor
 				});
 				obj.set(args);
 			});
@@ -862,13 +947,15 @@ describe('trelloObj', function () {
 					post: sinon.spy(),
 					put: putStub
 				};
+				objConstructor = () => undefined;
 
 				obj = trelloObj({
 					maps: propertyMapsStub,
 					objType,
 					config,
 					id,
-					net
+					net,
+					objConstructor
 				});
 				obj.set(args);
 			});
@@ -905,13 +992,15 @@ describe('trelloObj', function () {
 					post: postStub,
 					put: sinon.spy()
 				};
+				objConstructor = () => undefined;
 
 				obj = trelloObj({
 					maps: propertyMapsStub,
 					objType,
 					config,
 					id,
-					net
+					net,
+					objConstructor
 				});
 				obj.set(args);
 			});
@@ -935,13 +1024,15 @@ describe('trelloObj', function () {
 					allowDeletion: false,
 					props: {}
 				};
+				objConstructor = () => undefined;
 
 				obj = trelloObj({
 					maps: propertyMapsStub,
 					objType,
 					config,
 					id,
-					net
+					net,
+					objConstructor
 				});
 			});
 
@@ -971,12 +1062,15 @@ describe('trelloObj', function () {
 					props: {}
 				};
 
+				objConstructor = () => undefined;
+
 				obj = trelloObj({
 					maps: propertyMapsStub,
 					objType,
 					config,
 					id,
-					net
+					net,
+					objConstructor
 				});
 				obj.delete(args);
 			});
@@ -1000,13 +1094,15 @@ describe('trelloObj', function () {
 				net = {
 					delete: deleteStub
 				};
+				objConstructor = () => undefined;
 
 				obj = trelloObj({
 					maps: propertyMapsStub,
 					objType,
 					config,
 					id,
-					net
+					net,
+					objConstructor
 				});
 				obj.delete(args);
 			});
@@ -1043,13 +1139,15 @@ describe('trelloObj', function () {
 				net = {
 					delete: deleteStub
 				};
+				objConstructor = () => undefined;
 
 				obj = trelloObj({
 					maps: propertyMapsStub,
 					objType,
 					config,
 					id,
-					net
+					net,
+					objConstructor
 				});
 				obj.delete(args);
 			});
@@ -1080,12 +1178,15 @@ describe('trelloObj', function () {
 					}
 				};
 
+				objConstructor = () => undefined;
+
 				obj = trelloObj({
 					maps: propertyMapsStub,
 					objType,
 					config,
 					id,
-					net
+					net,
+					objConstructor
 				});
 			});
 
@@ -1122,12 +1223,15 @@ describe('trelloObj', function () {
 					}
 				};
 
+				objConstructor = () => undefined;
+
 				obj = trelloObj({
 					maps: propertyMapsStub,
 					objType,
 					config,
 					id,
-					net
+					net,
+					objConstructor
 				});
 				obj.delete(args);
 			});
@@ -1159,12 +1263,15 @@ describe('trelloObj', function () {
 					delete: deleteStub
 				};
 
+				objConstructor = () => undefined;
+
 				obj = trelloObj({
 					maps: propertyMapsStub,
 					objType,
 					config,
 					id,
-					net
+					net,
+					objConstructor
 				});
 				obj.delete(args);
 			});
@@ -1208,13 +1315,15 @@ describe('trelloObj', function () {
 				net = {
 					delete: deleteStub
 				};
+				objConstructor = () => undefined;
 
 				obj = trelloObj({
 					maps: propertyMapsStub,
 					objType,
 					config,
 					id,
-					net
+					net,
+					objConstructor
 				});
 				obj.delete(args);
 			});
@@ -1247,12 +1356,15 @@ describe('trelloObj', function () {
 					}
 				};
 
+				objConstructor = () => undefined;
+
 				obj = trelloObj({
 					maps: propertyMapsStub,
 					objType,
 					config,
 					id,
-					net
+					net,
+					objConstructor
 				});
 			});
 
@@ -1285,12 +1397,15 @@ describe('trelloObj', function () {
 					delete: deleteStub
 				};
 
+				objConstructor = () => undefined;
+
 				obj = trelloObj({
 					maps: propertyMapsStub,
 					objType,
 					config,
 					id,
-					net
+					net,
+					objConstructor
 				});
 				obj.delete(args);
 			});

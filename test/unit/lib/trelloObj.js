@@ -1037,7 +1037,7 @@ describe('trelloObj', function () {
 			});
 
 			it('should be rejected', function () {
-				obj.delete(args).should.be.rejectedWith(Error);
+				obj.del(args).should.be.rejectedWith(Error);
 			});
 		});
 
@@ -1072,7 +1072,7 @@ describe('trelloObj', function () {
 					net,
 					objConstructor
 				});
-				obj.delete(args);
+				obj.del(args);
 			});
 
 			it('should call the callback with an error', function () {
@@ -1104,7 +1104,7 @@ describe('trelloObj', function () {
 					net,
 					objConstructor
 				});
-				obj.delete(args);
+				obj.del(args);
 			});
 
 			it('should call delete on the network service', function () {
@@ -1149,7 +1149,7 @@ describe('trelloObj', function () {
 					net,
 					objConstructor
 				});
-				obj.delete(args);
+				obj.del(args);
 			});
 
 			it('should call delete on the network service', function () {
@@ -1191,7 +1191,7 @@ describe('trelloObj', function () {
 			});
 
 			it('should be rejected', function () {
-				obj.delete(args).should.be.rejectedWith(Error);
+				obj.del(args).should.be.rejectedWith(Error);
 			});
 		});
 
@@ -1233,7 +1233,7 @@ describe('trelloObj', function () {
 					net,
 					objConstructor
 				});
-				obj.delete(args);
+				obj.del(args);
 			});
 
 			it('should call the callback with an error', function () {
@@ -1273,7 +1273,7 @@ describe('trelloObj', function () {
 					net,
 					objConstructor
 				});
-				obj.delete(args);
+				obj.del(args);
 			});
 
 			it('should call delete on the network service', function () {
@@ -1325,7 +1325,7 @@ describe('trelloObj', function () {
 					net,
 					objConstructor
 				});
-				obj.delete(args);
+				obj.del(args);
 			});
 
 			it('should call delete on the network service', function () {
@@ -1369,7 +1369,7 @@ describe('trelloObj', function () {
 			});
 
 			it('should be rejected', function () {
-				obj.delete(args).should.be.rejectedWith(Error);
+				obj.del(args).should.be.rejectedWith(Error);
 			});
 		});
 
@@ -1407,7 +1407,7 @@ describe('trelloObj', function () {
 					net,
 					objConstructor
 				});
-				obj.delete(args);
+				obj.del(args);
 			});
 
 			it('should call delete on the network service', function () {

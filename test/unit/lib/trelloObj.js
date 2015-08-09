@@ -1092,7 +1092,7 @@ describe('trelloObj', function () {
 				const deleteStub = sinon.stub();
 				deleteStub.withArgs(config, objType, id).returns(Promise.resolve({}));
 				net = {
-					delete: deleteStub
+					del: deleteStub
 				};
 				objConstructor = () => undefined;
 
@@ -1108,8 +1108,8 @@ describe('trelloObj', function () {
 			});
 
 			it('should call delete on the network service', function () {
-				net.delete.called.should.be.true; // eslint-disable-line no-unused-expressions
-				net.delete.calledWithExactly(config, objType, id).should.be.true; // eslint-disable-line no-unused-expressions
+				net.del.called.should.be.true; // eslint-disable-line no-unused-expressions
+				net.del.calledWithExactly(config, objType, id).should.be.true; // eslint-disable-line no-unused-expressions
 			});
 		});
 
@@ -1137,7 +1137,7 @@ describe('trelloObj', function () {
 				const deleteStub = sinon.stub();
 				deleteStub.withArgs(config, objType, id).returns(Promise.resolve({}));
 				net = {
-					delete: deleteStub
+					del: deleteStub
 				};
 				objConstructor = () => undefined;
 
@@ -1153,8 +1153,8 @@ describe('trelloObj', function () {
 			});
 
 			it('should call delete on the network service', function () {
-				net.delete.called.should.be.true; // eslint-disable-line no-unused-expressions
-				net.delete.calledWithExactly(config, objType, id).should.be.true; // eslint-disable-line no-unused-expressions
+				net.del.called.should.be.true; // eslint-disable-line no-unused-expressions
+				net.del.calledWithExactly(config, objType, id).should.be.true; // eslint-disable-line no-unused-expressions
 			});
 
 			it('should call the callback with a successful response', function () {
@@ -1260,7 +1260,7 @@ describe('trelloObj', function () {
 				const deleteStub = sinon.stub();
 				deleteStub.withArgs(config, objType, id, prop).returns(Promise.resolve({}));
 				net = {
-					delete: deleteStub
+					del: deleteStub
 				};
 
 				objConstructor = () => undefined;
@@ -1277,8 +1277,8 @@ describe('trelloObj', function () {
 			});
 
 			it('should call delete on the network service', function () {
-				net.delete.called.should.be.true; // eslint-disable-line no-unused-expressions
-				net.delete.calledWithExactly(config, objType, id, prop).should.be.true; // eslint-disable-line no-unused-expressions
+				net.del.called.should.be.true; // eslint-disable-line no-unused-expressions
+				net.del.calledWithExactly(config, objType, id, prop).should.be.true; // eslint-disable-line no-unused-expressions
 			});
 		});
 
@@ -1313,7 +1313,7 @@ describe('trelloObj', function () {
 				const deleteStub = sinon.stub();
 				deleteStub.withArgs(config, objType, id, prop).returns(Promise.resolve({}));
 				net = {
-					delete: deleteStub
+					del: deleteStub
 				};
 				objConstructor = () => undefined;
 
@@ -1329,8 +1329,8 @@ describe('trelloObj', function () {
 			});
 
 			it('should call delete on the network service', function () {
-				net.delete.called.should.be.true; // eslint-disable-line no-unused-expressions
-				net.delete.calledWithExactly(config, objType, id, prop).should.be.true; // eslint-disable-line no-unused-expressions
+				net.del.called.should.be.true; // eslint-disable-line no-unused-expressions
+				net.del.calledWithExactly(config, objType, id, prop).should.be.true; // eslint-disable-line no-unused-expressions
 			});
 
 			it('should call the callback with a successful response', function () {
@@ -1394,7 +1394,7 @@ describe('trelloObj', function () {
 				const deleteStub = sinon.stub();
 				deleteStub.withArgs(config, objType, id, chain).returns(Promise.resolve({}));
 				net = {
-					delete: deleteStub
+					del: deleteStub
 				};
 
 				objConstructor = () => undefined;
@@ -1411,8 +1411,8 @@ describe('trelloObj', function () {
 			});
 
 			it('should call delete on the network service', function () {
-				net.delete.called.should.be.true; // eslint-disable-line no-unused-expressions
-				net.delete.calledWithExactly(config, objType, id, chain).should.be.true; // eslint-disable-line no-unused-expressions
+				net.del.called.should.be.true; // eslint-disable-line no-unused-expressions
+				net.del.calledWithExactly(config, objType, id, chain).should.be.true; // eslint-disable-line no-unused-expressions
 			});
 		});
 	});

@@ -9,7 +9,7 @@ const sandbox = sinon.sandbox.create();
 const trelloFactoryStub = { createTrelloObject: sandbox.stub() };
 
 const propertyMapsStub = {};
-const netStub = {};
+const netStub = { '@noCallThru': true};
 const proxyquire = require('proxyquire');
 const trello = proxyquire('../../../lib/trello',
 		{

@@ -239,6 +239,39 @@ describe('trelloObj', function () {
 			});
 		});
 
+		describe('getting a non-Trello property but skipping validation', function () {
+			let obj;
+			let nonTrelloProp;
+			let expectedValue;
+			objConstructor = () => undefined;
+
+			beforeEach(function () {
+				nonTrelloProp = 'nonTrelloProp';
+				expectedValue = 'expected value';
+
+				const getStub = sinon.stub();
+				getStub.withArgs(config, objType, id, {}, nonTrelloProp).returns(
+					Promise.resolve( {
+						body: JSON.stringify(expectedValue)
+					})
+				);
+				net = { get: getStub };
+
+				obj = trelloObj({
+					maps: propertyMapsStub,
+					objType,
+					config,
+					id,
+					net,
+					objConstructor
+				});
+			});
+
+			it('should retrieve the value anyway', function () {
+				obj.get({ propName: nonTrelloProp, skipValidation: true }).should.eventually.become(expectedValue);
+			});
+		});
+
 		describe('and the network resolves without error', function () {
 			let obj;
 			let autoProperty;
@@ -421,6 +454,40 @@ describe('trelloObj', function () {
 			});
 		});
 
+		describe('setting the object on a non-settable object type but skipping validation', function () {
+			let newVal;
+
+			beforeEach(function () {
+				newVal = { value: 'newVal' };
+				args = {
+					values: newVal,
+					skipValidation: true
+				};
+				objConstructor = () => undefined;
+
+				const putStub = sinon.stub();
+				putStub.withArgs(config, objType, id, newVal).returns(Promise.resolve({}));
+				net = {
+					put: putStub
+				};
+
+				obj = trelloObj({
+					maps: propertyMapsStub,
+					objType,
+					config,
+					id,
+					net,
+					objConstructor
+				});
+
+				obj.set(args);
+			});
+
+			it('should be call the network service anyway', function () {
+				net.put.called.should.be.true;
+			});
+		});
+
 		describe('setting the object on a non-settable object type with a callback', function () {
 			let newVal;
 			let success;
@@ -580,6 +647,46 @@ describe('trelloObj', function () {
 			});
 		});
 
+		describe('setting a property that isn\'t a Trello property but skipping validation', function () {
+			let nonTrelloProperty;
+			let newVal;
+
+			beforeEach(function () {
+				newVal = { newValProp: 'nonTrelloPropertyVal' };
+				nonTrelloProperty = 'nonTrelloProperty';
+				args = {
+					values: newVal,
+					propName: nonTrelloProperty,
+					skipValidation: true
+				};
+
+				propertyMapsStub.objectType = {
+					props: {}
+				};
+				objConstructor = () => undefined;
+
+				const putStub = sinon.stub();
+				putStub.withArgs(config, objType, id, newVal, nonTrelloProperty).returns(Promise.resolve({}));
+				net = {
+					put: putStub
+				};
+
+				obj = trelloObj({
+					maps: propertyMapsStub,
+					objType,
+					config,
+					id,
+					net,
+					objConstructor
+				});
+				obj.set(args);
+			});
+
+			it('should be call the network service anyway', function () {
+				net.put.called.should.be.true;
+			});
+		});
+
 		describe('setting a Trello property that cannot be set', function () {
 			let newVal;
 			let nonAutoProperty;
@@ -613,6 +720,52 @@ describe('trelloObj', function () {
 
 			it('should be rejected', function () {
 				obj.set(args).should.be.rejectedWith(Error);
+			});
+		});
+
+		describe('setting a Trello property that cannot be set but skipping validation', function () {
+			let newVal;
+			let nonAutoProperty;
+
+			beforeEach(function () {
+				newVal = { newValProp: 'unsettableVal' };
+				nonAutoProperty = 'nonAutoProp';
+				args = {
+					values: newVal,
+					propName: nonAutoProperty,
+					skipValidation: true
+				};
+
+				propertyMapsStub.objectType = {
+					allowEmptyPut: true,
+					props: {
+						nonAutoProperty: { trelloType: null, isAutoProp: false, get: {} }
+					}
+				};
+
+				objConstructor = () => undefined;
+
+
+				const putStub = sinon.stub();
+				putStub.withArgs(config, objType, id, newVal, nonAutoProperty).returns(Promise.resolve({}));
+				net = {
+					put: putStub
+				};
+
+				obj = trelloObj({
+					maps: propertyMapsStub,
+					objType,
+					config,
+					id,
+					net,
+					objConstructor
+				});
+
+				obj.set(args);
+			});
+
+			it('should call the network service anyway', function () {
+				net.put.called.should.be.true;
 			});
 		});
 
@@ -1080,6 +1233,37 @@ describe('trelloObj', function () {
 			});
 		});
 
+		describe('deleting a Trello entity that does not allow deletion but skipping validation', function () {
+			beforeEach(function () {
+				args = { skipValidation: true };
+				propertyMapsStub.objectType = {
+					allowDeletion: false,
+					props: {}
+				};
+				objConstructor = () => undefined;
+
+				const deleteStub = sinon.stub();
+				deleteStub.withArgs(config, objType, id).returns(Promise.resolve({}));
+				net = {
+					del: deleteStub
+				};
+
+				obj = trelloObj({
+					maps: propertyMapsStub,
+					objType,
+					config,
+					id,
+					net,
+					objConstructor
+				});
+				obj.del(args);
+			});
+
+			it('should delete the entity anyway', function () {
+				net.del.called.should.be.true;
+			});
+		});
+
 		describe('deleting a Trello entity that allows deletion', function () {
 			beforeEach(function () {
 				args = {};
@@ -1238,6 +1422,47 @@ describe('trelloObj', function () {
 
 			it('should call the callback with an error', function () {
 				success.should.be.false; // eslint-disable-line no-unused-expressions
+			});
+		});
+
+		describe('deleting a Trello property that does not allow empty deletion but skipping validation', function () {
+			let prop;
+
+			beforeEach(function () {
+				prop = 'disallowEmpty';
+				args = { propName: prop, skipValidation: true };
+
+				propertyMapsStub.objectType = {
+					allowDeletion: false,
+					props: {
+						disallowEmpty: {
+							delete: { allowEmpty: false }
+						}
+					}
+				};
+
+				objConstructor = () => undefined;
+
+				const deleteStub = sinon.stub();
+				deleteStub.withArgs(config, objType, id, prop).returns(Promise.resolve({}));
+				net = {
+					del: deleteStub
+				};
+
+				obj = trelloObj({
+					maps: propertyMapsStub,
+					objType,
+					config,
+					id,
+					net,
+					objConstructor
+				});
+
+				obj.del(args);
+			});
+
+			it('should call delete anyway', function () {
+				net.del.called.should.be.true;
 			});
 		});
 

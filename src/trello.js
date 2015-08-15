@@ -32,7 +32,6 @@ export default (cParams) => {
 	}
 
 	const config = new Config(key, token, 1);
-	console.log(config);
 
 	/**
 	 * Creates a new Trello object for the given type. If the object type is

@@ -1,12 +1,12 @@
 {
 	"name": "trello-yello",
-	"version": "1.0.2",
+	"version": "1.0.3",
 	"description": "A high-level object-oriented node package for interacting with Trello.",
 	"main": "app.js",
 	"scripts": {
 		"test": "mocha --compilers js:babel/register ./test/**/*.js",
 		"compile": "babel -d lib/ src/",
-    "prepublish": "npm run compile"
+		"prepublish": "npm run compile"
 	},
 	"repository": {
 		"type": "git",
@@ -23,8 +23,7 @@
 	"homepage": "https://github.com/HolyMeekrob/trello-yello#readme",
 	"dependencies": {
 		"bluebird": "^2.9.26",
-		"ramda": "^0.14.0",
-		"sprintf": "^0.1.5"
+		"ramda": "^0.14.0"
 	},
 	"devDependencies": {
 		"babel": "^5.8.20",

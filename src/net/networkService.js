@@ -81,9 +81,10 @@ const networkService = () => {
 
 		// A nil id means we're creating a new object
 		if (isNil(id)) {
-			url = sprintf('/%s/%s?%s', config.version, objType, parameters);
+			url = `/${config.version}/${objType}?${parameters}`;
 		}
 		else {
+			url = `/${config.version}/${objType}/${id}/${prop}?${parameters}`;
 			url = sprintf('/%s/%s/%s/%s?%s',
 					config.version, objType, id, prop, parameters);
 		}

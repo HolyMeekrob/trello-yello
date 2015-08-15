@@ -1,13 +1,12 @@
-const https = require('https');
-const querystring = require('querystring');
-const sprintf = require('sprintf');
-const Promise = require('bluebird');
-const R = require('ramda');
+import https from 'https';
+import querystring from 'querystring';
+import sprintf from 'sprintf';
+import Promise from 'bluebird';
+import { isNil, clone } from 'ramda';
 
 const API_HOST = 'api.trello.com';
 
-const networkService = (() => {
-	'use strict';
+const networkService = () => {
 	/**
 	 * Returns an error message appropriate to the given HTTP verb.
 	 *
@@ -54,34 +53,34 @@ const networkService = (() => {
 	const send = (params) => {
 		let { verb, config, objType, id, urlData, bodyData, prop } = params;
 
-		if (R.isNil(objType)) {
+		if (isNil(objType)) {
 			throw new Error('Trello object type is required for API.');
 		}
 
-		let parameters = R.clone(urlData);
+		let parameters = clone(urlData);
 
-		if (R.isNil(parameters)) {
+		if (isNil(parameters)) {
 			parameters = {};
 		}
 
-		if (!R.isNil(config.key)) {
+		if (!isNil(config.key)) {
 			parameters.key = config.key;
 		}
 
-		if (!R.isNil(config.token)) {
+		if (!isNil(config.token)) {
 			parameters.token = config.token;
 		}
 
 		parameters = querystring.stringify(parameters);
 
-		if (R.isNil(prop)) {
+		if (isNil(prop)) {
 			prop = '';
 		}
 
 		let url;
 
 		// A nil id means we're creating a new object
-		if (R.isNil(id)) {
+		if (isNil(id)) {
 			url = sprintf('/%s/%s?%s', config.version, objType, parameters);
 		}
 		else {
@@ -92,7 +91,7 @@ const networkService = (() => {
 		let requestHeaders = {};
 		let requestBody = null;
 
-		if (!R.isNil(bodyData)) {
+		if (!isNil(bodyData)) {
 			requestBody = JSON.stringify(bodyData);
 			requestHeaders['Content-Type'] = 'application/json';
 			requestHeaders['Content-Length'] = requestBody.length;
@@ -156,7 +155,7 @@ const networkService = (() => {
 	 * @static
 	 */
 	const del = (config, objType, id, prop) => {
-		if (R.isNil(id)) {
+		if (isNil(id)) {
 			throw new Error('Id is required to delete Trello entity.');
 		}
 
@@ -215,7 +214,7 @@ const networkService = (() => {
 	 * @static
 	 */
 	const post = (config, objType, id, newVals, prop) => {
-		if (R.isNil(newVals)) {
+		if (isNil(newVals)) {
 			throw new Error('Updates must include new values.');
 		}
 
@@ -247,7 +246,7 @@ const networkService = (() => {
 	 * @static
 	 */
 	const put = (config, objType, id, newVals, prop) => {
-		if (R.isNil(newVals)) {
+		if (isNil(newVals)) {
 			throw new Error('Updates must include new values.');
 		}
 
@@ -267,6 +266,6 @@ const networkService = (() => {
 		post,
 		put
 	});
-})();
+};
 
-module.exports = networkService;
+export default networkService();

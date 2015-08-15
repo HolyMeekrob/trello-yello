@@ -1,17 +1,12 @@
-const util = require('../../../lib/util');
-const chai = require('chai');
+import chai from 'chai';
 const should = chai.should(); // eslint-disable-line no-unused-vars
 
+import { hasValidPath } from '../../../lib/util';
+
 describe('util', function () {
-	'use strict';
 	describe('#hasValidPath()', function() {
-		let hasValidPath;
 		let prop;
 		let path;
-
-		before(function () {
-			hasValidPath = util.hasValidPath;
-		});
 
 		describe('when given an empty path', function() {
 			beforeEach(function () {

@@ -1,14 +1,12 @@
-const trelloObj = require('../../../lib/trelloObj');
-const Promise = require('bluebird');
-const sinon = require('sinon');
-const chai = require('chai');
+import trelloObj from '../../../lib/trelloObj';
+import Promise from 'bluebird';
+import sinon from 'sinon';
+import chai from 'chai';
 const should = chai.should(); // eslint-disable-line no-unused-vars
-const chaiAsPromised = require('chai-as-promised');
+import chaiAsPromised from 'chai-as-promised';
 chai.use(chaiAsPromised);
 
 describe('trelloObj', function () {
-	'use strict';
-
 	let net;
 	let config;
 	let id;
@@ -139,6 +137,7 @@ describe('trelloObj', function () {
 					props: {}
 				};
 				objConstructor = () => undefined;
+
 				trelloObj({
 					maps: propertyMapsStub,
 					objType,

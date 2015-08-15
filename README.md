@@ -3,6 +3,20 @@
 ## Introduction
 **Trello Yello** is a high-level object-oriented wrapper for the Trello API. It greatly simplifies the process of interacting with the [Trello public API](https://trello.com/docs/api/index.html) and allows you to script nearly every action available through their API in an easy-to-learn, easy-to-use manner.
 
+## Table of contents
+- [What is Trello?](#what-is-trello?)
+- [Why use Trello Yello?](#why-use-trello-yello?)
+- [Installation](#installation)
+- [Getting Started](#getting-started)
+- [Using **Trello Yello**](#using-trello-yello)
+- [Retrieving data](#retrieving-data)
+- [Setting data](#setting-data)
+- [Deleting data](#deleting-data)
+- [Querying trello](#querying-trello)
+- [More examples](#more-examples)
+- [Build your own query](#build-your-own-query)
+- [Full documentation](docs/index.html)
+
 ## What is Trello?
 Trello is a free web application that helps with project organization, simple to-do lists, notetaking, etc. You can take a tour [here](https://trello.com/tour).
 
@@ -13,17 +27,6 @@ While Trello's API provides a great deal of utility and power, it is a bit unwie
 ```
 npm install trello-yello
 ```
-
-## Table of contents
-- [Getting Started](#getting-started)
-- [Using **Trello Yello**](#using-trello-yello)
-- [Retrieving data](#retrieving-data)
-- [Setting data](#setting-data)
-- [Deleting data](#deleting-data)
-- [Querying trello](#querying-trello)
-- [More examples](#more-examples)
-- [Build your own query](#build-your-own-query)
-- [Full documentation](docs/index.html)
 
 ## Getting Started
 **Trello Yello** requires both an application key and a user token. Here are instructions on how to get those:

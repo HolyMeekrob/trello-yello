@@ -4,7 +4,9 @@
 	"description": "A high-level object-oriented node package for interacting with Trello.",
 	"main": "app.js",
 	"scripts": {
-		"test": "mocha --compilers js:babel/register ./test/**/*.js"
+		"test": "mocha --compilers js:babel/register ./test/**/*.js",
+		"compile": "babel -d lib/ src/",
+    "prepublish": "npm run compile"
 	},
 	"repository": {
 		"type": "git",

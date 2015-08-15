@@ -1,3 +1,7 @@
+# ES6 source
+src/
+
+
 # Logs
 logs
 *.log
@@ -14,6 +18,4 @@ jsconfig.json
 # Local testing
 localRunner.js
 appConfig.js
-
-# Compiled files
-lib/
+test/

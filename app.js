@@ -1,2 +1,2 @@
-import trello from './src/trello';
+import trello from './lib/trello';
 export default trello;

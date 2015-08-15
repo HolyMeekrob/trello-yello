@@ -3,7 +3,7 @@ import { isNil } from 'ramda';
 
 import Config from './config.js';
 import maps from './trelloPropertyMaps';
-import net from '../net/networkService';
+import net from './net/networkService';
 import trelloFactory from './trelloFactory';
 
 /**

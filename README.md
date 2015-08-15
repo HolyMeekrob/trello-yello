@@ -160,7 +160,7 @@ member.set({ propName: 'savedSearches/' + savedSearchId , values: { name: 'newNa
 ```
 
 ## What's up with the name?
-Well, aside from the obvious rhyme, and the reference to the beverage [Mello Yello][mello-yello] using Trello Yello should be refreshing. I don't know. It's a name. What more do you want from me?
+Well, aside from the obvious rhyme, and the reference to the beverage [Mello Yello][mello-yello], using Trello Yello should be refreshing. Like ice cold citrus drink on a hot summer day. I don't know. It's a name. What more do you want from me?
 
 ## Contributing
 Anyone is welcome to contribute! Please follow these steps:

@@ -1,7 +1,7 @@
 # Trello Yello
 
 ## Introduction
-**Trello Yello** is a high-level object-oriented wrapper for the Trello API. It greatly simplifies the process of interacting with the [Trello public API](https://trello.com/docs/api/index.html) and allows you to script nearly every action available through their API in an easy-to-learn, easy-to-use manner.
+**Trello Yello** is a high-level object-oriented wrapper for the Trello API. It greatly simplifies the process of interacting with the [Trello public API][api] and allows you to script nearly every action available through their API in an easy-to-learn, easy-to-use manner.
 
 ## Table of contents
 - [What is Trello?](#what-is-trello)
@@ -15,10 +15,14 @@
 - [Querying trello](#querying-trello)
 - [More examples](#more-examples)
 - [Build your own query](#build-your-own-query)
-- [Full documentation](docs/trello.md)
+- [What's up with the name](#whats-up-with-the-name)
+- [Contributing](#contributing)
+- [Etc](#etc)
+- [License](#license)
+- [Full documentation][docs]
 
 ## What is Trello?
-Trello is a free web application that helps with project organization, simple to-do lists, notetaking, etc. You can take a tour [here](https://trello.com/tour).
+Trello is a free web application that helps with project organization, simple to-do lists, notetaking, etc. You can take a tour [here][tour].
 
 ## Why use Trello Yello?
 While Trello's API provides a great deal of utility and power, it is a bit unwieldy to work with. A good deal of effort is spent building complex HTTP queries and parsing large JSON objects. **Trello Yello** handles all of that for you, and lets you work with objects and operations that map directly to the Trello elements that you're used to.
@@ -31,9 +35,9 @@ npm install trello-yello
 ## Getting Started
 **Trello Yello** requires both an application key and a user token. Here are instructions on how to get those:
 
-1. You will need to generate your application key from Trello. You can do so [here](https://trello.com/1/appKey/generate). More information can be found from Trello [here](https://trello.com/docs/gettingstarted/index.html#application-key).
-2. You will also need a token from Trello. A token is tied to a user which may or may not be the same user as the application key. The application key simply gives you access to the API. The token gives you specific permissions to a user account. See the examples [here](https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user) and the documentation [here](https://trello.com/docs/gettingstarted/authorize.html).
-3. Trello's full guide to getting started can be found [here](https://trello.com/docs/gettingstarted/index.html)
+1. You will need to generate your application key from Trello. You can do so [here][generate-key]. More information can be found from Trello [here][key-info].
+2. You will also need a token from Trello. A token is tied to a user which may or may not be the same user as the application key. The application key simply gives you access to the API. The token gives you specific permissions to a user account. See the examples [here][token-info] and the documentation [here][token-docs].
+3. Trello's full guide to getting started can be found [here][guide]
 
 An example URL for getting a token that has all permissions and never expires (don't worry, you can delete it later from your settings or even through **Trello Yello**):
 ```
@@ -45,7 +49,7 @@ Getting a reference to the module:
 ```javascript
 var trello = require('trello-yello');
 ```
-Now you will need to instantiate the trello service. Note that all **Trello Yello** functions take exactly one parameter. If multiple values can be passed in, that parameter will be an object with all values as its properties. Please refer to the [full documentation](docs/trello.md) for details on all functions.
+Now you will need to instantiate the trello service. Note that all **Trello Yello** functions take exactly one parameter. If multiple values can be passed in, that parameter will be an object with all values as its properties. Please refer to the [full documentation][docs] for details on all functions.
 ```javascript
 var trelloService = trello({key: 'yourKey', token: 'yourToken'});
 ```
@@ -58,7 +62,7 @@ trelloService.getCard(id).then(function (card) {
   // handle err
 });
 ```
-Nearly all **Trello Yello** functions are asynchronous as most of them require network communication with the Trello API. These functions will return a [`Promise`](https://promisesaplus.com/) and will also accept an optional callback function ([error-first](http://thenodeway.io/posts/understanding-error-first-callbacks/)). **Trello Yello** will be intelligent about making network connections, reducing them as much as it is able. But for any operation that *may* result in a network operation, the return type is still a `Promise`. It may just be a `Promise` that is resolved immediately.
+Nearly all **Trello Yello** functions are asynchronous as most of them require network communication with the Trello API. These functions will return a [`Promise`][promises] and will also accept an optional callback function ([error-first][callbacks]). **Trello Yello** will be intelligent about making network connections, reducing them as much as it is able. But for any operation that *may* result in a network operation, the return type is still a `Promise`. It may just be a `Promise` that is resolved immediately.
 
 A lot of the time you won't know the id. Let's say you want to retrieve a board that the user belongs to, but all you know is the name.
 ```javascript
@@ -154,3 +158,36 @@ member.set({ propName: 'savedSearches/' + savedSearchId, values: { name: 'newNam
 ```javascript
 member.set({ propName: 'savedSearches/' + savedSearchId , values: { name: 'newName', query: 'newQuery', position: 'newPosition' }, skipValidation: true });
 ```
+
+## What's up with the name?
+Well, aside from the obvious rhyme, and the reference to the beverage [Mello Yello][mello-yello] using Trello Yello should be refreshing. I don't know. It's a name. What more do you want from me?
+
+## Contributing
+Anyone is welcome to contribute! Please follow these steps:
+
+1. Fork the project
+2. Create a branch (meanigful names are good)
+3. Push your branch
+4. Create an [Issue][issue]. Include a link to your branch and an explanation of what it does
+
+## Etc
+- Code: https://github.com/HolyMeekrob/trello-yello/
+- npm: https://www.npmjs.com/package/trello-yello/
+- Trello: https://www.trello.com
+
+## License
+Released under the [MIT][mit-license] license.
+
+[docs]: docs/trello.md
+[issue]: https://github.com/HolyMeekrob/trello-yello/issues
+[api]: https://trello.com/docs/api/index.html
+[tour]: https://trello.com/tour
+[generate-key]: https://trello.com/1/appKey/generate
+[key-info]: https://trello.com/docs/gettingstarted/index.html#application-key
+[token-info]: https://trello.com/docs/gettingstarted/index.html#getting-a-token-from-a-user
+[token-docs]: https://trello.com/docs/gettingstarted/authorize.html
+[callbacks]: http://thenodeway.io/posts/understanding-error-first-callbacks/
+[guide]: https://trello.com/docs/gettingstarted/index.html
+[promises]: https://promisesaplus.com/
+[mello-yello]: http://www.melloyello.com/
+[mit-license]: http://opensource.org/licenses/MIT

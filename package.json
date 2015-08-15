@@ -16,7 +16,7 @@
 		"trello"
 	],
 	"author": "Andy Steinberg <holy.meekrob@gmail.com> (http://www.epicaricacy.com)",
-	"license": "Unilicense",
+	"license": "MIT",
 	"bugs": {
 		"url": "https://github.com/HolyMeekrob/trello-yello/issues"
 	},

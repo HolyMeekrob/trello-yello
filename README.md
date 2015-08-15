@@ -15,7 +15,7 @@
 - [Querying trello](#querying-trello)
 - [More examples](#more-examples)
 - [Build your own query](#build-your-own-query)
-- [Full documentation](docs/index.html)
+- [Full documentation](docs/trello.md)
 
 ## What is Trello?
 Trello is a free web application that helps with project organization, simple to-do lists, notetaking, etc. You can take a tour [here](https://trello.com/tour).
@@ -45,7 +45,7 @@ Getting a reference to the module:
 ```javascript
 var trello = require('trello-yello');
 ```
-Now you will need to instantiate the trello service. Note that all **Trello Yello** functions take exactly one parameter. If multiple values can be passed in, that parameter will be an object with all values as its properties. Please refer to the full documentation for details on all functions.
+Now you will need to instantiate the trello service. Note that all **Trello Yello** functions take exactly one parameter. If multiple values can be passed in, that parameter will be an object with all values as its properties. Please refer to the [full documentation](docs/trello.md) for details on all functions.
 ```javascript
 var trelloService = trello({key: 'yourKey', token: 'yourToken'});
 ```

@@ -4,8 +4,8 @@
 **Trello Yello** is a high-level object-oriented wrapper for the Trello API. It greatly simplifies the process of interacting with the [Trello public API](https://trello.com/docs/api/index.html) and allows you to script nearly every action available through their API in an easy-to-learn, easy-to-use manner.
 
 ## Table of contents
-- [What is Trello?](#what-is-trello?)
-- [Why use Trello Yello?](#why-use-trello-yello?)
+- [What is Trello?](#what-is-trello)
+- [Why use Trello Yello?](#why-use-trello-yello)
 - [Installation](#installation)
 - [Getting Started](#getting-started)
 - [Using **Trello Yello**](#using-trello-yello)

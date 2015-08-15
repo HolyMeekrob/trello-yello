@@ -5,7 +5,7 @@
 
 ## Table of contents
 - [What is Trello?](#what-is-trello)
-- [Why use Trello Yello?](#why-use-trello-yello)
+- [Why use **Trello Yello**?](#why-use-trello-yello)
 - [Installation](#installation)
 - [Getting Started](#getting-started)
 - [Using **Trello Yello**](#using-trello-yello)

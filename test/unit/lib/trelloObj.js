@@ -484,7 +484,7 @@ describe('trelloObj', function () {
 			});
 
 			it('should be call the network service anyway', function () {
-				net.put.called.should.be.true;
+				net.put.called.should.be.true; //eslint-disable-line no-unused-expressions
 			});
 		});
 
@@ -683,7 +683,7 @@ describe('trelloObj', function () {
 			});
 
 			it('should be call the network service anyway', function () {
-				net.put.called.should.be.true;
+				net.put.called.should.be.true; //eslint-disable-line no-unused-expressions
 			});
 		});
 
@@ -765,7 +765,7 @@ describe('trelloObj', function () {
 			});
 
 			it('should call the network service anyway', function () {
-				net.put.called.should.be.true;
+				net.put.called.should.be.true; //eslint-disable-line no-unused-expressions
 			});
 		});
 
@@ -1260,7 +1260,7 @@ describe('trelloObj', function () {
 			});
 
 			it('should delete the entity anyway', function () {
-				net.del.called.should.be.true;
+				net.del.called.should.be.true; //eslint-disable-line no-unused-expressions
 			});
 		});
 
@@ -1462,7 +1462,7 @@ describe('trelloObj', function () {
 			});
 
 			it('should call delete anyway', function () {
-				net.del.called.should.be.true;
+				net.del.called.should.be.true; //eslint-disable-line no-unused-expressions
 			});
 		});
 

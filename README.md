@@ -6,13 +6,24 @@
 ## What is Trello?
 Trello is a free web application that helps with project organization, simple to-do lists, notetaking, etc. You can take a tour [here](https://trello.com/tour).
 
-## Why Trello Yello?
+## Why use Trello Yello?
 While Trello's API provides a great deal of utility and power, it is a bit unwieldy to work with. A good deal of effort is spent building complex HTTP queries and parsing large JSON objects. **Trello Yello** handles all of that for you, and lets you work with objects and operations that map directly to the Trello elements that you're used to.
 
 ## Installation
 ```
 npm install trello-yello
 ```
+
+## Table of contents
+- [Getting Started](#getting-started)
+- [Using **Trello Yello**](#using-trello-yello)
+- [Retrieving data](#retrieving-data)
+- [Setting data](#setting-data)
+- [Deleting data](#deleting-data)
+- [Querying trello](#querying-trello)
+- [More examples](#more-examples)
+- [Build your own query](#build-your-own-query)
+- [Full documentation](docs/index.html)
 
 ## Getting Started
 **Trello Yello** requires both an application key and a user token. Here are instructions on how to get those:
@@ -35,6 +46,7 @@ Now you will need to instantiate the trello service. Note that all **Trello Yell
 ```javascript
 var trelloService = trello({key: 'yourKey', token: 'yourToken'});
 ```
+## Retrieving data
 Great! Now you have the (Trello) world at your fingers. The first thing you need to do is get a Trello Object. For example, let's say you want to rename a Card and you know its id.
 ```javascript
 trelloService.getCard(id).then(function (card) {
@@ -62,7 +74,34 @@ trelloService.getCurrentUser().getBoards().then(function (boards) {
 ```
 From here you can make changes to the board, or access objects on the board such as cards, lists, labels, or the board's organization, and perform actions on those.
 
-## Other examples
+## Setting data
+What if you want to change the name of your card?
+```javascript
+card.setName({ name: 'My new card name' });
+```
+
+## Deleting data
+Maybe you have a webhook that you're not using anymore
+```javascript
+webhook.del();
+```
+
+Or you can delete properties on an object. Maybe you want to remove a label from a card.
+```javascript
+card.removeLabelByColor({ color: orange });
+```
+
+## Querying Trello
+You can run searches on Trello easily.
+```javascript
+trelloService.search({query: 'taco'}).then(function (response) {
+  console.log(response);
+}).catch(function (err) {
+  // handle err
+});
+```
+
+## More examples
 ```javascript
 // Setting the name of the green label for a board:
 trelloService.getBoard(boardId).setLabelName({ color: 'green', name: 'new name'});
@@ -99,7 +138,7 @@ var property = trelloObject.get({ propName: 'propertyName' });
 trelloObject.set({
   propName: 'query/path/to/propertyName',
   values: { valueType: newValue },
-  preferNonIdempotence: false // Optional. If true, and if Trello supports a POST and a PUT for the given property, **Trello Yello** will perform a POST. If there's only one type of update operation, then this value is ignored
+  preferNonIdempotence: false // Optional. If true, and if Trello supports a POST and a PUT for the given property, Trello Yello will perform a POST. If there's only one type of update operation, then this value is ignored
 });
 
 // Here's a specific example for updating an organization's description

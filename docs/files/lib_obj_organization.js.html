@@ -1,4 +1,98 @@
-const trelloObj = require('../trelloObj');
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>lib\obj\organization.js</title>
+    <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
+    <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
+    <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
+    <link rel="icon" href="../assets/favicon.ico">
+    <script src="http://yui.yahooapis.com/combo?3.9.1/build/yui/yui-min.js"></script>
+</head>
+<body class="yui3-skin-sam">
+
+<div id="doc">
+    <div id="hd" class="yui3-g header">
+        <div class="yui3-u-3-4">
+                <h1><img src="../assets/css/logo.png" title="" width="117" height="52"></h1>
+        </div>
+        <div class="yui3-u-1-4 version">
+            <em>API Docs for: </em>
+        </div>
+    </div>
+    <div id="bd" class="yui3-g">
+
+        <div class="yui3-u-1-4">
+            <div id="docs-sidebar" class="sidebar apidocs">
+                <div id="api-list">
+                    <h2 class="off-left">APIs</h2>
+                    <div id="api-tabview" class="tabview">
+                        <ul class="tabs">
+                            <li><a href="#api-classes">Classes</a></li>
+                            <li><a href="#api-modules">Modules</a></li>
+                        </ul>
+                
+                        <div id="api-tabview-filter">
+                            <input type="search" id="api-filter" placeholder="Type to filter APIs">
+                        </div>
+                
+                        <div id="api-tabview-panel">
+                            <ul id="api-classes" class="apis classes">
+                                <li><a href="../classes/action.html">action</a></li>
+                                <li><a href="../classes/board.html">board</a></li>
+                                <li><a href="../classes/card.html">card</a></li>
+                                <li><a href="../classes/checklist.html">checklist</a></li>
+                                <li><a href="../classes/label.html">label</a></li>
+                                <li><a href="../classes/list.html">list</a></li>
+                                <li><a href="../classes/member.html">member</a></li>
+                                <li><a href="../classes/notification.html">notification</a></li>
+                                <li><a href="../classes/organization.html">organization</a></li>
+                                <li><a href="../classes/token.html">token</a></li>
+                                <li><a href="../classes/trello.html">trello</a></li>
+                                <li><a href="../classes/trelloObj.html">trelloObj</a></li>
+                                <li><a href="../classes/webhook.html">webhook</a></li>
+                            </ul>
+                
+                            <ul id="api-modules" class="apis modules">
+                                <li><a href="../modules/trello-yello.html">trello-yello</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="yui3-u-3-4">
+                <div id="api-options">
+                    Show:
+                    <label for="api-show-inherited">
+                        <input type="checkbox" id="api-show-inherited" checked>
+                        Inherited
+                    </label>
+            
+                    <label for="api-show-protected">
+                        <input type="checkbox" id="api-show-protected">
+                        Protected
+                    </label>
+            
+                    <label for="api-show-private">
+                        <input type="checkbox" id="api-show-private">
+                        Private
+                    </label>
+                    <label for="api-show-deprecated">
+                        <input type="checkbox" id="api-show-deprecated">
+                        Deprecated
+                    </label>
+            
+                </div>
+            
+            <div class="apidocs">
+                <div id="docs-main">
+                    <div class="content">
+<h1 class="file-heading">File: lib\obj\organization.js</h1>
+
+<div class="file">
+    <pre class="code prettyprint linenums">
+const trelloObj = require(&#x27;../trelloObj&#x27;);
 
 /**
  * A class representing the Organization Trello object.
@@ -23,10 +117,10 @@ const trelloObj = require('../trelloObj');
  * @param {Object} [params.initialVals] the initial values of the Trello
  * object
  */
-const organization = (cParams) => {
-	'use strict';
+const organization = (cParams) =&gt; {
+	&#x27;use strict&#x27;;
 
-	cParams.objType = 'organization';
+	cParams.objType = &#x27;organization&#x27;;
 	const obj = trelloObj(cParams);
 
 	const { get, getId, set, del } = obj;
@@ -39,12 +133,12 @@ const organization = (cParams) => {
 	 * @method getActions
 	 * @param {Function} [callback] the callback function once the operation is
 	 * complete
-	 * @return {Object} a Promise that resolves to the organization's actions.
+	 * @return {Object} a Promise that resolves to the organization&#x27;s actions.
 	 * This is an array of action objects.
 	 */
-	const getActions = (callback) => {
+	const getActions = (callback) =&gt; {
 		const args = {
-			propName: 'actions',
+			propName: &#x27;actions&#x27;,
 			callback
 		};
 		return obj.get(args);
@@ -57,9 +151,9 @@ const organization = (cParams) => {
 	 * @return {Object} a Promise that resolves to the number of billable members
 	 * in the organization
 	 */
-	const getBillableMemberCount = (callback) => {
+	const getBillableMemberCount = (callback) =&gt; {
 		const args = {
-			propName: 'billableMemberCount',
+			propName: &#x27;billableMemberCount&#x27;,
 			callback
 		};
 		return obj.get(args);
@@ -69,12 +163,12 @@ const organization = (cParams) => {
 	 * @method getBoards
 	 * @param {Function} [callback] the callback function once the operation is
 	 * complete
-	 * @return {Object} a Promise that resolves to the organization's boards.
+	 * @return {Object} a Promise that resolves to the organization&#x27;s boards.
 	 * This is an array of board objects.
 	 */
-	const getBoards = (callback) => {
+	const getBoards = (callback) =&gt; {
 		const args = {
-			propName: 'boards',
+			propName: &#x27;boards&#x27;,
 			callback
 		};
 		return obj.get(args);
@@ -84,11 +178,11 @@ const organization = (cParams) => {
 	 * @method getDescription
 	 * @param {Function} [callback] the callback function once the operation is
 	 * complete
-	 * @return {Object} a Promise that resolves to the organization's description
+	 * @return {Object} a Promise that resolves to the organization&#x27;s description
 	 */
-	const getDescription = (callback) => {
+	const getDescription = (callback) =&gt; {
 		const args = {
-			propName: 'desc',
+			propName: &#x27;desc&#x27;,
 			callback
 		};
 		return obj.get(args);
@@ -98,12 +192,12 @@ const organization = (cParams) => {
 	 * @method getDescriptionData
 	 * @param {Function} [callback] the callback function once the operation is
 	 * complete
-	 * @return {Object} a Promise that resolves to the organization's description
+	 * @return {Object} a Promise that resolves to the organization&#x27;s description
 	 * data
 	 */
-	const getDescriptionData = (callback) => {
+	const getDescriptionData = (callback) =&gt; {
 		const args = {
-			propName: 'descData',
+			propName: &#x27;descData&#x27;,
 			callback
 		};
 		return obj.get(args);
@@ -113,11 +207,11 @@ const organization = (cParams) => {
 	 * @method getDisplayName
 	 * @param {Function} [callback] the callback function once the operation is
 	 * complete
-	 * @return {Object} a Promise that resolves to the organization's display name
+	 * @return {Object} a Promise that resolves to the organization&#x27;s display name
 	 */
-	const getDisplayName = (callback) => {
+	const getDisplayName = (callback) =&gt; {
 		const args = {
-			propName: 'displayName',
+			propName: &#x27;displayName&#x27;,
 			callback
 		};
 		return obj.get(args);
@@ -127,11 +221,11 @@ const organization = (cParams) => {
 	 * @method getLogoHash
 	 * @param {Function} [callback] the callback function once the operation is
 	 * complete
-	 * @return {Object} a Promise that resolves to organization's logo's hash
+	 * @return {Object} a Promise that resolves to organization&#x27;s logo&#x27;s hash
 	 */
-	const getLogoHash = (callback) => {
+	const getLogoHash = (callback) =&gt; {
 		const args = {
-			propName: 'logoHash',
+			propName: &#x27;logoHash&#x27;,
 			callback
 		};
 		return obj.get(args);
@@ -141,12 +235,12 @@ const organization = (cParams) => {
 	 * @method getMembers
 	 * @param {Function} [callback] the callback function once the operation is
 	 * complete
-	 * @return {Object} a Promise that resolves to the organization's members.
+	 * @return {Object} a Promise that resolves to the organization&#x27;s members.
 	 * This is an array of member objects.
 	 */
-	const getMembers = (callback) => {
+	const getMembers = (callback) =&gt; {
 		const args = {
-			propName: 'members',
+			propName: &#x27;members&#x27;,
 			callback
 		};
 		return obj.get(args);
@@ -159,9 +253,9 @@ const organization = (cParams) => {
 	 * @return {Object} a Promise that resolves to the members that are invited
 	 * to the organization. This is an array of member objects.
 	 */
-	const getInvitedMembers = (callback) => {
+	const getInvitedMembers = (callback) =&gt; {
 		const args = {
-			propName: 'membersInvited',
+			propName: &#x27;membersInvited&#x27;,
 			callback
 		};
 		return obj.get(args);
@@ -171,11 +265,11 @@ const organization = (cParams) => {
 	 * @method getMemberships
 	 * @param {Function} [callback] the callback function once the operation is
 	 * complete
-	 * @return {Object} a Promise that resolves to organization's memberships
+	 * @return {Object} a Promise that resolves to organization&#x27;s memberships
 	 */
-	const getMemberships = (callback) => {
+	const getMemberships = (callback) =&gt; {
 		const args = {
-			propName: 'memberships',
+			propName: &#x27;memberships&#x27;,
 			callback
 		};
 		return obj.get(args);
@@ -185,11 +279,11 @@ const organization = (cParams) => {
 	 * @method getName
 	 * @param {Function} [callback] the callback function once the operation is
 	 * complete
-	 * @return {Object} a Promise that resolves to the organization's name
+	 * @return {Object} a Promise that resolves to the organization&#x27;s name
 	 */
-	const getName = (callback) => {
+	const getName = (callback) =&gt; {
 		const args = {
-			propName: 'name',
+			propName: &#x27;name&#x27;,
 			callback
 		};
 		return obj.get(args);
@@ -199,11 +293,11 @@ const organization = (cParams) => {
 	 * @method getPowerUps
 	 * @param {Function} [callback] the callback function once the operation is
 	 * complete
-	 * @return {Object} a Promise that resolves to the organization's powerUps
+	 * @return {Object} a Promise that resolves to the organization&#x27;s powerUps
 	 */
-	const getPowerUps = (callback) => {
+	const getPowerUps = (callback) =&gt; {
 		const args = {
-			propName: 'powerUps',
+			propName: &#x27;powerUps&#x27;,
 			callback
 		};
 		return obj.get(args);
@@ -216,9 +310,9 @@ const organization = (cParams) => {
 	 * @return {Object} a Promise that resolves to the organization-wide
 	 * preferences
 	 */
-	const getPreferences = (callback) => {
+	const getPreferences = (callback) =&gt; {
 		const args = {
-			propName: 'prefs',
+			propName: &#x27;prefs&#x27;,
 			callback
 		};
 		return obj.get(args);
@@ -231,9 +325,9 @@ const organization = (cParams) => {
 	 * @return {Object} a Promise that resolves to the premium features accesible
 	 * to the organization
 	 */
-	const getPremiumFeatures = (callback) => {
+	const getPremiumFeatures = (callback) =&gt; {
 		const args = {
-			propName: 'premiumFeatures',
+			propName: &#x27;premiumFeatures&#x27;,
 			callback
 		};
 		return obj.get(args);
@@ -243,11 +337,11 @@ const organization = (cParams) => {
 	 * @method getProducts
 	 * @param {Function} [callback] the callback function once the operation is
 	 * complete
-	 * @return {Object} a Promise that resolves to the organization's products
+	 * @return {Object} a Promise that resolves to the organization&#x27;s products
 	 */
-	const getProducts = (callback) => {
+	const getProducts = (callback) =&gt; {
 		const args = {
-			propName: 'products',
+			propName: &#x27;products&#x27;,
 			callback
 		};
 		return obj.get(args);
@@ -257,12 +351,12 @@ const organization = (cParams) => {
 	 * @method getUrl
 	 * @param {Function} [callback] the callback function once the operation is
 	 * complete
-	 * @return {Object} a Promise that resolves to the url for the organization's
+	 * @return {Object} a Promise that resolves to the url for the organization&#x27;s
 	 * profile
 	 */
-	const getUrl = (callback) => {
+	const getUrl = (callback) =&gt; {
 		const args = {
-			propName: 'url',
+			propName: &#x27;url&#x27;,
 			callback
 		};
 		return obj.get(args);
@@ -272,11 +366,11 @@ const organization = (cParams) => {
 	 * @method getWebsite
 	 * @param {Function} [callback] the callback function once the operation is
 	 * complete
-	 * @return {Object} a Promise that resolves to the organization's website
+	 * @return {Object} a Promise that resolves to the organization&#x27;s website
 	 */
-	const getWebsite = (callback) => {
+	const getWebsite = (callback) =&gt; {
 		const args = {
-			propName: 'website',
+			propName: &#x27;website&#x27;,
 			callback
 		};
 		return obj.get(args);
@@ -289,16 +383,16 @@ const organization = (cParams) => {
 	/**
 	 * @method setDescription
 	 * @param params the method parameters object
-	 * @param {String} params.description the organization's description
+	 * @param {String} params.description the organization&#x27;s description
 	 * @param {Function} [params.callback] the callback function once the
 	 * operation is complete
 	 * @return {Object} a Promise that resolves to a truthy value if successful
 	 */
-	const setDescription = (params) => {
+	const setDescription = (params) =&gt; {
 		const { description, callback } = params;
 		const args = {
 			values: { value: description },
-			propName: 'desc',
+			propName: &#x27;desc&#x27;,
 			preferNonIdempotence: false,
 			callback
 		};
@@ -309,16 +403,16 @@ const organization = (cParams) => {
 	/**
 	 * @method setDisplayName
 	 * @param params the method parameters object
-	 * @param {String} params.displayName the organization's display name
+	 * @param {String} params.displayName the organization&#x27;s display name
 	 * @param {Function} [params.callback] the callback function once the
 	 * operation is complete
 	 * @return {Object} a Promise that resolves to a truthy value if successful
 	 */
-	const setDisplayName = (params) => {
+	const setDisplayName = (params) =&gt; {
 		const { displayName, callback } = params;
 		const args = {
 			values: { value: displayName },
-			propName: 'displayName',
+			propName: &#x27;displayName&#x27;,
 			preferNonIdempotence: false,
 			callback
 		};
@@ -328,22 +422,22 @@ const organization = (cParams) => {
 
 	/**
 	 * Sets the member type for the given member. The member is added to the
-	 * organization if they weren't already in it.
+	 * organization if they weren&#x27;t already in it.
 	 *
 	 * @method setMemberType
 	 * @param params the method parameters object
 	 * @param {String} params.memberId the id of the member to update
 	 * @param {String} params.memberType the type of member to set. Valid values
-	 * are 'admin', 'normal', or 'observer'.
+	 * are &#x27;admin&#x27;, &#x27;normal&#x27;, or &#x27;observer&#x27;.
 	 * @param {Function} [params.callback] the callback function once the
 	 * operation is complete
 	 * @return {Object} a Promise that resolves to a truthy value if successful
 	 */
-	const setMemberType = (params) => {
+	const setMemberType = (params) =&gt; {
 		const { memberId, memberType, callback } = params;
 		const args = {
 			values: { type: memberType },
-			propName: `members/${memberId}`,
+			propName: &#x60;members/${memberId}&#x60;,
 			preferNonIdempotence: false,
 			callback
 		};
@@ -357,17 +451,17 @@ const organization = (cParams) => {
 	 * @param params the method parameters object
 	 * @param {String} params.email email address to invite
 	 * @param {String} params.fullName full name of invitee
-	 * @param {String} [params.memberType='normal'] member type to assign to the
-	 * user. Valid values are 'admin', 'normal', or 'observer'.
+	 * @param {String} [params.memberType=&#x27;normal&#x27;] member type to assign to the
+	 * user. Valid values are &#x27;admin&#x27;, &#x27;normal&#x27;, or &#x27;observer&#x27;.
 	 * @param {Function} [params.callback] the callback function once the
 	 * operation is complete
 	 * @return {Object} a Promise that resolves to a truthy value if successful
 	 */
-	const addNonMember = (params) => {
+	const addNonMember = (params) =&gt; {
 		const { email, fullName, memberType, callback } = params;
 		const args = {
 			values: { email, fullName, type: memberType },
-			propName: 'members',
+			propName: &#x27;members&#x27;,
 			preferNonIdempotence: true,
 			callback
 		};
@@ -385,11 +479,11 @@ const organization = (cParams) => {
 	 * operation is complete
 	 * @return {Object} a Promise that resolves to a truthy value if successful
 	 */
-	const activateMember = (params) => {
+	const activateMember = (params) =&gt; {
 		const { memberId, callback } = params;
 		const args = {
 			values: { value: false },
-			propName: `members/${memberId}/deactivated`,
+			propName: &#x60;members/${memberId}/deactivated&#x60;,
 			preferNonIdempotence: false,
 			callback
 		};
@@ -405,11 +499,11 @@ const organization = (cParams) => {
 	 * operation is complete
 	 * @return {Object} a Promise that resolves to a truthy value if successful
 	 */
-	const deactivateMember = (params) => {
+	const deactivateMember = (params) =&gt; {
 		const { memberId, callback } = params;
 		const args = {
 			values: { value: true },
-			propName: `members/${memberId}/deactivated`,
+			propName: &#x60;members/${memberId}/deactivated&#x60;,
 			preferNonIdempotence: false,
 			callback
 		};
@@ -427,11 +521,11 @@ const organization = (cParams) => {
 	 * operation is complete
 	 * @return {Object} a Promise that resolves to a truthy value if successful
 	 */
-	const setName = (params) => {
+	const setName = (params) =&gt; {
 		const { name, callback } = params;
 		const args = {
 			values: { value: name },
-			propName: 'name',
+			propName: &#x27;name&#x27;,
 			preferNonIdempotence: false,
 			callback
 		};
@@ -448,11 +542,11 @@ const organization = (cParams) => {
 	 * operation is complete
 	 * @return {Object} a Promise that resolves to a truthy value if successful
 	 */
-	const setAssociatedDomain = (params) => {
+	const setAssociatedDomain = (params) =&gt; {
 		const { domain, callback } = params;
 		const args = {
 			values: { value: domain },
-			propName: 'prefs/associatedDomain',
+			propName: &#x27;prefs/associatedDomain&#x27;,
 			preferNonIdempotence: false,
 			callback
 		};
@@ -467,16 +561,16 @@ const organization = (cParams) => {
 	 * @method setOrgBoardVisibilityLevel
 	 * @param params the method parameters object
 	 * @param {String} params.visibilityLevel the visibility level of the boards.
-	 * Valid values are 'admin', 'none', or 'org'.
+	 * Valid values are &#x27;admin&#x27;, &#x27;none&#x27;, or &#x27;org&#x27;.
 	 * @param {Function} [params.callback] the callback function once the
 	 * operation is complete
 	 * @return {Object} a Promise that resolves to a truthy value if successful
 	 */
-	const setOrgBoardVisibilityLevel = (params) => {
+	const setOrgBoardVisibilityLevel = (params) =&gt; {
 		const { visibilityLevel, callback } = params;
 		const args = {
 			values: { value: visibilityLevel },
-			propName: 'prefs/boardVisibilityRestrict/org',
+			propName: &#x27;prefs/boardVisibilityRestrict/org&#x27;,
 			preferNonIdempotence: false,
 			callback
 		};
@@ -490,16 +584,16 @@ const organization = (cParams) => {
 	 * @method setPrivateBoardVisibilityLevel
 	 * @param params the method parameters object
 	 * @param {String} params.visibilityLevel the visibility level of the boards.
-	 * Valid values are 'admin', 'none', or 'org'.
+	 * Valid values are &#x27;admin&#x27;, &#x27;none&#x27;, or &#x27;org&#x27;.
 	 * @param {Function} [params.callback] the callback function once the
 	 * operation is complete
 	 * @return {Object} a Promise that resolves to a truthy value if successful
 	 */
-	const setPrivateBoardVisibilityLevel = (params) => {
+	const setPrivateBoardVisibilityLevel = (params) =&gt; {
 		const { visibilityLevel, callback } = params;
 		const args = {
 			values: { value: visibilityLevel },
-			propName: 'prefs/boardVisibilityRestrict/private',
+			propName: &#x27;prefs/boardVisibilityRestrict/private&#x27;,
 			preferNonIdempotence: false,
 			callback
 		};
@@ -513,16 +607,16 @@ const organization = (cParams) => {
 	 * @method setPublicBoardVisibilityLevel
 	 * @param params the method parameters object
 	 * @param {String} params.visibilityLevel the visibility level of the boards.
-	 * Valid values are 'admin', 'none', or 'org'.
+	 * Valid values are &#x27;admin&#x27;, &#x27;none&#x27;, or &#x27;org&#x27;.
 	 * @param {Function} [params.callback] the callback function once the
 	 * operation is complete
 	 * @return {Object} a Promise that resolves to a truthy value if successful
 	 */
-	const setPublicBoardVisibilityLevel = (params) => {
+	const setPublicBoardVisibilityLevel = (params) =&gt; {
 		const { visibilityLevel, callback } = params;
 		const args = {
 			values: { value: visibilityLevel },
-			propName: 'prefs/boardVisibilityRestrict/public',
+			propName: &#x27;prefs/boardVisibilityRestrict/public&#x27;,
 			preferNonIdempotence: false,
 			callback
 		};
@@ -538,10 +632,10 @@ const organization = (cParams) => {
 	 * operation is complete
 	 * @return {Object} a Promise that resolves to a truthy value if successful
 	 */
-	const disableExternalMembers = (callback) => {
+	const disableExternalMembers = (callback) =&gt; {
 		const args = {
 			values: { value: true },
-			propName: 'prefs/externalMembersDisabled',
+			propName: &#x27;prefs/externalMembersDisabled&#x27;,
 			preferNonIdempotence: false,
 			callback
 		};
@@ -557,10 +651,10 @@ const organization = (cParams) => {
 	 * operation is complete
 	 * @return {Object} a Promise that resolves to a truthy value if successful
 	 */
-	const enableExternalMembers = (callback) => {
+	const enableExternalMembers = (callback) =&gt; {
 		const args = {
 			values: { value: true },
-			propName: 'prefs/externalMembersDisabled',
+			propName: &#x27;prefs/externalMembersDisabled&#x27;,
 			preferNonIdempotence: true,
 			callback
 		};
@@ -577,11 +671,11 @@ const organization = (cParams) => {
 	 * operation is complete
 	 * @return {Object} a Promise that resolves to a truthy value if successful
 	 */
-	const setGoogleAppsVersion = (params) => {
+	const setGoogleAppsVersion = (params) =&gt; {
 		const { version, callback } = params;
 		const args = {
 			values: { value: version },
-			propName: 'prefs/googleAppsVersion',
+			propName: &#x27;prefs/googleAppsVersion&#x27;,
 			preferNonIdempotence: false,
 			callback
 		};
@@ -593,16 +687,16 @@ const organization = (cParams) => {
 	 * @method setVisibilityLevel
 	 * @param params the method parameters object
 	 * @param {String} params.visibilityLevel the visibility level of the
-	 * organization. Valid values are 'private' or 'public'.
+	 * organization. Valid values are &#x27;private&#x27; or &#x27;public&#x27;.
 	 * @param {Function} [params.callback] the callback function once the
 	 * operation is complete
 	 * @return {Object} a Promise that resolves to a truthy value if successful
 	 */
-	const setVisibilityLevel = (params) => {
+	const setVisibilityLevel = (params) =&gt; {
 		const { visibilityLevel, callback } = params;
 		const args = {
 			values: { value: visibilityLevel },
-			propName: 'prefs/permissionLevel',
+			propName: &#x27;prefs/permissionLevel&#x27;,
 			preferNonIdempotence: false,
 			callback
 		};
@@ -613,16 +707,16 @@ const organization = (cParams) => {
 	/**
 	 * @method setWebsite
 	 * @param params the method parameters object
-	 * @param {String} params.website the organization's website
+	 * @param {String} params.website the organization&#x27;s website
 	 * @param {Function} [params.callback] the callback function once the
 	 * operation is complete
 	 * @return {Object} a Promise that resolves to a truthy value if successful
 	 */
-	const setWebsite = (params) => {
+	const setWebsite = (params) =&gt; {
 		const { website, callback } = params;
 		const args = {
 			values: { value: website },
-			propName: 'website',
+			propName: &#x27;website&#x27;,
 			preferNonIdempotence: false,
 			callback
 		};
@@ -630,11 +724,11 @@ const organization = (cParams) => {
 		return obj.set(args);
 	};
 
-	const addLogo = (params) => {
+	const addLogo = (params) =&gt; {
 		const { file, callback } = params;
 		const args = {
 			values: { file },
-			propName: 'logo',
+			propName: &#x27;logo&#x27;,
 			preferNonIdempotence: true,
 			callback
 		};
@@ -652,9 +746,9 @@ const organization = (cParams) => {
 	 * operation is complete
 	 * @return {Object} a Promise that resolves to a truthy value if successful
 	 */
-	const removeLogo = (callback) => {
+	const removeLogo = (callback) =&gt; {
 		const args = {
-			propName: 'logo',
+			propName: &#x27;logo&#x27;,
 			callback
 		};
 
@@ -670,10 +764,10 @@ const organization = (cParams) => {
 	 * operation is complete
 	 * @return {Object} a Promise that resolves to a truthy value if successful
 	 */
-	const removeMember = (params) => {
+	const removeMember = (params) =&gt; {
 		const { memberId, callback } = params;
 		const args = {
-			propName: `members/${memberId}`,
+			propName: &#x60;members/${memberId}&#x60;,
 			callback
 		};
 
@@ -686,9 +780,9 @@ const organization = (cParams) => {
 	 * operation is complete
 	 * @return {Object} a Promise that resolves to a truthy value if successful
 	 */
-	const removeAssociatedDomain = (callback) => {
+	const removeAssociatedDomain = (callback) =&gt; {
 		const args = {
-			propName: 'prefs/associatedDomain',
+			propName: &#x27;prefs/associatedDomain&#x27;,
 			callback
 		};
 
@@ -741,3 +835,22 @@ const organization = (cParams) => {
 };
 
 module.exports = organization;
+
+    </pre>
+</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="../assets/vendor/prettify/prettify-min.js"></script>
+<script>prettyPrint();</script>
+<script src="../assets/js/yui-prettify.js"></script>
+<script src="../assets/../api.js"></script>
+<script src="../assets/js/api-filter.js"></script>
+<script src="../assets/js/api-list.js"></script>
+<script src="../assets/js/api-search.js"></script>
+<script src="../assets/js/apidocs.js"></script>
+</body>
+</html>

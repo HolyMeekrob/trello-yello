@@ -1,0 +1,6343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>member</title>
+    <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
+    <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
+    <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
+    <link rel="icon" href="../assets/favicon.ico">
+    <script src="http://yui.yahooapis.com/combo?3.9.1/build/yui/yui-min.js"></script>
+</head>
+<body class="yui3-skin-sam">
+
+<div id="doc">
+    <div id="hd" class="yui3-g header">
+        <div class="yui3-u-3-4">
+                <h1><img src="../assets/css/logo.png" title="" width="117" height="52"></h1>
+        </div>
+        <div class="yui3-u-1-4 version">
+            <em>API Docs for: </em>
+        </div>
+    </div>
+    <div id="bd" class="yui3-g">
+
+        <div class="yui3-u-1-4">
+            <div id="docs-sidebar" class="sidebar apidocs">
+                <div id="api-list">
+                    <h2 class="off-left">APIs</h2>
+                    <div id="api-tabview" class="tabview">
+                        <ul class="tabs">
+                            <li><a href="#api-classes">Classes</a></li>
+                            <li><a href="#api-modules">Modules</a></li>
+                        </ul>
+                
+                        <div id="api-tabview-filter">
+                            <input type="search" id="api-filter" placeholder="Type to filter APIs">
+                        </div>
+                
+                        <div id="api-tabview-panel">
+                            <ul id="api-classes" class="apis classes">
+                                <li><a href="../classes/action.html">action</a></li>
+                                <li><a href="../classes/board.html">board</a></li>
+                                <li><a href="../classes/card.html">card</a></li>
+                                <li><a href="../classes/checklist.html">checklist</a></li>
+                                <li><a href="../classes/label.html">label</a></li>
+                                <li><a href="../classes/list.html">list</a></li>
+                                <li><a href="../classes/member.html">member</a></li>
+                                <li><a href="../classes/notification.html">notification</a></li>
+                                <li><a href="../classes/organization.html">organization</a></li>
+                                <li><a href="../classes/token.html">token</a></li>
+                                <li><a href="../classes/trello.html">trello</a></li>
+                                <li><a href="../classes/trelloObj.html">trelloObj</a></li>
+                                <li><a href="../classes/webhook.html">webhook</a></li>
+                            </ul>
+                
+                            <ul id="api-modules" class="apis modules">
+                                <li><a href="../modules/trello-yello.html">trello-yello</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="yui3-u-3-4">
+                <div id="api-options">
+                    Show:
+                    <label for="api-show-inherited">
+                        <input type="checkbox" id="api-show-inherited" checked>
+                        Inherited
+                    </label>
+            
+                    <label for="api-show-protected">
+                        <input type="checkbox" id="api-show-protected">
+                        Protected
+                    </label>
+            
+                    <label for="api-show-private">
+                        <input type="checkbox" id="api-show-private">
+                        Private
+                    </label>
+                    <label for="api-show-deprecated">
+                        <input type="checkbox" id="api-show-deprecated">
+                        Deprecated
+                    </label>
+            
+                </div>
+            
+            <div class="apidocs">
+                <div id="docs-main">
+                    <div class="content">
+<h1>member Class</h1>
+<div class="box meta">
+
+        <div class="extends">
+            Extends TrelloObj
+        </div>
+
+        <div class="foundat">
+            Defined in: <a href="../files/lib_obj_member.js.html#l4"><code>lib\obj\member.js:4</code></a>
+        </div>
+
+            Module: <a href="../modules/trello-yello.html">trello-yello</a>
+
+</div>
+
+
+<div class="box intro">
+    <p>A class representing the Member Trello object.</p>
+
+</div>
+
+    <div class="constructor">
+        <h2>Constructor</h2>
+<div id="method_member" class="method item private">
+    <h3 class="name"><code>member</code></h3>
+
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+                <li class="arg">
+                        <code>params</code>
+                </li>
+            </ul><span class="paren">)</span>
+        </div>
+
+
+
+        <span class="flag private">private</span>
+
+
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/lib_obj_member.js.html#l4"><code>lib\obj\member.js:4</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        
+    </div>
+
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+                <li class="param">
+                        <code class="param-name">params</code>
+                        <span class="type">Object</span>
+
+
+                    <div class="param-description">
+                        <p>the constructor parameters object</p>
+
+                    </div>
+
+                        <ul class="params-list">
+                            <li class="param">
+                                    <code class="param-name">objMaps</code>
+                                    <span class="type">Object</span>
+
+                                <div class="param-description">
+                                    <p>the container for all Trello object
+property mappings. Please refer to its documentation for details.</p>
+
+                                </div>
+
+                            </li>
+                            <li class="param">
+                                    <code class="param-name">config</code>
+                                    <span class="type">Object</span>
+
+                                <div class="param-description">
+                                    <p>configuration object</p>
+
+                                </div>
+
+                                    <ul class="params-list">
+                                        <li class="param">
+                                                <code class="param-name">key</code>
+                                                <span class="type">String</span>
+
+                                            <div class="param-description">
+                                                the application key for accessing Trello
+                                            </div>
+                                        </li>
+                                        <li class="param">
+                                                <code class="param-name">token</code>
+                                                <span class="type">String</span>
+
+                                            <div class="param-description">
+                                                a valid Trello API token
+                                            </div>
+                                        </li>
+                                        <li class="param">
+                                                <code class="param-name">version</code>
+                                                <span class="type">Number</span>
+
+                                            <div class="param-description">
+                                                the Trello API version Number
+                                            </div>
+                                        </li>
+                                    </ul>
+                            </li>
+                            <li class="param">
+                                    <code class="param-name">id</code>
+                                    <span class="type">String</span>
+
+                                <div class="param-description">
+                                    <p>the ID of the Trello object</p>
+
+                                </div>
+
+                            </li>
+                            <li class="param">
+                                    <code class="param-name">net</code>
+                                    <span class="type">Object</span>
+
+                                <div class="param-description">
+                                    <p>the network service. Please refer to its
+documentation for specifics.</p>
+
+                                </div>
+
+                            </li>
+                            <li class="param">
+                                    <code class="param-name">objConstructor</code>
+                                    <span class="type">Function</span>
+
+                                <div class="param-description">
+                                    <p>the factory method for creating new
+Trello objects. Using an injected factory method allows us to use higher
+level object classes while still maximizing reuse with this base object.</p>
+
+                                </div>
+
+                            </li>
+                            <li class="param">
+                                    <code class="param-name optional">[initialVals]</code>
+                                    <span class="type">Object</span>
+                                    <span class="flag optional" title="This parameter is optional.">optional</span>
+
+                                <div class="param-description">
+                                    <p>the initial values of the Trello
+object</p>
+
+                                </div>
+
+                            </li>
+                        </ul>
+                </li>
+            </ul>
+        </div>
+
+
+
+</div>
+    </div>
+
+<div id="classdocs" class="tabview">
+    <ul class="api-class-tabs">
+        <li class="api-class-tab index"><a href="#index">Index</a></li>
+
+            <li class="api-class-tab methods"><a href="#methods">Methods</a></li>
+            <li class="api-class-tab properties"><a href="#properties">Properties</a></li>
+    </ul>
+
+    <div>
+        <div id="index" class="api-class-tabpanel index">
+            <h2 class="off-left">Item Index</h2>
+
+                <div class="index-section methods">
+                    <h3>Methods</h3>
+
+                    <ul class="index-list methods extends">
+                            <li class="index-item method">
+                                <a href="#method_addAvatar">addAvatar</a>
+
+                            </li>
+                            <li class="index-item method">
+                                <a href="#method_addBoardStar">addBoardStar</a>
+
+                            </li>
+                            <li class="index-item method">
+                                <a href="#method_addCustomBoardBackground">addCustomBoardBackground</a>
+
+                            </li>
+                            <li class="index-item method">
+                                <a href="#method_addCustomEmoji">addCustomEmoji</a>
+
+                            </li>
+                            <li class="index-item method">
+                                <a href="#method_addCustomSticker">addCustomSticker</a>
+
+                            </li>
+                            <li class="index-item method">
+                                <a href="#method_addSavedSearch">addSavedSearch</a>
+
+                            </li>
+                            <li class="index-item method inherited">
+                                <a href="#method_del">del</a>
+
+                            </li>
+                            <li class="index-item method private inherited">
+                                <a href="#method_deleteObj">deleteObj</a>
+
+                            </li>
+                            <li class="index-item method private inherited inherited">
+                                <a href="#method_deleteProperty">deleteProperty</a>
+
+                            </li>
+                            <li class="index-item method">
+                                <a href="#method_disableColorBlindMode">disableColorBlindMode</a>
+
+                            </li>
+                            <li class="index-item method">
+                                <a href="#method_enableColorBlindMode">enableColorBlindMode</a>
+
+                            </li>
+                            <li class="index-item method private inherited">
+                                <a href="#method_expireData">expireData</a>
+
+                            </li>
+                            <li class="index-item method inherited">
+                                <a href="#method_get">get</a>
+
+                            </li>
+                            <li class="index-item method private inherited">
+                                <a href="#method_"></a>
+
+                            </li>
+                            <li class="index-item method">
+                                <a href="#method_getActions">getActions</a>
+
+                            </li>
+                            <li class="index-item method private inherited">
+                                <a href="#method_getAutoProperties">getAutoProperties</a>
+
+                            </li>
+                            <li class="index-item method">
+                                <a href="#method_getAvatarHash">getAvatarHash</a>
+
+                            </li>
+                            <li class="index-item method">
+                                <a href="#method_getAvatarSource">getAvatarSource</a>
+
+                            </li>
+                            <li class="index-item method">
+                                <a href="#method_getBio">getBio</a>
+
+                            </li>
+                            <li class="index-item method">
+                                <a href="#method_getBioData">getBioData</a>
+
+                            </li>
+                            <li class="index-item method">
+                                <a href="#method_getBoardBackgrounds">getBoardBackgrounds</a>
+
+                            </li>
+                            <li class="index-item method">
+                                <a href="#method_getBoards">getBoards</a>
+
+                            </li>
+                            <li class="index-item method">
+                                <a href="#method_getBoardsInvited">getBoardsInvited</a>
+
+                            </li>
+                            <li class="index-item method">
+                                <a href="#method_getBoardStars">getBoardStars</a>
+
+                            </li>
+                            <li class="index-item method">
+                                <a href="#method_getCards">getCards</a>
+
+                            </li>
+                            <li class="index-item method">
+                                <a href="#method_getConfirmed">getConfirmed</a>
+
+                            </li>
+                            <li class="index-item method">
+                                <a href="#method_getCustomBoardBackgrounds">getCustomBoardBackgrounds</a>
+
+                            </li>
+                            <li class="index-item method">
+                                <a href="#method_getCustomEmoji">getCustomEmoji</a>
+
+                            </li>
+                            <li class="index-item method">
+                                <a href="#method_getCustomStickers">getCustomStickers</a>
+
+                            </li>
+                            <li class="index-item method">
+                                <a href="#method_getEmail">getEmail</a>
+
+                            </li>
+                            <li class="index-item method">
+                                <a href="#method_getFullName">getFullName</a>
+
+                            </li>
+                            <li class="index-item method">
+                                <a href="#method_getGravatarHash">getGravatarHash</a>
+
+                            </li>
+                            <li class="index-item method inherited">
+                                <a href="#method_getId">getId</a>
+
+                            </li>
+                            <li class="index-item method">
+                                <a href="#method_getInitials">getInitials</a>
+
+                            </li>
+                            <li class="index-item method">
+                                <a href="#method_getLoginTypes">getLoginTypes</a>
+
+                            </li>
+                            <li class="index-item method">
+                                <a href="#method_getMemberType">getMemberType</a>
+
+                            </li>
+                            <li class="index-item method">
+                                <a href="#method_getNotifications">getNotifications</a>
+
+                            </li>
+                            <li class="index-item method">
+                                <a href="#method_getOneTimeMessagesDismissed">getOneTimeMessagesDismissed</a>
+
+                            </li>
+                            <li class="index-item method">
+                                <a href="#method_getOrganizations">getOrganizations</a>
+
+                            </li>
+                            <li class="index-item method">
+                                <a href="#method_getOrganizationsInvited">getOrganizationsInvited</a>
+
+                            </li>
+                            <li class="index-item method">
+                                <a href="#method_getPinnedBoards">getPinnedBoards</a>
+
+                            </li>
+                            <li class="index-item method">
+                                <a href="#method_getPreferences">getPreferences</a>
+
+                            </li>
+                            <li class="index-item method">
+                                <a href="#method_getPremiumFeatures">getPremiumFeatures</a>
+
+                            </li>
+                            <li class="index-item method">
+                                <a href="#method_getProducts">getProducts</a>
+
+                            </li>
+                            <li class="index-item method">
+                                <a href="#method_getSavedSearches">getSavedSearches</a>
+
+                            </li>
+                            <li class="index-item method">
+                                <a href="#method_getStatus">getStatus</a>
+
+                            </li>
+                            <li class="index-item method private inherited">
+                                <a href="#method_getSubTypeProperty">getSubTypeProperty</a>
+
+                            </li>
+                            <li class="index-item method">
+                                <a href="#method_getTokens">getTokens</a>
+
+                            </li>
+                            <li class="index-item method">
+                                <a href="#method_getTrophies">getTrophies</a>
+
+                            </li>
+                            <li class="index-item method private inherited">
+                                <a href="#method_getUnretrievedProperty">getUnretrievedProperty</a>
+
+                            </li>
+                            <li class="index-item method">
+                                <a href="#method_getUploadedAvatarHash">getUploadedAvatarHash</a>
+
+                            </li>
+                            <li class="index-item method">
+                                <a href="#method_getUrl">getUrl</a>
+
+                            </li>
+                            <li class="index-item method">
+                                <a href="#method_getUsername">getUsername</a>
+
+                            </li>
+                            <li class="index-item method">
+                                <a href="#method_removeBoardStar">removeBoardStar</a>
+
+                            </li>
+                            <li class="index-item method">
+                                <a href="#method_removeCustomBoardBackground">removeCustomBoardBackground</a>
+
+                            </li>
+                            <li class="index-item method">
+                                <a href="#method_removeCustomSticker">removeCustomSticker</a>
+
+                            </li>
+                            <li class="index-item method">
+                                <a href="#method_removeSavedSearch">removeSavedSearch</a>
+
+                            </li>
+                            <li class="index-item method inherited">
+                                <a href="#method_set">set</a>
+
+                            </li>
+                            <li class="index-item method">
+                                <a href="#method_setAvatarSource">setAvatarSource</a>
+
+                            </li>
+                            <li class="index-item method">
+                                <a href="#method_setBio">setBio</a>
+
+                            </li>
+                            <li class="index-item method">
+                                <a href="#method_setEmailSummariesHourly">setEmailSummariesHourly</a>
+
+                            </li>
+                            <li class="index-item method">
+                                <a href="#method_setEmailSummariesInstantly">setEmailSummariesInstantly</a>
+
+                            </li>
+                            <li class="index-item method">
+                                <a href="#method_setEmailSummariesNever">setEmailSummariesNever</a>
+
+                            </li>
+                            <li class="index-item method">
+                                <a href="#method_setFullName">setFullName</a>
+
+                            </li>
+                            <li class="index-item method">
+                                <a href="#method_setInitials">setInitials</a>
+
+                            </li>
+                            <li class="index-item method">
+                                <a href="#method_setLocale">setLocale</a>
+
+                            </li>
+                            <li class="index-item method">
+                                <a href="#method_setOneTimeMessagesDismissed">setOneTimeMessagesDismissed</a>
+
+                            </li>
+                            <li class="index-item method private inherited">
+                                <a href="#method_setProperty">setProperty</a>
+
+                            </li>
+                            <li class="index-item method private inherited">
+                                <a href="#method_setPropertySkipValidation">setPropertySkipValidation</a>
+
+                            </li>
+                            <li class="index-item method">
+                                <a href="#method_setUsername">setUsername</a>
+
+                            </li>
+                            <li class="index-item method">
+                                <a href="#method_updateBoardStar">updateBoardStar</a>
+
+                            </li>
+                            <li class="index-item method">
+                                <a href="#method_updateCustomBoardBackground">updateCustomBoardBackground</a>
+
+                            </li>
+                            <li class="index-item method">
+                                <a href="#method_updateSavedSearch">updateSavedSearch</a>
+
+                            </li>
+                    </ul>
+                </div>
+
+                <div class="index-section properties">
+                    <h3>Properties</h3>
+
+                    <ul class="index-list properties extends">
+                            <li class="index-item property private inherited">
+                                <a href="#property_trelloPropertyNames">trelloPropertyNames</a>
+
+                            </li>
+                            <li class="index-item property private inherited">
+                                <a href="#property_trelloProps">trelloProps</a>
+
+                            </li>
+                    </ul>
+                </div>
+
+
+        </div>
+
+            <div id="methods" class="api-class-tabpanel">
+                <h2 class="off-left">Methods</h2>
+
+<div id="method_addAvatar" class="method item">
+    <h3 class="name"><code>addAvatar</code></h3>
+
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+                <li class="arg">
+                        <code>params</code>
+                </li>
+            </ul><span class="paren">)</span>
+        </div>
+
+        <span class="returns-inline">
+            <span class="type">Object</span>
+        </span>
+
+
+
+
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/lib_obj_member.js.html#l841"><code>lib\obj\member.js:841</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        
+    </div>
+
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+                <li class="param">
+                        <code class="param-name">params</code>
+                        <span class="type">Object</span>
+
+
+                    <div class="param-description">
+                        <p>the method parameters object</p>
+
+                    </div>
+
+                        <ul class="params-list">
+                            <li class="param">
+                                    <code class="param-name">file</code>
+                                    <span class="type">File</span>
+
+                                <div class="param-description">
+                                    <p>the avatar file</p>
+
+                                </div>
+
+                            </li>
+                            <li class="param">
+                                    <code class="param-name optional">[callback]</code>
+                                    <span class="type">Function</span>
+                                    <span class="flag optional" title="This parameter is optional.">optional</span>
+
+                                <div class="param-description">
+                                    <p>the callback function once the
+operation is complete</p>
+
+                                </div>
+
+                            </li>
+                        </ul>
+                </li>
+            </ul>
+        </div>
+
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                        <span class="type">Object</span>:
+                    <p>a Promise that resolves to a truthy value if successful</p>
+
+            </div>
+        </div>
+
+
+</div>
+<div id="method_addBoardStar" class="method item">
+    <h3 class="name"><code>addBoardStar</code></h3>
+
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+                <li class="arg">
+                        <code>params</code>
+                </li>
+            </ul><span class="paren">)</span>
+        </div>
+
+        <span class="returns-inline">
+            <span class="type">Object</span>
+        </span>
+
+
+
+
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/lib_obj_member.js.html#l861"><code>lib\obj\member.js:861</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        
+    </div>
+
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+                <li class="param">
+                        <code class="param-name">params</code>
+                        <span class="type">Object</span>
+
+
+                    <div class="param-description">
+                        <p>the method parameters object</p>
+
+                    </div>
+
+                        <ul class="params-list">
+                            <li class="param">
+                                    <code class="param-name">boardId</code>
+                                    <span class="type">String</span>
+
+                                <div class="param-description">
+                                    <p>the id of the board that is getting the star</p>
+
+                                </div>
+
+                            </li>
+                            <li class="param">
+                                    <code class="param-name">position</code>
+                                    <span class="type">String | Number</span>
+
+                                <div class="param-description">
+                                    <p>the position of the board star.
+Valid values are 'top', 'bottom', or a positive number.</p>
+
+                                </div>
+
+                            </li>
+                            <li class="param">
+                                    <code class="param-name optional">[callback]</code>
+                                    <span class="type">Function</span>
+                                    <span class="flag optional" title="This parameter is optional.">optional</span>
+
+                                <div class="param-description">
+                                    <p>the callback function once the
+operation is complete</p>
+
+                                </div>
+
+                            </li>
+                        </ul>
+                </li>
+            </ul>
+        </div>
+
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                        <span class="type">Object</span>:
+                    <p>a Promise that resolves to the id of the new board star</p>
+
+            </div>
+        </div>
+
+
+</div>
+<div id="method_addCustomBoardBackground" class="method item">
+    <h3 class="name"><code>addCustomBoardBackground</code></h3>
+
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+                <li class="arg">
+                        <code>params</code>
+                </li>
+            </ul><span class="paren">)</span>
+        </div>
+
+        <span class="returns-inline">
+            <span class="type">Object</span>
+        </span>
+
+
+
+
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/lib_obj_member.js.html#l886"><code>lib\obj\member.js:886</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        
+    </div>
+
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+                <li class="param">
+                        <code class="param-name">params</code>
+                        <span class="type">Object</span>
+
+
+                    <div class="param-description">
+                        <p>the method parameters object</p>
+
+                    </div>
+
+                        <ul class="params-list">
+                            <li class="param">
+                                    <code class="param-name">file</code>
+                                    <span class="type">File</span>
+
+                                <div class="param-description">
+                                    <p>the image file</p>
+
+                                </div>
+
+                            </li>
+                            <li class="param">
+                                    <code class="param-name optional">[callback]</code>
+                                    <span class="type">Function</span>
+                                    <span class="flag optional" title="This parameter is optional.">optional</span>
+
+                                <div class="param-description">
+                                    <p>the callback function once the
+operation is complete</p>
+
+                                </div>
+
+                            </li>
+                        </ul>
+                </li>
+            </ul>
+        </div>
+
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                        <span class="type">Object</span>:
+                    <p>a Promise that resolves to the id of the new custom
+board background</p>
+
+            </div>
+        </div>
+
+
+</div>
+<div id="method_addCustomEmoji" class="method item">
+    <h3 class="name"><code>addCustomEmoji</code></h3>
+
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+                <li class="arg">
+                        <code>params</code>
+                </li>
+            </ul><span class="paren">)</span>
+        </div>
+
+        <span class="returns-inline">
+            <span class="type">Object</span>
+        </span>
+
+
+
+
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/lib_obj_member.js.html#l909"><code>lib\obj\member.js:909</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        
+    </div>
+
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+                <li class="param">
+                        <code class="param-name">params</code>
+                        <span class="type">Object</span>
+
+
+                    <div class="param-description">
+                        <p>the method parameters object</p>
+
+                    </div>
+
+                        <ul class="params-list">
+                            <li class="param">
+                                    <code class="param-name">file</code>
+                                    <span class="type">File</span>
+
+                                <div class="param-description">
+                                    <p>the image file for the emoji</p>
+
+                                </div>
+
+                            </li>
+                            <li class="param">
+                                    <code class="param-name">name</code>
+                                    <span class="type">String</span>
+
+                                <div class="param-description">
+                                    <p>the name of the emojy</p>
+
+                                </div>
+
+                            </li>
+                            <li class="param">
+                                    <code class="param-name optional">[callback]</code>
+                                    <span class="type">Function</span>
+                                    <span class="flag optional" title="This parameter is optional.">optional</span>
+
+                                <div class="param-description">
+                                    <p>the callback function once the
+operation is complete</p>
+
+                                </div>
+
+                            </li>
+                        </ul>
+                </li>
+            </ul>
+        </div>
+
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                        <span class="type">Object</span>:
+                    <p>a Promise that resolves to the id of the new custom emoji</p>
+
+            </div>
+        </div>
+
+
+</div>
+<div id="method_addCustomSticker" class="method item">
+    <h3 class="name"><code>addCustomSticker</code></h3>
+
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+                <li class="arg">
+                        <code>params</code>
+                </li>
+            </ul><span class="paren">)</span>
+        </div>
+
+        <span class="returns-inline">
+            <span class="type">Object</span>
+        </span>
+
+
+
+
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/lib_obj_member.js.html#l933"><code>lib\obj\member.js:933</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        
+    </div>
+
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+                <li class="param">
+                        <code class="param-name">params</code>
+                        <span class="type">Object</span>
+
+
+                    <div class="param-description">
+                        <p>the method parameters object</p>
+
+                    </div>
+
+                        <ul class="params-list">
+                            <li class="param">
+                                    <code class="param-name">file</code>
+                                    <span class="type">File</span>
+
+                                <div class="param-description">
+                                    <p>the image file for the sticker</p>
+
+                                </div>
+
+                            </li>
+                            <li class="param">
+                                    <code class="param-name optional">[callback]</code>
+                                    <span class="type">Function</span>
+                                    <span class="flag optional" title="This parameter is optional.">optional</span>
+
+                                <div class="param-description">
+                                    <p>the callback function once the
+operation is complete</p>
+
+                                </div>
+
+                            </li>
+                        </ul>
+                </li>
+            </ul>
+        </div>
+
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                        <span class="type">Object</span>:
+                    <p>a Promise that resolves to the id of the new custom
+sticker</p>
+
+            </div>
+        </div>
+
+
+</div>
+<div id="method_addSavedSearch" class="method item">
+    <h3 class="name"><code>addSavedSearch</code></h3>
+
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+                <li class="arg">
+                        <code>params</code>
+                </li>
+            </ul><span class="paren">)</span>
+        </div>
+
+        <span class="returns-inline">
+            <span class="type">Object</span>
+        </span>
+
+
+
+
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/lib_obj_member.js.html#l977"><code>lib\obj\member.js:977</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        
+    </div>
+
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+                <li class="param">
+                        <code class="param-name">params</code>
+                        <span class="type">Object</span>
+
+
+                    <div class="param-description">
+                        <p>the method parameters object</p>
+
+                    </div>
+
+                        <ul class="params-list">
+                            <li class="param">
+                                    <code class="param-name">name</code>
+                                    <span class="type">String</span>
+
+                                <div class="param-description">
+                                    <p>the name of the saved search</p>
+
+                                </div>
+
+                            </li>
+                            <li class="param">
+                                    <code class="param-name">query</code>
+                                    <span class="type">String</span>
+
+                                <div class="param-description">
+                                    <p>the query to save</p>
+
+                                </div>
+
+                            </li>
+                            <li class="param">
+                                    <code class="param-name">position</code>
+                                    <span class="type">String</span>
+
+                                <div class="param-description">
+                                    <p>the position of the search. Valid values
+are 'top', 'bottom', or a positive number.</p>
+
+                                </div>
+
+                            </li>
+                            <li class="param">
+                                    <code class="param-name optional">[callback]</code>
+                                    <span class="type">Function</span>
+                                    <span class="flag optional" title="This parameter is optional.">optional</span>
+
+                                <div class="param-description">
+                                    <p>the callback function once the
+operation is complete</p>
+
+                                </div>
+
+                            </li>
+                        </ul>
+                </li>
+            </ul>
+        </div>
+
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                        <span class="type">Object</span>:
+                    <p>a Promise that resolves to the id of the new saved search</p>
+
+            </div>
+        </div>
+
+
+</div>
+<div id="method_del" class="method item inherited">
+    <h3 class="name"><code>del</code></h3>
+
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+                <li class="arg">
+                        <code>params</code>
+                </li>
+            </ul><span class="paren">)</span>
+        </div>
+
+        <span class="returns-inline">
+            <span class="type">Object</span>
+        </span>
+
+
+
+
+
+
+
+    <div class="meta">
+                <p>Inherited from
+                <a href="../classes/TrelloObj.html#method_del">trelloObj</a>:
+        <a href="../files/lib_trelloObj.js.html#l507"><code>lib\trelloObj.js:507</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        Deletes the given property. If no property is given, then the Trello
+object itself gets deleted.
+    </div>
+
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+                <li class="param">
+                        <code class="param-name">params</code>
+                        <span class="type">Object</span>
+
+
+                    <div class="param-description">
+                        the method parameters object
+                    </div>
+
+                        <ul class="params-list">
+                            <li class="param">
+                                    <code class="param-name optional">[propName]</code>
+                                    <span class="type">String</span>
+                                    <span class="flag optional" title="This parameter is optional.">optional</span>
+
+                                <div class="param-description">
+                                    <p>the property to delete. If this is not
+included, then the object itself will be deleted.</p>
+
+                                </div>
+
+                            </li>
+                            <li class="param">
+                                    <code class="param-name optional">[callback]</code>
+                                    <span class="type">Function</span>
+                                    <span class="flag optional" title="This parameter is optional.">optional</span>
+
+                                <div class="param-description">
+                                    <p>the callback function once the
+operation is complete. This is optional, as a Promise is returned.</p>
+
+                                </div>
+
+                            </li>
+                            <li class="param">
+                                    <code class="param-name optional">[skipValidation=false]</code>
+                                    <span class="type">Boolean</span>
+                                    <span class="flag optional" title="This parameter is optional.">optional</span>
+
+                                <div class="param-description">
+                                    <p>if true, skips local
+validation of the property path</p>
+
+                                </div>
+
+                            </li>
+                        </ul>
+                </li>
+            </ul>
+        </div>
+
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                        <span class="type">Object</span>:
+                    a Promise that resolves to a truthy value. The exact
+nature of this value is currently undefined and may change in the future
+            </div>
+        </div>
+
+
+</div>
+<div id="method_deleteObj" class="method item private inherited">
+    <h3 class="name"><code>deleteObj</code></h3>
+
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+                <li class="arg">
+                        <code class="optional">[skipValidation=false]</code>
+                </li>
+            </ul><span class="paren">)</span>
+        </div>
+
+        <span class="returns-inline">
+            <span class="type">Object</span>
+        </span>
+
+
+        <span class="flag private">private</span>
+
+
+
+
+
+    <div class="meta">
+                <p>Inherited from
+                <a href="../classes/TrelloObj.html#method_deleteObj">trelloObj</a>:
+        <a href="../files/lib_trelloObj.js.html#l341"><code>lib\trelloObj.js:341</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        Deletes the Trello object.
+    </div>
+
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+                <li class="param">
+                        <code class="param-name optional">[skipValidation=false]</code>
+                        <span class="type">Boolean</span>
+                        <span class="flag optional" title="This parameter is optional.">optional</span>
+
+
+                    <div class="param-description">
+                        if true, skips local validation of
+the property path
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                        <span class="type">Object</span>:
+                    a Promise that resolves to a truthy value
+            </div>
+        </div>
+
+
+</div>
+<div id="method_deleteProperty" class="method item private inherited">
+    <h3 class="name"><code>deleteProperty</code></h3>
+
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+                <li class="arg">
+                        <code>path</code>
+                </li>
+            </ul><span class="paren">)</span>
+        </div>
+
+        <span class="returns-inline">
+            <span class="type">Object</span>
+        </span>
+
+
+        <span class="flag private">private</span>
+
+
+
+
+
+    <div class="meta">
+            <p>Inherited from
+            <a href="../classes/TrelloObj.html#method_deleteProperty">
+                trelloObj
+            </a>
+            but overwritten in
+        <a href="../files/lib_trelloObj.js.html#l360"><code>lib\trelloObj.js:360</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        Deletes a property on the Trello object. Skips local path validation.
+    </div>
+
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+                <li class="param">
+                        <code class="param-name">path</code>
+                        <span class="type">String</span>
+
+
+                    <div class="param-description">
+                        the path to the property
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                        <span class="type">Object</span>:
+                    a Promise that resolves to a truthy value
+            </div>
+        </div>
+
+
+</div>
+<div id="method_disableColorBlindMode" class="method item">
+    <h3 class="name"><code>disableColorBlindMode</code></h3>
+
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+                <li class="arg">
+                        <code class="optional">[callback]</code>
+                </li>
+            </ul><span class="paren">)</span>
+        </div>
+
+        <span class="returns-inline">
+            <span class="type">Object</span>
+        </span>
+
+
+
+
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/lib_obj_member.js.html#l700"><code>lib\obj\member.js:700</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        
+    </div>
+
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+                <li class="param">
+                        <code class="param-name optional">[callback]</code>
+                        <span class="type">Function</span>
+                        <span class="flag optional" title="This parameter is optional.">optional</span>
+
+
+                    <div class="param-description">
+                        <p>the callback function once the
+operation is complete</p>
+
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                        <span class="type">Object</span>:
+                    <p>a Promise that resolves to a truthy value if successful</p>
+
+            </div>
+        </div>
+
+
+</div>
+<div id="method_enableColorBlindMode" class="method item">
+    <h3 class="name"><code>enableColorBlindMode</code></h3>
+
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+                <li class="arg">
+                        <code class="optional">[callback]</code>
+                </li>
+            </ul><span class="paren">)</span>
+        </div>
+
+        <span class="returns-inline">
+            <span class="type">Object</span>
+        </span>
+
+
+
+
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/lib_obj_member.js.html#l683"><code>lib\obj\member.js:683</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        
+    </div>
+
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+                <li class="param">
+                        <code class="param-name optional">[callback]</code>
+                        <span class="type">Function</span>
+                        <span class="flag optional" title="This parameter is optional.">optional</span>
+
+
+                    <div class="param-description">
+                        <p>the callback function once the
+operation is complete</p>
+
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                        <span class="type">Object</span>:
+                    <p>a Promise that resolves to a truthy value if successful</p>
+
+            </div>
+        </div>
+
+
+</div>
+<div id="method_expireData" class="method item private inherited">
+    <h3 class="name"><code>expireData</code></h3>
+
+        <span class="paren">()</span>
+
+        <span class="returns-inline">
+            <span class="type">Void</span>
+        </span>
+
+
+        <span class="flag private">private</span>
+
+
+
+
+
+    <div class="meta">
+                <p>Inherited from
+                <a href="../classes/TrelloObj.html#method_expireData">trelloObj</a>:
+        <a href="../files/lib_trelloObj.js.html#l74"><code>lib\trelloObj.js:74</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        Expires local data. The next time a get() operation is called, new data
+will be retrieved over the network.
+    </div>
+
+
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                        <span class="type">Void</span>:
+            </div>
+        </div>
+
+
+</div>
+<div id="method_get" class="method item inherited">
+    <h3 class="name"><code>get</code></h3>
+
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+                <li class="arg">
+                        <code>params.propName</code>
+                </li>
+                <li class="arg">
+                        <code class="optional">[params.skipValidation=false]</code>
+                </li>
+                <li class="arg">
+                        <code class="optional">[params.callback]</code>
+                </li>
+            </ul><span class="paren">)</span>
+        </div>
+
+        <span class="returns-inline">
+            <span class="type">Object</span>
+        </span>
+
+
+
+
+
+
+
+    <div class="meta">
+                <p>Inherited from
+                <a href="../classes/TrelloObj.html#method_get">trelloObj</a>:
+        <a href="../files/lib_trelloObj.js.html#l419"><code>lib\trelloObj.js:419</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        Asynchronously retrieves a property value from Trello. If the property
+hasn't yet been populated, or it is dirty, then a network call to Trello
+is made. Otherwise, the property is returned from memory. An error will
+be returned if the property doesn't exist or is not a gettable property.
+    </div>
+
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+                <li class="param">
+                        <code class="param-name">params.propName</code>
+                        <span class="type">String</span>
+
+
+                    <div class="param-description">
+                        the name of the property to retrieve
+                    </div>
+
+                </li>
+                <li class="param">
+                        <code class="param-name optional">[params.skipValidation=false]</code>
+                        <span class="type">Boolean</span>
+                        <span class="flag optional" title="This parameter is optional.">optional</span>
+
+
+                    <div class="param-description">
+                        if true, skips local
+validation of the property path
+                    </div>
+
+                </li>
+                <li class="param">
+                        <code class="param-name optional">[params.callback]</code>
+                        <span class="type">Function</span>
+                        <span class="flag optional" title="This parameter is optional.">optional</span>
+
+
+                    <div class="param-description">
+                        the callback function once the
+operation is complete. This is optional, as a Promise is returned.
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                        <span class="type">Object</span>:
+                    a Promise that resolves to the property value
+            </div>
+        </div>
+
+
+</div>
+<div id="method_" class="method item private inherited">
+    <h3 class="name"><code></code></h3>
+
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+                <li class="arg">
+                        <code>values</code>
+                </li>
+                <li class="arg">
+                        <code class="optional">[skipValidation=false]</code>
+                </li>
+            </ul><span class="paren">)</span>
+        </div>
+
+        <span class="returns-inline">
+            <span class="type">Object</span>
+        </span>
+
+
+        <span class="flag private">private</span>
+
+
+
+
+
+    <div class="meta">
+                <p>Inherited from
+                <a href="../classes/TrelloObj.html#method_">trelloObj</a>:
+        <a href="../files/lib_trelloObj.js.html#l213"><code>lib\trelloObj.js:213</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        Sets properties on the object with the given values.
+    </div>
+
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+                <li class="param">
+                        <code class="param-name">values</code>
+                        <span class="type">Object</span>
+
+
+                    <div class="param-description">
+                        the values to set on the object. This object is
+a mapping of properties supported by the Trello API and their new values.
+                    </div>
+
+                </li>
+                <li class="param">
+                        <code class="param-name optional">[skipValidation=false]</code>
+                        <span class="type">Boolean</span>
+                        <span class="flag optional" title="This parameter is optional.">optional</span>
+
+
+                    <div class="param-description">
+                        if true, skips local
+validation of the property path
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                        <span class="type">Object</span>:
+                    a Promise that resolves to a truthy value
+            </div>
+        </div>
+
+
+</div>
+<div id="method_getActions" class="method item">
+    <h3 class="name"><code>getActions</code></h3>
+
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+                <li class="arg">
+                        <code class="optional">[callback]</code>
+                </li>
+            </ul><span class="paren">)</span>
+        </div>
+
+        <span class="returns-inline">
+            <span class="type">Object</span>
+        </span>
+
+
+
+
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/lib_obj_member.js.html#l39"><code>lib\obj\member.js:39</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        
+    </div>
+
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+                <li class="param">
+                        <code class="param-name optional">[callback]</code>
+                        <span class="type">Function</span>
+                        <span class="flag optional" title="This parameter is optional.">optional</span>
+
+
+                    <div class="param-description">
+                        <p>the callback function once the operation is
+complete</p>
+
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                        <span class="type">Object</span>:
+                    <p>a Promise that resolves to the member's actions. This is an
+array of action objects.</p>
+
+            </div>
+        </div>
+
+
+</div>
+<div id="method_getAutoProperties" class="method item private inherited">
+    <h3 class="name"><code>getAutoProperties</code></h3>
+
+        <span class="paren">()</span>
+
+        <span class="returns-inline">
+            <span class="type">Object</span>
+        </span>
+
+
+        <span class="flag private">private</span>
+
+
+
+
+
+    <div class="meta">
+                <p>Inherited from
+                <a href="../classes/TrelloObj.html#method_getAutoProperties">trelloObj</a>:
+        <a href="../files/lib_trelloObj.js.html#l86"><code>lib\trelloObj.js:86</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        Retrieves all of the auto-properties for the Trello object. auto-properties
+are properties that can be retrieved as part of the GET operation on the
+object itself, and are not themselves Trello objects.
+    </div>
+
+
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                        <span class="type">Object</span>:
+                    a Promise that resolves to an object containing all of the
+auto-properties and their values.
+            </div>
+        </div>
+
+
+</div>
+<div id="method_getAvatarHash" class="method item">
+    <h3 class="name"><code>getAvatarHash</code></h3>
+
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+                <li class="arg">
+                        <code class="optional">[callback]</code>
+                </li>
+            </ul><span class="paren">)</span>
+        </div>
+
+        <span class="returns-inline">
+            <span class="type">Object</span>
+        </span>
+
+
+
+
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/lib_obj_member.js.html#l55"><code>lib\obj\member.js:55</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        
+    </div>
+
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+                <li class="param">
+                        <code class="param-name optional">[callback]</code>
+                        <span class="type">Function</span>
+                        <span class="flag optional" title="This parameter is optional.">optional</span>
+
+
+                    <div class="param-description">
+                        <p>the callback function once the operation is
+complete</p>
+
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                        <span class="type">Object</span>:
+                    <p>a Promise that resolves to the member's avatar hash</p>
+
+            </div>
+        </div>
+
+
+</div>
+<div id="method_getAvatarSource" class="method item">
+    <h3 class="name"><code>getAvatarSource</code></h3>
+
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+                <li class="arg">
+                        <code class="optional">[callback]</code>
+                </li>
+            </ul><span class="paren">)</span>
+        </div>
+
+        <span class="returns-inline">
+            <span class="type">Object</span>
+        </span>
+
+
+
+
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/lib_obj_member.js.html#l69"><code>lib\obj\member.js:69</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        
+    </div>
+
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+                <li class="param">
+                        <code class="param-name optional">[callback]</code>
+                        <span class="type">Function</span>
+                        <span class="flag optional" title="This parameter is optional.">optional</span>
+
+
+                    <div class="param-description">
+                        <p>the callback function once the operation is
+complete</p>
+
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                        <span class="type">Object</span>:
+                    <p>a Promise that resolves to the source URL for the
+member's avatar</p>
+
+            </div>
+        </div>
+
+
+</div>
+<div id="method_getBio" class="method item">
+    <h3 class="name"><code>getBio</code></h3>
+
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+                <li class="arg">
+                        <code class="optional">[callback]</code>
+                </li>
+            </ul><span class="paren">)</span>
+        </div>
+
+        <span class="returns-inline">
+            <span class="type">Object</span>
+        </span>
+
+
+
+
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/lib_obj_member.js.html#l84"><code>lib\obj\member.js:84</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        
+    </div>
+
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+                <li class="param">
+                        <code class="param-name optional">[callback]</code>
+                        <span class="type">Function</span>
+                        <span class="flag optional" title="This parameter is optional.">optional</span>
+
+
+                    <div class="param-description">
+                        <p>the callback function once the operation is
+complete</p>
+
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                        <span class="type">Object</span>:
+                    <p>a Promise that resolves to member's bio</p>
+
+            </div>
+        </div>
+
+
+</div>
+<div id="method_getBioData" class="method item">
+    <h3 class="name"><code>getBioData</code></h3>
+
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+                <li class="arg">
+                        <code class="optional">[callback]</code>
+                </li>
+            </ul><span class="paren">)</span>
+        </div>
+
+        <span class="returns-inline">
+            <span class="type">Object</span>
+        </span>
+
+
+
+
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/lib_obj_member.js.html#l98"><code>lib\obj\member.js:98</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        
+    </div>
+
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+                <li class="param">
+                        <code class="param-name optional">[callback]</code>
+                        <span class="type">Function</span>
+                        <span class="flag optional" title="This parameter is optional.">optional</span>
+
+
+                    <div class="param-description">
+                        <p>the callback function once the operation is
+complete</p>
+
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                        <span class="type">Object</span>:
+                    <p>a Promise that resolves to an object containing the
+member's bio data</p>
+
+            </div>
+        </div>
+
+
+</div>
+<div id="method_getBoardBackgrounds" class="method item">
+    <h3 class="name"><code>getBoardBackgrounds</code></h3>
+
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+                <li class="arg">
+                        <code class="optional">[callback]</code>
+                </li>
+            </ul><span class="paren">)</span>
+        </div>
+
+        <span class="returns-inline">
+            <span class="type">Object</span>
+        </span>
+
+
+
+
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/lib_obj_member.js.html#l113"><code>lib\obj\member.js:113</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        
+    </div>
+
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+                <li class="param">
+                        <code class="param-name optional">[callback]</code>
+                        <span class="type">Function</span>
+                        <span class="flag optional" title="This parameter is optional.">optional</span>
+
+
+                    <div class="param-description">
+                        <p>the callback function once the operation is
+complete</p>
+
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                        <span class="type">Object</span>:
+                    <p>a Promise that resolves to all of the backgrounds the
+member is eligible to use</p>
+
+            </div>
+        </div>
+
+
+</div>
+<div id="method_getBoards" class="method item">
+    <h3 class="name"><code>getBoards</code></h3>
+
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+                <li class="arg">
+                        <code class="optional">[callback]</code>
+                </li>
+            </ul><span class="paren">)</span>
+        </div>
+
+        <span class="returns-inline">
+            <span class="type">Object</span>
+        </span>
+
+
+
+
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/lib_obj_member.js.html#l128"><code>lib\obj\member.js:128</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        
+    </div>
+
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+                <li class="param">
+                        <code class="param-name optional">[callback]</code>
+                        <span class="type">Function</span>
+                        <span class="flag optional" title="This parameter is optional.">optional</span>
+
+
+                    <div class="param-description">
+                        <p>the callback function once the operation is
+complete</p>
+
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                        <span class="type">Object</span>:
+                    <p>a Promise that resolves to the member's boards. This is an
+array of board objects.</p>
+
+            </div>
+        </div>
+
+
+</div>
+<div id="method_getBoardsInvited" class="method item">
+    <h3 class="name"><code>getBoardsInvited</code></h3>
+
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+                <li class="arg">
+                        <code class="optional">[callback]</code>
+                </li>
+            </ul><span class="paren">)</span>
+        </div>
+
+        <span class="returns-inline">
+            <span class="type">Object</span>
+        </span>
+
+
+
+
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/lib_obj_member.js.html#l144"><code>lib\obj\member.js:144</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        
+    </div>
+
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+                <li class="param">
+                        <code class="param-name optional">[callback]</code>
+                        <span class="type">Function</span>
+                        <span class="flag optional" title="This parameter is optional.">optional</span>
+
+
+                    <div class="param-description">
+                        <p>the callback function once the operation is
+complete</p>
+
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                        <span class="type">Object</span>:
+                    <p>a Promise that resolves to the boards that the member is
+invited to. This is an array of board objects.</p>
+
+            </div>
+        </div>
+
+
+</div>
+<div id="method_getBoardStars" class="method item">
+    <h3 class="name"><code>getBoardStars</code></h3>
+
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+                <li class="arg">
+                        <code class="optional">[callback]</code>
+                </li>
+            </ul><span class="paren">)</span>
+        </div>
+
+        <span class="returns-inline">
+            <span class="type">Object</span>
+        </span>
+
+
+
+
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/lib_obj_member.js.html#l159"><code>lib\obj\member.js:159</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        
+    </div>
+
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+                <li class="param">
+                        <code class="param-name optional">[callback]</code>
+                        <span class="type">Function</span>
+                        <span class="flag optional" title="This parameter is optional.">optional</span>
+
+
+                    <div class="param-description">
+                        <p>the callback function once the operation is
+complete</p>
+
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                        <span class="type">Object</span>:
+                    <p>a Promise that resolves to the member's board stars</p>
+
+            </div>
+        </div>
+
+
+</div>
+<div id="method_getCards" class="method item">
+    <h3 class="name"><code>getCards</code></h3>
+
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+                <li class="arg">
+                        <code class="optional">[callback]</code>
+                </li>
+            </ul><span class="paren">)</span>
+        </div>
+
+        <span class="returns-inline">
+            <span class="type">Object</span>
+        </span>
+
+
+
+
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/lib_obj_member.js.html#l173"><code>lib\obj\member.js:173</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        
+    </div>
+
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+                <li class="param">
+                        <code class="param-name optional">[callback]</code>
+                        <span class="type">Function</span>
+                        <span class="flag optional" title="This parameter is optional.">optional</span>
+
+
+                    <div class="param-description">
+                        <p>the callback function once the operation is
+complete</p>
+
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                        <span class="type">Object</span>:
+                    <p>a Promise that resolves to the member's cards. This is an
+array of card objects.</p>
+
+            </div>
+        </div>
+
+
+</div>
+<div id="method_getConfirmed" class="method item">
+    <h3 class="name"><code>getConfirmed</code></h3>
+
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+                <li class="arg">
+                        <code class="optional">[callback]</code>
+                </li>
+            </ul><span class="paren">)</span>
+        </div>
+
+        <span class="returns-inline">
+            <span class="type">Object</span>
+        </span>
+
+
+
+
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/lib_obj_member.js.html#l189"><code>lib\obj\member.js:189</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        
+    </div>
+
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+                <li class="param">
+                        <code class="param-name optional">[callback]</code>
+                        <span class="type">Function</span>
+                        <span class="flag optional" title="This parameter is optional.">optional</span>
+
+
+                    <div class="param-description">
+                        <p>the callback function once the operation is
+complete</p>
+
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                        <span class="type">Object</span>:
+                    <p>a Promise that resolves to true if the member's account
+has been confirmed</p>
+
+            </div>
+        </div>
+
+
+</div>
+<div id="method_getCustomBoardBackgrounds" class="method item">
+    <h3 class="name"><code>getCustomBoardBackgrounds</code></h3>
+
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+                <li class="arg">
+                        <code class="optional">[callback]</code>
+                </li>
+            </ul><span class="paren">)</span>
+        </div>
+
+        <span class="returns-inline">
+            <span class="type">Object</span>
+        </span>
+
+
+
+
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/lib_obj_member.js.html#l204"><code>lib\obj\member.js:204</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        
+    </div>
+
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+                <li class="param">
+                        <code class="param-name optional">[callback]</code>
+                        <span class="type">Function</span>
+                        <span class="flag optional" title="This parameter is optional.">optional</span>
+
+
+                    <div class="param-description">
+                        <p>the callback function once the operation is
+complete</p>
+
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                        <span class="type">Object</span>:
+                    <p>a Promise that resolves to the member's custom
+backgrounds</p>
+
+            </div>
+        </div>
+
+
+</div>
+<div id="method_getCustomEmoji" class="method item">
+    <h3 class="name"><code>getCustomEmoji</code></h3>
+
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+                <li class="arg">
+                        <code class="optional">[callback]</code>
+                </li>
+            </ul><span class="paren">)</span>
+        </div>
+
+        <span class="returns-inline">
+            <span class="type">Object</span>
+        </span>
+
+
+
+
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/lib_obj_member.js.html#l220"><code>lib\obj\member.js:220</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        
+    </div>
+
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+                <li class="param">
+                        <code class="param-name optional">[callback]</code>
+                        <span class="type">Function</span>
+                        <span class="flag optional" title="This parameter is optional.">optional</span>
+
+
+                    <div class="param-description">
+                        <p>the callback function once the operation is
+complete</p>
+
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                        <span class="type">Object</span>:
+                    <p>a Promise that resolves to member's custom emoji</p>
+
+            </div>
+        </div>
+
+
+</div>
+<div id="method_getCustomStickers" class="method item">
+    <h3 class="name"><code>getCustomStickers</code></h3>
+
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+                <li class="arg">
+                        <code class="optional">[callback]</code>
+                </li>
+            </ul><span class="paren">)</span>
+        </div>
+
+        <span class="returns-inline">
+            <span class="type">Object</span>
+        </span>
+
+
+
+
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/lib_obj_member.js.html#l234"><code>lib\obj\member.js:234</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        
+    </div>
+
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+                <li class="param">
+                        <code class="param-name optional">[callback]</code>
+                        <span class="type">Function</span>
+                        <span class="flag optional" title="This parameter is optional.">optional</span>
+
+
+                    <div class="param-description">
+                        <p>the callback function once the operation is
+complete</p>
+
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                        <span class="type">Object</span>:
+                    <p>a Promise that resolves to the member's custom stickers</p>
+
+            </div>
+        </div>
+
+
+</div>
+<div id="method_getEmail" class="method item">
+    <h3 class="name"><code>getEmail</code></h3>
+
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+                <li class="arg">
+                        <code class="optional">[callback]</code>
+                </li>
+            </ul><span class="paren">)</span>
+        </div>
+
+        <span class="returns-inline">
+            <span class="type">Object</span>
+        </span>
+
+
+
+
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/lib_obj_member.js.html#l248"><code>lib\obj\member.js:248</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        
+    </div>
+
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+                <li class="param">
+                        <code class="param-name optional">[callback]</code>
+                        <span class="type">Function</span>
+                        <span class="flag optional" title="This parameter is optional.">optional</span>
+
+
+                    <div class="param-description">
+                        <p>the callback function once the operation is
+complete</p>
+
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                        <span class="type">Object</span>:
+                    <p>a Promise that resolves to the member's email address</p>
+
+            </div>
+        </div>
+
+
+</div>
+<div id="method_getFullName" class="method item">
+    <h3 class="name"><code>getFullName</code></h3>
+
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+                <li class="arg">
+                        <code class="optional">[callback]</code>
+                </li>
+            </ul><span class="paren">)</span>
+        </div>
+
+        <span class="returns-inline">
+            <span class="type">Object</span>
+        </span>
+
+
+
+
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/lib_obj_member.js.html#l262"><code>lib\obj\member.js:262</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        
+    </div>
+
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+                <li class="param">
+                        <code class="param-name optional">[callback]</code>
+                        <span class="type">Function</span>
+                        <span class="flag optional" title="This parameter is optional.">optional</span>
+
+
+                    <div class="param-description">
+                        <p>the callback function once the operation is
+complete</p>
+
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                        <span class="type">Object</span>:
+                    <p>a Promise that resolves to member's full name</p>
+
+            </div>
+        </div>
+
+
+</div>
+<div id="method_getGravatarHash" class="method item">
+    <h3 class="name"><code>getGravatarHash</code></h3>
+
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+                <li class="arg">
+                        <code class="optional">[callback]</code>
+                </li>
+            </ul><span class="paren">)</span>
+        </div>
+
+        <span class="returns-inline">
+            <span class="type">Object</span>
+        </span>
+
+
+
+
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/lib_obj_member.js.html#l276"><code>lib\obj\member.js:276</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        
+    </div>
+
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+                <li class="param">
+                        <code class="param-name optional">[callback]</code>
+                        <span class="type">Function</span>
+                        <span class="flag optional" title="This parameter is optional.">optional</span>
+
+
+                    <div class="param-description">
+                        <p>the callback function once the operation is
+complete</p>
+
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                        <span class="type">Object</span>:
+                    <p>a Promise that resolves to member's Gravatar hash</p>
+
+            </div>
+        </div>
+
+
+</div>
+<div id="method_getId" class="method item inherited">
+    <h3 class="name"><code>getId</code></h3>
+
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+                <li class="arg">
+                        <code class="optional">[callback]</code>
+                </li>
+            </ul><span class="paren">)</span>
+        </div>
+
+        <span class="returns-inline">
+            <span class="type">Object</span>
+        </span>
+
+
+
+
+
+
+
+    <div class="meta">
+                <p>Inherited from
+                <a href="../classes/TrelloObj.html#method_getId">trelloObj</a>:
+        <a href="../files/lib_trelloObj.js.html#l444"><code>lib\trelloObj.js:444</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        Gets the id of the Trello object.
+    </div>
+
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+                <li class="param">
+                        <code class="param-name optional">[callback]</code>
+                        <span class="type">Function</span>
+                        <span class="flag optional" title="This parameter is optional.">optional</span>
+
+
+                    <div class="param-description">
+                        the callback function once the operation is
+complete. This is optional, as a Promise is returned.
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                        <span class="type">Object</span>:
+                    a Promise that resolves to the id
+            </div>
+        </div>
+
+
+</div>
+<div id="method_getInitials" class="method item">
+    <h3 class="name"><code>getInitials</code></h3>
+
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+                <li class="arg">
+                        <code class="optional">[callback]</code>
+                </li>
+            </ul><span class="paren">)</span>
+        </div>
+
+        <span class="returns-inline">
+            <span class="type">Object</span>
+        </span>
+
+
+
+
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/lib_obj_member.js.html#l305"><code>lib\obj\member.js:305</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        
+    </div>
+
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+                <li class="param">
+                        <code class="param-name optional">[callback]</code>
+                        <span class="type">Function</span>
+                        <span class="flag optional" title="This parameter is optional.">optional</span>
+
+
+                    <div class="param-description">
+                        <p>the callback function once the operation is
+complete</p>
+
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                        <span class="type">Object</span>:
+                    <p>a Promise that resolves to the member's initials</p>
+
+            </div>
+        </div>
+
+
+</div>
+<div id="method_getLoginTypes" class="method item">
+    <h3 class="name"><code>getLoginTypes</code></h3>
+
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+                <li class="arg">
+                        <code class="optional">[callback]</code>
+                </li>
+            </ul><span class="paren">)</span>
+        </div>
+
+        <span class="returns-inline">
+            <span class="type">Object</span>
+        </span>
+
+
+
+
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/lib_obj_member.js.html#l319"><code>lib\obj\member.js:319</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        
+    </div>
+
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+                <li class="param">
+                        <code class="param-name optional">[callback]</code>
+                        <span class="type">Function</span>
+                        <span class="flag optional" title="This parameter is optional.">optional</span>
+
+
+                    <div class="param-description">
+                        <p>the callback function once the operation is
+complete</p>
+
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                        <span class="type">Object</span>:
+                    <p>a Promise that resolves to the member's login types</p>
+
+            </div>
+        </div>
+
+
+</div>
+<div id="method_getMemberType" class="method item">
+    <h3 class="name"><code>getMemberType</code></h3>
+
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+                <li class="arg">
+                        <code class="optional">[callback]</code>
+                </li>
+            </ul><span class="paren">)</span>
+        </div>
+
+        <span class="returns-inline">
+            <span class="type">Object</span>
+        </span>
+
+
+
+
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/lib_obj_member.js.html#l333"><code>lib\obj\member.js:333</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        
+    </div>
+
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+                <li class="param">
+                        <code class="param-name optional">[callback]</code>
+                        <span class="type">Function</span>
+                        <span class="flag optional" title="This parameter is optional.">optional</span>
+
+
+                    <div class="param-description">
+                        <p>the callback function once the operation is
+complete</p>
+
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                        <span class="type">Object</span>:
+                    <p>a Promise that resolves to member's type</p>
+
+            </div>
+        </div>
+
+
+</div>
+<div id="method_getNotifications" class="method item">
+    <h3 class="name"><code>getNotifications</code></h3>
+
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+                <li class="arg">
+                        <code class="optional">[callback]</code>
+                </li>
+            </ul><span class="paren">)</span>
+        </div>
+
+        <span class="returns-inline">
+            <span class="type">Object</span>
+        </span>
+
+
+
+
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/lib_obj_member.js.html#l347"><code>lib\obj\member.js:347</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        
+    </div>
+
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+                <li class="param">
+                        <code class="param-name optional">[callback]</code>
+                        <span class="type">Function</span>
+                        <span class="flag optional" title="This parameter is optional.">optional</span>
+
+
+                    <div class="param-description">
+                        <p>the callback function once the operation is
+complete</p>
+
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                        <span class="type">Object</span>:
+                    <p>a Promise that resolves to member's notifications. This
+is an array of notification objects.</p>
+
+            </div>
+        </div>
+
+
+</div>
+<div id="method_getOneTimeMessagesDismissed" class="method item">
+    <h3 class="name"><code>getOneTimeMessagesDismissed</code></h3>
+
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+                <li class="arg">
+                        <code class="optional">[callback]</code>
+                </li>
+            </ul><span class="paren">)</span>
+        </div>
+
+        <span class="returns-inline">
+            <span class="type">Object</span>
+        </span>
+
+
+
+
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/lib_obj_member.js.html#l362"><code>lib\obj\member.js:362</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        
+    </div>
+
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+                <li class="param">
+                        <code class="param-name optional">[callback]</code>
+                        <span class="type">Function</span>
+                        <span class="flag optional" title="This parameter is optional.">optional</span>
+
+
+                    <div class="param-description">
+                        <p>the callback function once the operation is
+complete</p>
+
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                        <span class="type">Object</span>:
+                    <p>a Promise that resolves to the types of messages that
+are dismissed for the member</p>
+
+            </div>
+        </div>
+
+
+</div>
+<div id="method_getOrganizations" class="method item">
+    <h3 class="name"><code>getOrganizations</code></h3>
+
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+                <li class="arg">
+                        <code class="optional">[callback]</code>
+                </li>
+            </ul><span class="paren">)</span>
+        </div>
+
+        <span class="returns-inline">
+            <span class="type">Object</span>
+        </span>
+
+
+
+
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/lib_obj_member.js.html#l377"><code>lib\obj\member.js:377</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        
+    </div>
+
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+                <li class="param">
+                        <code class="param-name optional">[callback]</code>
+                        <span class="type">Function</span>
+                        <span class="flag optional" title="This parameter is optional.">optional</span>
+
+
+                    <div class="param-description">
+                        <p>the callback function once the operation is
+complete</p>
+
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                        <span class="type">Object</span>:
+                    <p>a Promise that resolves to the organizations that the
+member belongs to. This is an array of organization objects.</p>
+
+            </div>
+        </div>
+
+
+</div>
+<div id="method_getOrganizationsInvited" class="method item">
+    <h3 class="name"><code>getOrganizationsInvited</code></h3>
+
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+                <li class="arg">
+                        <code class="optional">[callback]</code>
+                </li>
+            </ul><span class="paren">)</span>
+        </div>
+
+        <span class="returns-inline">
+            <span class="type">Object</span>
+        </span>
+
+
+
+
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/lib_obj_member.js.html#l392"><code>lib\obj\member.js:392</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        
+    </div>
+
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+                <li class="param">
+                        <code class="param-name optional">[callback]</code>
+                        <span class="type">Function</span>
+                        <span class="flag optional" title="This parameter is optional.">optional</span>
+
+
+                    <div class="param-description">
+                        <p>the callback function once the operation is
+complete</p>
+
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                        <span class="type">Object</span>:
+                    <p>a Promise that resolves to the organizations that the
+member is invited to. This is an array of organization objects.</p>
+
+            </div>
+        </div>
+
+
+</div>
+<div id="method_getPinnedBoards" class="method item">
+    <h3 class="name"><code>getPinnedBoards</code></h3>
+
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+                <li class="arg">
+                        <code class="optional">[callback]</code>
+                </li>
+            </ul><span class="paren">)</span>
+        </div>
+
+        <span class="returns-inline">
+            <span class="type">Object</span>
+        </span>
+
+
+
+
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/lib_obj_member.js.html#l290"><code>lib\obj\member.js:290</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        
+    </div>
+
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+                <li class="param">
+                        <code class="param-name optional">[callback]</code>
+                        <span class="type">Function</span>
+                        <span class="flag optional" title="This parameter is optional.">optional</span>
+
+
+                    <div class="param-description">
+                        <p>the callback function once the operation is
+complete</p>
+
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                        <span class="type">Object</span>:
+                    <p>a Promise that resolves to the id's of the boards that
+the member has pinned.</p>
+
+            </div>
+        </div>
+
+
+</div>
+<div id="method_getPreferences" class="method item">
+    <h3 class="name"><code>getPreferences</code></h3>
+
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+                <li class="arg">
+                        <code class="optional">[callback]</code>
+                </li>
+            </ul><span class="paren">)</span>
+        </div>
+
+        <span class="returns-inline">
+            <span class="type">Object</span>
+        </span>
+
+
+
+
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/lib_obj_member.js.html#l407"><code>lib\obj\member.js:407</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        
+    </div>
+
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+                <li class="param">
+                        <code class="param-name optional">[callback]</code>
+                        <span class="type">Function</span>
+                        <span class="flag optional" title="This parameter is optional.">optional</span>
+
+
+                    <div class="param-description">
+                        <p>the callback function once the operation is
+complete</p>
+
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                        <span class="type">Object</span>:
+                    <p>a Promise that resolves to the member's preferences</p>
+
+            </div>
+        </div>
+
+
+</div>
+<div id="method_getPremiumFeatures" class="method item">
+    <h3 class="name"><code>getPremiumFeatures</code></h3>
+
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+                <li class="arg">
+                        <code class="optional">[callback]</code>
+                </li>
+            </ul><span class="paren">)</span>
+        </div>
+
+        <span class="returns-inline">
+            <span class="type">Object</span>
+        </span>
+
+
+
+
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/lib_obj_member.js.html#l421"><code>lib\obj\member.js:421</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        
+    </div>
+
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+                <li class="param">
+                        <code class="param-name optional">[callback]</code>
+                        <span class="type">Function</span>
+                        <span class="flag optional" title="This parameter is optional.">optional</span>
+
+
+                    <div class="param-description">
+                        <p>the callback function once the operation is
+complete</p>
+
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                        <span class="type">Object</span>:
+                    <p>a Promise that resolves to the premium features that the
+member has available</p>
+
+            </div>
+        </div>
+
+
+</div>
+<div id="method_getProducts" class="method item">
+    <h3 class="name"><code>getProducts</code></h3>
+
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+                <li class="arg">
+                        <code class="optional">[callback]</code>
+                </li>
+            </ul><span class="paren">)</span>
+        </div>
+
+        <span class="returns-inline">
+            <span class="type">Object</span>
+        </span>
+
+
+
+
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/lib_obj_member.js.html#l436"><code>lib\obj\member.js:436</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        
+    </div>
+
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+                <li class="param">
+                        <code class="param-name optional">[callback]</code>
+                        <span class="type">Function</span>
+                        <span class="flag optional" title="This parameter is optional.">optional</span>
+
+
+                    <div class="param-description">
+                        <p>the callback function once the operation is
+complete</p>
+
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                        <span class="type">Object</span>:
+                    <p>a Promise that resolves to the member's products</p>
+
+            </div>
+        </div>
+
+
+</div>
+<div id="method_getSavedSearches" class="method item">
+    <h3 class="name"><code>getSavedSearches</code></h3>
+
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+                <li class="arg">
+                        <code class="optional">[callback]</code>
+                </li>
+            </ul><span class="paren">)</span>
+        </div>
+
+        <span class="returns-inline">
+            <span class="type">Object</span>
+        </span>
+
+
+
+
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/lib_obj_member.js.html#l451"><code>lib\obj\member.js:451</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        
+    </div>
+
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+                <li class="param">
+                        <code class="param-name optional">[callback]</code>
+                        <span class="type">Function</span>
+                        <span class="flag optional" title="This parameter is optional.">optional</span>
+
+
+                    <div class="param-description">
+                        <p>the callback function once the operation is
+complete</p>
+
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                        <span class="type">Object</span>:
+                    <p>a Promise that resolves to the member's saved searches</p>
+
+            </div>
+        </div>
+
+
+</div>
+<div id="method_getStatus" class="method item">
+    <h3 class="name"><code>getStatus</code></h3>
+
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+                <li class="arg">
+                        <code class="optional">[callback]</code>
+                </li>
+            </ul><span class="paren">)</span>
+        </div>
+
+        <span class="returns-inline">
+            <span class="type">Object</span>
+        </span>
+
+
+
+
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/lib_obj_member.js.html#l465"><code>lib\obj\member.js:465</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        
+    </div>
+
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+                <li class="param">
+                        <code class="param-name optional">[callback]</code>
+                        <span class="type">Function</span>
+                        <span class="flag optional" title="This parameter is optional.">optional</span>
+
+
+                    <div class="param-description">
+                        <p>the callback function once the operation is
+complete</p>
+
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                        <span class="type">Object</span>:
+                    <p>a Promise that resolves to the member's activity status</p>
+
+            </div>
+        </div>
+
+
+</div>
+<div id="method_getSubTypeProperty" class="method item private inherited">
+    <h3 class="name"><code>getSubTypeProperty</code></h3>
+
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+                <li class="arg">
+                        <code>prop</code>
+                </li>
+                <li class="arg">
+                        <code>propData</code>
+                </li>
+            </ul><span class="paren">)</span>
+        </div>
+
+        <span class="returns-inline">
+            <span class="type">Object</span>
+        </span>
+
+
+        <span class="flag private">private</span>
+
+
+
+
+
+    <div class="meta">
+                <p>Inherited from
+                <a href="../classes/TrelloObj.html#method_getSubTypeProperty">trelloObj</a>:
+        <a href="../files/lib_trelloObj.js.html#l106"><code>lib\trelloObj.js:106</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        Retrieves a Trello property on this object that is itselfg a Trello object.
+    </div>
+
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+                <li class="param">
+                        <code class="param-name">prop</code>
+                        <span class="type">String</span>
+
+
+                    <div class="param-description">
+                        the property to retrieve
+                    </div>
+
+                </li>
+                <li class="param">
+                        <code class="param-name">propData</code>
+                        <span class="type">Object</span>
+
+
+                    <div class="param-description">
+                        the property mappings for this Trello object
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                        <span class="type">Object</span>:
+                    a Promise that resolves to either a trelloObj object or
+an array of trelloObj objects
+            </div>
+        </div>
+
+
+</div>
+<div id="method_getTokens" class="method item">
+    <h3 class="name"><code>getTokens</code></h3>
+
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+                <li class="arg">
+                        <code class="optional">[callback]</code>
+                </li>
+            </ul><span class="paren">)</span>
+        </div>
+
+        <span class="returns-inline">
+            <span class="type">Object</span>
+        </span>
+
+
+
+
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/lib_obj_member.js.html#l479"><code>lib\obj\member.js:479</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        
+    </div>
+
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+                <li class="param">
+                        <code class="param-name optional">[callback]</code>
+                        <span class="type">Function</span>
+                        <span class="flag optional" title="This parameter is optional.">optional</span>
+
+
+                    <div class="param-description">
+                        <p>the callback function once the operation is
+complete</p>
+
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                        <span class="type">Object</span>:
+                    <p>a Promise that resolves to the member's active tokens</p>
+
+            </div>
+        </div>
+
+
+</div>
+<div id="method_getTrophies" class="method item">
+    <h3 class="name"><code>getTrophies</code></h3>
+
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+                <li class="arg">
+                        <code class="optional">[callback]</code>
+                </li>
+            </ul><span class="paren">)</span>
+        </div>
+
+        <span class="returns-inline">
+            <span class="type">Object</span>
+        </span>
+
+
+
+
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/lib_obj_member.js.html#l493"><code>lib\obj\member.js:493</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        
+    </div>
+
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+                <li class="param">
+                        <code class="param-name optional">[callback]</code>
+                        <span class="type">Function</span>
+                        <span class="flag optional" title="This parameter is optional.">optional</span>
+
+
+                    <div class="param-description">
+                        <p>the callback function once the operation is
+complete</p>
+
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                        <span class="type">Object</span>:
+                    <p>a Promise that resolves to member's trophies</p>
+
+            </div>
+        </div>
+
+
+</div>
+<div id="method_getUnretrievedProperty" class="method item private inherited">
+    <h3 class="name"><code>getUnretrievedProperty</code></h3>
+
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+                <li class="arg">
+                        <code>prop</code>
+                </li>
+                <li class="arg">
+                        <code class="optional">[skipValidation=false]</code>
+                </li>
+            </ul><span class="paren">)</span>
+        </div>
+
+        <span class="returns-inline">
+            <span class="type"></span>
+        </span>
+
+
+        <span class="flag private">private</span>
+
+
+
+
+
+    <div class="meta">
+                <p>Inherited from
+                <a href="../classes/TrelloObj.html#method_getUnretrievedProperty">trelloObj</a>:
+        <a href="../files/lib_trelloObj.js.html#l151"><code>lib\trelloObj.js:151</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        Retrieves a property from the network.
+    </div>
+
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+                <li class="param">
+                        <code class="param-name">prop</code>
+                        <span class="type">String</span>
+
+
+                    <div class="param-description">
+                        the property to retrieve
+                    </div>
+
+                </li>
+                <li class="param">
+                        <code class="param-name optional">[skipValidation=false]</code>
+                        <span class="type">Boolean</span>
+                        <span class="flag optional" title="This parameter is optional.">optional</span>
+
+
+                    <div class="param-description">
+                        if true, skips local
+validation of the property path
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                    a Promise that resolves to the retrieved property.
+            </div>
+        </div>
+
+
+</div>
+<div id="method_getUploadedAvatarHash" class="method item">
+    <h3 class="name"><code>getUploadedAvatarHash</code></h3>
+
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+                <li class="arg">
+                        <code class="optional">[callback]</code>
+                </li>
+            </ul><span class="paren">)</span>
+        </div>
+
+        <span class="returns-inline">
+            <span class="type">Object</span>
+        </span>
+
+
+
+
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/lib_obj_member.js.html#l507"><code>lib\obj\member.js:507</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        
+    </div>
+
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+                <li class="param">
+                        <code class="param-name optional">[callback]</code>
+                        <span class="type">Function</span>
+                        <span class="flag optional" title="This parameter is optional.">optional</span>
+
+
+                    <div class="param-description">
+                        <p>the callback function once the operation is
+complete</p>
+
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                        <span class="type">Object</span>:
+                    <p>a Promise that resolves to the member's uploaded avatar
+hash</p>
+
+            </div>
+        </div>
+
+
+</div>
+<div id="method_getUrl" class="method item">
+    <h3 class="name"><code>getUrl</code></h3>
+
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+                <li class="arg">
+                        <code class="optional">[callback]</code>
+                </li>
+            </ul><span class="paren">)</span>
+        </div>
+
+        <span class="returns-inline">
+            <span class="type">Object</span>
+        </span>
+
+
+
+
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/lib_obj_member.js.html#l522"><code>lib\obj\member.js:522</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        
+    </div>
+
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+                <li class="param">
+                        <code class="param-name optional">[callback]</code>
+                        <span class="type">Function</span>
+                        <span class="flag optional" title="This parameter is optional.">optional</span>
+
+
+                    <div class="param-description">
+                        <p>the callback function once the operation is
+complete</p>
+
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                        <span class="type">Object</span>:
+                    <p>a Promise that resolves to the url of the member's
+profile page</p>
+
+            </div>
+        </div>
+
+
+</div>
+<div id="method_getUsername" class="method item">
+    <h3 class="name"><code>getUsername</code></h3>
+
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+                <li class="arg">
+                        <code class="optional">[callback]</code>
+                </li>
+            </ul><span class="paren">)</span>
+        </div>
+
+        <span class="returns-inline">
+            <span class="type">Object</span>
+        </span>
+
+
+
+
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/lib_obj_member.js.html#l537"><code>lib\obj\member.js:537</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        
+    </div>
+
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+                <li class="param">
+                        <code class="param-name optional">[callback]</code>
+                        <span class="type">Function</span>
+                        <span class="flag optional" title="This parameter is optional.">optional</span>
+
+
+                    <div class="param-description">
+                        <p>the callback function once the operation is
+complete</p>
+
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                        <span class="type">Object</span>:
+                    <p>a Promise that resolves to the member's username</p>
+
+            </div>
+        </div>
+
+
+</div>
+<div id="method_removeBoardStar" class="method item">
+    <h3 class="name"><code>removeBoardStar</code></h3>
+
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+                <li class="arg">
+                        <code>params</code>
+                </li>
+            </ul><span class="paren">)</span>
+        </div>
+
+        <span class="returns-inline">
+            <span class="type">Object</span>
+        </span>
+
+
+
+
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/lib_obj_member.js.html#l1007"><code>lib\obj\member.js:1007</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        
+    </div>
+
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+                <li class="param">
+                        <code class="param-name">params</code>
+                        <span class="type">Object</span>
+
+
+                    <div class="param-description">
+                        <p>the method parameters object</p>
+
+                    </div>
+
+                        <ul class="params-list">
+                            <li class="param">
+                                    <code class="param-name">boardStarId</code>
+                                    <span class="type">String</span>
+
+                                <div class="param-description">
+                                    <p>the board star to remove</p>
+
+                                </div>
+
+                            </li>
+                            <li class="param">
+                                    <code class="param-name optional">[callback]</code>
+                                    <span class="type">Function</span>
+                                    <span class="flag optional" title="This parameter is optional.">optional</span>
+
+                                <div class="param-description">
+                                    <p>the callback function once the
+operation is complete</p>
+
+                                </div>
+
+                            </li>
+                        </ul>
+                </li>
+            </ul>
+        </div>
+
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                        <span class="type">Object</span>:
+                    <p>a Promise that resolves to a truthy value if successful</p>
+
+            </div>
+        </div>
+
+
+</div>
+<div id="method_removeCustomBoardBackground" class="method item">
+    <h3 class="name"><code>removeCustomBoardBackground</code></h3>
+
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+                <li class="arg">
+                        <code>params</code>
+                </li>
+            </ul><span class="paren">)</span>
+        </div>
+
+        <span class="returns-inline">
+            <span class="type">Object</span>
+        </span>
+
+
+
+
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/lib_obj_member.js.html#l1025"><code>lib\obj\member.js:1025</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        
+    </div>
+
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+                <li class="param">
+                        <code class="param-name">params</code>
+                        <span class="type">Object</span>
+
+
+                    <div class="param-description">
+                        <p>the method parameters object</p>
+
+                    </div>
+
+                        <ul class="params-list">
+                            <li class="param">
+                                    <code class="param-name">boardBackgroundId</code>
+                                    <span class="type">String</span>
+
+                                <div class="param-description">
+                                    <p>the id of the custom board
+background to remove</p>
+
+                                </div>
+
+                            </li>
+                            <li class="param">
+                                    <code class="param-name optional">[callback]</code>
+                                    <span class="type">Function</span>
+                                    <span class="flag optional" title="This parameter is optional.">optional</span>
+
+                                <div class="param-description">
+                                    <p>the callback function once the
+operation is complete</p>
+
+                                </div>
+
+                            </li>
+                        </ul>
+                </li>
+            </ul>
+        </div>
+
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                        <span class="type">Object</span>:
+                    <p>a Promise that resolves to a truthy value if successful</p>
+
+            </div>
+        </div>
+
+
+</div>
+<div id="method_removeCustomSticker" class="method item">
+    <h3 class="name"><code>removeCustomSticker</code></h3>
+
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+                <li class="arg">
+                        <code>params</code>
+                </li>
+            </ul><span class="paren">)</span>
+        </div>
+
+        <span class="returns-inline">
+            <span class="type">Object</span>
+        </span>
+
+
+
+
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/lib_obj_member.js.html#l1044"><code>lib\obj\member.js:1044</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        
+    </div>
+
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+                <li class="param">
+                        <code class="param-name">params</code>
+                        <span class="type">Object</span>
+
+
+                    <div class="param-description">
+                        <p>the method parameters object</p>
+
+                    </div>
+
+                        <ul class="params-list">
+                            <li class="param">
+                                    <code class="param-name">customStickerId</code>
+                                    <span class="type">String</span>
+
+                                <div class="param-description">
+                                    <p>the id of the custom sticker to
+remove</p>
+
+                                </div>
+
+                            </li>
+                            <li class="param">
+                                    <code class="param-name optional">[callback]</code>
+                                    <span class="type">Function</span>
+                                    <span class="flag optional" title="This parameter is optional.">optional</span>
+
+                                <div class="param-description">
+                                    <p>the callback function once the
+operation is complete</p>
+
+                                </div>
+
+                            </li>
+                        </ul>
+                </li>
+            </ul>
+        </div>
+
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                        <span class="type">Object</span>:
+                    <p>a Promise that resolves to a truthy value if successful</p>
+
+            </div>
+        </div>
+
+
+</div>
+<div id="method_removeSavedSearch" class="method item">
+    <h3 class="name"><code>removeSavedSearch</code></h3>
+
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+                <li class="arg">
+                        <code>params</code>
+                </li>
+            </ul><span class="paren">)</span>
+        </div>
+
+        <span class="returns-inline">
+            <span class="type">Object</span>
+        </span>
+
+
+
+
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/lib_obj_member.js.html#l1063"><code>lib\obj\member.js:1063</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        
+    </div>
+
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+                <li class="param">
+                        <code class="param-name">params</code>
+                        <span class="type">Object</span>
+
+
+                    <div class="param-description">
+                        <p>the method parameters object</p>
+
+                    </div>
+
+                        <ul class="params-list">
+                            <li class="param">
+                                    <code class="param-name">savedSearchId</code>
+                                    <span class="type">String</span>
+
+                                <div class="param-description">
+                                    <p>the id of the saved search to remove</p>
+
+                                </div>
+
+                            </li>
+                            <li class="param">
+                                    <code class="param-name optional">[callback]</code>
+                                    <span class="type">Function</span>
+                                    <span class="flag optional" title="This parameter is optional.">optional</span>
+
+                                <div class="param-description">
+                                    <p>the callback function once the
+operation is complete</p>
+
+                                </div>
+
+                            </li>
+                        </ul>
+                </li>
+            </ul>
+        </div>
+
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                        <span class="type">Object</span>:
+                    <p>a Promise that resolves to a truthy value if successful</p>
+
+            </div>
+        </div>
+
+
+</div>
+<div id="method_set" class="method item inherited">
+    <h3 class="name"><code>set</code></h3>
+
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+                <li class="arg">
+                        <code>params</code>
+                </li>
+            </ul><span class="paren">)</span>
+        </div>
+
+        <span class="returns-inline">
+            <span class="type">Object</span>
+        </span>
+
+
+
+
+
+
+
+    <div class="meta">
+                <p>Inherited from
+                <a href="../classes/TrelloObj.html#method_set">trelloObj</a>:
+        <a href="../files/lib_trelloObj.js.html#l461"><code>lib\trelloObj.js:461</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        Sets the given property using the new values passed in. If a property name
+is not included, then the object itself is set using the new values.
+    </div>
+
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+                <li class="param">
+                        <code class="param-name">params</code>
+                        <span class="type">Object</span>
+
+
+                    <div class="param-description">
+                        the parameters object
+                    </div>
+
+                        <ul class="params-list">
+                            <li class="param">
+                                    <code class="param-name optional">[values={}]</code>
+                                    <span class="type">Object</span>
+                                    <span class="flag optional" title="This parameter is optional.">optional</span>
+
+                                <div class="param-description">
+                                    <p>the new values</p>
+
+                                </div>
+
+                            </li>
+                            <li class="param">
+                                    <code class="param-name">propName</code>
+                                    <span class="type">String</span>
+
+                                <div class="param-description">
+                                    <p>the name of the property you are setting.
+If propName isn't included, then params.values is set on the object itself.</p>
+
+                                </div>
+
+                            </li>
+                            <li class="param">
+                                    <code class="param-name optional">[preferNonIdempotence=false]</code>
+                                    <span class="type">Boolean</span>
+                                    <span class="flag optional" title="This parameter is optional.">optional</span>
+
+                                <div class="param-description">
+                                    <p>only relevant when
+the given property name can be modified both in an idempotent and a
+non-idempotent way. In that case, we default to the idempotent operation.
+As an example, if you set the labels on a card in an idempotent way, then
+it will replace all of the existing labels with the labels that were
+passed in. If you do it in a non-idempotent way, then the passed in labels
+will be added to the card, but existing labels will not be modified.</p>
+
+                                </div>
+
+                            </li>
+                            <li class="param">
+                                    <code class="param-name optional">[skipValidation=false]</code>
+                                    <span class="type">Boolean</span>
+                                    <span class="flag optional" title="This parameter is optional.">optional</span>
+
+                                <div class="param-description">
+                                    <p>if true, skips local
+validation of the property path</p>
+
+                                </div>
+
+                            </li>
+                            <li class="param">
+                                    <code class="param-name optional">[callback]</code>
+                                    <span class="type">Function</span>
+                                    <span class="flag optional" title="This parameter is optional.">optional</span>
+
+                                <div class="param-description">
+                                    <p>the callback function once the
+operation is complete. This is optional, as a Promise is returned.</p>
+
+                                </div>
+
+                            </li>
+                        </ul>
+                </li>
+            </ul>
+        </div>
+
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                        <span class="type">Object</span>:
+                    a Promise that resolves to a truthy value. The exact
+nature of this value is currently undefined and may change in the future.
+            </div>
+        </div>
+
+
+</div>
+<div id="method_setAvatarSource" class="method item">
+    <h3 class="name"><code>setAvatarSource</code></h3>
+
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+                <li class="arg">
+                        <code>params</code>
+                </li>
+            </ul><span class="paren">)</span>
+        </div>
+
+        <span class="returns-inline">
+            <span class="type">Object</span>
+        </span>
+
+
+
+
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/lib_obj_member.js.html#l555"><code>lib\obj\member.js:555</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        
+    </div>
+
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+                <li class="param">
+                        <code class="param-name">params</code>
+                        <span class="type">Object</span>
+
+
+                    <div class="param-description">
+                        <p>the method parameters object</p>
+
+                    </div>
+
+                        <ul class="params-list">
+                            <li class="param">
+                                    <code class="param-name">source</code>
+                                    <span class="type">String</span>
+
+                                <div class="param-description">
+                                    <p>the source of the avatar. Valid values are
+'gravatar', 'upload', or 'none'.</p>
+
+                                </div>
+
+                            </li>
+                            <li class="param">
+                                    <code class="param-name optional">[callback]</code>
+                                    <span class="type">Function</span>
+                                    <span class="flag optional" title="This parameter is optional.">optional</span>
+
+                                <div class="param-description">
+                                    <p>the callback function once the
+operation is complete</p>
+
+                                </div>
+
+                            </li>
+                        </ul>
+                </li>
+            </ul>
+        </div>
+
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                        <span class="type">Object</span>:
+                    <p>a Promise that resolves to a truthy value if successful</p>
+
+            </div>
+        </div>
+
+
+</div>
+<div id="method_setBio" class="method item">
+    <h3 class="name"><code>setBio</code></h3>
+
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+                <li class="arg">
+                        <code>params</code>
+                </li>
+            </ul><span class="paren">)</span>
+        </div>
+
+        <span class="returns-inline">
+            <span class="type">Object</span>
+        </span>
+
+
+
+
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/lib_obj_member.js.html#l576"><code>lib\obj\member.js:576</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        
+    </div>
+
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+                <li class="param">
+                        <code class="param-name">params</code>
+                        <span class="type">Object</span>
+
+
+                    <div class="param-description">
+                        <p>the method parameters object</p>
+
+                    </div>
+
+                        <ul class="params-list">
+                            <li class="param">
+                                    <code class="param-name">bio</code>
+                                    <span class="type">String</span>
+
+                                <div class="param-description">
+                                    <p>the member's bio</p>
+
+                                </div>
+
+                            </li>
+                            <li class="param">
+                                    <code class="param-name optional">[callback]</code>
+                                    <span class="type">Function</span>
+                                    <span class="flag optional" title="This parameter is optional.">optional</span>
+
+                                <div class="param-description">
+                                    <p>the callback function once the
+operation is complete</p>
+
+                                </div>
+
+                            </li>
+                        </ul>
+                </li>
+            </ul>
+        </div>
+
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                        <span class="type">Object</span>:
+                    <p>a Promise that resolves to a truthy value if successful</p>
+
+            </div>
+        </div>
+
+
+</div>
+<div id="method_setEmailSummariesHourly" class="method item">
+    <h3 class="name"><code>setEmailSummariesHourly</code></h3>
+
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+                <li class="arg">
+                        <code class="optional">[callback]</code>
+                </li>
+            </ul><span class="paren">)</span>
+        </div>
+
+        <span class="returns-inline">
+            <span class="type">Object</span>
+        </span>
+
+
+
+
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/lib_obj_member.js.html#l737"><code>lib\obj\member.js:737</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        <p>Sets the member's preference for email summaries to hourly.</p>
+
+    </div>
+
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+                <li class="param">
+                        <code class="param-name optional">[callback]</code>
+                        <span class="type">Function</span>
+                        <span class="flag optional" title="This parameter is optional.">optional</span>
+
+
+                    <div class="param-description">
+                        <p>the callback function once the
+operation is complete</p>
+
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                        <span class="type">Object</span>:
+                    <p>a Promise that resolves to a truthy value if successful</p>
+
+            </div>
+        </div>
+
+
+</div>
+<div id="method_setEmailSummariesInstantly" class="method item">
+    <h3 class="name"><code>setEmailSummariesInstantly</code></h3>
+
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+                <li class="arg">
+                        <code class="optional">[callback]</code>
+                </li>
+            </ul><span class="paren">)</span>
+        </div>
+
+        <span class="returns-inline">
+            <span class="type">Object</span>
+        </span>
+
+
+
+
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/lib_obj_member.js.html#l756"><code>lib\obj\member.js:756</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        <p>Sets the member's preference for email summaries to immediately.</p>
+
+    </div>
+
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+                <li class="param">
+                        <code class="param-name optional">[callback]</code>
+                        <span class="type">Function</span>
+                        <span class="flag optional" title="This parameter is optional.">optional</span>
+
+
+                    <div class="param-description">
+                        <p>the callback function once the
+operation is complete</p>
+
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                        <span class="type">Object</span>:
+                    <p>a Promise that resolves to a truthy value if successful</p>
+
+            </div>
+        </div>
+
+
+</div>
+<div id="method_setEmailSummariesNever" class="method item">
+    <h3 class="name"><code>setEmailSummariesNever</code></h3>
+
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+                <li class="arg">
+                        <code class="optional">[callback]</code>
+                </li>
+            </ul><span class="paren">)</span>
+        </div>
+
+        <span class="returns-inline">
+            <span class="type">Object</span>
+        </span>
+
+
+
+
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/lib_obj_member.js.html#l775"><code>lib\obj\member.js:775</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        <p>Turns off email summaries for member.</p>
+
+    </div>
+
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+                <li class="param">
+                        <code class="param-name optional">[callback]</code>
+                        <span class="type">Function</span>
+                        <span class="flag optional" title="This parameter is optional.">optional</span>
+
+
+                    <div class="param-description">
+                        <p>the callback function once the
+operation is complete</p>
+
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                        <span class="type">Object</span>:
+                    <p>a Promise that resolves to a truthy value if successful</p>
+
+            </div>
+        </div>
+
+
+</div>
+<div id="method_setFullName" class="method item">
+    <h3 class="name"><code>setFullName</code></h3>
+
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+                <li class="arg">
+                        <code>params</code>
+                </li>
+            </ul><span class="paren">)</span>
+        </div>
+
+        <span class="returns-inline">
+            <span class="type">Object</span>
+        </span>
+
+
+
+
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/lib_obj_member.js.html#l642"><code>lib\obj\member.js:642</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        
+    </div>
+
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+                <li class="param">
+                        <code class="param-name">params</code>
+                        <span class="type">Object</span>
+
+
+                    <div class="param-description">
+                        <p>the method parameters object</p>
+
+                    </div>
+
+                        <ul class="params-list">
+                            <li class="param">
+                                    <code class="param-name">fullName</code>
+                                    <span class="type">String</span>
+
+                                <div class="param-description">
+                                    <p>the member's full name</p>
+
+                                </div>
+
+                            </li>
+                            <li class="param">
+                                    <code class="param-name optional">[callback]</code>
+                                    <span class="type">Function</span>
+                                    <span class="flag optional" title="This parameter is optional.">optional</span>
+
+                                <div class="param-description">
+                                    <p>the callback function once the
+operation is complete</p>
+
+                                </div>
+
+                            </li>
+                        </ul>
+                </li>
+            </ul>
+        </div>
+
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                        <span class="type">Object</span>:
+                    <p>a Promise that resolves to a truthy value if successful</p>
+
+            </div>
+        </div>
+
+
+</div>
+<div id="method_setInitials" class="method item">
+    <h3 class="name"><code>setInitials</code></h3>
+
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+                <li class="arg">
+                        <code>params</code>
+                </li>
+            </ul><span class="paren">)</span>
+        </div>
+
+        <span class="returns-inline">
+            <span class="type">Object</span>
+        </span>
+
+
+
+
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/lib_obj_member.js.html#l662"><code>lib\obj\member.js:662</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        
+    </div>
+
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+                <li class="param">
+                        <code class="param-name">params</code>
+                        <span class="type">Object</span>
+
+
+                    <div class="param-description">
+                        <p>the method parameters object</p>
+
+                    </div>
+
+                        <ul class="params-list">
+                            <li class="param">
+                                    <code class="param-name">initials</code>
+                                    <span class="type">String</span>
+
+                                <div class="param-description">
+                                    <p>the member's initials. This must be a
+string of length 1-4 that doesn't begin or end with a space.</p>
+
+                                </div>
+
+                            </li>
+                            <li class="param">
+                                    <code class="param-name optional">[callback]</code>
+                                    <span class="type">Function</span>
+                                    <span class="flag optional" title="This parameter is optional.">optional</span>
+
+                                <div class="param-description">
+                                    <p>the callback function once the
+operation is complete</p>
+
+                                </div>
+
+                            </li>
+                        </ul>
+                </li>
+            </ul>
+        </div>
+
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                        <span class="type">Object</span>:
+                    <p>a Promise that resolves to a truthy value if successful</p>
+
+            </div>
+        </div>
+
+
+</div>
+<div id="method_setLocale" class="method item">
+    <h3 class="name"><code>setLocale</code></h3>
+
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+                <li class="arg">
+                        <code>params</code>
+                </li>
+            </ul><span class="paren">)</span>
+        </div>
+
+        <span class="returns-inline">
+            <span class="type">Object</span>
+        </span>
+
+
+
+
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/lib_obj_member.js.html#l717"><code>lib\obj\member.js:717</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        
+    </div>
+
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+                <li class="param">
+                        <code class="param-name">params</code>
+                        <span class="type">Object</span>
+
+
+                    <div class="param-description">
+                        <p>the method parameters object</p>
+
+                    </div>
+
+                        <ul class="params-list">
+                            <li class="param">
+                                    <code class="param-name">locale</code>
+                                    <span class="type">String</span>
+
+                                <div class="param-description">
+                                    <p>the member's locale</p>
+
+                                </div>
+
+                            </li>
+                            <li class="param">
+                                    <code class="param-name optional">[callback]</code>
+                                    <span class="type">Function</span>
+                                    <span class="flag optional" title="This parameter is optional.">optional</span>
+
+                                <div class="param-description">
+                                    <p>the callback function once the
+operation is complete</p>
+
+                                </div>
+
+                            </li>
+                        </ul>
+                </li>
+            </ul>
+        </div>
+
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                        <span class="type">Object</span>:
+                    <p>a Promise that resolves to a truthy value if successful</p>
+
+            </div>
+        </div>
+
+
+</div>
+<div id="method_setOneTimeMessagesDismissed" class="method item">
+    <h3 class="name"><code>setOneTimeMessagesDismissed</code></h3>
+
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+                <li class="arg">
+                        <code>params</code>
+                </li>
+            </ul><span class="paren">)</span>
+        </div>
+
+        <span class="returns-inline">
+            <span class="type">Object</span>
+        </span>
+
+
+
+
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/lib_obj_member.js.html#l957"><code>lib\obj\member.js:957</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        
+    </div>
+
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+                <li class="param">
+                        <code class="param-name">params</code>
+                        <span class="type">Object</span>
+
+
+                    <div class="param-description">
+                        <p>the method parameters object</p>
+
+                    </div>
+
+                        <ul class="params-list">
+                            <li class="param">
+                                    <code class="param-name">messageType</code>
+                                    <span class="type">String</span>
+
+                                <div class="param-description">
+                                    <p>the type of message to dismiss</p>
+
+                                </div>
+
+                            </li>
+                            <li class="param">
+                                    <code class="param-name optional">[callback]</code>
+                                    <span class="type">Function</span>
+                                    <span class="flag optional" title="This parameter is optional.">optional</span>
+
+                                <div class="param-description">
+                                    <p>the callback function once the
+operation is complete</p>
+
+                                </div>
+
+                            </li>
+                        </ul>
+                </li>
+            </ul>
+        </div>
+
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                        <span class="type">Object</span>:
+                    <p>a Promise that resolves to a truthy value if successful</p>
+
+            </div>
+        </div>
+
+
+</div>
+<div id="method_setProperty" class="method item private inherited">
+    <h3 class="name"><code>setProperty</code></h3>
+
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+                <li class="arg">
+                        <code>values</code>
+                </li>
+                <li class="arg">
+                        <code>path</code>
+                </li>
+                <li class="arg">
+                        <code class="optional">[params.preferNonIdempotence=false]</code>
+                </li>
+                <li class="arg">
+                        <code class="optional">[skipValidation=false]</code>
+                </li>
+            </ul><span class="paren">)</span>
+        </div>
+
+        <span class="returns-inline">
+            <span class="type">Object</span>
+        </span>
+
+
+        <span class="flag private">private</span>
+
+
+
+
+
+    <div class="meta">
+                <p>Inherited from
+                <a href="../classes/TrelloObj.html#method_setProperty">trelloObj</a>:
+        <a href="../files/lib_trelloObj.js.html#l267"><code>lib\trelloObj.js:267</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        Sets values on a property of the Trello object.
+    </div>
+
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+                <li class="param">
+                        <code class="param-name">values</code>
+                        <span class="type">Object</span>
+
+
+                    <div class="param-description">
+                        the new values
+                    </div>
+
+                </li>
+                <li class="param">
+                        <code class="param-name">path</code>
+                        <span class="type">String</span>
+
+
+                    <div class="param-description">
+                        the path to the property. This is a series
+of property names and identifiers split by forward slashes (/). If
+skipValidation is false, this path must match a mapping in the Trello
+object property maps, otherwise this method will resolve to an error.
+                    </div>
+
+                </li>
+                <li class="param">
+                        <code class="param-name optional">[params.preferNonIdempotence=false]</code>
+                        <span class="type">Boolean</span>
+                        <span class="flag optional" title="This parameter is optional.">optional</span>
+
+
+                    <div class="param-description">
+                        only relevant if
+the property can be set in both an idempotent and non-idempotent manner.
+If this value is set to true, then the non-idempotent operation will be
+used. Otherwise, the operation will be idempotent.
+                    </div>
+
+                </li>
+                <li class="param">
+                        <code class="param-name optional">[skipValidation=false]</code>
+                        <span class="type">Boolean</span>
+                        <span class="flag optional" title="This parameter is optional.">optional</span>
+
+
+                    <div class="param-description">
+                        if true, skips local
+validation of the property path
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                        <span class="type">Object</span>:
+                    a Promise that resolves to a truthy value
+            </div>
+        </div>
+
+
+</div>
+<div id="method_setPropertySkipValidation" class="method item private inherited">
+    <h3 class="name"><code>setPropertySkipValidation</code></h3>
+
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+                <li class="arg">
+                        <code>values</code>
+                </li>
+                <li class="arg">
+                        <code>path</code>
+                </li>
+                <li class="arg">
+                        <code class="optional">[params.preferNonIdempotence=false]</code>
+                </li>
+            </ul><span class="paren">)</span>
+        </div>
+
+        <span class="returns-inline">
+            <span class="type">Object</span>
+        </span>
+
+
+        <span class="flag private">private</span>
+
+
+
+
+
+    <div class="meta">
+                <p>Inherited from
+                <a href="../classes/TrelloObj.html#method_setPropertySkipValidation">trelloObj</a>:
+        <a href="../files/lib_trelloObj.js.html#l238"><code>lib\trelloObj.js:238</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        Sets values on a property of the Trello object. Skips local path
+validation.
+    </div>
+
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+                <li class="param">
+                        <code class="param-name">values</code>
+                        <span class="type">Object</span>
+
+
+                    <div class="param-description">
+                        the new values
+                    </div>
+
+                </li>
+                <li class="param">
+                        <code class="param-name">path</code>
+                        <span class="type">String</span>
+
+
+                    <div class="param-description">
+                        the path to the property
+                    </div>
+
+                </li>
+                <li class="param">
+                        <code class="param-name optional">[params.preferNonIdempotence=false]</code>
+                        <span class="type">Boolean</span>
+                        <span class="flag optional" title="This parameter is optional.">optional</span>
+
+
+                    <div class="param-description">
+                        only relevant if
+the property can be set in both an idempotent and non-idempotent manner.
+If this value is set to true, then the non-idempotent operation will be
+used. Otherwise, the operation will be idempotent.
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                        <span class="type">Object</span>:
+                    a Promise that resolves to a truthy value
+            </div>
+        </div>
+
+
+</div>
+<div id="method_setUsername" class="method item">
+    <h3 class="name"><code>setUsername</code></h3>
+
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+                <li class="arg">
+                        <code>params</code>
+                </li>
+            </ul><span class="paren">)</span>
+        </div>
+
+        <span class="returns-inline">
+            <span class="type">Object</span>
+        </span>
+
+
+
+
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/lib_obj_member.js.html#l818"><code>lib\obj\member.js:818</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        
+    </div>
+
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+                <li class="param">
+                        <code class="param-name">params</code>
+                        <span class="type">Object</span>
+
+
+                    <div class="param-description">
+                        <p>the method parameters object</p>
+
+                    </div>
+
+                        <ul class="params-list">
+                            <li class="param">
+                                    <code class="param-name">username</code>
+                                    <span class="type">String</span>
+
+                                <div class="param-description">
+                                    <p>the member's username. Must have a length
+of at least three characters. Only lowercase letters, underscores, and
+numbers are allowed. Must be unique.</p>
+
+                                </div>
+
+                            </li>
+                            <li class="param">
+                                    <code class="param-name optional">[callback]</code>
+                                    <span class="type">Function</span>
+                                    <span class="flag optional" title="This parameter is optional.">optional</span>
+
+                                <div class="param-description">
+                                    <p>the callback function once the
+operation is complete</p>
+
+                                </div>
+
+                            </li>
+                        </ul>
+                </li>
+            </ul>
+        </div>
+
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                        <span class="type">Object</span>:
+                    <p>a Promise that resolves to a truthy value if successful</p>
+
+            </div>
+        </div>
+
+
+</div>
+<div id="method_updateBoardStar" class="method item">
+    <h3 class="name"><code>updateBoardStar</code></h3>
+
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+                <li class="arg">
+                        <code>params</code>
+                </li>
+            </ul><span class="paren">)</span>
+        </div>
+
+        <span class="returns-inline">
+            <span class="type">Object</span>
+        </span>
+
+
+
+
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/lib_obj_member.js.html#l596"><code>lib\obj\member.js:596</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        
+    </div>
+
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+                <li class="param">
+                        <code class="param-name">params</code>
+                        <span class="type">Object</span>
+
+
+                    <div class="param-description">
+                        <p>the method parameters object</p>
+
+                    </div>
+
+                        <ul class="params-list">
+                            <li class="param">
+                                    <code class="param-name">boardStarId</code>
+                                    <span class="type">String</span>
+
+                                <div class="param-description">
+                                    <p>the board star to update</p>
+
+                                </div>
+
+                            </li>
+                            <li class="param">
+                                    <code class="param-name optional">[boardId]</code>
+                                    <span class="type">String</span>
+                                    <span class="flag optional" title="This parameter is optional.">optional</span>
+
+                                <div class="param-description">
+                                    <p>the board id to move the board star to</p>
+
+                                </div>
+
+                            </li>
+                            <li class="param">
+                                    <code class="param-name optional">[position]</code>
+                                    <span class="type">String | Number</span>
+                                    <span class="flag optional" title="This parameter is optional.">optional</span>
+
+                                <div class="param-description">
+                                    <p>the position of the board star.
+Valid values are 'top', 'bottom', or a positive number.</p>
+
+                                </div>
+
+                            </li>
+                            <li class="param">
+                                    <code class="param-name optional">[callback]</code>
+                                    <span class="type">Function</span>
+                                    <span class="flag optional" title="This parameter is optional.">optional</span>
+
+                                <div class="param-description">
+                                    <p>the callback function once the
+operation is complete</p>
+
+                                </div>
+
+                            </li>
+                        </ul>
+                </li>
+            </ul>
+        </div>
+
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                        <span class="type">Object</span>:
+                    <p>a Promise that resolves to a truthy value if successful</p>
+
+            </div>
+        </div>
+
+
+</div>
+<div id="method_updateCustomBoardBackground" class="method item">
+    <h3 class="name"><code>updateCustomBoardBackground</code></h3>
+
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+                <li class="arg">
+                        <code>params</code>
+                </li>
+            </ul><span class="paren">)</span>
+        </div>
+
+        <span class="returns-inline">
+            <span class="type">Object</span>
+        </span>
+
+
+
+
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/lib_obj_member.js.html#l619"><code>lib\obj\member.js:619</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        
+    </div>
+
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+                <li class="param">
+                        <code class="param-name">params</code>
+                        <span class="type">Object</span>
+
+
+                    <div class="param-description">
+                        <p>the method parameters object</p>
+
+                    </div>
+
+                        <ul class="params-list">
+                            <li class="param">
+                                    <code class="param-name">boardBackgroundId</code>
+                                    <span class="type">String</span>
+
+                                <div class="param-description">
+                                    <p>the board background id</p>
+
+                                </div>
+
+                            </li>
+                            <li class="param">
+                                    <code class="param-name optional">[tile]</code>
+                                    <span class="type">Boolean</span>
+                                    <span class="flag optional" title="This parameter is optional.">optional</span>
+
+                                <div class="param-description">
+                                    <p>whether or not to tile the background</p>
+
+                                </div>
+
+                            </li>
+                            <li class="param">
+                                    <code class="param-name optional">[brightness]</code>
+                                    <span class="type">String</span>
+                                    <span class="flag optional" title="This parameter is optional.">optional</span>
+
+                                <div class="param-description">
+                                    <p>the brightness of the background.
+Valid values are 'dark', 'light', or 'unknown'.</p>
+
+                                </div>
+
+                            </li>
+                            <li class="param">
+                                    <code class="param-name optional">[callback]</code>
+                                    <span class="type">Function</span>
+                                    <span class="flag optional" title="This parameter is optional.">optional</span>
+
+                                <div class="param-description">
+                                    <p>the callback function once the
+operation is complete</p>
+
+                                </div>
+
+                            </li>
+                        </ul>
+                </li>
+            </ul>
+        </div>
+
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                        <span class="type">Object</span>:
+                    <p>a Promise that resolves to a truthy value if successful</p>
+
+            </div>
+        </div>
+
+
+</div>
+<div id="method_updateSavedSearch" class="method item">
+    <h3 class="name"><code>updateSavedSearch</code></h3>
+
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+                <li class="arg">
+                        <code>params</code>
+                </li>
+                <li class="arg">
+                        <code>the</code>
+                </li>
+            </ul><span class="paren">)</span>
+        </div>
+
+        <span class="returns-inline">
+            <span class="type">Object</span>
+        </span>
+
+
+
+
+
+
+
+    <div class="meta">
+                <p>
+                Defined in
+        <a href="../files/lib_obj_member.js.html#l794"><code>lib\obj\member.js:794</code></a>
+        </p>
+
+
+
+    </div>
+
+    <div class="description">
+        
+    </div>
+
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+                <li class="param">
+                        <code class="param-name">params</code>
+                        <span class="type">Object</span>
+
+
+                    <div class="param-description">
+                        <p>the method parameters object</p>
+
+                    </div>
+
+                        <ul class="params-list">
+                            <li class="param">
+                                    <code class="param-name">savedSearchId</code>
+                                    <span class="type">String</span>
+
+                                <div class="param-description">
+                                    <p>the saved search to update</p>
+
+                                </div>
+
+                            </li>
+                            <li class="param">
+                                    <code class="param-name optional">[name]</code>
+                                    <span class="type">String</span>
+                                    <span class="flag optional" title="This parameter is optional.">optional</span>
+
+                                <div class="param-description">
+                                    <p>the name of the saved search</p>
+
+                                </div>
+
+                            </li>
+                            <li class="param">
+                                    <code class="param-name optional">[query]</code>
+                                    <span class="type">String</span>
+                                    <span class="flag optional" title="This parameter is optional.">optional</span>
+
+                                <div class="param-description">
+                                    <p>the search query</p>
+
+                                </div>
+
+                            </li>
+                            <li class="param">
+                                    <code class="param-name optional">[callback]</code>
+                                    <span class="type">Function</span>
+                                    <span class="flag optional" title="This parameter is optional.">optional</span>
+
+                                <div class="param-description">
+                                    <p>the callback function once the
+operation is complete</p>
+
+                                </div>
+
+                            </li>
+                        </ul>
+                </li>
+                <li class="param">
+                        <code class="param-name">the</code>
+                        <span class="type">String | Number</span>
+
+
+                    <div class="param-description">
+                        <p>saved search's position. Valid values are
+'top', 'bottom', or a positive number.</p>
+
+                    </div>
+
+                </li>
+            </ul>
+        </div>
+
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                        <span class="type">Object</span>:
+                    <p>a Promise that resolves to a truthy value if successful</p>
+
+            </div>
+        </div>
+
+
+</div>
+            </div>
+
+            <div id="properties" class="api-class-tabpanel">
+                <h2 class="off-left">Properties</h2>
+
+<div id="property_trelloPropertyNames" class="property item private inherited">
+    <h3 class="name"><code>trelloPropertyNames</code></h3>
+    <span class="type">Object</span>
+
+
+        <span class="flag private">private</span>
+
+        <span class="flag final">final</span>
+
+
+    <div class="meta">
+                <p>Inherited from
+                <a href="../classes/TrelloObj.html#property_trelloPropertyNames">trelloObj</a>:
+        <a href="../files/lib_trelloObj.js.html#l44"><code>lib\trelloObj.js:44</code></a>
+        </p>
+
+
+    </div>
+
+    <div class="description">
+        Pointer to the mapping entity for this Trello object type. This mapping
+contains all allowable property names and operations for this object type.
+    </div>
+
+
+
+</div>
+<div id="property_trelloProps" class="property item private inherited">
+    <h3 class="name"><code>trelloProps</code></h3>
+    <span class="type">Object</span>
+
+
+        <span class="flag private">private</span>
+
+
+
+    <div class="meta">
+                <p>Inherited from
+                <a href="../classes/TrelloObj.html#property_trelloProps">trelloObj</a>:
+        <a href="../files/lib_trelloObj.js.html#l59"><code>lib\trelloObj.js:59</code></a>
+        </p>
+
+
+    </div>
+
+    <div class="description">
+        Stores all of the object's Trello properties internally.
+    </div>
+
+
+
+</div>
+            </div>
+
+
+    </div>
+</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="../assets/vendor/prettify/prettify-min.js"></script>
+<script>prettyPrint();</script>
+<script src="../assets/js/yui-prettify.js"></script>
+<script src="../assets/../api.js"></script>
+<script src="../assets/js/api-filter.js"></script>
+<script src="../assets/js/api-list.js"></script>
+<script src="../assets/js/api-search.js"></script>
+<script src="../assets/js/apidocs.js"></script>
+</body>
+</html>

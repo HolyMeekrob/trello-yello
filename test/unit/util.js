@@ -1,7 +1,7 @@
 import chai from 'chai';
 const should = chai.should(); // eslint-disable-line no-unused-vars
 
-import { hasValidPath } from '../../../src/util';
+import { hasValidPath } from '../../src/util';
 
 describe('util', function () {
 	describe('#hasValidPath()', function() {

@@ -1,4 +1,4 @@
-import trelloObj from '../../../src/trelloObj';
+import trelloObj from '../../src/trelloObj';
 import Promise from 'bluebird';
 import sinon from 'sinon';
 import chai from 'chai';

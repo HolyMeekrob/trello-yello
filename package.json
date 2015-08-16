@@ -1,6 +1,6 @@
 {
 	"name": "trello-yello",
-	"version": "1.0.5",
+	"version": "1.0.6",
 	"description": "A high-level object-oriented node package for interacting with Trello.",
 	"main": "app.js",
 	"scripts": {

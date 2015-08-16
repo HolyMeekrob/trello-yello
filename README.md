@@ -179,12 +179,7 @@ member.set({ propName: 'savedSearches/' + savedSearchId , values: { name: 'newNa
 Well, aside from the obvious rhyme, and the reference to the beverage [Mello Yello][mello-yello], using Trello Yello should be refreshing. Like an ice cold citrus drink on a hot summer day. I don't know. It's a name. What more do you want from me?
 
 ## Contributing
-Anyone is welcome to contribute! Please follow these steps:
-
-1. Fork the project
-2. Create a branch (meanigful names are good)
-3. Push your branch
-4. Create an [Issue][issue]. Include a link to your branch and an explanation of what it does
+Anyone is welcome to contribute! Please follow the [recommended GitHub steps][contribute].
 
 ## Etc
 - Code: [https://github.com/HolyMeekrob/trello-yello/][code]
@@ -212,3 +207,4 @@ Released under the [MIT][mit-license] license.
 [code]: https://github.com/HolyMeekrob/trello-yello/
 [npm]: https://www.npmjs.com/package/trello-yello/
 [trello]: https://www.trello.com
+[contribute]: https://guides.github.com/activities/contributing-to-open-source/#contributing

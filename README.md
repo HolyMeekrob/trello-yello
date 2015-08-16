@@ -16,7 +16,7 @@
 - [Querying trello](#querying-trello)
 - [More examples](#more-examples)
 - [Build your own query](#build-your-own-query)
-- [What's up with the name](#whats-up-with-the-name)
+- [What's up with the name?](#whats-up-with-the-name)
 - [Contributing](#contributing)
 - [Etc](#etc)
 - [License](#license)

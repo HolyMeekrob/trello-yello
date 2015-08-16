@@ -1,6 +1,5 @@
 import https from 'https';
 import querystring from 'querystring';
-import sprintf from 'sprintf';
 import Promise from 'bluebird';
 import { isNil, clone } from 'ramda';
 
@@ -85,8 +84,6 @@ const networkService = () => {
 		}
 		else {
 			url = `/${config.version}/${objType}/${id}/${prop}?${parameters}`;
-			url = sprintf('/%s/%s/%s/%s?%s',
-					config.version, objType, id, prop, parameters);
 		}
 
 		let requestHeaders = {};

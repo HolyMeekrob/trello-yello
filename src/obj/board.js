@@ -1258,6 +1258,7 @@ export default (cParams) => {
 
 		return obj.set(args).then(res => {
 			const objParams = adaptParams(res, 'label')(cParams);
+			console.log(adaptParams);
 			return Promise.resolve(cParams.objConstructor(objParams))
 					.nodeify(callback);
 		});

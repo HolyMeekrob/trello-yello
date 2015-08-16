@@ -1,4 +1,4 @@
-import { assoc, compose } from 'ramda';
+import { flip, merge } from 'ramda';
 
 /**
  * A utility for adapting trello object constructor parameters to a different
@@ -13,8 +13,5 @@ import { assoc, compose } from 'ramda';
  */
 export const adaptParams = (response, objType) => {
 	const rawObj = JSON.parse(response.body);
-	return compose(
-			assoc('objType', objType),
-			assoc('initialVals', { id: rawObj.id })
-	);
+	return flip(merge)({ objType: objType, id: rawObj.id });
 };

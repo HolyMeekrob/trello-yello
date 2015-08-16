@@ -7,6 +7,7 @@
 - [What is Trello?](#what-is-trello)
 - [Why use **Trello Yello**?](#why-use-trello-yello)
 - [Installation](#installation)
+- [Quirks](#quirks)
 - [Getting Started](#getting-started)
 - [Using **Trello Yello**](#using-trello-yello)
 - [Retrieving data](#retrieving-data)
@@ -32,6 +33,14 @@ While Trello's API provides a great deal of utility and power, it is a bit unwie
 npm install trello-yello
 ```
 
+## Quirks
+**Trello Yello** has several quirks that are worth mentioning.
+- Most functions are asynchronous as they require network communication with the Trello API. These functions will return a [`Promise`][promises] and will also accept an optional callback function ([error-first][callbacks]).
+- **Trello Yello** will be intelligent about making network connections, reducing them as much as it is able. But for any operation that *may* result in a network operation, the return type is still a `Promise`. It may just be a `Promise` that is resolved immediately.
+- All objects returned by **Trello Yello** are frozen using `Object.freeze()` ([reference][object-freeze]). This keeps the API intact, prevents potential errors through inadvertent overrides, and makes communicating about **Trello Yello** with others less likely to lead to confusion. The idea was taken from Douglas Crockford's talk Javascript: The Better Parts ([video][crockford]).
+- Because of the above, you will never `new` an object in **Trello Yello**.
+- All **Trello Yello** functions take exactly zero or one parameters. If multiple values can be passed in, that parameter will be an object with arguments as its properties, including callbacks. Please refer to the [full documentation][docs] for details on all functions.
+
 ## Getting Started
 **Trello Yello** requires both an application key and a user token. Here are instructions on how to get those:
 
@@ -49,7 +58,7 @@ Getting a reference to the module:
 ```javascript
 var trello = require('trello-yello');
 ```
-Now you will need to instantiate the trello service. Note that all **Trello Yello** functions take exactly one parameter. If multiple values can be passed in, that parameter will be an object with all values as its properties. Please refer to the [full documentation][docs] for details on all functions.
+Now you will need to instantiate the trello service.
 ```javascript
 var trelloService = trello({key: 'yourKey', token: 'yourToken'});
 ```
@@ -62,8 +71,6 @@ trelloService.getCard(id).then(function (card) {
   // handle err
 });
 ```
-Nearly all **Trello Yello** functions are asynchronous as most of them require network communication with the Trello API. These functions will return a [`Promise`][promises] and will also accept an optional callback function ([error-first][callbacks]). **Trello Yello** will be intelligent about making network connections, reducing them as much as it is able. But for any operation that *may* result in a network operation, the return type is still a `Promise`. It may just be a `Promise` that is resolved immediately.
-
 A lot of the time you won't know the id. Let's say you want to retrieve a board that the user belongs to, but all you know is the name.
 ```javascript
 var myBoard;
@@ -75,6 +82,7 @@ trelloService.getCurrentUser().getBoards().then(function (boards) {
 }).then(function (boardNames) {
   var index = boardNames.indexOf('myBoardName');
   myBoard = myBoards[index];
+  // Do something with myBoard
 }).catch(function (err) {
   // handle err
 });
@@ -82,9 +90,9 @@ trelloService.getCurrentUser().getBoards().then(function (boards) {
 From here you can make changes to the board, or access objects on the board such as cards, lists, labels, or the board's organization, and perform actions on those.
 
 ## Setting data
-What if you want to change the name of your card?
+What if you want to change the name of your list?
 ```javascript
-card.setName({ name: 'My new card name' });
+list.setName({ name: 'My new list name' });
 ```
 
 ## Deleting data
@@ -120,10 +128,18 @@ trelloService.getList(listId).archiveAllCards();
 trelloService.getCard(cardId).addComment({ comment: 'The comment to add.' });
 
 // Getting all of the user's unread notifications
+var allNotifications;
+var unreadNotifications;
 trelloService.getCurrentUser().getNotifications().then(function (notifications) {
-  var unreadNotifications = notifications.filter(function (notification) {
-    return notification.isUnread;
+  allNotifications = notifications;
+  return Promise.all(notifications.map(function (n) {
+		return n.isUnread();
+	}));
+}).then(function (unreadArray) {
+  unreadNotifications = allNotifications.filter(function (notification, index) {
+    return unreadArray[index];
   });
+  // Do something with unreadNotifications
 }).catch(function (err) {
   // handle err
 });
@@ -171,9 +187,9 @@ Anyone is welcome to contribute! Please follow these steps:
 4. Create an [Issue][issue]. Include a link to your branch and an explanation of what it does
 
 ## Etc
-- Code: https://github.com/HolyMeekrob/trello-yello/
-- npm: https://www.npmjs.com/package/trello-yello/
-- Trello: https://www.trello.com
+- Code: [https://github.com/HolyMeekrob/trello-yello/][code]
+- npm: [https://www.npmjs.com/package/trello-yello/][npm]
+- Trello: [https://www.trello.com][trello]
 
 ## License
 Released under the [MIT][mit-license] license.
@@ -191,3 +207,8 @@ Released under the [MIT][mit-license] license.
 [promises]: https://promisesaplus.com/
 [mello-yello]: http://www.melloyello.com/
 [mit-license]: http://opensource.org/licenses/MIT
+[object-freeze]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/freeze
+[crockford]: https://www.youtube.com/watch?v=PSGEjv3Tqo0
+[code]: https://github.com/HolyMeekrob/trello-yello/
+[npm]: https://www.npmjs.com/package/trello-yello/
+[trello]: https://www.trello.com

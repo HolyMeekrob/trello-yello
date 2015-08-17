@@ -1,4 +1,4 @@
-import { flip, merge } from 'ramda';
+import { any, flip, isNil, merge } from 'ramda';
 
 /**
  * A utility for adapting trello object constructor parameters to a different
@@ -12,6 +12,14 @@ import { flip, merge } from 'ramda';
  * modified to create the new Trello object
  */
 export const adaptParams = (response, objType) => {
+	if (any(isNil, [response, objType])) {
+		throw new Error('Both arguments are required');
+	}
 	const rawObj = JSON.parse(response.body);
-	return flip(merge)({ objType: objType, id: rawObj.id });
+	return obj => {
+		if (typeof obj !== 'object') {
+			throw new Error('Argument must be an object.');
+		}
+		return flip(merge)({ objType: objType, id: rawObj.id })(obj);
+	};
 };

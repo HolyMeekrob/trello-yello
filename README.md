@@ -1,4 +1,5 @@
 # Trello Yello
+![Build status](https://travis-ci.org/HolyMeekrob/trello-yello.svg?branch=master)
 
 ## Introduction
 **Trello Yello** is a high-level object-oriented wrapper for the Trello API. It greatly simplifies the process of interacting with the [Trello public API][api] and allows you to script nearly every action available through their API in an easy-to-learn, easy-to-use manner.
@@ -121,7 +122,7 @@ trelloService.search({query: 'taco'}).then(function (response) {
 // Setting the name of the green label for a board:
 trelloService.getBoard(boardId).setLabelName({ color: 'green', name: 'new name'});
 
-// Archiving all the cards in a listn
+// Archiving all the cards in a list
 trelloService.getList(listId).archiveAllCards();
 
 // Adding a comment to a card

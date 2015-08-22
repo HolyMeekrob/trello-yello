@@ -34,7 +34,7 @@
   * [~getStickers(callback)](#getStickers) ⇒ <code>Object</code>
   * [~archive(callback)](#archive) ⇒ <code>Object</code>
   * [~unarchive(callback)](#unarchive) ⇒ <code>Object</code>
-	* [~setDescription(params, description)](#setDescription) ⇒ <code>Object</code>
+  * [~setDescription(params, description)](#setDescription) ⇒ <code>Object</code>
   * [~setDueDate(params)](#setDueDate) ⇒ <code>Object</code>
   * [~setCover(params)](#setCover) ⇒ <code>Object</code>
   * [~removeCover(callback)](#removeCover) ⇒ <code>Object</code>
@@ -72,8 +72,8 @@ hasn't yet been populated, or it is dirty, then a network call to Trello
 is made. Otherwise, the property is returned from memory. An error will
 be returned if the property doesn't exist or is not a gettable property.
 
-**Kind**: global function  
-**Returns**: <code>Object</code> - a Promise that resolves to the property value  
+**Kind**: inner method
+**Returns**: <code>Object</code> - a Promise that resolves to the property value
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
@@ -85,8 +85,8 @@ be returned if the property doesn't exist or is not a gettable property.
 ## getId(callback) ⇒ <code>Object</code>
 Gets the id of the Trello object.
 
-**Kind**: global function  
-**Returns**: <code>Object</code> - a Promise that resolves to the id  
+**Kind**: inner method
+**Returns**: <code>Object</code> - a Promise that resolves to the id
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -97,9 +97,9 @@ Gets the id of the Trello object.
 Sets the given property using the new values passed in. If a property name
 is not included, then the object itself is set using the new values.
 
-**Kind**: global function  
+**Kind**: inner method
 **Returns**: <code>Object</code> - a Promise that resolves to a truthy value. The exact
-nature of this value is currently undefined and may change in the future.  
+nature of this value is currently undefined and may change in the future.
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
@@ -115,9 +115,9 @@ nature of this value is currently undefined and may change in the future.
 Deletes the given property. If no property is given, then the Trello
 object itself gets deleted.
 
-**Kind**: global function  
+**Kind**: inner method
 **Returns**: <code>Object</code> - a Promise that resolves to a truthy value. The exact
-nature of this value is currently undefined and may change in the future  
+nature of this value is currently undefined and may change in the future
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
@@ -128,9 +128,9 @@ nature of this value is currently undefined and may change in the future
 
 <a name="getAmISubscribed"></a>
 ## getAmISubscribed(callback) ⇒ <code>Object</code>
-**Kind**: global function  
+**Kind**: inner method
 **Returns**: <code>Object</code> - a Promise that resolves to true if the user is subscribed
-to the card  
+to the card
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -138,9 +138,8 @@ to the card
 
 <a name="getActions"></a>
 ## getActions(callback) ⇒ <code>Object</code>
-**Kind**: global function  
-**Returns**: <code>Object</code> - a Promise that resolves to the card's actions. This is an
-array of action objects.  
+**Kind**: inner method
+**Returns**: <code>Object</code> - a Promise that resolves to the card's [actions](action.md). This is an array of [action](action.md) objects.
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -148,9 +147,9 @@ array of action objects.
 
 <a name="getAddCommentEmail"></a>
 ## getAddCommentEmail(callback) ⇒ <code>Object</code>
-**Kind**: global function  
+**Kind**: inner method
 **Returns**: <code>Object</code> - a Promise that resolves to the email address which, when
-new emails are received, will add a comment to the card  
+new emails are received, will add a comment to the card
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -158,9 +157,9 @@ new emails are received, will add a comment to the card
 
 <a name="getAttachmentCoverId"></a>
 ## getAttachmentCoverId(callback) ⇒ <code>Object</code>
-**Kind**: global function  
+**Kind**: inner method
 **Returns**: <code>Object</code> - a Promise that resolves to the id of the attachment used
-as the card's cover  
+as the card's cover
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -168,8 +167,8 @@ as the card's cover
 
 <a name="getAttachments"></a>
 ## getAttachments(callback) ⇒ <code>Object</code>
-**Kind**: global function  
-**Returns**: <code>Object</code> - a Promise that resolves to the card's attachments  
+**Kind**: inner method
+**Returns**: <code>Object</code> - a Promise that resolves to the card's attachments
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -177,8 +176,8 @@ as the card's cover
 
 <a name="getBadges"></a>
 ## getBadges(callback) ⇒ <code>Object</code>
-**Kind**: global function  
-**Returns**: <code>Object</code> - a Promise that resolves to the card's badges  
+**Kind**: inner method
+**Returns**: <code>Object</code> - a Promise that resolves to the card's badges
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -186,9 +185,8 @@ as the card's cover
 
 <a name="getBoard"></a>
 ## getBoard(callback) ⇒ <code>Object</code>
-**Kind**: global function  
-**Returns**: <code>Object</code> - a Promise that resolves to a board object representing
-the card's board  
+**Kind**: inner method
+**Returns**: <code>Object</code> - a Promise that resolves to a [board](board.md) object representing the card's [board](board.md)
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -196,9 +194,9 @@ the card's board
 
 <a name="getCheckItemStates"></a>
 ## getCheckItemStates(callback) ⇒ <code>Object</code>
-**Kind**: global function  
+**Kind**: inner method
 **Returns**: <code>Object</code> - a Promise that resolves to the state of the card's
-checklist items  
+checklist items
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -206,9 +204,8 @@ checklist items
 
 <a name="getChecklists"></a>
 ## getChecklists(callback) ⇒ <code>Object</code>
-**Kind**: global function  
-**Returns**: <code>Object</code> - a Promise that resolves to the card's checklists. This
-is an array of checklist objects.  
+**Kind**: inner method
+**Returns**: <code>Object</code> - a Promise that resolves to the card's [checklists](checklist.md). This is an array of [checklist](checklist.md) objects.
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -216,8 +213,8 @@ is an array of checklist objects.
 
 <a name="getDescription"></a>
 ## getDescription(callback) ⇒ <code>Object</code>
-**Kind**: global function  
-**Returns**: <code>Object</code> - a Promise that resolves to the card's description  
+**Kind**: inner method
+**Returns**: <code>Object</code> - a Promise that resolves to the card's description
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -225,8 +222,8 @@ is an array of checklist objects.
 
 <a name="getDescriptionData"></a>
 ## getDescriptionData(callback) ⇒ <code>Object</code>
-**Kind**: global function  
-**Returns**: <code>Object</code> - a Promise that resolves to the card's description data  
+**Kind**: inner method
+**Returns**: <code>Object</code> - a Promise that resolves to the card's description data
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -234,9 +231,9 @@ is an array of checklist objects.
 
 <a name="getDueDate"></a>
 ## getDueDate(callback) ⇒ <code>Object</code>
-**Kind**: global function  
+**Kind**: inner method
 **Returns**: <code>Object</code> - a Promise that resolves to the card's dueDate,
-or null if it doesn't have one  
+or null if it doesn't have one
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -244,9 +241,9 @@ or null if it doesn't have one
 
 <a name="isArchived"></a>
 ## isArchived(callback) ⇒ <code>Object</code>
-**Kind**: global function  
+**Kind**: inner method
 **Returns**: <code>Object</code> - a Promise that resolves to true if the card has been
-archived  
+archived
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -254,9 +251,9 @@ archived
 
 <a name="getLastActivityDate"></a>
 ## getLastActivityDate(callback) ⇒ <code>Object</code>
-**Kind**: global function  
+**Kind**: inner method
 **Returns**: <code>Object</code> - a Promise that resolves to the timestamp of the last
-activity performed on the card  
+activity performed on the card
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -264,8 +261,8 @@ activity performed on the card
 
 <a name="getLabels"></a>
 ## getLabels(callback) ⇒ <code>Object</code>
-**Kind**: global function  
-**Returns**: <code>Object</code> - a Promise that resolves to the card's labels  
+**Kind**: inner method
+**Returns**: <code>Object</code> - a Promise that resolves to the card's [labels](label.md)
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -273,9 +270,9 @@ activity performed on the card
 
 <a name="getList"></a>
 ## getList(callback) ⇒ <code>Object</code>
-**Kind**: global function  
+**Kind**: inner method
 **Returns**: <code>Object</code> - a Promise that resolves to list that the card belongs to.
-This is a list object.  
+This is a list object.
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -283,8 +280,8 @@ This is a list object.
 
 <a name="getLongUrl"></a>
 ## getLongUrl(callback) ⇒ <code>Object</code>
-**Kind**: global function  
-**Returns**: <code>Object</code> - a Promise that resolves to card's longform url  
+**Kind**: inner method
+**Returns**: <code>Object</code> - a Promise that resolves to card's longform url
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -292,9 +289,8 @@ This is a list object.
 
 <a name="getMembers"></a>
 ## getMembers(callback) ⇒ <code>Object</code>
-**Kind**: global function  
-**Returns**: <code>Object</code> - a Promise that resolves to the card's members. This is
-an array of member objects.  
+**Kind**: inner method
+**Returns**: <code>Object</code> - a Promise that resolves to the card's [members](member.md). This is an array of [member](member.md) objects.
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -302,9 +298,9 @@ an array of member objects.
 
 <a name="getMembersVoted"></a>
 ## getMembersVoted(callback) ⇒ <code>Object</code>
-**Kind**: global function  
+**Kind**: inner method
 **Returns**: <code>Object</code> - a Promise that resolves to the members who have voted for
-this card. This is an array of member objects.  
+this card. This is an array of member objects.
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -312,8 +308,8 @@ this card. This is an array of member objects.
 
 <a name="getName"></a>
 ## getName(callback) ⇒ <code>Object</code>
-**Kind**: global function  
-**Returns**: <code>Object</code> - a Promise that resolves to the card's name  
+**Kind**: inner method
+**Returns**: <code>Object</code> - a Promise that resolves to the card's name
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -321,8 +317,8 @@ this card. This is an array of member objects.
 
 <a name="getPosition"></a>
 ## getPosition(callback) ⇒ <code>Object</code>
-**Kind**: global function  
-**Returns**: <code>Object</code> - a Promise that resolves to card's position  
+**Kind**: inner method
+**Returns**: <code>Object</code> - a Promise that resolves to card's position
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -330,9 +326,9 @@ this card. This is an array of member objects.
 
 <a name="getShortId"></a>
 ## getShortId(callback) ⇒ <code>Object</code>
-**Kind**: global function  
+**Kind**: inner method
 **Returns**: <code>Object</code> - a Promise that resolves to shortform version of the
-card's id  
+card's id
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -340,9 +336,9 @@ card's id
 
 <a name="getShortLink"></a>
 ## getShortLink(callback) ⇒ <code>Object</code>
-**Kind**: global function  
+**Kind**: inner method
 **Returns**: <code>Object</code> - a Promise that resolves to shortform version of the
-card's link  
+card's link
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -350,9 +346,9 @@ card's link
 
 <a name="getShortUrl"></a>
 ## getShortUrl(callback) ⇒ <code>Object</code>
-**Kind**: global function  
+**Kind**: inner method
 **Returns**: <code>Object</code> - a Promise that resolves to shortform version of the
-card's url  
+card's url
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -360,9 +356,9 @@ card's url
 
 <a name="getStickers"></a>
 ## getStickers(callback) ⇒ <code>Object</code>
-**Kind**: global function  
+**Kind**: inner method
 **Returns**: <code>Object</code> - a Promise that resolves to objects representing the
-card's stickers  
+card's stickers
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -372,8 +368,8 @@ card's stickers
 ## archive(callback) ⇒ <code>Object</code>
 Archives the card.
 
-**Kind**: global function  
-**Returns**: <code>Object</code> - a Promise that resolves to a truthy value if successful  
+**Kind**: inner method
+**Returns**: <code>Object</code> - a Promise that resolves to a truthy value if successful
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -383,8 +379,8 @@ Archives the card.
 ## unarchive(callback) ⇒ <code>Object</code>
 Unarchives the card.
 
-**Kind**: global function  
-**Returns**: <code>Object</code> - a Promise that resolves to a truthy value if successful  
+**Kind**: inner method
+**Returns**: <code>Object</code> - a Promise that resolves to a truthy value if successful
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -392,8 +388,8 @@ Unarchives the card.
 
 <a name="setDescription"></a>
 ## setDescription(params, description) ⇒ <code>Object</code>
-**Kind**: global function  
-**Returns**: <code>Object</code> - a Promise that resolves to a truthy value if successful  
+**Kind**: inner method
+**Returns**: <code>Object</code> - a Promise that resolves to a truthy value if successful
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -403,8 +399,8 @@ Unarchives the card.
 
 <a name="setDueDate"></a>
 ## setDueDate(params) ⇒ <code>Object</code>
-**Kind**: global function  
-**Returns**: <code>Object</code> - a Promise that resolves to a truthy value if successful  
+**Kind**: inner method
+**Returns**: <code>Object</code> - a Promise that resolves to a truthy value if successful
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -414,8 +410,8 @@ Unarchives the card.
 
 <a name="setCover"></a>
 ## setCover(params) ⇒ <code>Object</code>
-**Kind**: global function  
-**Returns**: <code>Object</code> - a Promise that resolves to a truthy value if successful  
+**Kind**: inner method
+**Returns**: <code>Object</code> - a Promise that resolves to a truthy value if successful
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -427,8 +423,8 @@ Unarchives the card.
 ## removeCover(callback) ⇒ <code>Object</code>
 Removes the cover from the card.
 
-**Kind**: global function  
-**Returns**: <code>Object</code> - a Promise that resolves to a truthy value if successful  
+**Kind**: inner method
+**Returns**: <code>Object</code> - a Promise that resolves to a truthy value if successful
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -436,8 +432,8 @@ Removes the cover from the card.
 
 <a name="setBoard"></a>
 ## setBoard(params) ⇒ <code>Object</code>
-**Kind**: global function  
-**Returns**: <code>Object</code> - a Promise that resolves to a truthy value if successful  
+**Kind**: inner method
+**Returns**: <code>Object</code> - a Promise that resolves to a truthy value if successful
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -448,8 +444,8 @@ Removes the cover from the card.
 
 <a name="setList"></a>
 ## setList(params) ⇒ <code>Object</code>
-**Kind**: global function  
-**Returns**: <code>Object</code> - a Promise that resolves to a truthy value if successful  
+**Kind**: inner method
+**Returns**: <code>Object</code> - a Promise that resolves to a truthy value if successful
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -459,8 +455,8 @@ Removes the cover from the card.
 
 <a name="setMembers"></a>
 ## setMembers(params) ⇒ <code>Object</code>
-**Kind**: global function  
-**Returns**: <code>Object</code> - a Promise that resolves to a truthy value if successful  
+**Kind**: inner method
+**Returns**: <code>Object</code> - a Promise that resolves to a truthy value if successful
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -470,8 +466,8 @@ Removes the cover from the card.
 
 <a name="setLabels"></a>
 ## setLabels(params) ⇒ <code>Object</code>
-**Kind**: global function  
-**Returns**: <code>Object</code> - a Promise that resolves to a truthy value if successful  
+**Kind**: inner method
+**Returns**: <code>Object</code> - a Promise that resolves to a truthy value if successful
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -481,8 +477,8 @@ Removes the cover from the card.
 
 <a name="setName"></a>
 ## setName(params) ⇒ <code>Object</code>
-**Kind**: global function  
-**Returns**: <code>Object</code> - a Promise that resolves to a truthy value if successful  
+**Kind**: inner method
+**Returns**: <code>Object</code> - a Promise that resolves to a truthy value if successful
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -492,8 +488,8 @@ Removes the cover from the card.
 
 <a name="setPosition"></a>
 ## setPosition(params) ⇒ <code>Object</code>
-**Kind**: global function  
-**Returns**: <code>Object</code> - a Promise that resolves to a truthy value if successful  
+**Kind**: inner method
+**Returns**: <code>Object</code> - a Promise that resolves to a truthy value if successful
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -505,8 +501,8 @@ Removes the cover from the card.
 ## updateSticker(params) ⇒ <code>Object</code>
 Edits the sticker using the given values.
 
-**Kind**: global function  
-**Returns**: <code>Object</code> - a Promise that resolves to a truthy value if successful  
+**Kind**: inner method
+**Returns**: <code>Object</code> - a Promise that resolves to a truthy value if successful
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -522,8 +518,8 @@ Edits the sticker using the given values.
 ## subscribe(callback) ⇒ <code>Object</code>
 Subscribe the user to the card.
 
-**Kind**: global function  
-**Returns**: <code>Object</code> - a Promise that resolves to a truthy value if successful  
+**Kind**: inner method
+**Returns**: <code>Object</code> - a Promise that resolves to a truthy value if successful
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -533,8 +529,8 @@ Subscribe the user to the card.
 ## unsubscribe(callback) ⇒ <code>Object</code>
 Unsubscribe the user from the card.
 
-**Kind**: global function  
-**Returns**: <code>Object</code> - a Promise that resolves to a truthy value if successful  
+**Kind**: inner method
+**Returns**: <code>Object</code> - a Promise that resolves to a truthy value if successful
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -542,9 +538,9 @@ Unsubscribe the user from the card.
 
 <a name="addComment"></a>
 ## addComment(params) ⇒ <code>Object</code>
-**Kind**: global function  
+**Kind**: inner method
 **Returns**: <code>Object</code> - a Promise that resolves to an action object representing
-the new comment  
+the new comment
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -557,8 +553,8 @@ the new comment
 Adds an attachment to the card. You can either add a file using form data
 or a url.
 
-**Kind**: global function  
-**Returns**: <code>Object</code> - a Promise that resolves to a truthy value if successful  
+**Kind**: inner method
+**Returns**: <code>Object</code> - a Promise that resolves to a truthy value if successful
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -571,9 +567,9 @@ or a url.
 
 <a name="convertChecklistItemToCard"></a>
 ## convertChecklistItemToCard(params) ⇒ <code>Object</code>
-**Kind**: global function  
+**Kind**: inner method
 **Returns**: <code>Object</code> - a Promise that resolves to a card object representing
-then new card  
+then new card
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -584,8 +580,8 @@ then new card
 
 <a name="addChecklist"></a>
 ## addChecklist(params) ⇒ <code>Object</code>
-**Kind**: global function  
-**Returns**: <code>Object</code> - a Promise that resolves to a truthy value if successful  
+**Kind**: inner method
+**Returns**: <code>Object</code> - a Promise that resolves to a truthy value if successful
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -597,8 +593,8 @@ then new card
 
 <a name="addLabelById"></a>
 ## addLabelById(params) ⇒ <code>Object</code>
-**Kind**: global function  
-**Returns**: <code>Object</code> - a Promise that resolves to a truthy value if successful  
+**Kind**: inner method
+**Returns**: <code>Object</code> - a Promise that resolves to a truthy value if successful
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -608,8 +604,8 @@ then new card
 
 <a name="addLabelByColor"></a>
 ## addLabelByColor(params) ⇒ <code>Object</code>
-**Kind**: global function  
-**Returns**: <code>Object</code> - a Promise that resolves to the label object  
+**Kind**: inner method
+**Returns**: <code>Object</code> - a Promise that resolves to the [label](label.md) object
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -620,8 +616,8 @@ then new card
 
 <a name="addMember"></a>
 ## addMember(params) ⇒ <code>Object</code>
-**Kind**: global function  
-**Returns**: <code>Object</code> - a Promise that resolves to a truthy value if successful  
+**Kind**: inner method
+**Returns**: <code>Object</code> - a Promise that resolves to a truthy value if successful
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -629,12 +625,12 @@ then new card
 | params.memberId | <code>String</code> | the id of the member to add to the card |
 | params.callback | <code>function</code> | (*optional*) the callback function once the operation is complete |
 
-<a name="addmarkNotificationsRead"></a>
-## addmarkNotificationsRead(callback) ⇒ <code>Object</code>
+<a name="markNotificationsRead"></a>
+## markNotificationsRead(callback) ⇒ <code>Object</code>
 Mark all notifications related to the card as read.
 
-**Kind**: global function  
-**Returns**: <code>Object</code> - a Promise that resolves to a truthy value if successful  
+**Kind**: inner method
+**Returns**: <code>Object</code> - a Promise that resolves to a truthy value if successful
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -642,8 +638,8 @@ Mark all notifications related to the card as read.
 
 <a name="setMemberVoteToYes"></a>
 ## setMemberVoteToYes(params) ⇒ <code>Object</code>
-**Kind**: global function  
-**Returns**: <code>Object</code> - a Promise that resolves to a truthy value if successful  
+**Kind**: inner method
+**Returns**: <code>Object</code> - a Promise that resolves to a truthy value if successful
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -653,8 +649,8 @@ Mark all notifications related to the card as read.
 
 <a name="addSticker"></a>
 ## addSticker(params) ⇒ <code>Object</code>
-**Kind**: global function  
-**Returns**: <code>Object</code> - a Promise that resolves to a truthy value if successful  
+**Kind**: inner method
+**Returns**: <code>Object</code> - a Promise that resolves to a truthy value if successful
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -668,8 +664,8 @@ Mark all notifications related to the card as read.
 
 <a name="removeComment"></a>
 ## removeComment(params) ⇒ <code>Object</code>
-**Kind**: global function  
-**Returns**: <code>Object</code> - a Promise that resolves to a truthy value if successful  
+**Kind**: inner method
+**Returns**: <code>Object</code> - a Promise that resolves to a truthy value if successful
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -679,8 +675,8 @@ Mark all notifications related to the card as read.
 
 <a name="removeAttachment"></a>
 ## removeAttachment(params) ⇒ <code>Object</code>
-**Kind**: global function  
-**Returns**: <code>Object</code> - a Promise that resolves to a truthy value if successful  
+**Kind**: inner method
+**Returns**: <code>Object</code> - a Promise that resolves to a truthy value if successful
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -690,8 +686,8 @@ Mark all notifications related to the card as read.
 
 <a name="removeLabelId"></a>
 ## removeLabelId(params) ⇒ <code>Object</code>
-**Kind**: global function  
-**Returns**: <code>Object</code> - a Promise that resolves to a truthy value if successful  
+**Kind**: inner method
+**Returns**: <code>Object</code> - a Promise that resolves to a truthy value if successful
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -701,8 +697,8 @@ Mark all notifications related to the card as read.
 
 <a name="removeLabelByColor"></a>
 ## removeLabelByColor(params) ⇒ <code>Object</code>
-**Kind**: global function  
-**Returns**: <code>Object</code> - a Promise that resolves to a truthy value if successful  
+**Kind**: inner method
+**Returns**: <code>Object</code> - a Promise that resolves to a truthy value if successful
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -712,8 +708,8 @@ Mark all notifications related to the card as read.
 
 <a name="removeMember"></a>
 ## removeMember(params) ⇒ <code>Object</code>
-**Kind**: global function  
-**Returns**: <code>Object</code> - a Promise that resolves to a truthy value if successful  
+**Kind**: inner method
+**Returns**: <code>Object</code> - a Promise that resolves to a truthy value if successful
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -723,8 +719,8 @@ Mark all notifications related to the card as read.
 
 <a name="setMemberVoteToNo"></a>
 ## setMemberVoteToNo(params) ⇒ <code>Object</code>
-**Kind**: global function  
-**Returns**: <code>Object</code> - a Promise that resolves to a truthy value if successful  
+**Kind**: inner method
+**Returns**: <code>Object</code> - a Promise that resolves to a truthy value if successful
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -734,8 +730,8 @@ Mark all notifications related to the card as read.
 
 <a name="removeSticker"></a>
 ## removeSticker(params) ⇒ <code>Object</code>
-**Kind**: global function  
-**Returns**: <code>Object</code> - a Promise that resolves to a truthy value if successful  
+**Kind**: inner method
+**Returns**: <code>Object</code> - a Promise that resolves to a truthy value if successful
 
 | Param | Type | Description |
 | --- | --- | --- |

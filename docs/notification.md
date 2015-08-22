@@ -27,8 +27,8 @@ hasn't yet been populated, or it is dirty, then a network call to Trello
 is made. Otherwise, the property is returned from memory. An error will
 be returned if the property doesn't exist or is not a gettable property.
 
-**Kind**: global function  
-**Returns**: <code>Object</code> - a Promise that resolves to the property value  
+**Kind**: inner method
+**Returns**: <code>Object</code> - a Promise that resolves to the property value
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
@@ -40,8 +40,8 @@ be returned if the property doesn't exist or is not a gettable property.
 ## getId(callback) ⇒ <code>Object</code>
 Gets the id of the Trello object.
 
-**Kind**: global function  
-**Returns**: <code>Object</code> - a Promise that resolves to the id  
+**Kind**: inner method
+**Returns**: <code>Object</code> - a Promise that resolves to the id
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -52,9 +52,9 @@ Gets the id of the Trello object.
 Sets the given property using the new values passed in. If a property name
 is not included, then the object itself is set using the new values.
 
-**Kind**: global function  
+**Kind**: inner method
 **Returns**: <code>Object</code> - a Promise that resolves to a truthy value. The exact
-nature of this value is currently undefined and may change in the future.  
+nature of this value is currently undefined and may change in the future.
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
@@ -70,9 +70,9 @@ nature of this value is currently undefined and may change in the future.
 Deletes the given property. If no property is given, then the Trello
 object itself gets deleted.
 
-**Kind**: global function  
+**Kind**: inner method
 **Returns**: <code>Object</code> - a Promise that resolves to a truthy value. The exact
-nature of this value is currently undefined and may change in the future  
+nature of this value is currently undefined and may change in the future
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
@@ -83,9 +83,8 @@ nature of this value is currently undefined and may change in the future
 
 <a name="getBoard"></a>
 ## getBoard(callback) ⇒ <code>Object</code>
-**Kind**: global function  
-**Returns**: <code>Object</code> - a Promise that resolves to a board object representing
-the notification's board  
+**Kind**: inner method
+**Returns**: <code>Object</code> - a Promise that resolves to a [board](board.md) object representing the notification's [board](board.md)
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -93,9 +92,8 @@ the notification's board
 
 <a name="getCard"></a>
 ## getCard(callback) ⇒ <code>Object</code>
-**Kind**: global function  
-**Returns**: <code>Object</code> - a Promise that resolves to a card object representing the
-notification's card  
+**Kind**: inner method
+**Returns**: <code>Object</code> - a Promise that resolves to a [card](card.md) object representing the notification's [card](card.md)
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -103,8 +101,8 @@ notification's card
 
 <a name="getData"></a>
 ## getData(callback) ⇒ <code>Object</code>
-**Kind**: global function  
-**Returns**: <code>Object</code> - a Promise that resolves to the notification's data  
+**Kind**: inner method
+**Returns**: <code>Object</code> - a Promise that resolves to the notification's data
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -112,8 +110,8 @@ notification's card
 
 <a name="getDate"></a>
 ## getDate(callback) ⇒ <code>Object</code>
-**Kind**: global function  
-**Returns**: <code>Object</code> - a Promise that resolves to notification's date  
+**Kind**: inner method
+**Returns**: <code>Object</code> - a Promise that resolves to notification's date
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -121,8 +119,8 @@ notification's card
 
 <a name="getDisplay"></a>
 ## getDisplay(callback) ⇒ <code>Object</code>
-**Kind**: global function  
-**Returns**: <code>Object</code> - a Promise that resolves to the notification's display  
+**Kind**: inner method
+**Returns**: <code>Object</code> - a Promise that resolves to the notification's display
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -130,8 +128,8 @@ notification's card
 
 <a name="getEntities"></a>
 ## getEntities(callback) ⇒ <code>Object</code>
-**Kind**: global function  
-**Returns**: <code>Object</code> - a Promise that resolves to the notification's entities  
+**Kind**: inner method
+**Returns**: <code>Object</code> - a Promise that resolves to the notification's entities
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -139,9 +137,9 @@ notification's card
 
 <a name="getCreator"></a>
 ## getCreator(callback) ⇒ <code>Object</code>
-**Kind**: global function  
+**Kind**: inner method
 **Returns**: <code>Object</code> - a Promise that resolves to a member object representing
-the notification's creator  
+the notification's creator
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -149,9 +147,8 @@ the notification's creator
 
 <a name="getOrganizations"></a>
 ## getOrganizations(callback) ⇒ <code>Object</code>
-**Kind**: global function  
-**Returns**: <code>Object</code> - a Promise that resolves to an organization object
-representing the notification's organization  
+**Kind**: inner method
+**Returns**: <code>Object</code> - a Promise that resolves to an [organization](organization.md) object representing the notification's [organization](organization.md)
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -159,8 +156,8 @@ representing the notification's organization
 
 <a name="getType"></a>
 ## getType(callback) ⇒ <code>Object</code>
-**Kind**: global function  
-**Returns**: <code>Object</code> - a Promise that resolves to the type of the notification  
+**Kind**: inner method
+**Returns**: <code>Object</code> - a Promise that resolves to the type of the notification
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -168,9 +165,9 @@ representing the notification's organization
 
 <a name="isUnread"></a>
 ## isUnread(callback) ⇒ <code>Object</code>
-**Kind**: global function  
+**Kind**: inner method
 **Returns**: <code>Object</code> - a Promise that resolves to true if the notification is
-unread  
+unread
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -180,8 +177,8 @@ unread
 ## markAsRead(callback) ⇒ <code>Object</code>
 Marks the notification as read.
 
-**Kind**: global function  
-**Returns**: <code>Object</code> - a Promise that resolves to a truthy value if successful  
+**Kind**: inner method
+**Returns**: <code>Object</code> - a Promise that resolves to a truthy value if successful
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -191,8 +188,8 @@ Marks the notification as read.
 ## markAsRead(callback) ⇒ <code>Object</code>
 Marks the notification as unread.
 
-**Kind**: global function  
-**Returns**: <code>Object</code> - a Promise that resolves to a truthy value if successful  
+**Kind**: inner method
+**Returns**: <code>Object</code> - a Promise that resolves to a truthy value if successful
 
 | Param | Type | Description |
 | --- | --- | --- |

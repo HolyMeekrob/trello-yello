@@ -23,8 +23,8 @@ hasn't yet been populated, or it is dirty, then a network call to Trello
 is made. Otherwise, the property is returned from memory. An error will
 be returned if the property doesn't exist or is not a gettable property.
 
-**Kind**: global function  
-**Returns**: <code>Object</code> - a Promise that resolves to the property value  
+**Kind**: inner method
+**Returns**: <code>Object</code> - a Promise that resolves to the property value
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
@@ -36,8 +36,8 @@ be returned if the property doesn't exist or is not a gettable property.
 ## getId(callback) ⇒ <code>Object</code>
 Gets the id of the Trello object.
 
-**Kind**: global function  
-**Returns**: <code>Object</code> - a Promise that resolves to the id  
+**Kind**: inner method
+**Returns**: <code>Object</code> - a Promise that resolves to the id
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -48,9 +48,9 @@ Gets the id of the Trello object.
 Sets the given property using the new values passed in. If a property name
 is not included, then the object itself is set using the new values.
 
-**Kind**: global function  
+**Kind**: inner method
 **Returns**: <code>Object</code> - a Promise that resolves to a truthy value. The exact
-nature of this value is currently undefined and may change in the future.  
+nature of this value is currently undefined and may change in the future.
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
@@ -66,9 +66,9 @@ nature of this value is currently undefined and may change in the future.
 Deletes the given property. If no property is given, then the Trello
 object itself gets deleted.
 
-**Kind**: global function  
+**Kind**: inner method
 **Returns**: <code>Object</code> - a Promise that resolves to a truthy value. The exact
-nature of this value is currently undefined and may change in the future  
+nature of this value is currently undefined and may change in the future
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
@@ -79,9 +79,9 @@ nature of this value is currently undefined and may change in the future
 
 <a name="getDateCreated"></a>
 ## getDateCreated(callback) ⇒ <code>Object</code>
-**Kind**: global function  
+**Kind**: inner method
 **Returns**: <code>Object</code> - a Promise that resolves to the timestamp that the token
-was created  
+was created
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -89,9 +89,9 @@ was created
 
 <a name="getDateExpires"></a>
 ## getDateExpires(callback) ⇒ <code>Object</code>
-**Kind**: global function  
+**Kind**: inner method
 **Returns**: <code>Object</code> - a Promise that resolves to the timestamp that the token
-expires  
+expires
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -99,9 +99,9 @@ expires
 
 <a name="getIdentifier"></a>
 ## getIdentifier(callback) ⇒ <code>Object</code>
-**Kind**: global function  
+**Kind**: inner method
 **Returns**: <code>Object</code> - a Promise that resolves to the name of the app that
-requested the token  
+requested the token
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -109,9 +109,8 @@ requested the token
 
 <a name="getMember"></a>
 ## getMember(callback) ⇒ <code>Object</code>
-**Kind**: global function  
-**Returns**: <code>Object</code> - a Promise that resolves to the member that the token
-belongs to. This is a member object.  
+**Kind**: inner method
+**Returns**: <code>Object</code> - a Promise that resolves to the [member](member.md) that the token belongs to. This is a [member](member.md) object.
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -119,8 +118,8 @@ belongs to. This is a member object.
 
 <a name="getPermissions"></a>
 ## getPermissions(callback) ⇒ <code>Object</code>
-**Kind**: global function  
-**Returns**: <code>Object</code> - a Promise that resolves to the token's permissions  
+**Kind**: inner method
+**Returns**: <code>Object</code> - a Promise that resolves to the token's permissions
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -128,9 +127,8 @@ belongs to. This is a member object.
 
 <a name="getWebhooks"></a>
 ## getWebhooks(callback) ⇒ <code>Object</code>
-**Kind**: global function  
-**Returns**: <code>Object</code> - a Promise that resolves to the webhooks associated with
-this token. This is an array of webhook objects.  
+**Kind**: inner method
+**Returns**: <code>Object</code> - a Promise that resolves to the [webhooks](webhook.md) associated with this token. This is an array of [webhook](webhook.md) objects.
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -138,8 +136,8 @@ this token. This is an array of webhook objects.
 
 <a name="addWebhook"></a>
 ## addWebhook(params) ⇒ <code>Object</code>
-**Kind**: global function  
-**Returns**: <code>Object</code> - a Promise that resolves to the new webhook object  
+**Kind**: inner method
+**Returns**: <code>Object</code> - a Promise that resolves to the new [webhook](webhook.md) object
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -151,8 +149,8 @@ this token. This is an array of webhook objects.
 
 <a name="removeWebhook"></a>
 ## removeWebhook(params) ⇒ <code>Object</code>
-**Kind**: global function  
-**Returns**: <code>Object</code> - a Promise that resolves to a truthy value if successful  
+**Kind**: inner method
+**Returns**: <code>Object</code> - a Promise that resolves to a truthy value if successful
 
 | Param | Type | Description |
 | --- | --- | --- |

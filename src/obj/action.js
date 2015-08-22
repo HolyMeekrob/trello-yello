@@ -68,7 +68,7 @@ import trelloObj from '../trelloObj';
 	 * @method getData
 	 * @param {Function} [callback] the callback function once the operation is
 	 * complete
-	 * @return {Object} a Promise that resolves to action data
+	 * @return {Object} a Promise that resolves to the action's data
 	 */
 	const getData = (callback) => {
 		const args = {
@@ -83,7 +83,7 @@ import trelloObj from '../trelloObj';
 	 * @method getDate
 	 * @param {Function} [callback] the callback function once the operation is
 	 * complete
-	 * @return {Object} a Promise that resolves to action's date
+	 * @return {Object} a Promise that resolves to the action's date
 	 */
 	const getDate = (callback) => {
 		const args = {
@@ -98,7 +98,7 @@ import trelloObj from '../trelloObj';
 	 * @method getDisplay
 	 * @param {Function} [callback] the callback function once the operation is
 	 * complete
-	 * @return {Object} a Promise that resolves to action's display values
+	 * @return {Object} a Promise that resolves to the action's display values
 	 */
 	const getDisplay = (callback) => {
 		const args = {
@@ -113,7 +113,7 @@ import trelloObj from '../trelloObj';
 	 * @method getEntities
 	 * @param {Function} [callback] the callback function once the operation is
 	 * complete
-	 * @return {Object} a Promise that resolves to action's entities
+	 * @return {Object} a Promise that resolves to the action's entities
 	 */
 	const getEntities = (callback) => {
 		const args = {
@@ -144,7 +144,7 @@ import trelloObj from '../trelloObj';
 	 * @method getMember
 	 * @param {Function} [callback] the callback function once the operation is
 	 * complete
-	 * @return {Object} a Promise that resolves to action's member. This is a
+	 * @return {Object} a Promise that resolves to the action's member. This is a
 	 * member object.
 	 */
 	const getMember = (callback) => {
@@ -176,7 +176,7 @@ import trelloObj from '../trelloObj';
 	 * @method getOrganization
 	 * @param {Function} [callback] the callback function once the operation is
 	 * complete
-	 * @return {Object} a Promise that resolves to action's organization. This is
+	 * @return {Object} a Promise that resolves to the action's organization. This is
 	 * an organization object.
 	 */
 	const getOrganization = (callback) => {
@@ -192,7 +192,7 @@ import trelloObj from '../trelloObj';
 	 * @method getType
 	 * @param {Function} [callback] the callback function once the operation is
 	 * complete
-	 * @return {Object} a Promise that resolves to action's type
+	 * @return {Object} a Promise that resolves to the action's type
 	 */
 	const getType = (callback) => {
 		const args = {

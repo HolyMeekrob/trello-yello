@@ -75,8 +75,8 @@ hasn't yet been populated, or it is dirty, then a network call to Trello
 is made. Otherwise, the property is returned from memory. An error will
 be returned if the property doesn't exist or is not a gettable property.
 
-**Kind**: global function  
-**Returns**: <code>Object</code> - a Promise that resolves to the property value  
+**Kind**: inner method
+**Returns**: <code>Object</code> - a Promise that resolves to the property value
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
@@ -88,8 +88,8 @@ be returned if the property doesn't exist or is not a gettable property.
 ## getId(callback) ⇒ <code>Object</code>
 Gets the id of the Trello object.
 
-**Kind**: global function  
-**Returns**: <code>Object</code> - a Promise that resolves to the id  
+**Kind**: inner method
+**Returns**: <code>Object</code> - a Promise that resolves to the id
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -100,9 +100,9 @@ Gets the id of the Trello object.
 Sets the given property using the new values passed in. If a property name
 is not included, then the object itself is set using the new values.
 
-**Kind**: global function  
+**Kind**: inner method
 **Returns**: <code>Object</code> - a Promise that resolves to a truthy value. The exact
-nature of this value is currently undefined and may change in the future.  
+nature of this value is currently undefined and may change in the future.
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
@@ -118,9 +118,9 @@ nature of this value is currently undefined and may change in the future.
 Deletes the given property. If no property is given, then the Trello
 object itself gets deleted.
 
-**Kind**: global function  
+**Kind**: inner method
 **Returns**: <code>Object</code> - a Promise that resolves to a truthy value. The exact
-nature of this value is currently undefined and may change in the future  
+nature of this value is currently undefined and may change in the future
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
@@ -131,9 +131,8 @@ nature of this value is currently undefined and may change in the future
 
 <a name="getActions"></a>
 ## getActions(callback) ⇒ <code>Object</code>
-**Kind**: global function  
-**Returns**: <code>Object</code> - a Promise that resolves to the member's actions. This is an
-array of action objects.  
+**Kind**: inner method
+**Returns**: <code>Object</code> - a Promise that resolves to the member's [actions](action.md). This is an array of [action](action.md) objects.
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -141,8 +140,8 @@ array of action objects.
 
 <a name="getAvatarHash"></a>
 ## getAvatarHash(callback) ⇒ <code>Object</code>
-**Kind**: global function  
-**Returns**: <code>Object</code> - a Promise that resolves to the member's avatar hash  
+**Kind**: inner method
+**Returns**: <code>Object</code> - a Promise that resolves to the member's avatar hash
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -150,9 +149,9 @@ array of action objects.
 
 <a name="getAvatarSource"></a>
 ## getAvatarSource(callback) ⇒ <code>Object</code>
-**Kind**: global function  
+**Kind**: inner method
 **Returns**: <code>Object</code> - a Promise that resolves to the source URL for the
-member's avatar  
+member's avatar
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -160,8 +159,8 @@ member's avatar
 
 <a name="getBio"></a>
 ## getBio(callback) ⇒ <code>Object</code>
-**Kind**: global function  
-**Returns**: <code>Object</code> - a Promise that resolves to member's bio  
+**Kind**: inner method
+**Returns**: <code>Object</code> - a Promise that resolves to member's bio
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -169,9 +168,9 @@ member's avatar
 
 <a name="getBioData"></a>
 ## getBioData(callback) ⇒ <code>Object</code>
-**Kind**: global function  
+**Kind**: inner method
 **Returns**: <code>Object</code> - a Promise that resolves to an object containing the
-member's bio data  
+member's bio data
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -179,9 +178,9 @@ member's bio data
 
 <a name="getBoardBackgrounds"></a>
 ## getBoardBackgrounds(callback) ⇒ <code>Object</code>
-**Kind**: global function  
+**Kind**: inner method
 **Returns**: <code>Object</code> - a Promise that resolves to all of the backgrounds the
-member is eligible to use  
+member is eligible to use
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -189,9 +188,8 @@ member is eligible to use
 
 <a name="getBoards"></a>
 ## getBoards(callback) ⇒ <code>Object</code>
-**Kind**: global function  
-**Returns**: <code>Object</code> - a Promise that resolves to the member's boards. This is an
-array of board objects.  
+**Kind**: inner method
+**Returns**: <code>Object</code> - a Promise that resolves to the member's [boards](board.md). This is an array of [board](board.md) objects.
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -199,9 +197,8 @@ array of board objects.
 
 <a name="getBoardsInvited"></a>
 ## getBoardsInvited(callback) ⇒ <code>Object</code>
-**Kind**: global function  
-**Returns**: <code>Object</code> - a Promise that resolves to the boards that the member is
-invited to. This is an array of board objects.  
+**Kind**: inner method
+**Returns**: <code>Object</code> - a Promise that resolves to the [boards](board.md) that the member is invited to. This is an array of [board](board.md) objects.
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -209,8 +206,8 @@ invited to. This is an array of board objects.
 
 <a name="getBoardStars"></a>
 ## getBoardStars(callback) ⇒ <code>Object</code>
-**Kind**: global function  
-**Returns**: <code>Object</code> - a Promise that resolves to the member's board stars  
+**Kind**: inner method
+**Returns**: <code>Object</code> - a Promise that resolves to the member's board stars
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -218,9 +215,8 @@ invited to. This is an array of board objects.
 
 <a name="getCards"></a>
 ## getCards(callback) ⇒ <code>Object</code>
-**Kind**: global function  
-**Returns**: <code>Object</code> - a Promise that resolves to the member's cards. This is an
-array of card objects.  
+**Kind**: inner method
+**Returns**: <code>Object</code> - a Promise that resolves to the member's [cards](card.md). This is an array of [card](card.md) objects.
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -228,9 +224,9 @@ array of card objects.
 
 <a name="getConfirmed"></a>
 ## getConfirmed(callback) ⇒ <code>Object</code>
-**Kind**: global function  
+**Kind**: inner method
 **Returns**: <code>Object</code> - a Promise that resolves to true if the member's account
-has been confirmed  
+has been confirmed
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -238,9 +234,9 @@ has been confirmed
 
 <a name="getCustomBoardBackgrounds"></a>
 ## getCustomBoardBackgrounds(callback) ⇒ <code>Object</code>
-**Kind**: global function  
+**Kind**: inner method
 **Returns**: <code>Object</code> - a Promise that resolves to the member's custom
-backgrounds  
+backgrounds
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -248,8 +244,8 @@ backgrounds
 
 <a name="getCustomEmoji"></a>
 ## getCustomEmoji(callback) ⇒ <code>Object</code>
-**Kind**: global function  
-**Returns**: <code>Object</code> - a Promise that resolves to member's custom emoji  
+**Kind**: inner method
+**Returns**: <code>Object</code> - a Promise that resolves to member's custom emoji
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -257,8 +253,8 @@ backgrounds
 
 <a name="getCustomStickers"></a>
 ## getCustomStickers(callback) ⇒ <code>Object</code>
-**Kind**: global function  
-**Returns**: <code>Object</code> - a Promise that resolves to the member's custom stickers  
+**Kind**: inner method
+**Returns**: <code>Object</code> - a Promise that resolves to the member's custom stickers
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -266,8 +262,8 @@ backgrounds
 
 <a name="getEmail"></a>
 ## getEmail(callback) ⇒ <code>Object</code>
-**Kind**: global function  
-**Returns**: <code>Object</code> - a Promise that resolves to the member's email address  
+**Kind**: inner method
+**Returns**: <code>Object</code> - a Promise that resolves to the member's email address
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -275,8 +271,8 @@ backgrounds
 
 <a name="getFullName"></a>
 ## getFullName(callback) ⇒ <code>Object</code>
-**Kind**: global function  
-**Returns**: <code>Object</code> - a Promise that resolves to member's full name  
+**Kind**: inner method
+**Returns**: <code>Object</code> - a Promise that resolves to member's full name
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -284,8 +280,8 @@ backgrounds
 
 <a name="getGravatarHash"></a>
 ## getGravatarHash(callback) ⇒ <code>Object</code>
-**Kind**: global function  
-**Returns**: <code>Object</code> - a Promise that resolves to member's Gravatar hash  
+**Kind**: inner method
+**Returns**: <code>Object</code> - a Promise that resolves to member's Gravatar hash
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -293,9 +289,9 @@ backgrounds
 
 <a name="getPinnedBoards"></a>
 ## getPinnedBoards(callback) ⇒ <code>Object</code>
-**Kind**: global function  
+**Kind**: inner method
 **Returns**: <code>Object</code> - a Promise that resolves to the id's of the boards that
-the member has pinned.  
+the member has pinned.
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -303,8 +299,8 @@ the member has pinned.
 
 <a name="getInitials"></a>
 ## getInitials(callback) ⇒ <code>Object</code>
-**Kind**: global function  
-**Returns**: <code>Object</code> - a Promise that resolves to the member's initials  
+**Kind**: inner method
+**Returns**: <code>Object</code> - a Promise that resolves to the member's initials
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -312,8 +308,8 @@ the member has pinned.
 
 <a name="getLoginTypes"></a>
 ## getLoginTypes(callback) ⇒ <code>Object</code>
-**Kind**: global function  
-**Returns**: <code>Object</code> - a Promise that resolves to the member's login types  
+**Kind**: inner method
+**Returns**: <code>Object</code> - a Promise that resolves to the member's login types
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -321,8 +317,8 @@ the member has pinned.
 
 <a name="getMemberType"></a>
 ## getMemberType(callback) ⇒ <code>Object</code>
-**Kind**: global function  
-**Returns**: <code>Object</code> - a Promise that resolves to member's type  
+**Kind**: inner method
+**Returns**: <code>Object</code> - a Promise that resolves to member's type
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -330,9 +326,9 @@ the member has pinned.
 
 <a name="getNotifications"></a>
 ## getNotifications(callback) ⇒ <code>Object</code>
-**Kind**: global function  
+**Kind**: inner method
 **Returns**: <code>Object</code> - a Promise that resolves to member's notifications. This
-is an array of notification objects.  
+is an array of notification objects.
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -340,9 +336,9 @@ is an array of notification objects.
 
 <a name="getOneTimeMessagesDismissed"></a>
 ## getOneTimeMessagesDismissed(callback) ⇒ <code>Object</code>
-**Kind**: global function  
+**Kind**: inner method
 **Returns**: <code>Object</code> - a Promise that resolves to the types of messages that
-are dismissed for the member  
+are dismissed for the member
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -350,9 +346,8 @@ are dismissed for the member
 
 <a name="getOrganizations"></a>
 ## getOrganizations(callback) ⇒ <code>Object</code>
-**Kind**: global function  
-**Returns**: <code>Object</code> - a Promise that resolves to the organizations that the
-member belongs to. This is an array of organization objects.  
+**Kind**: inner method
+**Returns**: <code>Object</code> - a Promise that resolves to the [organizations](organization.md) that the member belongs to. This is an array of [organization](organization.md) objects.
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -360,9 +355,8 @@ member belongs to. This is an array of organization objects.
 
 <a name="getOrganizationsInvited"></a>
 ## getOrganizationsInvited(callback) ⇒ <code>Object</code>
-**Kind**: global function  
-**Returns**: <code>Object</code> - a Promise that resolves to the organizations that the
-member is invited to. This is an array of organization objects.  
+**Kind**: inner method
+**Returns**: <code>Object</code> - a Promise that resolves to the [organizations](organization.md) that the member is invited to. This is an array of [organization](organization.md) objects.
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -370,8 +364,8 @@ member is invited to. This is an array of organization objects.
 
 <a name="getPreferences"></a>
 ## getPreferences(callback) ⇒ <code>Object</code>
-**Kind**: global function  
-**Returns**: <code>Object</code> - a Promise that resolves to the member's preferences  
+**Kind**: inner method
+**Returns**: <code>Object</code> - a Promise that resolves to the member's preferences
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -379,9 +373,9 @@ member is invited to. This is an array of organization objects.
 
 <a name="getPremiumFeatures"></a>
 ## getPremiumFeatures(callback) ⇒ <code>Object</code>
-**Kind**: global function  
+**Kind**: inner method
 **Returns**: <code>Object</code> - a Promise that resolves to the premium features that the
-member has available  
+member has available
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -389,8 +383,8 @@ member has available
 
 <a name="getProducts"></a>
 ## getProducts(callback) ⇒ <code>Object</code>
-**Kind**: global function  
-**Returns**: <code>Object</code> - a Promise that resolves to the member's products  
+**Kind**: inner method
+**Returns**: <code>Object</code> - a Promise that resolves to the member's products
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -398,8 +392,8 @@ member has available
 
 <a name="getSavedSearches"></a>
 ## getSavedSearches(callback) ⇒ <code>Object</code>
-**Kind**: global function  
-**Returns**: <code>Object</code> - a Promise that resolves to the member's saved searches  
+**Kind**: inner method
+**Returns**: <code>Object</code> - a Promise that resolves to the member's saved searches
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -407,8 +401,8 @@ member has available
 
 <a name="getStatus"></a>
 ## getStatus(callback) ⇒ <code>Object</code>
-**Kind**: global function  
-**Returns**: <code>Object</code> - a Promise that resolves to the member's activity status  
+**Kind**: inner method
+**Returns**: <code>Object</code> - a Promise that resolves to the member's activity status
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -416,8 +410,8 @@ member has available
 
 <a name="getTokens"></a>
 ## getTokens(callback) ⇒ <code>Object</code>
-**Kind**: global function  
-**Returns**: <code>Object</code> - a Promise that resolves to the member's active tokens  
+**Kind**: inner method
+**Returns**: <code>Object</code> - a Promise that resolves to the member's active [tokens](token.md). This is an array of [token](token.md) objects.
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -425,8 +419,8 @@ member has available
 
 <a name="getTrophies"></a>
 ## getTrophies(callback) ⇒ <code>Object</code>
-**Kind**: global function  
-**Returns**: <code>Object</code> - a Promise that resolves to member's trophies  
+**Kind**: inner method
+**Returns**: <code>Object</code> - a Promise that resolves to member's trophies
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -434,9 +428,9 @@ member has available
 
 <a name="getUploadedAvatarHash"></a>
 ## getUploadedAvatarHash(callback) ⇒ <code>Object</code>
-**Kind**: global function  
+**Kind**: inner method
 **Returns**: <code>Object</code> - a Promise that resolves to the member's uploaded avatar
-hash  
+hash
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -444,9 +438,9 @@ hash
 
 <a name="getUrl"></a>
 ## getUrl(callback) ⇒ <code>Object</code>
-**Kind**: global function  
+**Kind**: inner method
 **Returns**: <code>Object</code> - a Promise that resolves to the url of the member's
-profile page  
+profile page
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -454,8 +448,8 @@ profile page
 
 <a name="getUsername"></a>
 ## getUsername(callback) ⇒ <code>Object</code>
-**Kind**: global function  
-**Returns**: <code>Object</code> - a Promise that resolves to the member's username  
+**Kind**: inner method
+**Returns**: <code>Object</code> - a Promise that resolves to the member's username
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -463,8 +457,8 @@ profile page
 
 <a name="setAvatarSource"></a>
 ## setAvatarSource(params) ⇒ <code>Object</code>
-**Kind**: global function  
-**Returns**: <code>Object</code> - a Promise that resolves to a truthy value if successful  
+**Kind**: inner method
+**Returns**: <code>Object</code> - a Promise that resolves to a truthy value if successful
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -474,8 +468,8 @@ profile page
 
 <a name="setBio"></a>
 ## setBio(params) ⇒ <code>Object</code>
-**Kind**: global function  
-**Returns**: <code>Object</code> - a Promise that resolves to a truthy value if successful  
+**Kind**: inner method
+**Returns**: <code>Object</code> - a Promise that resolves to a truthy value if successful
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -485,8 +479,8 @@ profile page
 
 <a name="updateBoardStar"></a>
 ## updateBoardStar(params) ⇒ <code>Object</code>
-**Kind**: global function  
-**Returns**: <code>Object</code> - a Promise that resolves to a truthy value if successful  
+**Kind**: inner method
+**Returns**: <code>Object</code> - a Promise that resolves to a truthy value if successful
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -498,8 +492,8 @@ profile page
 
 <a name="updateCustomBoardBackground"></a>
 ## updateCustomBoardBackground(params) ⇒ <code>Object</code>
-**Kind**: global function  
-**Returns**: <code>Object</code> - a Promise that resolves to a truthy value if successful  
+**Kind**: inner method
+**Returns**: <code>Object</code> - a Promise that resolves to a truthy value if successful
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -511,8 +505,8 @@ profile page
 
 <a name="setFullName"></a>
 ## setFullName(params) ⇒ <code>Object</code>
-**Kind**: global function  
-**Returns**: <code>Object</code> - a Promise that resolves to a truthy value if successful  
+**Kind**: inner method
+**Returns**: <code>Object</code> - a Promise that resolves to a truthy value if successful
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -522,8 +516,8 @@ profile page
 
 <a name="setInitials"></a>
 ## setInitials(params) ⇒ <code>Object</code>
-**Kind**: global function  
-**Returns**: <code>Object</code> - a Promise that resolves to a truthy value if successful  
+**Kind**: inner method
+**Returns**: <code>Object</code> - a Promise that resolves to a truthy value if successful
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -533,8 +527,8 @@ profile page
 
 <a name="enableColorBlindMode"></a>
 ## enableColorBlindMode(callback) ⇒ <code>Object</code>
-**Kind**: global function  
-**Returns**: <code>Object</code> - a Promise that resolves to a truthy value if successful  
+**Kind**: inner method
+**Returns**: <code>Object</code> - a Promise that resolves to a truthy value if successful
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -542,8 +536,8 @@ profile page
 
 <a name="disableColorBlindMode"></a>
 ## disableColorBlindMode(callback) ⇒ <code>Object</code>
-**Kind**: global function  
-**Returns**: <code>Object</code> - a Promise that resolves to a truthy value if successful  
+**Kind**: inner method
+**Returns**: <code>Object</code> - a Promise that resolves to a truthy value if successful
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -551,8 +545,8 @@ profile page
 
 <a name="setLocale"></a>
 ## setLocale(params) ⇒ <code>Object</code>
-**Kind**: global function  
-**Returns**: <code>Object</code> - a Promise that resolves to a truthy value if successful  
+**Kind**: inner method
+**Returns**: <code>Object</code> - a Promise that resolves to a truthy value if successful
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -564,8 +558,8 @@ profile page
 ## setEmailSummariesHourly(callback) ⇒ <code>Object</code>
 Sets the member's preference for email summaries to hourly.
 
-**Kind**: global function  
-**Returns**: <code>Object</code> - a Promise that resolves to a truthy value if successful  
+**Kind**: inner method
+**Returns**: <code>Object</code> - a Promise that resolves to a truthy value if successful
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -575,8 +569,8 @@ Sets the member's preference for email summaries to hourly.
 ## setEmailSummariesInstantly(callback) ⇒ <code>Object</code>
 Sets the member's preference for email summaries to immediately.
 
-**Kind**: global function  
-**Returns**: <code>Object</code> - a Promise that resolves to a truthy value if successful  
+**Kind**: inner method
+**Returns**: <code>Object</code> - a Promise that resolves to a truthy value if successful
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -586,17 +580,17 @@ Sets the member's preference for email summaries to immediately.
 ## setEmailSummariesNever(callback) ⇒ <code>Object</code>
 Turns off email summaries for member.
 
-**Kind**: global function  
-**Returns**: <code>Object</code> - a Promise that resolves to a truthy value if successful  
+**Kind**: inner method
+**Returns**: <code>Object</code> - a Promise that resolves to a truthy value if successful
 
 | Param | Type | Description |
 | --- | --- | --- |
 | callback | <code>function</code> | (*optional*) the callback function once the operation is complete |
 
 <a name="updateSavedSearch"></a>
-## updateSavedSearch(params, the) ⇒ <code>Object</code>
-**Kind**: global function  
-**Returns**: <code>Object</code> - a Promise that resolves to a truthy value if successful  
+## updateSavedSearch(params) ⇒ <code>Object</code>
+**Kind**: inner method
+**Returns**: <code>Object</code> - a Promise that resolves to a truthy value if successful
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -609,8 +603,8 @@ Turns off email summaries for member.
 
 <a name="setUsername"></a>
 ## setUsername(params) ⇒ <code>Object</code>
-**Kind**: global function  
-**Returns**: <code>Object</code> - a Promise that resolves to a truthy value if successful  
+**Kind**: inner method
+**Returns**: <code>Object</code> - a Promise that resolves to a truthy value if successful
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -620,8 +614,8 @@ Turns off email summaries for member.
 
 <a name="addAvatar"></a>
 ## addAvatar(params) ⇒ <code>Object</code>
-**Kind**: global function  
-**Returns**: <code>Object</code> - a Promise that resolves to a truthy value if successful  
+**Kind**: inner method
+**Returns**: <code>Object</code> - a Promise that resolves to a truthy value if successful
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -631,8 +625,8 @@ Turns off email summaries for member.
 
 <a name="addBoardStar"></a>
 ## addBoardStar(params) ⇒ <code>Object</code>
-**Kind**: global function  
-**Returns**: <code>Object</code> - a Promise that resolves to the id of the new board star  
+**Kind**: inner method
+**Returns**: <code>Object</code> - a Promise that resolves to the id of the new board star
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -643,9 +637,9 @@ Turns off email summaries for member.
 
 <a name="addCustomBoardBackground"></a>
 ## addCustomBoardBackground(params) ⇒ <code>Object</code>
-**Kind**: global function  
+**Kind**: inner method
 **Returns**: <code>Object</code> - a Promise that resolves to the id of the new custom
-board background  
+board background
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -655,8 +649,8 @@ board background
 
 <a name="addCustomEmoji"></a>
 ## addCustomEmoji(params) ⇒ <code>Object</code>
-**Kind**: global function  
-**Returns**: <code>Object</code> - a Promise that resolves to the id of the new custom emoji  
+**Kind**: inner method
+**Returns**: <code>Object</code> - a Promise that resolves to the id of the new custom emoji
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -667,9 +661,9 @@ board background
 
 <a name="addCustomSticker"></a>
 ## addCustomSticker(params) ⇒ <code>Object</code>
-**Kind**: global function  
+**Kind**: inner method
 **Returns**: <code>Object</code> - a Promise that resolves to the id of the new custom
-sticker  
+sticker
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -679,8 +673,8 @@ sticker
 
 <a name="setOneTimeMessagesDismissed"></a>
 ## setOneTimeMessagesDismissed(params) ⇒ <code>Object</code>
-**Kind**: global function  
-**Returns**: <code>Object</code> - a Promise that resolves to a truthy value if successful  
+**Kind**: inner method
+**Returns**: <code>Object</code> - a Promise that resolves to a truthy value if successful
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -690,8 +684,8 @@ sticker
 
 <a name="addSavedSearch"></a>
 ## addSavedSearch(params) ⇒ <code>Object</code>
-**Kind**: global function  
-**Returns**: <code>Object</code> - a Promise that resolves to the id of the new saved search  
+**Kind**: inner method
+**Returns**: <code>Object</code> - a Promise that resolves to the id of the new saved search
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -703,8 +697,8 @@ sticker
 
 <a name="removeBoardStar"></a>
 ## removeBoardStar(params) ⇒ <code>Object</code>
-**Kind**: global function  
-**Returns**: <code>Object</code> - a Promise that resolves to a truthy value if successful  
+**Kind**: inner method
+**Returns**: <code>Object</code> - a Promise that resolves to a truthy value if successful
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -714,8 +708,8 @@ sticker
 
 <a name="removeCustomBoardBackground"></a>
 ## removeCustomBoardBackground(params) ⇒ <code>Object</code>
-**Kind**: global function  
-**Returns**: <code>Object</code> - a Promise that resolves to a truthy value if successful  
+**Kind**: inner method
+**Returns**: <code>Object</code> - a Promise that resolves to a truthy value if successful
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -725,8 +719,8 @@ sticker
 
 <a name="removeCustomSticker"></a>
 ## removeCustomSticker(params) ⇒ <code>Object</code>
-**Kind**: global function  
-**Returns**: <code>Object</code> - a Promise that resolves to a truthy value if successful  
+**Kind**: inner method
+**Returns**: <code>Object</code> - a Promise that resolves to a truthy value if successful
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -736,8 +730,8 @@ sticker
 
 <a name="removeSavedSearch"></a>
 ## removeSavedSearch(params) ⇒ <code>Object</code>
-**Kind**: global function  
-**Returns**: <code>Object</code> - a Promise that resolves to a truthy value if successful  
+**Kind**: inner method
+**Returns**: <code>Object</code> - a Promise that resolves to a truthy value if successful
 
 | Param | Type | Description |
 | --- | --- | --- |

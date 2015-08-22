@@ -83,7 +83,7 @@ export default (cParams) => {
 	 * @method getCards
 	 * @param {Function} [callback] the callback function once the operation is
 	 * complete
-	 * @return {Object} a Promise that resolves to an array of cards objects
+	 * @return {Object} a Promise that resolves to an array of card objects
 	 * representing the list's cards
 	 */
 	const getCards = (callback) => {

@@ -8,7 +8,7 @@ An object-oriented wrapper for the Trello API.
 
 * [trello-yello](#module_trello-yello)
   * [~trello](#module_trello-yello..trello)
-    * [new trello(params)](#new_module_trello-yello..trello_new)
+    * [trello(params)](#new_module_trello-yello..trello_new)
   * [~get(params)](#module_trello-yello..get) ⇒ <code>Object</code>
   * [~createBoard(params)](#module_trello-yello..createBoard) ⇒ <code>Object</code>
   * [~createCard(params)](#module_trello-yello..createCard) ⇒ <code>Object</code>
@@ -38,7 +38,7 @@ trello
 
 **Kind**: inner class of <code>[trello-yello](#module_trello-yello)</code>
 <a name="new_module_trello-yello..trello_new"></a>
-#### new trello(params)
+#### trello(params)
 Trello Yello's entry point for accessing the Trello API. It serves as both an
 object factory for Trello objects as well as a platform for performing
 operations that aren't associated with specific Trello objects, such as
@@ -67,7 +67,7 @@ Retrieves an existing Trello object.
 <a name="module_trello-yello..createBoard"></a>
 ### trello-yello~createBoard(params) ⇒ <code>Object</code>
 **Kind**: inner method of <code>[trello-yello](#module_trello-yello)</code>
-**Returns**: <code>Object</code> - a Promise that resolves to the new board
+**Returns**: <code>Object</code> - a Promise that resolves to the new [board](board.md)
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
@@ -91,7 +91,7 @@ Retrieves an existing Trello object.
 <a name="module_trello-yello..createCard"></a>
 ### trello-yello~createCard(params) ⇒ <code>Object</code>
 **Kind**: inner method of <code>[trello-yello](#module_trello-yello)</code>
-**Returns**: <code>Object</code> - a Promise that resolves to the new card
+**Returns**: <code>Object</code> - a Promise that resolves to the new [card](card.md)
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
@@ -181,7 +181,7 @@ Retrieves an existing Trello object.
 <a name="module_trello-yello..getAction"></a>
 ### trello-yello~getAction(actionId) ⇒ <code>Object</code>
 **Kind**: inner method of <code>[trello-yello](#module_trello-yello)</code>
-**Returns**: <code>Object</code> - the action object
+**Returns**: <code>Object</code> - the [action](action.md) object
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -190,7 +190,7 @@ Retrieves an existing Trello object.
 <a name="module_trello-yello..getBoard"></a>
 ### trello-yello~getBoard(boardId) ⇒ <code>Object</code>
 **Kind**: inner method of <code>[trello-yello](#module_trello-yello)</code>
-**Returns**: <code>Object</code> - the board object
+**Returns**: <code>Object</code> - the [board](board.md) object
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -199,7 +199,7 @@ Retrieves an existing Trello object.
 <a name="module_trello-yello..getCard"></a>
 ### trello-yello~getCard(cardId) ⇒ <code>Object</code>
 **Kind**: inner method of <code>[trello-yello](#module_trello-yello)</code>
-**Returns**: <code>Object</code> - the card object
+**Returns**: <code>Object</code> - the [card](card.md) object
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -208,7 +208,7 @@ Retrieves an existing Trello object.
 <a name="module_trello-yello..getChecklist"></a>
 ### trello-yello~getChecklist(checklistId) ⇒ <code>Object</code>
 **Kind**: inner method of <code>[trello-yello](#module_trello-yello)</code>
-**Returns**: <code>Object</code> - the checklist object
+**Returns**: <code>Object</code> - the [checklist](checklist.md) object
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -217,7 +217,7 @@ Retrieves an existing Trello object.
 <a name="module_trello-yello..getLabel"></a>
 ### trello-yello~getLabel(labelId) ⇒ <code>Object</code>
 **Kind**: inner method of <code>[trello-yello](#module_trello-yello)</code>
-**Returns**: <code>Object</code> - the label object
+**Returns**: <code>Object</code> - the [label](label.md) object
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -226,7 +226,7 @@ Retrieves an existing Trello object.
 <a name="module_trello-yello..getList"></a>
 ### trello-yello~getList(listId) ⇒ <code>Object</code>
 **Kind**: inner method of <code>[trello-yello](#module_trello-yello)</code>
-**Returns**: <code>Object</code> - the list object
+**Returns**: <code>Object</code> - the [list](list.md) object
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -235,7 +235,7 @@ Retrieves an existing Trello object.
 <a name="module_trello-yello..getMember"></a>
 ### trello-yello~getMember(memberId) ⇒ <code>Object</code>
 **Kind**: inner method of <code>[trello-yello](#module_trello-yello)</code>
-**Returns**: <code>Object</code> - the member object
+**Returns**: <code>Object</code> - the [member](member.md) object
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -244,7 +244,7 @@ Retrieves an existing Trello object.
 <a name="module_trello-yello..getNotification"></a>
 ### trello-yello~getNotification(notificationId) ⇒ <code>Object</code>
 **Kind**: inner method of <code>[trello-yello](#module_trello-yello)</code>
-**Returns**: <code>Object</code> - the notification object
+**Returns**: <code>Object</code> - the [notification](notification.md) object
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -253,7 +253,7 @@ Retrieves an existing Trello object.
 <a name="module_trello-yello..getOrganization"></a>
 ### trello-yello~getOrganization(organizationId) ⇒ <code>Object</code>
 **Kind**: inner method of <code>[trello-yello](#module_trello-yello)</code>
-**Returns**: <code>Object</code> - the organization object
+**Returns**: <code>Object</code> - the [organization](organization.md) object
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -262,7 +262,7 @@ Retrieves an existing Trello object.
 <a name="module_trello-yello..getToken"></a>
 ### trello-yello~getToken(tokenId) ⇒ <code>Object</code>
 **Kind**: inner method of <code>[trello-yello](#module_trello-yello)</code>
-**Returns**: <code>Object</code> - the token object
+**Returns**: <code>Object</code> - the [token](token.md) object
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -271,7 +271,7 @@ Retrieves an existing Trello object.
 <a name="module_trello-yello..getWebhook"></a>
 ### trello-yello~getWebhook(webhookId) ⇒ <code>Object</code>
 **Kind**: inner method of <code>[trello-yello](#module_trello-yello)</code>
-**Returns**: <code>Object</code> - the webhook object
+**Returns**: <code>Object</code> - the [webhook](webhook.md) object
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -280,7 +280,7 @@ Retrieves an existing Trello object.
 <a name="module_trello-yello..getCurrentUser"></a>
 ### trello-yello~getCurrentUser() ⇒ <code>Object</code>
 **Kind**: inner method of <code>[trello-yello](#module_trello-yello)</code>
-**Returns**: <code>Object</code> - the member object for the current user
+**Returns**: <code>Object</code> - the [member](member.md) object for the current user
 <a name="module_trello-yello..markAllNotificationsRead"></a>
 ### trello-yello~markAllNotificationsRead(callback) ⇒ <code>Object</code>
 Marks all notifications read by the user.

@@ -190,7 +190,7 @@ Anyone is welcome to contribute! Please follow the [recommended GitHub steps][co
 ## License
 Released under the [MIT][mit-license] license.
 
-[docs]: docs/trello.md
+[docs]: https://github.com/HolyMeekrob/trello-yello/blob/master/docs/trello.md
 [issue]: https://github.com/HolyMeekrob/trello-yello/issues
 [api]: https://trello.com/docs/api/index.html
 [tour]: https://trello.com/tour

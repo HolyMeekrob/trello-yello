@@ -31,8 +31,8 @@ hasn't yet been populated, or it is dirty, then a network call to Trello
 is made. Otherwise, the property is returned from memory. An error will
 be returned if the property doesn't exist or is not a gettable property.
 
-**Kind**: global function  
-**Returns**: <code>Object</code> - a Promise that resolves to the property value  
+**Kind**: inner method
+**Returns**: <code>Object</code> - a Promise that resolves to the property value
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
@@ -44,8 +44,8 @@ be returned if the property doesn't exist or is not a gettable property.
 ## getId(callback) ⇒ <code>Object</code>
 Gets the id of the Trello object.
 
-**Kind**: global function  
-**Returns**: <code>Object</code> - a Promise that resolves to the id  
+**Kind**: inner method
+**Returns**: <code>Object</code> - a Promise that resolves to the id
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -56,9 +56,9 @@ Gets the id of the Trello object.
 Sets the given property using the new values passed in. If a property name
 is not included, then the object itself is set using the new values.
 
-**Kind**: global function  
+**Kind**: inner method
 **Returns**: <code>Object</code> - a Promise that resolves to a truthy value. The exact
-nature of this value is currently undefined and may change in the future.  
+nature of this value is currently undefined and may change in the future.
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
@@ -74,9 +74,9 @@ nature of this value is currently undefined and may change in the future.
 Deletes the given property. If no property is given, then the Trello
 object itself gets deleted.
 
-**Kind**: global function  
+**Kind**: inner method
 **Returns**: <code>Object</code> - a Promise that resolves to a truthy value. The exact
-nature of this value is currently undefined and may change in the future  
+nature of this value is currently undefined and may change in the future
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
@@ -87,9 +87,8 @@ nature of this value is currently undefined and may change in the future
 
 <a name="getActions"></a>
 ## getActions(callback) ⇒ <code>Object</code>
-**Kind**: global function  
-**Returns**: <code>Object</code> - a Promise that resolves to an array of action objects
-representing the list's actions  
+**Kind**: inner method
+**Returns**: <code>Object</code> - a Promise that resolves to an array of [action](action.md) objects representing the list's [actions](action.md)
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -97,9 +96,9 @@ representing the list's actions
 
 <a name="getAmISubscribed"></a>
 ## getAmISubscribed(callback) ⇒ <code>Object</code>
-**Kind**: global function  
+**Kind**: inner method
 **Returns**: <code>Object</code> - a Promise that resolves to true if the user is subscribed
-to the list  
+to the list
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -107,9 +106,8 @@ to the list
 
 <a name="getBoard"></a>
 ## getBoard(callback) ⇒ <code>Object</code>
-**Kind**: global function  
-**Returns**: <code>Object</code> - a Promise that resolves to a board object representing
-the list's board  
+**Kind**: inner method
+**Returns**: <code>Object</code> - a Promise that resolves to a [board](board.md) object representing the list's [board](board.md)
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -117,9 +115,9 @@ the list's board
 
 <a name="getCards"></a>
 ## getCards(callback) ⇒ <code>Object</code>
-**Kind**: global function  
-**Returns**: <code>Object</code> - a Promise that resolves to an array of cards objects
-representing the list's cards  
+**Kind**: inner method
+**Returns**: <code>Object</code> - a Promise that resolves to an array of [card](card.md) objects
+representing the list's [cards](card.md)
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -127,8 +125,8 @@ representing the list's cards
 
 <a name="isArchived"></a>
 ## isArchived(callback) ⇒ <code>Object</code>
-**Kind**: global function  
-**Returns**: <code>Object</code> - a Promise that resolves to true if the list is archived  
+**Kind**: inner method
+**Returns**: <code>Object</code> - a Promise that resolves to true if the list is archived
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -136,8 +134,8 @@ representing the list's cards
 
 <a name="getName"></a>
 ## getName(callback) ⇒ <code>Object</code>
-**Kind**: global function  
-**Returns**: <code>Object</code> - a Promise that resolves to the list's name  
+**Kind**: inner method
+**Returns**: <code>Object</code> - a Promise that resolves to the list's name
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -145,8 +143,8 @@ representing the list's cards
 
 <a name="getPosition"></a>
 ## getPosition(callback) ⇒ <code>Object</code>
-**Kind**: global function  
-**Returns**: <code>Object</code> - a Promise that resolves to the list's position  
+**Kind**: inner method
+**Returns**: <code>Object</code> - a Promise that resolves to the list's position
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -156,8 +154,8 @@ representing the list's cards
 ## archive(callback) ⇒ <code>Object</code>
 Archives the list.
 
-**Kind**: global function  
-**Returns**: <code>Object</code> - a Promise that resolves to a truthy value if successful  
+**Kind**: inner method
+**Returns**: <code>Object</code> - a Promise that resolves to a truthy value if successful
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -167,8 +165,8 @@ Archives the list.
 ## unarchive(callback) ⇒ <code>Object</code>
 Unarchives the list.
 
-**Kind**: global function  
-**Returns**: <code>Object</code> - a Promise that resolves to a truthy value if successful  
+**Kind**: inner method
+**Returns**: <code>Object</code> - a Promise that resolves to a truthy value if successful
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -178,8 +176,8 @@ Unarchives the list.
 ## archiveAllCards(callback) ⇒ <code>Object</code>
 Archives all cards in the list.
 
-**Kind**: global function  
-**Returns**: <code>Object</code> - a Promise that resolves to a truthy value if successful  
+**Kind**: inner method
+**Returns**: <code>Object</code> - a Promise that resolves to a truthy value if successful
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -189,8 +187,8 @@ Archives all cards in the list.
 ## moveAllCards(params) ⇒ <code>Object</code>
 Moves all cards in the list to a new list.
 
-**Kind**: global function  
-**Returns**: <code>Object</code> - a Promise that resolves to a truthy value if successful  
+**Kind**: inner method
+**Returns**: <code>Object</code> - a Promise that resolves to a truthy value if successful
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -201,8 +199,8 @@ Moves all cards in the list to a new list.
 
 <a name="setBoard"></a>
 ## setBoard(params) ⇒ <code>Object</code>
-**Kind**: global function  
-**Returns**: <code>Object</code> - a Promise that resolves to a truthy value if successful  
+**Kind**: inner method
+**Returns**: <code>Object</code> - a Promise that resolves to a truthy value if successful
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
@@ -213,8 +211,8 @@ Moves all cards in the list to a new list.
 
 <a name="setName"></a>
 ## setName(params) ⇒ <code>Object</code>
-**Kind**: global function  
-**Returns**: <code>Object</code> - a Promise that resolves to a truthy value if successful  
+**Kind**: inner method
+**Returns**: <code>Object</code> - a Promise that resolves to a truthy value if successful
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -224,8 +222,8 @@ Moves all cards in the list to a new list.
 
 <a name="setPosition"></a>
 ## setPosition(params) ⇒ <code>Object</code>
-**Kind**: global function  
-**Returns**: <code>Object</code> - a Promise that resolves to a truthy value if successful  
+**Kind**: inner method
+**Returns**: <code>Object</code> - a Promise that resolves to a truthy value if successful
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -237,8 +235,8 @@ Moves all cards in the list to a new list.
 ## subscribe(callback) ⇒ <code>Object</code>
 Subscribes the user to the list.
 
-**Kind**: global function  
-**Returns**: <code>Object</code> - a Promise that resolves to a truthy value if successful  
+**Kind**: inner method
+**Returns**: <code>Object</code> - a Promise that resolves to a truthy value if successful
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -248,8 +246,8 @@ Subscribes the user to the list.
 ## subscribe(callback) ⇒ <code>Object</code>
 Unsubscribes the user from the list.
 
-**Kind**: global function  
-**Returns**: <code>Object</code> - a Promise that resolves to a truthy value if successful  
+**Kind**: inner method
+**Returns**: <code>Object</code> - a Promise that resolves to a truthy value if successful
 
 | Param | Type | Description |
 | --- | --- | --- |

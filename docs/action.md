@@ -27,8 +27,8 @@ hasn't yet been populated, or it is dirty, then a network call to Trello
 is made. Otherwise, the property is returned from memory. An error will
 be returned if the property doesn't exist or is not a gettable property.
 
-**Kind**: global function  
-**Returns**: <code>Object</code> - a Promise that resolves to the property value  
+**Kind**: inner method
+**Returns**: <code>Object</code> - a Promise that resolves to the property value
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
@@ -40,8 +40,8 @@ be returned if the property doesn't exist or is not a gettable property.
 ## getId(callback) ⇒ <code>Object</code>
 Gets the id of the Trello object.
 
-**Kind**: global function  
-**Returns**: <code>Object</code> - a Promise that resolves to the id  
+**Kind**: inner method
+**Returns**: <code>Object</code> - a Promise that resolves to the id
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -52,9 +52,9 @@ Gets the id of the Trello object.
 Sets the given property using the new values passed in. If a property name
 is not included, then the object itself is set using the new values.
 
-**Kind**: global function  
+**Kind**: inner method
 **Returns**: <code>Object</code> - a Promise that resolves to a truthy value. The exact
-nature of this value is currently undefined and may change in the future.  
+nature of this value is currently undefined and may change in the future.
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
@@ -70,9 +70,9 @@ nature of this value is currently undefined and may change in the future.
 Deletes the given property. If no property is given, then the Trello
 object itself gets deleted.
 
-**Kind**: global function  
+**Kind**: inner method
 **Returns**: <code>Object</code> - a Promise that resolves to a truthy value. The exact
-nature of this value is currently undefined and may change in the future  
+nature of this value is currently undefined and may change in the future
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
@@ -83,9 +83,8 @@ nature of this value is currently undefined and may change in the future
 
 <a name="getBoard"></a>
 ## getBoard(callback) ⇒ <code>Object</code>
-**Kind**: global function  
-**Returns**: <code>Object</code> - a Promise that resolves to the action's board. This is a
-board object.  
+**Kind**: inner method
+**Returns**: <code>Object</code> - a Promise that resolves to the action's [board](board.md). This is a [board](board.md) object.
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -93,9 +92,8 @@ board object.
 
 <a name="getCard"></a>
 ## getCard(callback) ⇒ <code>Object</code>
-**Kind**: global function  
-**Returns**: <code>Object</code> - a Promise that resolves to the action's card. This is a
-card object.  
+**Kind**: inner method
+**Returns**: <code>Object</code> - a Promise that resolves to the action's [card](card.md). This is a [card](card.md) object.
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -103,8 +101,8 @@ card object.
 
 <a name="getData"></a>
 ## getData(callback) ⇒ <code>Object</code>
-**Kind**: global function  
-**Returns**: <code>Object</code> - a Promise that resolves to action data  
+**Kind**: inner method
+**Returns**: <code>Object</code> - a Promise that resolves to the action's data
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -112,8 +110,8 @@ card object.
 
 <a name="getDate"></a>
 ## getDate(callback) ⇒ <code>Object</code>
-**Kind**: global function  
-**Returns**: <code>Object</code> - a Promise that resolves to action's date  
+**Kind**: inner method
+**Returns**: <code>Object</code> - a Promise that resolves to the action's date
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -121,8 +119,8 @@ card object.
 
 <a name="getDisplay"></a>
 ## getDisplay(callback) ⇒ <code>Object</code>
-**Kind**: global function  
-**Returns**: <code>Object</code> - a Promise that resolves to action's display values  
+**Kind**: inner method
+**Returns**: <code>Object</code> - a Promise that resolves to the action's display values
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -130,8 +128,8 @@ card object.
 
 <a name="getEntities"></a>
 ## getEntities(callback) ⇒ <code>Object</code>
-**Kind**: global function  
-**Returns**: <code>Object</code> - a Promise that resolves to action's entities  
+**Kind**: inner method
+**Returns**: <code>Object</code> - a Promise that resolves to the action's entities
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -139,9 +137,8 @@ card object.
 
 <a name="getList"></a>
 ## getList(callback) ⇒ <code>Object</code>
-**Kind**: global function  
-**Returns**: <code>Object</code> - a Promise that resolves to the action's list. This is a
-list object.  
+**Kind**: inner method
+**Returns**: <code>Object</code> - a Promise that resolves to the action's [list](list.md). This is a [list](list.md) object.
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -149,9 +146,8 @@ list object.
 
 <a name="getMember"></a>
 ## getMember(callback) ⇒ <code>Object</code>
-**Kind**: global function  
-**Returns**: <code>Object</code> - a Promise that resolves to action's member. This is a
-member object.  
+**Kind**: inner method
+**Returns**: <code>Object</code> - a Promise that resolves to the action's [member](member.md). This is a [member](member.md) object.
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -159,9 +155,8 @@ member object.
 
 <a name="getCreator"></a>
 ## getCreator(callback) ⇒ <code>Object</code>
-**Kind**: global function  
-**Returns**: <code>Object</code> - a Promise that resolves to the member who created the
-action. This is a member object.  
+**Kind**: inner method
+**Returns**: <code>Object</code> - a Promise that resolves to the [member](member.md) who created the action. This is a [member](member.md) object.
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -169,9 +164,8 @@ action. This is a member object.
 
 <a name="getOrganization"></a>
 ## getOrganization(callback) ⇒ <code>Object</code>
-**Kind**: global function  
-**Returns**: <code>Object</code> - a Promise that resolves to action's organization. This is
-an organization object.  
+**Kind**: inner method
+**Returns**: <code>Object</code> - a Promise that resolves to the action's [organization](organization.md). This is an [organization](organization.md) object.
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -179,8 +173,8 @@ an organization object.
 
 <a name="getType"></a>
 ## getType(callback) ⇒ <code>Object</code>
-**Kind**: global function  
-**Returns**: <code>Object</code> - a Promise that resolves to action's type  
+**Kind**: inner method
+**Returns**: <code>Object</code> - a Promise that resolves to the action's type
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -188,8 +182,8 @@ an organization object.
 
 <a name="setText"></a>
 ## setText(params) ⇒ <code>Object</code>
-**Kind**: global function  
-**Returns**: <code>Object</code> - a Promise that resolves to a truthy value if successful  
+**Kind**: inner method
+**Returns**: <code>Object</code> - a Promise that resolves to a truthy value if successful
 
 | Param | Type | Description |
 | --- | --- | --- |

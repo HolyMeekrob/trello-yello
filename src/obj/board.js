@@ -165,7 +165,7 @@ export default (cParams) => {
 	 * @method getDescription
 	 * @param {Function} [callback] the callback function once the operation is
 	 * complete
-	 * @return {Object} a Promise that resolves to the board's descrsiption
+	 * @return {Object} a Promise that resolves to the board's description
 	 */
 	const getDescription = (callback) => {
 		const args = {
@@ -244,7 +244,7 @@ export default (cParams) => {
 	 * @method getLabelNames
 	 * @param {Function} [callback] the callback function once the operation is
 	 * complete
-	 * @return {Object} a Promise that resolves to board's label names
+	 * @return {Object} a Promise that resolves to the board's label names
 	 */
 	const getLabelNames = (callback) => {
 		const args = {
@@ -307,7 +307,7 @@ export default (cParams) => {
 	 * @method getMemberships
 	 * @param {Function} [callback] the callback function once the operation is
 	 * complete
-	 * @return {Object} a Promise that resolves to board's memberships
+	 * @return {Object} a Promise that resolves to the board's memberships
 	 */
 	const getMemberships = (callback) => {
 		const args = {
@@ -338,7 +338,7 @@ export default (cParams) => {
 	 * @method getName
 	 * @param {Function} [callback] the callback function once the operation is
 	 * complete
-	 * @return {Object} a Promise that resolves to board's name
+	 * @return {Object} a Promise that resolves to the board's name
 	 */
 	const getName = (callback) => {
 		const args = {
@@ -353,7 +353,7 @@ export default (cParams) => {
 	 * @method getOrganization
 	 * @param {Function} [callback] the callback function once the operation is
 	 * complete
-	 * @return {Object} a Promise that resolves to board's organization. This is
+	 * @return {Object} a Promise that resolves to the board's organization. This is
 	 * an organization object.
 	 */
 	const getOrganization = (callback) => {

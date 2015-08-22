@@ -927,7 +927,7 @@ export default (cParams) => {
 	/**
 	 * Mark all notifications related to the card as read.
 	 *
-	 * @method addmarkNotificationsRead
+	 * @method markNotificationsRead
 	 * @param {Function} [callback] the callback function once the operation is
 	 * complete
 	 * @return {Object} a Promise that resolves to a truthy value if successful

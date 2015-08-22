@@ -284,7 +284,7 @@ export default (cParams) => {
 		const args = {
 			propName: 'list',
 			callback
-	};
+		};
 
 		return obj.get(args);
 	};
@@ -317,7 +317,7 @@ export default (cParams) => {
 		const args = {
 			propName: 'members',
 			callback
-	};
+		};
 
 		return obj.get(args);
 	};
@@ -334,7 +334,7 @@ export default (cParams) => {
 		const args = {
 			propName: 'membersVoted',
 			callback
-	};
+		};
 
 		return obj.get(args);
 	};
@@ -428,7 +428,7 @@ export default (cParams) => {
 		const args = {
 			propName: 'stickers',
 			callback
-	};
+		};
 
 		return obj.get(args);
 	};

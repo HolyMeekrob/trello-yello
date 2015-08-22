@@ -218,7 +218,7 @@ import trelloObj from '../trelloObj';
 	const setText = (params) => {
 		const { text, callback } = params;
 		const args = {
-		values: { value: text },
+			values: { value: text },
 			propName: 'text',
 			preferNonIdempotence: false,
 			callback

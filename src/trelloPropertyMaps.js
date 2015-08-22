@@ -11,7 +11,7 @@ import token from './entities/token';
 import webhook from './entities/webhook';
 
 export default {
-  action: action,
+	action: action,
 	board: board,
 	card: card,
 	checklist: checklist,

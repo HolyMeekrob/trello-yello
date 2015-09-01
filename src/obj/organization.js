@@ -349,7 +349,6 @@ export default (cParams) => {
 		return obj.set(args);
 	};
 
-
 	/**
 	 * @method addNonMember
 	 * @param {Object} params the method parameters object
@@ -372,8 +371,6 @@ export default (cParams) => {
 
 		return obj.set(args);
 	};
-
-
 
 	/**
 	 * Activates the member within the organization.

@@ -193,7 +193,6 @@ export default (cParams) => {
 		return obj.get(args);
 	};
 
-
 	/**
 	 * @method getDescriptionData
 	 * @param {Function} [callback] the callback function once the operation is
@@ -208,7 +207,6 @@ export default (cParams) => {
 
 		return obj.get(args);
 	};
-
 
 	/**
 	 * @method getDueDate
@@ -289,7 +287,6 @@ export default (cParams) => {
 		return obj.get(args);
 	};
 
-
 	/**
 	 * @method getLongUrl
 	 * @param {Function} [callback] the callback function once the operation is
@@ -304,7 +301,6 @@ export default (cParams) => {
 
 		return obj.get(args);
 	};
-
 
 	/**
 	 * @method getMembers
@@ -321,7 +317,6 @@ export default (cParams) => {
 
 		return obj.get(args);
 	};
-
 
 	/**
 	 * @method getMembersVoted
@@ -578,7 +573,6 @@ export default (cParams) => {
 		return obj.set(args);
 	};
 
-
 	/**
 	 * @method setList
 	 * @param {Object} params the method parameters object
@@ -762,7 +756,7 @@ export default (cParams) => {
 			preferNonIdempotence: true
 		};
 
-		return obj.set(args).then(res => {
+		return obj.set(args).then((res) => {
 			const objParams = adaptParams(res, 'action')(cParams);
 			return Promise.resolve(cParams.objConstructor(objParams))
 					.nodeify(callback);
@@ -814,12 +808,12 @@ export default (cParams) => {
 				idChecklist: checklistId,
 				idCheckItem: checklistItemId
 			},
-			propName: `checklist/${checklistId}/checkItem/` +
-					`${checklistItemId}/convertToCard`,
+			propName: `checklist/${checklistId}/checkItem/`
+					+ `${checklistItemId}/convertToCard`,
 			preferNonIdempotence: true
 		};
 
-		return obj.set(args).then(res => {
+		return obj.set(args).then((res) => {
 			const objParams = adaptParams(res, 'card')(cParams);
 			return Promise.resolve(cParams.objConstructor(objParams))
 					.nodeify(callback);
@@ -850,7 +844,7 @@ export default (cParams) => {
 			preferNonIdempotence: true
 		};
 
-		return obj.set(args).then(res => {
+		return obj.set(args).then((res) => {
 			const objParams = adaptParams(res, 'checklist')(cParams);
 			return Promise.resolve(cParams.objConstructor(objParams))
 					.nodeify(callback);
@@ -897,7 +891,7 @@ export default (cParams) => {
 			callback
 		};
 
-		return obj.set(args).then(res => {
+		return obj.set(args).then((res) => {
 			const objParams = adaptParams(res, 'label')(cParams);
 			return Promise.resolve(cParams.objConstructor(objParams))
 					.nodeify(callback);

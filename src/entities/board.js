@@ -107,7 +107,7 @@ const board = {
 			trelloType: null,
 			isAutoProp: true,
 			get: {}
-		}, // Array of what? Members?
+		},
 		invited: {
 			trelloType: null,
 			isAutoProp: true,

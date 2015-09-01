@@ -147,7 +147,7 @@ export default (cParams) => {
 			callback
 		};
 
-		return obj.set(args).then(res => {
+		return obj.set(args).then((res) => {
 			const objParams = adaptParams(res, 'webhook')(cParams);
 			return Promise.resolve(cParams.objConstructor(objParams))
 					.nodeify(callback);

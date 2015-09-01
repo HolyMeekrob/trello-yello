@@ -2,11 +2,11 @@ import trelloObj from '../../src/trelloObj';
 import Promise from 'bluebird';
 import sinon from 'sinon';
 import chai from 'chai';
-const should = chai.should(); // eslint-disable-line no-unused-vars
+const should = chai.should();
 import chaiAsPromised from 'chai-as-promised';
 chai.use(chaiAsPromised);
 
-describe('trelloObj', function () {
+describe('trelloObj', () => {
 	let net;
 	let config;
 	let id;
@@ -14,14 +14,14 @@ describe('trelloObj', function () {
 	let propertyMapsStub;
 	let objConstructor;
 
-	before(function () {
+	before(() => {
 		config = {};
 		id = 'id';
 		objType = 'objectType';
 	});
 
-	describe('#constructor()', function () {
-		beforeEach(function () {
+	describe('#constructor()', () => {
+		beforeEach(() => {
 			propertyMapsStub = {};
 
 			net = {
@@ -31,53 +31,53 @@ describe('trelloObj', function () {
 			};
 		});
 
-		describe('if objType is missing', function () {
-			it('should throw an exception', function () {
-				return function () {
+		describe('if objType is missing', () => {
+			it('should throw an exception', () => {
+				return (() => {
 					return trelloObj();
-				}.should.throw(Error);
+				}).should.throw(Error);
 			});
 		});
 
-		describe('if config is missing', function () {
-			it('should throw an exception', function () {
-				return function () {
+		describe('if config is missing', () => {
+			it('should throw an exception', () => {
+				return (() => {
 					return trelloObj({
 						maps: propertyMapsStub,
 						objType
 					});
-				}.should.throw(Error);
+				}).should.throw(Error);
 			});
 		});
 
-		describe('if id is missing', function () {
-			it('should throw an exception', function () {
-				return function () {
+		describe('if id is missing', () => {
+			it('should throw an exception', () => {
+				return (() => {
 					trelloObj({
 						maps: propertyMapsStub,
 						objType,
 						config
 					});
-				}.should.throw(Error);
+				}).should.throw(Error);
 			});
 		});
 
-		describe('if net is missing', function () {
-			it('should throw an exception', function () {
-				return function () {
+		describe('if net is missing', () => {
+			it('should throw an exception', () => {
+				return (() => {
 					return trelloObj({
 						maps: propertyMapsStub,
 						objType,
 						config,
 						id
 					});
-				}.should.throw(Error);
+				}).should.throw(Error);
 			});
 		});
 
-		describe('if object type is invalid', function () {
-			it('should throw an error', function () {
-				return function () {
+		describe('if object type is invalid', () => {
+			it('should throw an error', () => {
+				return (() => {
 					return trelloObj({
 						maps: propertyMapsStub,
 						objType,
@@ -85,19 +85,19 @@ describe('trelloObj', function () {
 						id,
 						net
 					});
-				}.should.throw(Error);
+				}).should.throw(Error);
 			});
 		});
 
-		describe('if constructor is missing', function () {
-			beforeEach(function () {
+		describe('if constructor is missing', () => {
+			beforeEach(() => {
 				propertyMapsStub.objectType = {
 					props: {}
 				};
 			});
 
-			it('should throw an error', function () {
-				return function () {
+			it('should throw an error', () => {
+				return (() => {
 					return trelloObj({
 						maps: propertyMapsStub,
 						objType,
@@ -105,20 +105,20 @@ describe('trelloObj', function () {
 						id,
 						net
 					});
-				}.should.throw(Error);
+				}).should.throw(Error);
 			});
 		});
 
-		describe('if constructor is not a function', function () {
-			beforeEach(function () {
+		describe('if constructor is not a function', () => {
+			beforeEach(() => {
 				propertyMapsStub.objectType = {
 					props: {}
 				};
 				objConstructor = {};
 			});
 
-			it('should throw an error', function () {
-				return function () {
+			it('should throw an error', () => {
+				return (() => {
 					return trelloObj({
 						maps: propertyMapsStub,
 						objType,
@@ -127,12 +127,12 @@ describe('trelloObj', function () {
 						net,
 						objConstructor
 					});
-				}.should.throw(Error);
+				}).should.throw(Error);
 			});
 		});
 
-		describe('if all arguments are correct', function () {
-			beforeEach(function () {
+		describe('if all arguments are correct', () => {
+			beforeEach(() => {
 				propertyMapsStub.objectType = {
 					props: {}
 				};
@@ -148,18 +148,18 @@ describe('trelloObj', function () {
 				});
 			});
 
-			it('should not call the network service', function () {
-				net.get.called.should.be.false; // eslint-disable-line no-unused-expressions
+			it('should not call the network service', () => {
+				net.get.called.should.be.false;
 			});
 		});
 	});
 
-	describe('#get()', function () {
-		describe('getting a non-gettable Trello property', function () {
+	describe('#get()', () => {
+		describe('getting a non-gettable Trello property', () => {
 			let obj;
 			let nonGettableProperty;
 
-			beforeEach(function () {
+			beforeEach(() => {
 				nonGettableProperty = 'nonGettableProperty';
 				objConstructor = () => undefined;
 				obj = trelloObj({
@@ -172,17 +172,17 @@ describe('trelloObj', function () {
 				});
 			});
 
-			it('should be rejected', function () {
+			it('should be rejected', () => {
 				obj.get({ propName: nonGettableProperty }).should.be.rejectedWith(Error);
 			});
 		});
 
-		describe('getting a non-Trello property', function () {
+		describe('getting a non-Trello property', () => {
 			let obj;
 			let unexpectedProperty;
 			objConstructor = () => undefined;
 
-			beforeEach(function () {
+			beforeEach(() => {
 				unexpectedProperty = 'unexpectedProperty';
 				obj = trelloObj({
 					maps: propertyMapsStub,
@@ -194,17 +194,17 @@ describe('trelloObj', function () {
 				});
 			});
 
-			it('should be rejected', function () {
+			it('should be rejected', () => {
 				obj.get({ propName: unexpectedProperty }).should.be.rejectedWith(Error);
 			});
 		});
 
-		describe('getting a non-Trello property with a callback', function () {
+		describe('getting a non-Trello property with a callback', () => {
 			let obj;
 			let unexpectedProperty;
 			let thrownErr;
 
-			beforeEach(function (done) {
+			beforeEach((done) => {
 				unexpectedProperty = 'unexpectedProp';
 				objConstructor = () => undefined;
 				obj = trelloObj({
@@ -218,7 +218,7 @@ describe('trelloObj', function () {
 
 				obj.get({
 					propName: unexpectedProperty,
-					callback: function (err) {
+					callback (err) {
 						if (err) {
 							thrownErr = err;
 						}
@@ -232,25 +232,25 @@ describe('trelloObj', function () {
 				});
 			});
 
-			it('should call the callback with an error', function () {
+			it('should call the callback with an error', () => {
 				should.exist(thrownErr);
 				thrownErr.should.be.an.instanceof(Error);
 			});
 		});
 
-		describe('getting a non-Trello property but skipping validation', function () {
+		describe('getting a non-Trello property but skipping validation', () => {
 			let obj;
 			let nonTrelloProp;
 			let expectedValue;
 			objConstructor = () => undefined;
 
-			beforeEach(function () {
+			beforeEach(() => {
 				nonTrelloProp = 'nonTrelloProp';
 				expectedValue = 'expected value';
 
 				const getStub = sinon.stub();
 				getStub.withArgs(config, objType, id, {}, nonTrelloProp).returns(
-					Promise.resolve( {
+					Promise.resolve({
 						body: JSON.stringify(expectedValue)
 					})
 				);
@@ -266,12 +266,12 @@ describe('trelloObj', function () {
 				});
 			});
 
-			it('should retrieve the value anyway', function () {
+			it('should retrieve the value anyway', () => {
 				obj.get({ propName: nonTrelloProp, skipValidation: true }).should.eventually.become(expectedValue);
 			});
 		});
 
-		describe('and the network resolves without error', function () {
+		describe('and the network resolves without error', () => {
 			let obj;
 			let autoProperty;
 			let nonAutoProperty;
@@ -281,7 +281,7 @@ describe('trelloObj', function () {
 			let expectedNonDefaultValue;
 			let invalidValue;
 
-			beforeEach(function () {
+			beforeEach(() => {
 				autoProperty = 'autoProperty';
 				nonAutoProperty = 'nonAutoProperty';
 				nonAutoSubProperty = 'nonAutoSubProperty';
@@ -331,7 +331,7 @@ describe('trelloObj', function () {
 					})
 				);
 				getStub.withArgs(config, objType, id, {}, nonAutoProperty).returns(
-					Promise.resolve( {
+					Promise.resolve({
 						body: JSON.stringify(expectedNonDefaultValue)
 					})
 				);
@@ -349,31 +349,31 @@ describe('trelloObj', function () {
 				});
 			});
 
-			it('should update the object with the expected value on the default property', function () {
+			it('should update the object with the expected value on the default property', () => {
 				obj.get({ propName: autoProperty }).should.eventually.become(expectedDefaultValue);
 				obj.get({ propName: nonAutoSubProperty }).should.eventually.not.become(invalidValue);
 				obj.get({ propName: nonAutoProperty }).should.eventually.not.become(invalidValue);
 			});
 
-			it('should update the object with the expected value on the non-default sub-property', function () {
+			it('should update the object with the expected value on the non-default sub-property', () => {
 				obj.get({ propName: nonAutoSubProperty }).should.eventually.be.an('array');
 				obj.get({ propName: nonAutoSubProperty }).should.eventually.have.length(1);
-				obj.get({ propName: nonAutoSubProperty }).then(arr => arr[0]).
-						should.eventually.become(expectedNonDefaultSubValue);
+				obj.get({ propName: nonAutoSubProperty }).then((arr) => arr[0])
+						.should.eventually.become(expectedNonDefaultSubValue);
 			});
 
-			it('should update the object with the expected value on the non-default property', function () {
+			it('should update the object with the expected value on the non-default property', () => {
 				obj.get({ propName: nonAutoProperty }).should.eventually.become(expectedNonDefaultValue);
 			});
 		});
 
-		describe('and the network resolves without error using a callback', function () {
+		describe('and the network resolves without error using a callback', () => {
 			let obj;
 			let autoProperty;
 			let expectedValue;
 			let actualValue;
 
-			beforeEach(function (done) {
+			beforeEach((done) => {
 				autoProperty = 'autoProperty';
 				expectedValue = 'expectedVal';
 
@@ -405,7 +405,7 @@ describe('trelloObj', function () {
 				});
 				obj.get({
 					propName: autoProperty,
-					callback: function (err, response) {
+					callback (err, response) {
 						if (err) {
 							actualValue = err;
 						}
@@ -418,20 +418,20 @@ describe('trelloObj', function () {
 				});
 			});
 
-			it('should update the object with the expected value on the default property', function () {
+			it('should update the object with the expected value on the default property', () => {
 				actualValue.should.equal(expectedValue);
 			});
 		});
 	});
 
-	describe('#set()', function () {
+	describe('#set()', () => {
 		let obj;
 		let args;
 
-		describe('setting the object on a non-settable object type', function () {
+		describe('setting the object on a non-settable object type', () => {
 			let newVal;
 
-			beforeEach(function () {
+			beforeEach(() => {
 				newVal = { value: 'newVal' };
 				args = {
 					values: newVal
@@ -448,15 +448,15 @@ describe('trelloObj', function () {
 				});
 			});
 
-			it('should be rejected', function () {
+			it('should be rejected', () => {
 				obj.set(args).should.be.rejectedWith(Error);
 			});
 		});
 
-		describe('setting the object on a non-settable object type but skipping validation', function () {
+		describe('setting the object on a non-settable object type but skipping validation', () => {
 			let newVal;
 
-			beforeEach(function () {
+			beforeEach(() => {
 				newVal = { value: 'newVal' };
 				args = {
 					values: newVal,
@@ -482,20 +482,20 @@ describe('trelloObj', function () {
 				obj.set(args);
 			});
 
-			it('should be call the network service anyway', function () {
-				net.put.called.should.be.true; //eslint-disable-line no-unused-expressions
+			it('should be call the network service anyway', () => {
+				net.put.called.should.be.true;
 			});
 		});
 
-		describe('setting the object on a non-settable object type with a callback', function () {
+		describe('setting the object on a non-settable object type with a callback', () => {
 			let newVal;
 			let success;
 
-			beforeEach(function (done) {
+			beforeEach((done) => {
 				newVal = { value: 'newVal' };
 				args = {
 					values: newVal,
-					callback: function (err) {
+					callback (err) {
 						if (err) {
 							success = false;
 						}
@@ -518,15 +518,15 @@ describe('trelloObj', function () {
 				obj.set(args);
 			});
 
-			it('should call the callback with an error', function () {
-				success.should.be.false; // eslint-disable-line no-unused-expressions
+			it('should call the callback with an error', () => {
+				success.should.be.false;
 			});
 		});
 
-		describe('setting the object on a settable object type', function () {
+		describe('setting the object on a settable object type', () => {
 			let newVal;
 
-			beforeEach(function () {
+			beforeEach(() => {
 				newVal = { value: 'newVal' };
 				args = {
 					values: newVal
@@ -556,21 +556,21 @@ describe('trelloObj', function () {
 				obj.set(args);
 			});
 
-			it('should call the network service', function () {
-				net.put.called.should.be.true; //eslint-disable-line no-unused-expressions
-				net.put.calledWithExactly(config, objType, id, newVal).should.be.true; //eslint-disable-line no-unused-expressions
+			it('should call the network service', () => {
+				net.put.called.should.be.true;
+				net.put.calledWithExactly(config, objType, id, newVal).should.be.true;
 			});
 		});
 
-		describe('setting the object on a settable object type with a callback', function () {
+		describe('setting the object on a settable object type with a callback', () => {
 			let newVal;
 			let success;
 
-			beforeEach(function (done) {
+			beforeEach((done) => {
 				newVal = { value: 'newVal' };
 				args = {
 					values: newVal,
-					callback: function (err) {
+					callback (err) {
 						if (err) {
 							success = false;
 						}
@@ -604,21 +604,21 @@ describe('trelloObj', function () {
 				obj.set(args);
 			});
 
-			it('should call the network service', function () {
-				net.put.called.should.be.true; //eslint-disable-line no-unused-expressions
-				net.put.calledWithExactly(config, objType, id, newVal).should.be.true; //eslint-disable-line no-unused-expressions
+			it('should call the network service', () => {
+				net.put.called.should.be.true;
+				net.put.calledWithExactly(config, objType, id, newVal).should.be.true;
 			});
 
-			it('should call the callback with success', function () {
-				success.should.be.true; // eslint-disable-line no-unused-expressions
+			it('should call the callback with success', () => {
+				success.should.be.true;
 			});
 		});
 
-		describe('setting a property that isn\'t a Trello property', function () {
+		describe('setting a property that isn\'t a Trello property', () => {
 			let nonTrelloProperty;
 			let newVal;
 
-			beforeEach(function () {
+			beforeEach(() => {
 				newVal = { newValProp: 'nonTrelloPropertyVal' };
 				nonTrelloProperty = 'nonTrelloProperty';
 				args = {
@@ -641,16 +641,16 @@ describe('trelloObj', function () {
 				});
 			});
 
-			it('should be rejected', function () {
+			it('should be rejected', () => {
 				obj.set(args).should.be.rejectedWith(Error);
 			});
 		});
 
-		describe('setting a property that isn\'t a Trello property but skipping validation', function () {
+		describe('setting a property that isn\'t a Trello property but skipping validation', () => {
 			let nonTrelloProperty;
 			let newVal;
 
-			beforeEach(function () {
+			beforeEach(() => {
 				newVal = { newValProp: 'nonTrelloPropertyVal' };
 				nonTrelloProperty = 'nonTrelloProperty';
 				args = {
@@ -681,16 +681,16 @@ describe('trelloObj', function () {
 				obj.set(args);
 			});
 
-			it('should be call the network service anyway', function () {
-				net.put.called.should.be.true; //eslint-disable-line no-unused-expressions
+			it('should be call the network service anyway', () => {
+				net.put.called.should.be.true;
 			});
 		});
 
-		describe('setting a Trello property that cannot be set', function () {
+		describe('setting a Trello property that cannot be set', () => {
 			let newVal;
 			let nonAutoProperty;
 
-			beforeEach(function () {
+			beforeEach(() => {
 				newVal = { newValProp: 'unsettableVal' };
 				nonAutoProperty = 'nonAutoProp';
 				args = {
@@ -717,16 +717,16 @@ describe('trelloObj', function () {
 				});
 			});
 
-			it('should be rejected', function () {
+			it('should be rejected', () => {
 				obj.set(args).should.be.rejectedWith(Error);
 			});
 		});
 
-		describe('setting a Trello property that cannot be set but skipping validation', function () {
+		describe('setting a Trello property that cannot be set but skipping validation', () => {
 			let newVal;
 			let nonAutoProperty;
 
-			beforeEach(function () {
+			beforeEach(() => {
 				newVal = { newValProp: 'unsettableVal' };
 				nonAutoProperty = 'nonAutoProp';
 				args = {
@@ -743,7 +743,6 @@ describe('trelloObj', function () {
 				};
 
 				objConstructor = () => undefined;
-
 
 				const putStub = sinon.stub();
 				putStub.withArgs(config, objType, id, newVal, nonAutoProperty).returns(Promise.resolve({}));
@@ -763,16 +762,16 @@ describe('trelloObj', function () {
 				obj.set(args);
 			});
 
-			it('should call the network service anyway', function () {
-				net.put.called.should.be.true; //eslint-disable-line no-unused-expressions
+			it('should call the network service anyway', () => {
+				net.put.called.should.be.true;
 			});
 		});
 
-		describe('setting a Trello property that requires a sub-property without any sub-properties', function () {
+		describe('setting a Trello property that requires a sub-property without any sub-properties', () => {
 			let newVal;
 			let nonAllowEmptyProperty;
 
-			beforeEach(function () {
+			beforeEach(() => {
 				newVal = { newValProp: 'unsettableVal' };
 				nonAllowEmptyProperty = 'nonAllowEmptyProperty';
 				args = {
@@ -802,16 +801,16 @@ describe('trelloObj', function () {
 				});
 			});
 
-			it('should be rejected', function () {
+			it('should be rejected', () => {
 				obj.set(args).should.be.rejectedWith(Error);
 			});
 		});
 
-		describe('setting a Trello property', function () {
+		describe('setting a Trello property', () => {
 			let newVal;
 			let allowEmptyProperty;
 
-			beforeEach(function () {
+			beforeEach(() => {
 				newVal = { newValProp: 'trelloPropertyVal' };
 				allowEmptyProperty = 'allowEmptyProperty';
 				args = {
@@ -822,7 +821,7 @@ describe('trelloObj', function () {
 				propertyMapsStub.objectType = {
 					allowEmptyPut: true,
 					props: {
-						allowEmptyProperty: { trelloType: null, isAutoProp: true, get: {}, put: { allowEmpty: true }}
+						allowEmptyProperty: { trelloType: null, isAutoProp: true, get: {}, put: { allowEmpty: true } }
 					}
 				};
 
@@ -844,24 +843,24 @@ describe('trelloObj', function () {
 				obj.set(args);
 			});
 
-			it('should call the network service', function () {
-				net.put.called.should.be.true; // eslint-disable-line no-unused-expressions
-				net.put.calledWithExactly(config, objType, id, newVal, allowEmptyProperty).should.be.true; // eslint-disable-line no-unused-expressions
+			it('should call the network service', () => {
+				net.put.called.should.be.true;
+				net.put.calledWithExactly(config, objType, id, newVal, allowEmptyProperty).should.be.true;
 			});
 		});
 
-		describe('setting a Trello property with a callback', function () {
+		describe('setting a Trello property with a callback', () => {
 			let newVal;
 			let allowEmptyProperty;
 			let success;
 
-			beforeEach(function (done) {
+			beforeEach((done) => {
 				allowEmptyProperty = 'allowEmptyProperty';
 				newVal = { newValProp: 'trelloPropertyVal' };
 				args = {
 					values: newVal,
 					propName: allowEmptyProperty,
-					callback: function(err) {
+					callback (err) {
 						if (err) {
 							success = false;
 						}
@@ -875,7 +874,7 @@ describe('trelloObj', function () {
 				propertyMapsStub.objectType = {
 					allowEmptyPut: true,
 					props: {
-						allowEmptyProperty: { trelloType: null, isAutoProp: true, get: {}, put: { allowEmpty: true }}
+						allowEmptyProperty: { trelloType: null, isAutoProp: true, get: {}, put: { allowEmpty: true } }
 					}
 				};
 
@@ -897,20 +896,20 @@ describe('trelloObj', function () {
 				obj.set(args);
 			});
 
-			it('should call the network service', function () {
-				net.put.called.should.be.true; // eslint-disable-line no-unused-expressions
-				net.put.calledWithExactly(config, objType, id, newVal, allowEmptyProperty).should.be.true; // eslint-disable-line no-unused-expressions
+			it('should call the network service', () => {
+				net.put.called.should.be.true;
+				net.put.calledWithExactly(config, objType, id, newVal, allowEmptyProperty).should.be.true;
 			});
 
-			it('should call the callback with success', function () {
-				success.should.be.true; // eslint-disable-line no-unused-expressions
+			it('should call the callback with success', () => {
+				success.should.be.true;
 			});
 		});
 
-		describe('setting a Trello property with invalid sub-properties', function () {
+		describe('setting a Trello property with invalid sub-properties', () => {
 			let newVal;
 
-			beforeEach(function () {
+			beforeEach(() => {
 				newVal = { newValProp: 'trelloPropertyVal' };
 				args = {
 					values: newVal,
@@ -920,7 +919,7 @@ describe('trelloObj', function () {
 				propertyMapsStub.objectType = {
 					allowEmptyPut: true,
 					props: {
-						property: { trelloType: null, isAutoProp: true, get: {}, put: { allowEmpty: true, subProperty: { allowEmpty: true } }}
+						property: { trelloType: null, isAutoProp: true, get: {}, put: { allowEmpty: true, subProperty: { allowEmpty: true } } }
 					}
 				};
 
@@ -936,34 +935,34 @@ describe('trelloObj', function () {
 				});
 			});
 
-			it('should be rejected', function () {
+			it('should be rejected', () => {
 				obj.set(args).should.be.rejectedWith(Error);
 			});
 		});
 
-		describe('setting a Trello property with valid sub-properties', function () {
+		describe('setting a Trello property with valid sub-properties', () => {
 			let newVal;
 			let property;
 			let subProperty;
 
-			beforeEach(function () {
+			beforeEach(() => {
 				newVal = { newValProp: 'trelloPropertyVal' };
 				property = 'property';
 				subProperty = 'subProperty';
 				args = {
 					values: newVal,
-					propName: property + '/' + subProperty
+					propName: `${property}/${subProperty}`
 				};
 
 				propertyMapsStub.objectType = {
 					allowEmptyPut: true,
 					props: {
-						property: { trelloType: null, isAutoProp: true, get: {}, put: { allowEmpty: true, allowNext: ['subProperty'], subProperty: { allowEmpty: true } }}
+						property: { trelloType: null, isAutoProp: true, get: {}, put: { allowEmpty: true, allowNext: ['subProperty'], subProperty: { allowEmpty: true } } }
 					}
 				};
 
 				const putStub = sinon.stub();
-				putStub.withArgs(config, objType, id, newVal, property + '/' + subProperty).returns(Promise.resolve({}));
+				putStub.withArgs(config, objType, id, newVal, `${property}/${subProperty}`).returns(Promise.resolve({}));
 				net = {
 					put: putStub
 				};
@@ -980,35 +979,35 @@ describe('trelloObj', function () {
 				obj.set(args);
 			});
 
-			it('should call the network service', function () {
-				net.put.called.should.be.true; // eslint-disable-line no-unused-expressions
-				net.put.calledWithExactly(config, objType, id, newVal, property + '/' + subProperty).should.be.true; // eslint-disable-line no-unused-expressions
+			it('should call the network service', () => {
+				net.put.called.should.be.true;
+				net.put.calledWithExactly(config, objType, id, newVal, `${property}/${subProperty}`).should.be.true;
 			});
 		});
 
-		describe('setting a Trello property with an id', function () {
+		describe('setting a Trello property with an id', () => {
 			let newVal;
 			let subPropertyId;
 			let allowIdProperty;
 
-			beforeEach(function () {
+			beforeEach(() => {
 				newVal = { newValProp: 'trelloPropertyVal' };
 				subPropertyId = 'subPropId';
 				allowIdProperty = 'allowIdProperty';
 				args = {
 					values: newVal,
-					propName: allowIdProperty + '/' + subPropertyId
+					propName: `${allowIdProperty}/${subPropertyId}`
 				};
 
 				propertyMapsStub.objectType = {
 					allowEmptyPut: true,
 					props: {
-						allowIdProperty: { trelloType: null, isAutoProp: false, put: { allowEmpty: false, allowId: [''] }}
+						allowIdProperty: { trelloType: null, isAutoProp: false, put: { allowEmpty: false, allowId: [''] } }
 					}
 				};
 
 				const putStub = sinon.stub();
-				putStub.withArgs(config, objType, id, newVal, allowIdProperty + '/' + subPropertyId).returns(Promise.resolve({}));
+				putStub.withArgs(config, objType, id, newVal, `${allowIdProperty}/${subPropertyId}`).returns(Promise.resolve({}));
 				net = {
 					put: putStub
 				};
@@ -1025,17 +1024,17 @@ describe('trelloObj', function () {
 				obj.set(args);
 			});
 
-			it('should call the network service', function () {
-				net.put.called.should.be.true; // eslint-disable-line no-unused-expressions
-				net.put.calledWithExactly(config, objType, id, newVal, allowIdProperty + '/' + subPropertyId).should.be.true; // eslint-disable-line no-unused-expressions
+			it('should call the network service', () => {
+				net.put.called.should.be.true;
+				net.put.calledWithExactly(config, objType, id, newVal, `${allowIdProperty}/${subPropertyId}`).should.be.true;
 			});
 		});
 
-		describe('setting a Trello property that allows post but not put', function () {
+		describe('setting a Trello property that allows post but not put', () => {
 			let newVal;
 			let postProperty;
 
-			beforeEach(function () {
+			beforeEach(() => {
 				newVal = { newValProp: 'trelloPropertyVal' };
 				postProperty = 'postProperty';
 				args = {
@@ -1045,7 +1044,7 @@ describe('trelloObj', function () {
 
 				propertyMapsStub.objectType = {
 					props: {
-						postProperty: { trelloType: null, isAutoProp: false, post: { allowEmpty: true }}
+						postProperty: { trelloType: null, isAutoProp: false, post: { allowEmpty: true } }
 					}
 				};
 
@@ -1068,18 +1067,18 @@ describe('trelloObj', function () {
 				obj.set(args);
 			});
 
-			it('should call the network service', function () {
-				net.put.called.should.be.false; // eslint-disable-line no-unused-expressions
-				net.post.called.should.be.true; // eslint-disable-line no-unused-expressions
-				net.post.calledWithExactly(config, objType, id, newVal, postProperty).should.be.true; // eslint-disable-line no-unused-expressions
+			it('should call the network service', () => {
+				net.put.called.should.be.false;
+				net.post.called.should.be.true;
+				net.post.calledWithExactly(config, objType, id, newVal, postProperty).should.be.true;
 			});
 		});
 
-		describe('setting a Trello property that allows both and preferring idempotence', function () {
+		describe('setting a Trello property that allows both and preferring idempotence', () => {
 			let newVal;
 			let putAndPostProperty;
 
-			beforeEach(function () {
+			beforeEach(() => {
 				newVal = { newValProp: 'trelloPropVal' };
 				putAndPostProperty = 'putAndPostProperty';
 				args = {
@@ -1089,7 +1088,7 @@ describe('trelloObj', function () {
 
 				propertyMapsStub.objectType = {
 					props: {
-						putAndPostProperty: { trelloType: null, isAutoProp: false, put: { allowEmpty: true }, post: { allowEmpty: true }}
+						putAndPostProperty: { trelloType: null, isAutoProp: false, put: { allowEmpty: true }, post: { allowEmpty: true } }
 					}
 				};
 
@@ -1112,18 +1111,18 @@ describe('trelloObj', function () {
 				obj.set(args);
 			});
 
-			it('should call put on the network service', function () {
-				net.put.called.should.be.true; // eslint-disable-line no-unused-expressions
-				net.post.called.should.be.false; // eslint-disable-line no-unused-expressions
-				net.put.calledWithExactly(config, objType, id, newVal, putAndPostProperty).should.be.true; // eslint-disable-line no-unused-expressions
+			it('should call put on the network service', () => {
+				net.put.called.should.be.true;
+				net.post.called.should.be.false;
+				net.put.calledWithExactly(config, objType, id, newVal, putAndPostProperty).should.be.true;
 			});
 		});
 
-		describe('setting a Trello property that allows both and preferring non-idempotence', function () {
+		describe('setting a Trello property that allows both and preferring non-idempotence', () => {
 			let newVal;
 			let putAndPostProperty;
 
-			beforeEach(function () {
+			beforeEach(() => {
 				newVal = { newValProp: 'newPropVal' };
 				putAndPostProperty = 'putAndPostProperty';
 				args = {
@@ -1134,7 +1133,7 @@ describe('trelloObj', function () {
 
 				propertyMapsStub.objectType = {
 					props: {
-						putAndPostProperty: { trelloType: null, isAutoProp: false, put: { allowEmpty: true }, post: { allowEmpty: true }}
+						putAndPostProperty: { trelloType: null, isAutoProp: false, put: { allowEmpty: true }, post: { allowEmpty: true } }
 					}
 				};
 
@@ -1157,20 +1156,20 @@ describe('trelloObj', function () {
 				obj.set(args);
 			});
 
-			it('should call put on the network service', function () {
-				net.put.called.should.be.false; // eslint-disable-line no-unused-expressions
-				net.post.called.should.be.true; // eslint-disable-line no-unused-expressions
-				net.post.calledWithExactly(config, objType, id, newVal, putAndPostProperty).should.be.true; // eslint-disable-line no-unused-expressions
+			it('should call put on the network service', () => {
+				net.put.called.should.be.false;
+				net.post.called.should.be.true;
+				net.post.calledWithExactly(config, objType, id, newVal, putAndPostProperty).should.be.true;
 			});
 		});
 	});
 
-	describe('#delete()', function () {
+	describe('#delete()', () => {
 		let obj;
 		let args;
 
-		describe('deleting a Trello entity that does not allow deletion', function () {
-			beforeEach(function () {
+		describe('deleting a Trello entity that does not allow deletion', () => {
+			beforeEach(() => {
 				args = {};
 				propertyMapsStub.objectType = {
 					allowDeletion: false,
@@ -1188,17 +1187,17 @@ describe('trelloObj', function () {
 				});
 			});
 
-			it('should be rejected', function () {
+			it('should be rejected', () => {
 				obj.del(args).should.be.rejectedWith(Error);
 			});
 		});
 
-		describe('deleting a Trello entity that does not allow deletion with a callback', function () {
+		describe('deleting a Trello entity that does not allow deletion with a callback', () => {
 			let success;
 
-			beforeEach(function (done) {
+			beforeEach((done) => {
 				args = {
-					callback: function (err) {
+					callback (err) {
 						if (err) {
 							success = false;
 						}
@@ -1227,13 +1226,13 @@ describe('trelloObj', function () {
 				obj.del(args);
 			});
 
-			it('should call the callback with an error', function () {
-				success.should.be.false; // eslint-disable-line no-unused-expressions
+			it('should call the callback with an error', () => {
+				success.should.be.false;
 			});
 		});
 
-		describe('deleting a Trello entity that does not allow deletion but skipping validation', function () {
-			beforeEach(function () {
+		describe('deleting a Trello entity that does not allow deletion but skipping validation', () => {
+			beforeEach(() => {
 				args = { skipValidation: true };
 				propertyMapsStub.objectType = {
 					allowDeletion: false,
@@ -1258,13 +1257,13 @@ describe('trelloObj', function () {
 				obj.del(args);
 			});
 
-			it('should delete the entity anyway', function () {
-				net.del.called.should.be.true; //eslint-disable-line no-unused-expressions
+			it('should delete the entity anyway', () => {
+				net.del.called.should.be.true;
 			});
 		});
 
-		describe('deleting a Trello entity that allows deletion', function () {
-			beforeEach(function () {
+		describe('deleting a Trello entity that allows deletion', () => {
+			beforeEach(() => {
 				args = {};
 
 				propertyMapsStub.objectType = {
@@ -1290,18 +1289,18 @@ describe('trelloObj', function () {
 				obj.del(args);
 			});
 
-			it('should call delete on the network service', function () {
-				net.del.called.should.be.true; // eslint-disable-line no-unused-expressions
-				net.del.calledWithExactly(config, objType, id).should.be.true; // eslint-disable-line no-unused-expressions
+			it('should call delete on the network service', () => {
+				net.del.called.should.be.true;
+				net.del.calledWithExactly(config, objType, id).should.be.true;
 			});
 		});
 
-		describe('deleting a Trello entity that allows deletion with a callback', function () {
+		describe('deleting a Trello entity that allows deletion with a callback', () => {
 			let success;
 
-			beforeEach(function (done) {
+			beforeEach((done) => {
 				args = {
-					callback: function (err) {
+					callback (err) {
 						if (err) {
 							success = false;
 						}
@@ -1335,20 +1334,20 @@ describe('trelloObj', function () {
 				obj.del(args);
 			});
 
-			it('should call delete on the network service', function () {
-				net.del.called.should.be.true; // eslint-disable-line no-unused-expressions
-				net.del.calledWithExactly(config, objType, id).should.be.true; // eslint-disable-line no-unused-expressions
+			it('should call delete on the network service', () => {
+				net.del.called.should.be.true;
+				net.del.calledWithExactly(config, objType, id).should.be.true;
 			});
 
-			it('should call the callback with a successful response', function () {
-				success.should.be.true; // eslint-disable-line no-unused-expressions
+			it('should call the callback with a successful response', () => {
+				success.should.be.true;
 			});
 		});
 
-		describe('deleting a Trello property that does not allow empty deletion', function () {
+		describe('deleting a Trello property that does not allow empty deletion', () => {
 			let prop;
 
-			beforeEach(function () {
+			beforeEach(() => {
 				prop = 'disallowEmpty';
 				args = { propName: prop };
 
@@ -1373,20 +1372,20 @@ describe('trelloObj', function () {
 				});
 			});
 
-			it('should be rejected', function () {
+			it('should be rejected', () => {
 				obj.del(args).should.be.rejectedWith(Error);
 			});
 		});
 
-		describe('deleting a Trello property that does not allow empty deletion with a callback', function () {
+		describe('deleting a Trello property that does not allow empty deletion with a callback', () => {
 			let prop;
 			let success;
 
-			beforeEach(function (done) {
+			beforeEach((done) => {
 				prop = 'disallowEmpty';
 				args = {
 					propName: prop,
-					callback: function (err) {
+					callback (err) {
 						if (err) {
 							success = false;
 						}
@@ -1419,15 +1418,15 @@ describe('trelloObj', function () {
 				obj.del(args);
 			});
 
-			it('should call the callback with an error', function () {
-				success.should.be.false; // eslint-disable-line no-unused-expressions
+			it('should call the callback with an error', () => {
+				success.should.be.false;
 			});
 		});
 
-		describe('deleting a Trello property that does not allow empty deletion but skipping validation', function () {
+		describe('deleting a Trello property that does not allow empty deletion but skipping validation', () => {
 			let prop;
 
-			beforeEach(function () {
+			beforeEach(() => {
 				prop = 'disallowEmpty';
 				args = { propName: prop, skipValidation: true };
 
@@ -1460,15 +1459,15 @@ describe('trelloObj', function () {
 				obj.del(args);
 			});
 
-			it('should call delete anyway', function () {
-				net.del.called.should.be.true; //eslint-disable-line no-unused-expressions
+			it('should call delete anyway', () => {
+				net.del.called.should.be.true;
 			});
 		});
 
-		describe('deleting a Trello property that does allow empty deletion', function () {
+		describe('deleting a Trello property that does allow empty deletion', () => {
 			let prop;
 
-			beforeEach(function () {
+			beforeEach(() => {
 				prop = 'allowEmptyDeletion';
 				args = { propName: prop };
 
@@ -1500,21 +1499,21 @@ describe('trelloObj', function () {
 				obj.del(args);
 			});
 
-			it('should call delete on the network service', function () {
-				net.del.called.should.be.true; // eslint-disable-line no-unused-expressions
-				net.del.calledWithExactly(config, objType, id, prop).should.be.true; // eslint-disable-line no-unused-expressions
+			it('should call delete on the network service', () => {
+				net.del.called.should.be.true;
+				net.del.calledWithExactly(config, objType, id, prop).should.be.true;
 			});
 		});
 
-		describe('deleting a Trello property that does allow empty deletion with a callback', function () {
+		describe('deleting a Trello property that does allow empty deletion with a callback', () => {
 			let prop;
 			let success;
 
-			beforeEach(function (done) {
+			beforeEach((done) => {
 				prop = 'allowEmptyDeletion';
 				args = {
 					propName: prop,
-					callback: function (err) {
+					callback (err) {
 						if (err) {
 							success = false;
 						}
@@ -1552,23 +1551,23 @@ describe('trelloObj', function () {
 				obj.del(args);
 			});
 
-			it('should call delete on the network service', function () {
-				net.del.called.should.be.true; // eslint-disable-line no-unused-expressions
-				net.del.calledWithExactly(config, objType, id, prop).should.be.true; // eslint-disable-line no-unused-expressions
+			it('should call delete on the network service', () => {
+				net.del.called.should.be.true;
+				net.del.calledWithExactly(config, objType, id, prop).should.be.true;
 			});
 
-			it('should call the callback with a successful response', function () {
-				success.should.be.true; // eslint-disable-line no-unused-expressions
+			it('should call the callback with a successful response', () => {
+				success.should.be.true;
 			});
 		});
 
-		describe('deleting a Trello property with an id that does not allow deleting with id\'s', function () {
+		describe('deleting a Trello property with an id that does not allow deleting with id\'s', () => {
 			let prop;
 			let chain;
 
-			beforeEach(function () {
+			beforeEach(() => {
 				prop = 'disallowPropertyDeletion';
-				chain = prop + '/thisIsTheId123';
+				chain = `${prop}/thisIsTheId123`;
 				args = { propName: chain };
 
 				propertyMapsStub.objectType = {
@@ -1592,18 +1591,18 @@ describe('trelloObj', function () {
 				});
 			});
 
-			it('should be rejected', function () {
+			it('should be rejected', () => {
 				obj.del(args).should.be.rejectedWith(Error);
 			});
 		});
 
-		describe('deleting a Trello property with an id that does allow deleting with id\'s', function () {
+		describe('deleting a Trello property with an id that does allow deleting with id\'s', () => {
 			let prop;
 			let chain;
 
-			beforeEach(function () {
+			beforeEach(() => {
 				prop = 'allowPropertyDeletion';
-				chain = prop + '/thisIsTheId456';
+				chain = `${prop}/thisIsTheId456`;
 				args = { propName: chain };
 
 				propertyMapsStub.objectType = {
@@ -1634,9 +1633,9 @@ describe('trelloObj', function () {
 				obj.del(args);
 			});
 
-			it('should call delete on the network service', function () {
-				net.del.called.should.be.true; // eslint-disable-line no-unused-expressions
-				net.del.calledWithExactly(config, objType, id, chain).should.be.true; // eslint-disable-line no-unused-expressions
+			it('should call delete on the network service', () => {
+				net.del.called.should.be.true;
+				net.del.calledWithExactly(config, objType, id, chain).should.be.true;
 			});
 		});
 	});

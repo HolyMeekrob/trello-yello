@@ -10,6 +10,7 @@ node_modules/
 jsconfig.json
 *.d.ts
 .tern-project
+.vscode
 
 # Local testing
 localRunner.js

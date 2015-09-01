@@ -170,7 +170,7 @@ export default (cParams) => {
 	 */
 	const unarchive = (callback) => {
 		const args = {
-			values: {value: false },
+			values: { value: false },
 			propName: 'closed',
 			preferNonIdempotence: false,
 			callback

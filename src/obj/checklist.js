@@ -191,7 +191,7 @@ export default (cParams) => {
 			preferNonIdempotence: true
 		};
 
-		return obj.set(args).then(res => {
+		return obj.set(args).then((res) => {
 			const rawObj = JSON.parse(res.body);
 			return Promise.resolve(rawObj.id).nodeify(callback);
 		});

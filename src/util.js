@@ -86,7 +86,7 @@ export const removeNonAutoProperties = (baseObj, maps) => {
 		return {};
 	}
 
-	const propIsAuto = prop => {
+	const propIsAuto = (prop) => {
 		return (maps[prop] !== undefined && maps[prop].isAutoProp);
 	};
 

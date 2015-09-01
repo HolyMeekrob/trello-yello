@@ -50,7 +50,8 @@ const networkService = () => {
 	 * @private
 	 */
 	const send = (params) => {
-		let { verb, config, objType, id, urlData, bodyData, prop } = params;
+		const { verb, config, objType, id, urlData, bodyData } = params;
+		let prop = { params };
 
 		if (isNil(objType)) {
 			throw new Error('Trello object type is required for API.');
@@ -86,7 +87,7 @@ const networkService = () => {
 			url = `/${config.version}/${objType}/${id}/${prop}?${parameters}`;
 		}
 
-		let requestHeaders = {};
+		const requestHeaders = {};
 		let requestBody = null;
 
 		if (!isNil(bodyData)) {

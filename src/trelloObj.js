@@ -50,7 +50,7 @@ export default (cParams) => {
 	const trelloPropertyNames = maps[objType].props;
 
 	if (trelloPropertyNames === undefined) {
-		throw new Error('Invalid object type: ' + objType);
+		throw new Error(`Invalid object type: ${objType}`);
 	}
 
 	/**
@@ -60,7 +60,7 @@ export default (cParams) => {
 	 * @property trelloProps
 	 * @type Object
 	 */
-	let trelloProps = { id: id };
+	let trelloProps = { id };
 
 	// Remove all fields that are themselves Trello objects so that we can
 	// construct them properly. Everything else should be copied into this object
@@ -78,7 +78,7 @@ export default (cParams) => {
 	 * @return {void}
 	 */
 	const expireData = () => {
-		trelloProps = { id: id };
+		trelloProps = { id };
 	};
 
 	/**
@@ -94,7 +94,7 @@ export default (cParams) => {
 	const getAutoProperties = () => {
 		return net.get(config, objType, trelloProps.id,
 				maps[objType].defaultArgs)
-				.then(response => {
+				.then((response) => {
 					const rawObj = JSON.parse(response.body);
 					return Promise.resolve(
 							removeNonAutoProperties(rawObj, trelloPropertyNames));
@@ -116,11 +116,11 @@ export default (cParams) => {
 		const parameters = propData.get;
 
 		return net.get(config, objType, trelloProps.id, parameters, prop)
-			.then(response => {
+			.then((response) => {
 				const sub = JSON.parse(response.body);
 
 				if (Array.isArray(sub)) {
-					return Promise.resolve(sub.map(subObj =>
+					return Promise.resolve(sub.map((subObj) =>
 						objConstructor({
 							maps,
 							objType: trelloType,
@@ -132,17 +132,15 @@ export default (cParams) => {
 						})
 					));
 				}
-				else {
-					return Promise.resolve(objConstructor({
-						maps,
-						objType: trelloType,
-						config,
-						id: sub.id,
-						net,
-						initialVals: sub,
-						objConstructor
-					}));
-				}
+				return Promise.resolve(objConstructor({
+					maps,
+					objType: trelloType,
+					config,
+					id: sub.id,
+					net,
+					initialVals: sub,
+					objConstructor
+				}));
 			});
 	};
 
@@ -163,7 +161,7 @@ export default (cParams) => {
 
 		if (skipValidation && !propExists && !propIsGettable) {
 			return net.get(config, objType, trelloProps.id, {}, prop)
-					.then(response => {
+					.then((response) => {
 						trelloProps[prop] = JSON.parse(response.body);
 						return Promise.resolve(trelloProps[prop]);
 					});
@@ -172,20 +170,20 @@ export default (cParams) => {
 		// If the property does not exist in the Trello API
 		if (!propExists) {
 			return Promise.reject(new Error(
-					'Trello Property ' + objType + '/' + prop + ' is not valid.'
+					`Trello Property ${objType}/${prop} is not valid.`
 			));
 		}
 
 		if (!propIsGettable) {
 			return Promise.reject(new Error(
-					'Trello Property ' + objType + '/' + prop + ' is not gettable.'
+					`Trello Property ${objType}/${prop} is not gettable.`
 			));
 		}
 
 		const propData = trelloPropertyNames[prop];
 		if (propData.isAutoProp) {
 			return getAutoProperties()
-					.then(response => {
+					.then((response) => {
 						trelloProps = merge(trelloProps, response);
 						return Promise.resolve(trelloProps[prop]);
 					});
@@ -193,19 +191,17 @@ export default (cParams) => {
 
 		else if (isNil(propData.trelloType)) {
 			return net.get(config, objType, trelloProps.id, propData.get, prop)
-					.then(response => {
+					.then((response) => {
 						trelloProps[prop] = JSON.parse(response.body);
 						return Promise.resolve(trelloProps[prop]);
 					});
 		}
 
-		else {
-			return getSubTypeProperty(prop, propData)
-					.then(subObj => {
-						trelloProps[prop] = subObj;
-						return Promise.resolve(trelloProps[prop]);
-					});
-		}
+		return getSubTypeProperty(prop, propData)
+				.then((subObj) => {
+					trelloProps[prop] = subObj;
+					return Promise.resolve(trelloProps[prop]);
+				});
 	};
 
 	/**
@@ -222,14 +218,14 @@ export default (cParams) => {
 	const setObject = (values, skipValidation) => {
 		if (skipValidation || maps[objType].allowEmptyPut) {
 			return net.put(config, objType, trelloProps.id, values)
-					.then(res => {
+					.then((res) => {
 						expireData();
 						return res;
 					});
 		}
 
 		return Promise.reject(new Error(
-				'Cannot set values on Trello object type ' + objType
+				`Cannot set values on Trello object type ${objType}`
 		));
 	};
 
@@ -250,13 +246,13 @@ export default (cParams) => {
 	const setPropertySkipValidation = (values, path, preferNonIdempotence) => {
 		if (preferNonIdempotence) {
 			return net.post(config, objType, trelloProps.id, values, path)
-					.then(res => {
+					.then((res) => {
 						expireData();
 						return res;
 					});
 		}
 		return net.put(config, objType, trelloProps.id, values, path)
-					.then(res => {
+					.then((res) => {
 						expireData();
 						return res;
 					});
@@ -285,15 +281,15 @@ export default (cParams) => {
 			return setPropertySkipValidation(values, path, preferNonIdempotence);
 		}
 
-		const pathElems = path.split('/').filter(str => str !== '');
+		const pathElems = path.split('/').filter((str) => str !== '');
 
 		if (pathElems.length === 0) {
-			return Promise.reject(new Error('Malformed property path: ' + path));
+			return Promise.reject(new Error(`Malformed property path: ${path}`));
 		}
 
 		if (!trelloPropertyNames.hasOwnProperty(pathElems[0])) {
 			return Promise.reject(new Error(
-				'Trello Property ' + objType + '/' + path + ' is not valid.'
+				`Trello Property ${objType}/${path} is not valid.`
 			));
 		}
 
@@ -312,11 +308,11 @@ export default (cParams) => {
 
 		const remainingPath = pathElems.slice(1);
 
-		if(property.hasOwnProperty(firstVerb)
+		if (property.hasOwnProperty(firstVerb)
 				&& hasValidPath(property[firstVerb], remainingPath)) {
 			expireData();
 			return net[firstVerb](config, objType, trelloProps.id, values, path)
-					.then(res => {
+					.then((res) => {
 						expireData();
 						return res;
 					});
@@ -325,14 +321,14 @@ export default (cParams) => {
 		if (property.hasOwnProperty(secondVerb)
 				&& hasValidPath(property[secondVerb], remainingPath)) {
 			return net[secondVerb](config, objType, trelloProps.id, values, path)
-					.then(res => {
+					.then((res) => {
 						expireData();
 						return res;
 					});
 		}
 
 		return Promise.reject(new Error(
-				'Trello Property ' + objType + '/' + path + ' is not settable.'
+				`Trello Property ${objType}/${path} is not settable.`
 		));
 	};
 
@@ -351,7 +347,7 @@ export default (cParams) => {
 		}
 
 		return Promise.reject(new Error(
-				'Object type ' + objType + ' does not allow deletion.'
+				`Object type ${objType} does not allow deletion.`
 		));
 	};
 
@@ -365,7 +361,7 @@ export default (cParams) => {
 	 */
 	const deletePropertySkipValidation = (path) => {
 		return net.del(config, objType, trelloProps.id, path)
-				.then(res => {
+				.then((res) => {
 					expireData();
 					return res;
 				});
@@ -387,23 +383,23 @@ export default (cParams) => {
 			return deletePropertySkipValidation(path);
 		}
 
-		const pathElems = path.split('/').filter(str => str !== '');
+		const pathElems = path.split('/').filter((str) => str !== '');
 
 		if (pathElems.length === 0) {
-			return Promise.reject(new Error('Malformed property path: ' + path));
+			return Promise.reject(new Error(`Malformed property path: ${path}`));
 		}
 
 		const property = trelloPropertyNames[pathElems[0]];
 
 		if (!property.hasOwnProperty('delete')) {
 			return Promise.reject(new Error(
-					'Trello property ' + path + ' does not allow deletion.'
+					`Trello property ${path} does not allow deletion.`
 			));
 		}
 
 		if (!hasValidPath(property.delete, pathElems.slice(1))) {
 			return Promise.reject(new Error(
-					'Trello property ' + path + ' does not allow deletion.'
+					`Trello property ${path} does not allow deletion.`
 			));
 		}
 
@@ -455,7 +451,6 @@ export default (cParams) => {
 		return get(args);
 	};
 
-
 	/**
 	 * Sets the given property using the new values passed in. If a property name
 	 * is not included, then the object itself is set using the new values.
@@ -495,11 +490,10 @@ export default (cParams) => {
 		if (isNil(propName)) {
 			return setObject(values, params.skipValidation).nodeify(callback);
 		}
-		else {
-			return setProperty(
-					values, propName, !!preferNonIdempotence, params.skipValidation)
-					.nodeify(callback);
-		}
+
+		return setProperty(
+				values, propName, !!preferNonIdempotence, params.skipValidation)
+				.nodeify(callback);
 	};
 
 	/**

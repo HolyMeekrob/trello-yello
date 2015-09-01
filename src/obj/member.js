@@ -445,7 +445,6 @@ export default (cParams) => {
 		return obj.get(args);
 	};
 
-
 	/**
 	 * @method getSavedSearches
 	 * @param {Function} [callback] the callback function once the operation is
@@ -835,7 +834,6 @@ export default (cParams) => {
 		return obj.set(args);
 	};
 
-
 	/**
 	 * @method addAvatar
 	 * @param {Object} params the method parameters object
@@ -874,12 +872,11 @@ export default (cParams) => {
 			preferNonIdempotence: true
 		};
 
-		return obj.set(args).then(res => {
+		return obj.set(args).then((res) => {
 			const rawObj = res.body;
 			return Promise.resolve(JSON.parse(rawObj).id).nodeify(callback);
 		});
 	};
-
 
 	/**
 	 * @method addCustomBoardBackground
@@ -898,7 +895,7 @@ export default (cParams) => {
 			preferNonIdempotence: true
 		};
 
-		return obj.set(args).then(res => {
+		return obj.set(args).then((res) => {
 			const rawObj = res.body;
 			return Promise.resolve(JSON.parse(rawObj).id).nodeify(callback);
 		});
@@ -922,7 +919,7 @@ export default (cParams) => {
 			callback
 		};
 
-		return obj.set(args).then(res => {
+		return obj.set(args).then((res) => {
 			const rawObj = res.body;
 			return Promise.resolve(JSON.parse(rawObj).id).nodeify(callback);
 		});
@@ -946,7 +943,7 @@ export default (cParams) => {
 			callback
 		};
 
-		return obj.set(args).then(res => {
+		return obj.set(args).then((res) => {
 			const rawObj = res.body;
 			return Promise.resolve(JSON.parse(rawObj).id).nodeify(callback);
 		});
@@ -992,7 +989,7 @@ export default (cParams) => {
 			callback
 		};
 
-		return obj.set(args).then(res => {
+		return obj.set(args).then((res) => {
 			const rawObj = res.body;
 			return Promise.resolve(JSON.parse(rawObj).id).nodeify(callback);
 		});

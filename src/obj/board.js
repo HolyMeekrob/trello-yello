@@ -223,7 +223,6 @@ export default (cParams) => {
 		return obj.get(args);
 	};
 
-
 	/**
 	 * @method getLabels
 	 * @param {Function} [callback] the callback function once the operation is
@@ -580,7 +579,6 @@ export default (cParams) => {
 		return obj.set(args);
 	};
 
-
 	/**
 	 * Sets the member type for a member with the given information. If they are
 	 * not already a member on the board, they are added as one.
@@ -660,7 +658,6 @@ export default (cParams) => {
 		return obj.set(args);
 	};
 
-
 	/**
 	 * @method setEmailPosition
 	 * @param {Object} params the method parameters object
@@ -721,7 +718,6 @@ export default (cParams) => {
 
 		return obj.set(args);
 	};
-
 
 	/**
 	 * Hides the list guide.
@@ -1208,7 +1204,7 @@ export default (cParams) => {
 			preferNonIdempotence: true
 		};
 
-		return obj.set(args).then(res => {
+		return obj.set(args).then((res) => {
 			const rawObj = JSON.parse(res.body);
 			return Promise.resolve(rawObj.myPrefs.calendarKey)
 					.nodeify(callback);
@@ -1229,7 +1225,7 @@ export default (cParams) => {
 			preferNonIdempotence: true
 		};
 
-		return obj.set(args).then(res => {
+		return obj.set(args).then((res) => {
 			const rawObj = JSON.parse(res.body);
 			return Promise.resolve(rawObj.myPrefs.emailKey)
 					.nodeify(callback);
@@ -1256,7 +1252,7 @@ export default (cParams) => {
 			preferNonIdempotence: true
 		};
 
-		return obj.set(args).then(res => {
+		return obj.set(args).then((res) => {
 			const objParams = adaptParams(res, 'label')(cParams);
 			return Promise.resolve(cParams.objConstructor(objParams))
 					.nodeify(callback);
@@ -1281,7 +1277,7 @@ export default (cParams) => {
 			preferNonIdempotence: true
 		};
 
-		return obj.set(args).then(res => {
+		return obj.set(args).then((res) => {
 			const objParams = adaptParams(res, 'list')(cParams);
 			return Promise.resolve(cParams.objConstructor(objParams))
 					.nodeify(callback);

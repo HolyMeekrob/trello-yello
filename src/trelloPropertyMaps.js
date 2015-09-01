@@ -11,15 +11,15 @@ import token from './entities/token';
 import webhook from './entities/webhook';
 
 export default {
-	action: action,
-	board: board,
-	card: card,
-	checklist: checklist,
-	label: label,
-	list: list,
-	member: member,
-	notification: notification,
-	organization: organization,
-	token: token,
-	webhook: webhook
+	action,
+	board,
+	card,
+	checklist,
+	label,
+	list,
+	member,
+	notification,
+	organization,
+	token,
+	webhook
 };

@@ -55,18 +55,18 @@ export default (cParams) => {
 
 		if (maps[objType] === undefined) {
 			return Promise.reject(new Error(
-					'Object type ' + objType + ' does not exist.'
+					`Object type ${objType} does not exist.`
 			)).nodeify(callback);
 		}
 
 		if (!maps[objType].allowCreation) {
 			return Promise.reject(new Error(
-					'Object type ' + objType + ' does not allow creation.'
+					`Object type ${objType} does not allow creation.`
 			)).nodeify(callback);
 		}
 
 		return net.post(config, objType, null, initialVals)
-				.then(response => {
+				.then((response) => {
 					const rawObj = JSON.parse(response.body);
 					return Promise.resolve(trelloFactory.createTrelloObject({
 						maps,
@@ -511,7 +511,7 @@ export default (cParams) => {
 		};
 
 		return net.get(config, 'search', null, parameters)
-				.then(response => Promise.resolve(JSON.parse(response.body))
+				.then((response) => Promise.resolve(JSON.parse(response.body))
 						.nodeify(callback));
 	};
 

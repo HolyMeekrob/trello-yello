@@ -1,7 +1,7 @@
 import https from 'https';
 import querystring from 'querystring';
 import Promise from 'bluebird';
-import { isNil, clone } from 'ramda';
+import { any, isNil, clone } from 'ramda';
 
 const API_HOST = 'api.trello.com';
 
@@ -36,22 +36,23 @@ const networkService = () => {
 	 * @param {Number} params.config.version the Trello API version Number
 	 * @param {String} params.objType the type of Trello object. Please refer to
 	 * other documentation for the list of allowed types.
-	 * @param {String} [id] the id of the Trello object. Not required for creating
-	 * new objects
-	 * @param {Object} [urlData] information to be passed in the query string. for
-	 * each property on the object, it will take the form key=value, where key
-	 * is the property name and value is its value
-	 * @param {Object} [bodyData] the data to be included as the body of
+	 * @param {String} [params.id] the id of the Trello object. Not required for
+	 * creating new objects
+	 * @param {Object} [params.urlData] information to be passed in the query
+	 * string. For each property on the object, it will take the form key=value,
+	 * where key is the property name and value is its value
+	 * @param {Object} [params.bodyData] the data to be included as the body of
 	 * the HTTP request
-	 * @param {String} [prop] used if the request will be upon a property of the
-	 * object. This is appended to the query url according to the Trello API spec.
+	 * @param {String} [params.prop] used if the request will be upon a property
+	 * of the object. This is appended to the query url according to the Trello
+	 * API spec.
 	 * @return a promise that resolves to the data returned by Trello
 	 * @static
 	 * @private
 	 */
 	const send = (params) => {
 		const { verb, config, objType, id, urlData, bodyData } = params;
-		let prop = { params };
+		let { prop } = params;
 
 		if (isNil(objType)) {
 			throw new Error('Trello object type is required for API.');
@@ -154,8 +155,9 @@ const networkService = () => {
 	 * @static
 	 */
 	const del = (config, objType, id, prop) => {
-		if (isNil(id)) {
-			throw new Error('Id is required to delete Trello entity.');
+		if (any(isNil, [config, objType, id])) {
+			throw new Error('Config, object type, and id are '
+					+ 'required to delete Trello entity.');
 		}
 
 		return send({
@@ -213,8 +215,9 @@ const networkService = () => {
 	 * @static
 	 */
 	const post = (config, objType, id, newVals, prop) => {
-		if (isNil(newVals)) {
-			throw new Error('Updates must include new values.');
+		if (any(isNil, [config, objType, newVals])) {
+			throw new Error('Updates must include config, an object type and a new '
+				+ 'values object.');
 		}
 
 		return send({
@@ -245,8 +248,9 @@ const networkService = () => {
 	 * @static
 	 */
 	const put = (config, objType, id, newVals, prop) => {
-		if (isNil(newVals)) {
-			throw new Error('Updates must include new values.');
+		if (any(isNil, [config, objType, newVals])) {
+			throw new Error('Updates must include config, an object type and a new '
+				+ 'values object.');
 		}
 
 		return send({

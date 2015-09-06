@@ -510,7 +510,7 @@ export default (cParams) => {
 			partial: 'false'
 		};
 
-		return net.get(config, 'search', null, parameters)
+		return net.get(config, 'search', undefined, parameters)
 				.then((response) => Promise.resolve(JSON.parse(response.body))
 						.nodeify(callback));
 	};

@@ -9,7 +9,6 @@ node_modules/
 .settings/
 jsconfig.json
 *.d.ts
-.tern-project
 .vscode
 
 # Local testing
